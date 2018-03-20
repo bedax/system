@@ -1,0 +1,3 @@
+#!/bin/sh
+
+~/.local/bin/upgrade && sudo apt-get dist-upgrade

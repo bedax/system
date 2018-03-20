@@ -1,0 +1,77 @@
+[rename]
+windows = true
+
+[settings]
+columns = ~#disc,~#track,title
+	
+default_rating = 0.6
+jump = false
+ratings = 5
+scan = ~/Music
+
+[__config__]
+version = 0
+
+[memory]
+browser = AlbumList
+column_expands = title,1
+	
+column_widths = title,-1
+	
+exfalso_last_active_version = 3.7.1
+exfalso_maximized = 0
+exfalso_paned_position = 0.308
+exfalso_position = 176 184
+exfalso_size_ = 750 475
+open_browsers = 
+order = inorder
+prefs_page = library
+queue = False
+queue_expanded = True
+queue_position = 0.750427350427
+quodlibet_information_maximized = 0
+quodlibet_information_position = 844 0
+quodlibet_information_size_ = 500 746
+quodlibet_last_active_version = 3.7.1
+quodlibet_maximized = 4
+quodlibet_position = 156 31
+quodlibet_properties_maximized = 0
+quodlibet_properties_pos = 0.136
+quodlibet_properties_position = 844 0
+quodlibet_properties_size_ = 600 400
+quodlibet_properties_size_single = 500 746
+quodlibet_size_ = 770 566
+seek = 0
+shuffle = False
+song = 
+sortby = 0~#track
+	
+volume = 0.123972858041
+
+[library]
+refresh_on_start = false
+
+[player]
+gst_buffer = 1.5
+replaygain = true
+time_remaining = true
+
+[browsers]
+album_covers = true
+album_substrings = true
+albumlist_pos = 0.270863836018
+albums = 
+panedbrowser_pos = 0.399253731343
+query_text = 
+rating_click = false
+
+[albumart]
+prefer_embedded = true
+
+[plugins]
+active_plugins = 
+
+[editing]
+auto_save_changes = true
+save_to_songs = false
+

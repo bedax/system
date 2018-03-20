@@ -1,0 +1,11 @@
+#!/bin/sh
+
+wget \
+    --mirror \
+    --convert-links \
+    --adjust-extension \
+    --page-requisites \
+    --no-parent \
+    --wait=2 \
+    --restrict-file-names=windows \
+    $1

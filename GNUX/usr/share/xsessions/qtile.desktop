@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Name=Qtile
+Comment=Use this session to run Qtile as your desktop environment
+Exec=qtile
+Icon=
+Type=Application
+DesktopNames=Qtile

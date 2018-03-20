@@ -1,0 +1,23 @@
+/GNUX/home/.config/filezilla/filezilla.xml
+/GNUX/home/.config/filezilla/sitemanager.xml
+/GNUX/home/.config/keepassx/keepassx2.ini
+/GNUX/home/.config/transmission/settings.json
+/GNUX/home/.config/qtile/background*
+/GNUX/home/.local/share/wd/warppoints
+
+/Shared/FileZilla/filezilla.xml
+/Shared/FileZilla/sitemanager.xml
+/Shared/Firefox
+/Shared/KeePassX/keepassx2.ini
+/Shared/Transmission
+/Shared/.p
+
+/Live/Identifying*
+/Live/**/*.deb
+/Live/**/*.gz
+/Live/**/*.iso
+
+/Windows/FastPictureViewer Codec Pack
+
+*.lock
+
