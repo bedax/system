@@ -53,6 +53,10 @@ nnoremap <A-Right> <C-w>l
 """ toggle maximizing the current window
 nnoremap <silent> <A-Enter> :ZoomWinTabToggle <CR>
 
+"" stops p from replacing the clipboard with the replaced text
+""" from: https://stackoverflow.com/a/5093286 (rox's comment)
+xnoremap <expr> p 'pgv"'.v:register.'y`>'
+
 "" esc cleans the slate
 """ exit terminal mode
 tnoremap <Esc> <C-\><C-n>
