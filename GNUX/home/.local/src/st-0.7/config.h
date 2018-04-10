@@ -82,36 +82,64 @@ static char termname[] = "st-256color";
  */
 static unsigned int tabspaces = 8;
 
-/* theme: gruvbox light */
-/* previously: base16/embers.light; terminal.sexy */
-
 /* Terminal colors (16 first used in escape sequence) */
+
+/* theme: gruvbox light */
+//static const char *colorname[] = {
+//	/* 8 normal colors */
+//	"#fbf1c7",
+//	"#cc241d",
+//	"#98971a",
+//	"#d79921",
+//	"#458588",
+//	"#b16286",
+//	"#689d6a",
+//	"#7c6f64",
+//
+//	/* 8 bright colors */
+//	"#928374",
+//	"#9d0006",
+//	"#79740e",
+//	"#b57614",
+//	"#076678",
+//	"#8f3f71",
+//	"#427b58",
+//	"#3c3836",
+//
+//	[255] = 0,
+//
+//	/* more colors can be added after 255 to use with DefaultXX */
+//	"#3c3836",
+//	"#fbf1c7",
+//};
+
+/* theme: gruvbox dark */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#fbf1c7",
+	"#282828",
 	"#cc241d",
 	"#98971a",
 	"#d79921",
 	"#458588",
 	"#b16286",
 	"#689d6a",
-	"#7c6f64",
+	"#a89984",
 
 	/* 8 bright colors */
 	"#928374",
-	"#9d0006",
-	"#79740e",
-	"#b57614",
-	"#076678",
-	"#8f3f71",
-	"#427b58",
-	"#3c3836",
+	"#fb4934",
+	"#b8bb26",
+	"#fabd2f",
+	"#83a598",
+	"#d3869b",
+	"#8ec07c",
+	"#ebdbb2",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#3c3836",
-	"#fbf1c7",
+	"#ebdbb2",
+	"#282828",
 };
 
 

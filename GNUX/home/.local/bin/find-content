@@ -1,0 +1,9 @@
+#!/bin/sh
+
+
+if [ -n "$2" ]
+then
+    grep -rn $1 $2
+else
+    echo "usage: find-content [term] [path]"
+fi

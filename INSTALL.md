@@ -115,11 +115,13 @@ fc-cache -fv
 
 ---
 
-### Set up the environment
+### Set-up the environment
 
+```
 sudo apt install build-essential make cmake autoconf automake pkg-config libtool-bin
 sudo apt install python python-pip python3 python3-pip
 sudo apt install gdebi apt-file
+```
 
 ---
 
@@ -133,7 +135,7 @@ sudo apt install xinit x11-xserver-utils xserver-xorg-video-intel
 sudo apt install python3-dev python3-setuptools
 sudo apt install libxcb-render0-dev libffi-dev libcairo2 libpangocairo-1.0-0 libxcb-cursor-dev
 sudo apt install compton redshift hsetroot wicd xbacklight # startup stuff
-sudo apt install pulseaudio-utils alsa-utils # for the volume buttons
+sudo apt install pm-utils pulseaudio pavucontrol pulseaudio-utils alsa-utils desktop-base
 sudo python3 -m pip install xcffib
 sudo python3 -m pip install cairocffi # this needs to be after xcffib
 ```
@@ -180,6 +182,8 @@ Section "Device"
 EndSection
 ```
 
+---
+
 
 ### The login manager
 
@@ -200,8 +204,6 @@ sudo apt install libx11-dev libxinerama-dev libxft-dev
 ```
 
 Then run `make` and `sudo make install` for both, making sure to use the connected dots from above, and the correct versions.
-
-Before making the normal `st`, install a `st-for-vim` by reducing the `borderpx` to `0` in `config.h`. Move the installed result to `/usr/local/bin/st-for-vim` and set `borderpx` back to `8`.
 
 ---
 
@@ -325,30 +327,29 @@ npm install
 ---
 
 
+### Samba
+
+```
+sudo apt install samba
+sudo smbpasswd -a [username]
+```
+
+---
+
+
 ### Firefox
 
 ```
 sudo apt install firefox-esr
 ```
 
-#### Adblock Plus
-
-`[ ]` Block additional tracking
-`[ ]` Block social media tracking
-`[ ]` Allow acceptable ads
-`[x]` Show tab in dev tools
-
-Add the following [filters](https://adblockplus.org/subscriptions):
-
-- EasyList+EasyPrivacy
-- Adblock Warning Removal List
-- Spam404
-- Malware Domains
-- Fanboy's Annoyances
-- I don't care about cookies
-- NoCoin
-
-#### Other addons:
+#### Add-ons:
+- uBlock Origin
+- NoScript
+- Decentraleyes
+- CanvasBlocker
+- HTTPS Everywhere
+- No Resource URI Leak (not needed for 57+)
 - EPUBReader
 - Vue.js devtools
 - Open Image in New Tab (by Maximus for pre-Quantom, and bedstash for post)
@@ -382,12 +383,20 @@ sudo apt install libglu1-mesa
 
 Then download blender to `/opt/blender` and link the binary to `/usr/local/bin/blender`.
 
+#### [Animation Nodes](https://github.com/JacquesLucke/animation_nodes)
+
+- Download from: https://github.com/JacquesLucke/animation_nodes/releases
+- Open Blender
+- Go to `User Preferences > Add ons`
+- Click `Install from File` and choose the downloaded file
+- Activate the add-on
+
 ---
 
 
 ### [Thunderbird](https://www.mozilla.org/en-US/thunderbird/all/)
 
-Install this the same way as Firefox Developer Edition. 
+Install this the same way as Firefox Developer Edition.
 
 Also install the Lightning extension, if it's not already.
 
@@ -424,6 +433,13 @@ gdebi downloaded.deb
 ### [Protege](https://protege.stanford.edu/), [OpenMW](https://downloads.openmw.org/linux/other/), and [Dwarf Fortress](http://www.bay12games.com/dwarves/)
 
 Download to `/opt`, extract, link to from `/usr/local/bin`.
+
+For OpenMW:
+
+- [Better Dialogue Font](https://www.nexusmods.com/morrowind/mods/36873)
+- [Westly's Pluginless Head and Hair Replacer](http://download.fliggerty.com/download-127-874)
+- [Graphic Herbalism](https://www.nexusmods.com/morrowind/mods/43140)
+- [Others](http://en.uesp.net/wiki/Morrowind:Official_Add-Ons)
 
 ---
 
@@ -539,9 +555,10 @@ Use [LanguageTool](https://github.com/languagetool-org/languagetool).
 ### Other stuff
 
 ```
-sudo apt install gparted policykit-1-gnome gksu pm-utils pulseaudio pavucontrol desktop-base
-sudo apt install w3m wget httpie curl viewnior mousepad nano tmux gucharmap git keepassx quodlibet vlc audacity dunst lxtask virtualbox retroarch filezilla gimp gimp-help-en inkscape scribus geogebra meld picard mypaint mpv ffmpeg anarchism pandoc chromium
-sudo apt install thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin xarchiver p7zip-full zip xz-utils
+sudo apt install gparted policykit-1-gnome gksu
+sudo apt install quodlibet gstreamer1.0-plugins-bad
+sudo apt install thunar thunar-media-tags-plugin thunar-volman gvfs-backends thunar-archive-plugin xarchiver p7zip-full zip xz-utils
+sudo apt install w3m wget httpie curl viewnior mousepad nano tmux gucharmap git keepassx vlc audacity dunst lxtask virtualbox retroarch filezilla gimp gimp-help-en inkscape scribus geogebra meld picard mypaint mpv ffmpeg pandoc chromium libreoffice-writer sqlitebrowser
 python -m pip install webpage2html
 python3 -m pip install youtube-dl
 cargo install mdbook
@@ -570,7 +587,7 @@ Generally follow the Linux section, adapting it for Windows. Also install:
 
 Install unxutils to `%AppData%\Local\bin`. Next time, remember to change all references to `~/local` in `init.vim`.
 
-Add both of these to the user's PATH, with unxutils at the bottom of the list so it is the least priority. 
+Add both of these to the user's PATH, with unxutils at the bottom of the list so it is the least priority.
 
 Move git's stuff to the top of the system's PATH, so its `find` command overrides Windows'.
 

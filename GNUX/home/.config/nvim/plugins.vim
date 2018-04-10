@@ -1,0 +1,1 @@
+../../../../Shared/Neovim/plugins.vim

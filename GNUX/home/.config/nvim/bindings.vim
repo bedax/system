@@ -1,0 +1,1 @@
+../../../../Shared/Neovim/bindings.vim

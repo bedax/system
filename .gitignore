@@ -21,3 +21,5 @@
 
 *.lock
 
+/System Volume Information
+

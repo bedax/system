@@ -1,3 +1,3 @@
 #!/bin/sh
 
-st-for-vim -e vim
+st -e bash -c "source ~/.profile && vim"
