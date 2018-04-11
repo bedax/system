@@ -9,6 +9,9 @@ let g:gruvbox_improved_strings=1
 let g:gruvbox_improved_warnings=1
 "" fixes gruvbox's colours
 set termguicolors
+"" stops "::" in rust from having a different background colour
+autocmd! FileType rust hi Delimiter ctermfg=208 ctermbg=0 guifg=#fe8019 guibg=0
+
 
 " fzf
 let $FZF_DEFAULT_COMMAND = "find ."
