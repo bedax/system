@@ -1,1 +1,0 @@
-GNUX/usr/local/bin/connect

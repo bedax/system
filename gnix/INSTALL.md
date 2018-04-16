@@ -1,12 +1,9 @@
-# Installing
+# gnix
 
-These are some notes on how to setup the author's system. These aren't expected to be useful to anyone else.
-
-
-## GNUX
+_These are some notes on how to setup the author's system. These aren't expected to be useful to anyone else._
 
 - Install Debian's minimal version (the one that includes non-free firmware, if necessary)
-- Install only the standard system utilities
+- Select nothing at the software selection menu
 - Partition:
     - An ~8gb ext4 partition for /
     - A ~2gb ext2 partition for ~/System
@@ -15,7 +12,7 @@ These are some notes on how to setup the author's system. These aren't expected 
 ---
 
 
-### Automated Wifi
+## Automated Wifi
 
 Add the following to `/etc/network/interfaces`:
 
@@ -31,7 +28,7 @@ Then reboot.
 ---
 
 
-### SysVinit
+## SysVinit
 
 Add this to `/etc/apt/sources.list.d/nosystemd.list`:
 
@@ -71,7 +68,7 @@ apt purge systemd*
 ---
 
 
-### Add sudo
+## Add sudo
 
 ```
 su
@@ -83,7 +80,7 @@ adduser [username] sudo
 ---
 
 
-### Let others shutdown
+## Let others shutdown
 
 Run:
 
@@ -101,7 +98,7 @@ Then run `sudo visudo` and add:
 ---
 
 
-### Connect the dots
+## Connect the dots
 
 Do this now, and again at the end of the installation.
 
@@ -115,7 +112,7 @@ fc-cache -fv
 
 ---
 
-### Set-up the environment
+## Set-up the environment
 
 ```
 sudo apt install build-essential make cmake autoconf automake pkg-config libtool-bin
@@ -126,7 +123,17 @@ sudo apt install gdebi apt-file
 ---
 
 
-### The window manager
+## Samba
+
+```
+sudo apt install samba
+sudo smbpasswd -a [username]
+```
+
+---
+
+
+## The window manager
 
 Install the dependencies:
 
@@ -156,7 +163,7 @@ sudo python3 ./setup.py install
 
 Link `/root/.config/qtile` to `/home/[name]/.config/qtile` in case it needs debugging with `sudo ~/.config/qtile/start_debugging.sh`.
 
-#### Low battery notifications
+### Low battery notifications
 
 Run:
 
@@ -168,9 +175,7 @@ Then run `crontab -e` and add:
 
 `*/3 * * * * DISPLAY=:0 /home/[name]/.config/qtile/notify-battery-low.py 12`
 
----
-
-#### Fix the backlight
+### Fix the backlight
 
 If `xbacklight -set 50` fails, add the following to `/etc/X11/xorg.conf`:
 
@@ -185,7 +190,7 @@ EndSection
 ---
 
 
-### The login manager
+## The login manager
 
 ```
 sudo apt install lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
@@ -195,7 +200,7 @@ lightdm-gtk-greeter-settings
 ---
 
 
-### [st](https://st.suckless.org/) and [dmenu](https://tools.suckless.org/dmenu/)
+## [st](https://st.suckless.org/) and [dmenu](https://tools.suckless.org/dmenu/)
 
 First, run:
 
@@ -208,7 +213,7 @@ Then run `make` and `sudo make install` for both, making sure to use the connect
 ---
 
 
-### Configure the look
+## Configure the look
 
 ```
 sudo apt install adwaita-qt4 adwaita-qt adwaita-icon-theme gnome-themes-standard qt4-qtconfig
@@ -218,7 +223,7 @@ qtconfig-qt4
 ---
 
 
-### [Fish](https://fishshell.com/)
+## [Fish](https://fishshell.com/)
 
 ```
 wget -nv https://download.opensuse.org/repositories/shells:fish:release:2/Debian_9.0/Release.key -O Release.key
@@ -237,7 +242,7 @@ omf install wd pbcopy
 ---
 
 
-### Rust
+## Rust
 
 ```
 curl https://sh.rustup.rs -sSf | sh # don't modify the path as it's already done
@@ -263,7 +268,7 @@ cargo install cargo-tree
 ---
 
 
-### Node.js
+## Node.js
 
 ```
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
@@ -273,7 +278,7 @@ sudo apt install -y nodejs
 ---
 
 
-### [ctags](https://github.com/universal-ctags/ctags)
+## [ctags](https://github.com/universal-ctags/ctags)
 
 ```
 cd ~/.local/src
@@ -288,7 +293,7 @@ sudo make install
 ---
 
 
-### [Neovim](https://github.com/neovim/neovim)
+## [Neovim](https://github.com/neovim/neovim)
 
 Install Node.js/npm first. Connect to the internet and run the following for [vim-plug](https://github.com/junegunn/vim-plug):
 
@@ -327,28 +332,19 @@ npm install
 ---
 
 
-### Samba
-
-```
-sudo apt install samba
-sudo smbpasswd -a [username]
-```
-
----
-
-
-### Firefox
+## Firefox
 
 ```
 sudo apt install firefox-esr
 ```
 
-#### Add-ons:
+### Add-ons:
 - uBlock Origin
-- NoScript
+- NoScript (allow scripts globally, just use for the other stuff)
 - Decentraleyes
 - CanvasBlocker
 - HTTPS Everywhere
+- Privacy Badger
 - No Resource URI Leak (not needed for 57+)
 - EPUBReader
 - Vue.js devtools
@@ -357,7 +353,7 @@ sudo apt install firefox-esr
 ---
 
 
-### [Firefox Developer Edition](https://www.mozilla.org/en-GB/firefox/developer/)
+## [Firefox Developer Edition](https://www.mozilla.org/en-GB/firefox/developer/)
 
 Download to `/opt` and run:
 
@@ -366,14 +362,23 @@ sudo chown -R [user_name]:[user_name] /opt/firefox-dev/
 sudo ln -s /opt/firefox-dev/firefox /usr/local/bin/firefox-dev
 ```
 
-#### Install extensions
+### Install extensions
 
 The same ones as Firefox, minus EPUBReader
 
 ---
 
 
-### Blender
+## [Thunderbird](https://www.mozilla.org/en-US/thunderbird/all/)
+
+Install this the same way as Firefox Developer Edition.
+
+Also install the Lightning extension, if it's not already.
+
+---
+
+
+## Blender
 
 First run:
 
@@ -383,7 +388,7 @@ sudo apt install libglu1-mesa
 
 Then download blender to `/opt/blender` and link the binary to `/usr/local/bin/blender`.
 
-#### [Animation Nodes](https://github.com/JacquesLucke/animation_nodes)
+### [Animation Nodes](https://github.com/JacquesLucke/animation_nodes)
 
 - Download from: https://github.com/JacquesLucke/animation_nodes/releases
 - Open Blender
@@ -394,16 +399,7 @@ Then download blender to `/opt/blender` and link the binary to `/usr/local/bin/b
 ---
 
 
-### [Thunderbird](https://www.mozilla.org/en-US/thunderbird/all/)
-
-Install this the same way as Firefox Developer Edition.
-
-Also install the Lightning extension, if it's not already.
-
----
-
-
-### VirtualBox
+## VirtualBox
 
 Add the following to `/etc/apt/sources.list`:
 
@@ -421,7 +417,7 @@ sudo apt install virtualbox
 ---
 
 
-### [djv](http://djv.sourceforge.net/)
+## [djv](http://djv.sourceforge.net/)
 
 ```
 gdebi downloaded.deb
@@ -430,7 +426,7 @@ gdebi downloaded.deb
 ---
 
 
-### [Protege](https://protege.stanford.edu/), [OpenMW](https://downloads.openmw.org/linux/other/), and [Dwarf Fortress](http://www.bay12games.com/dwarves/)
+## [Protege](https://protege.stanford.edu/), [OpenMW](https://downloads.openmw.org/linux/other/), and [Dwarf Fortress](http://www.bay12games.com/dwarves/)
 
 Download to `/opt`, extract, link to from `/usr/local/bin`.
 
@@ -444,7 +440,7 @@ For OpenMW:
 ---
 
 
-### [peek](https://github.com/phw/peek)
+## [peek](https://github.com/phw/peek)
 
 ```
 sudo apt install cmake valac libgtk-3-dev libkeybinder-3.0-dev libxml2-utils gettext txt2man
@@ -460,7 +456,7 @@ sudo gdebi [made package name].deb
 ---
 
 
-### [cbatticon](https://github.com/valr/cbatticon)
+## [cbatticon](https://github.com/valr/cbatticon)
 
 ```
 sudo apt install libnotify-dev
@@ -474,7 +470,7 @@ mv cbatticon ../../bin
 ---
 
 
-### [pa-applet](https://github.com/fernandotcl/pa-applet)
+## [pa-applet](https://github.com/fernandotcl/pa-applet)
 
 ```
 sudo apt install libpulse-dev libnotify-dev
@@ -495,64 +491,64 @@ make install
 ---
 
 
-### Linters
+## Linters
 
-#### (S)CSS
+### (S)CSS
 
 ```
 npm install -g stylelint stylelint-config-recommended
 ```
 
-#### Rust
+### Rust
 
 ```
 cargo +nightly install clippy
 ```
 
-#### Markdown
+### Markdown
 
 ```
 npm install -g markdownlint-cli
 ```
 
-#### JSON
+### JSON
 
 ```
 npm install -g jsonlint
 ```
 
-#### HTML
+### HTML
 
 ```
 npm install -g htmlhint
 ```
 
-#### Python
+### Python
 
 ```
 python3 -m pip install pylint flake8 flake8-docstrings
 ```
 
-#### JavaScript
+### JavaScript
 
 ```
 npm install -g eslint
 ```
 
-#### Vim
+### Vim
 
 ```
 python3 -m pip install vim-vint
 ```
 
-#### English
+### English
 
 Use [LanguageTool](https://github.com/languagetool-org/languagetool).
 
 ---
 
 
-### Other stuff
+## Other stuff
 
 ```
 sudo apt install gparted policykit-1-gnome gksu
@@ -563,42 +559,3 @@ python -m pip install webpage2html
 python3 -m pip install youtube-dl
 cargo install mdbook
 ```
-
----
-
-
-## Windows
-
-Generally follow the Linux section, adapting it for Windows. Also install:
-
-- 7zip
-- fastpictureviewer codec pack
-- link shell extension
-- ext2fsd
-- steam
-- geany
-- malwarebytes
-- internet explorer 11 + edge
-- [chromium](https://download-chromium.appspot.com/)
-- renamemaestro
-- svg explorer extension
-
-### mingw and unxutils
-
-Install unxutils to `%AppData%\Local\bin`. Next time, remember to change all references to `~/local` in `init.vim`.
-
-Add both of these to the user's PATH, with unxutils at the bottom of the list so it is the least priority.
-
-Move git's stuff to the top of the system's PATH, so its `find` command overrides Windows'.
-
-### Pins
-
-- firefox
-- thunderbird
-- neovim-qt
-- blender
-- vlc
-- quod libet
-- keepassx
-- git's terminal
-- explorer

@@ -12,25 +12,24 @@ set termguicolors
 "" stops "::" in rust from having a different background colour
 autocmd! FileType rust hi Delimiter ctermfg=208 ctermbg=0 guifg=#fe8019 guibg=0
 
-
 " fzf
-let $FZF_DEFAULT_COMMAND = "find ."
+let $FZF_DEFAULT_COMMAND="find ."
 
 " far
-let g:far#limit = 100000
-let g:far#window_layout = 'bottom'
-let g:far#preview_window_layout = 'right'
+let g:far#limit=100000
+let g:far#window_layout='bottom'
+let g:far#preview_window_layout='right'
 set wildignore=/**/node_modules/**
 "" use ag to ignore .gitignore; support is coming in the beta
 
 " nvim-completion-manager
-let g:cm_complete_popup_delay = 60
-let g:cm_refresh_default_min_word_len = 1
-let g:cm_matcher = {'module': 'cm_matchers.prefix_matcher', 'case': 'case'}
+let g:cm_complete_popup_delay=60
+let g:cm_refresh_default_min_word_len=1
+let g:cm_matcher={'module': 'cm_matchers.prefix_matcher', 'case': 'case'}
 
 " airline
-let g:airline_theme = 'gruvbox'
-let g:airline_powerline_fonts = 1
+let g:airline_theme='gruvbox'
+let g:airline_powerline_fonts=1
 "" don't show the default mode indicator
 set noshowmode
 """ needed to hide unnecessary information shown by noshowmode
@@ -39,4 +38,4 @@ set shortmess+=c
 "" which js libraries to highlight the syntax of
 """ see: https://github.com/othree/javascript-libraries-syntax.vim
 """" also supports 'vue' if vim-vue doesn't do it
-let g:used_javascript_libs = 'underscore,jquery'
+let g:used_javascript_libs='underscore,jquery'

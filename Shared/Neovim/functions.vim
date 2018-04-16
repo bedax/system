@@ -3,7 +3,7 @@ fun! Substitute()
     let search = input('Search for: ')
     if search != ''
         let replace = input('Replace with: ')
-        execute ':%s/' . search . '/' . replace . '/gc'
+        execute ':%s/' . search . '/' . replace . '/gcI'
     endif
 endfun
 

@@ -28,9 +28,6 @@ xbacklight -set 50
 # disable the capslock; remaps it to the left shift key
 #xmodmap -e "keycode 66 = Shift_L NoSymbol Shift_L" &
 
-# nextcloud's sync client
-#~/.local/bin/nextcloud &
-
 # for thunar's mounter and gparted-pkexec; from 'policykit-1-gnome' package
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 

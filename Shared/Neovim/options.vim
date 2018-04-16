@@ -41,13 +41,11 @@ set ttimeoutlen=100
 set showcmd
 
 " override a search's ignorecase option if the search contains uppercase
-set noignorecase
-"set smartcase
+set ignorecase
+set smartcase
 
 " use the global clipboard
 set clipboard=unnamedplus
-"" copy on selection
-"set clipboard=autoselectplus
 
 " highlight current line
 set cursorline
@@ -60,7 +58,6 @@ set equalalways
 
 " long-line marker, changing the background colour
 let &colorcolumn=join(range(80,999),",")
-"" set colorcolumn=80
 
 " have the arrow keys change lines
 set whichwrap+=<,>,h,l,[,]
