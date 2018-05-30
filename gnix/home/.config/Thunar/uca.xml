@@ -3,8 +3,8 @@
 <action>
 	<icon>utilities-terminal</icon>
 	<name>Open Terminal Here</name>
-	<unique-id>1501186164257589-1</unique-id>
-	<command>st -e bash -c "source ~/.profile && cd %f && fish"</command>
+	<unique-id>1527717839139530-2</unique-id>
+	<command>st -e bash -c "source ~/.profile; cd %f; fish"</command>
 	<description></description>
 	<patterns>*</patterns>
 	<startup-notify/>
