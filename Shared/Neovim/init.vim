@@ -1,9 +1,9 @@
 if has("win32")
-    let local_directory='~/AppData/Local/nvim'
-    let config_directory=local_directory
+    let local_directory = '~/AppData/Local/nvim'
+    let config_directory = local_directory
 else
-    let local_directory='~/.local/share/nvim'
-    let config_directory='~/.config/nvim'
+    let local_directory = '~/.local/share/nvim'
+    let config_directory = '~/.config/nvim'
 endif
 
 

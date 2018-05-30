@@ -1,14 +1,22 @@
-# Path to Oh My Fish install.
-set -q XDG_DATA_HOME
-  and set -gx OMF_PATH "$XDG_DATA_HOME/omf"
-  or set -gx OMF_PATH "$HOME/.local/share/omf"
+# prompt
+## from: https://wiki.archlinux.org/index.php/Fish#Put_git_status_in_prompt
+set __fish_git_prompt_showdirtystate "yes"
+set __fish_git_prompt_showstashstate "yes"
+set __fish_git_prompt_showupstream "yes"
 
-# Load Oh My Fish configuration.
-source $OMF_PATH/init.fish
+function fish_prompt
+    printf "%s%s%s%s %s>%s " \
+        (set_color $fish_color_cwd) \
+        (prompt_pwd) \
+        (set_color $fish_color_quote) \
+        (__fish_git_prompt) \
+        (set_color normal) \
+        (set_color normal)
+end
 
 
 # Turn off the greeting
-set fish_greeting ""
+#set fish_greeting
 
 
 # Fix the del key

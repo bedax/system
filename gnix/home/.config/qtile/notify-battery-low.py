@@ -5,27 +5,28 @@ import subprocess
 import sys
 
 
-state_raw = subprocess.check_output([
-	"acpi",
-	"-b"
-])
+raw = subprocess.check_output(["acpi", "--battery"])
+if b"Charging" in raw:
+    sys.exit()
 
-state_summary = state_raw.strip().decode("utf-8").split(":", 1)[1]
-state_parts = [part.rstrip(",") for part in state_summary.split(" ")]
-state_direction = state_parts[1]
-state_percentage = int(state_parts[2].rstrip("%"))
-state_time = state_parts[3] if len(state_parts) >= 4 else None
+summary = raw.decode("utf-8").split(os.linesep, 1)[0].split(":", 1)[1].strip()
+parts = [part.rstrip(",") for part in summary.split(" ")]
+charging = parts[0] == "Charging"
+percentage = int(parts[1].rstrip("%"))
+time = parts[2] if len(parts) > 2 else None
 
-low = int(sys.argv[1]) if len(sys.argv) > 1 else 7
-if state_direction != "Charging" and state_percentage < low:
-	subprocess.call([
-		"notify-send",
-		"--urgency", "critical",
-		"Battery low",
-		"{}%".format(
-			state_percentage,
-			"" if state_time is None else "; {} remaining".format(
-				state_time
-			)
-		)
-	])
+low = int(sys.argv[1]) if len(sys.argv) > 1 else 8
+lowest = int(sys.argv[2]) if len(sys.argv) > 2 else 4
+if not charging:
+    if percentage < lowest:
+        subprocess.call("~/.local/bin/hibernate")
+    elif percentage < low:
+        subprocess.call([
+            "notify-send",
+            "--urgency", "critical",
+            "Battery low",
+            "{}%{}".format(
+                percentage,
+                "" if time is None else "; {} remaining".format(time)
+            )
+        ])

@@ -9,7 +9,6 @@ Generally follow the Linux section, adapting it for Windows. Also install:
 - link shell extension
 - ext2fsd
 - steam
-- geany
 - malwarebytes
 - internet explorer 11 + edge
 - [chromium](https://download-chromium.appspot.com/)
@@ -29,7 +28,6 @@ Move git's stuff to the top of the system's PATH, so its `find` command override
 - firefox
 - thunderbird
 - neovim-qt
-- blender
 - vlc
 - quod libet
 - keepassx

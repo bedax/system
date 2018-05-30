@@ -1,6 +1,17 @@
 " commands
+command! Focus call Focus()
 command! Substitute call Substitute()
 command! StripTrailingWhitespace call StripTrailingWhitespace()
+
+
+" like fzf's :Ag but using ripgrep
+"" from: https://github.com/junegunn/fzf.vim#advanced-customization
+command! -bang -nargs=* Rg
+    \ call fzf#vim#grep(
+    \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+    \   <bang>0 ? fzf#vim#with_preview('up:60%')
+    \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \   <bang>0)
 
 
 " automatic commands
@@ -12,6 +23,9 @@ autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 autocmd TermOpen * setlocal nonumber
 "" make splits equal on resize
 autocmd VimResized * wincmd =
+"" integrate Limelight with Goyo
+"autocmd! User GoyoEnter Limelight
+"autocmd! User GoyoLeave Limelight!
 
 
 " key bindings
@@ -22,18 +36,24 @@ noremap <silent> <C-s> :update <CR>
 inoremap <silent> <C-s> <C-o>:update <CR>
 noremap <silent> <C-q> :qall <CR>
 noremap <A-w> <C-w>
-nnoremap <silent> <nowait> <C-w> :bd <CR>
+"nnoremap <silent> <nowait> <C-w> :bd <CR>
 noremap <silent> <C-z> u
 inoremap <silent> <C-z> <C-o>u
 noremap <silent> <C-a> ggvG$
 noremap <silent> <C-h> :Substitute <CR>
+"noremap <silent> <C-y> :Yanks <CR>
 noremap <silent> <A-h> :Farp <CR>
+""" C-M == Ctrl+Enter
+"""" if C-M doesn't work, to find what what it should be:
+"""" enter bash and type ctrl+v followed by ctrl+enter
+"""" it will give ^?, where ? is the character to use
+noremap <silent> <C-M> :Focus <CR>
 
 "" fzf
 noremap <silent> <C-o> :Files <CR>
 noremap <silent> <C-b> :Buffers <CR>
 noremap <silent> <C-f> :BLines <CR>
-noremap <silent> <A-f> :Ag <CR>
+noremap <silent> <A-f> :Rg <CR>
 noremap <silent> <C-t> :BTags <CR>
 
 "" working with split windows
@@ -64,6 +84,9 @@ tnoremap <Esc> <C-\><C-n>
 nnoremap <silent> <Esc> :nohl <CR> <Esc>
 """ close stray fzf windows
 autocmd! FileType fzf tnoremap <buffer> <Esc> <c-c>
+""" close other window types
+autocmd! FileType help,far_vim,vim-plug noremap <buffer> <Esc> :bd<CR>
+
 
 "" keep flags when repeating last :substitute
 nnoremap & :&&<CR>

@@ -3,12 +3,24 @@ fun! Substitute()
     let search = input('Search for: ')
     if search != ''
         let replace = input('Replace with: ')
-        execute ':%s/' . search . '/' . replace . '/gcI'
+        execute ':%s/'.search.'/'.replace.'/gcI'
     endif
 endfun
 
 
-" strip trailing whitespace; http://vimcasts.org/episodes/tidying-whitespace/
+fun! Focus()
+    " cursorline should be enabled if we're not in Focus mode
+    if &cursorline
+        :Goyo
+        :set cursorline!
+    else
+        :Goyo!
+        :set cursorline
+    endif
+endfun
+
+
+" from: http://vimcasts.org/episodes/tidying-whitespace/
 fun! StripTrailingWhitespace()
     " Preparation: save last search, and cursor position.
     let _s=@/

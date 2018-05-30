@@ -11,14 +11,9 @@ from libqtile import widget
 
 
 
-# todo: screenshots with maim
-
-
-
 def script_path(name):
-    directory = os.path.dirname(
-        os.path.abspath(__file__)
-    )
+    config_path = os.path.abspath(__file__)
+    directory = os.path.dirname(config_path)
 
     return os.path.join(
         directory,
@@ -26,7 +21,10 @@ def script_path(name):
     )
 
 
-mod = "mod4"
+meta = "mod4"
+control = "control"
+alt = "mod1" # mod1=alt_l; `xmodmap`
+shift = "shift"
 
 spawn = True
 
@@ -185,7 +183,7 @@ layouts = [
 
 keys = [
     config.Key(
-        [mod, "shift"],
+        [meta, shift],
         "F4",
         command.lazy.spawn(
             "{}/.local/bin/shallow-sleep".format(home)
@@ -194,7 +192,7 @@ keys = [
     ),
 
     config.Key(
-        [mod],
+        [meta],
         "F4",
         command.lazy.spawn(
             "{}/.local/bin/deep-sleep".format(home)
@@ -203,7 +201,7 @@ keys = [
     ),
 
     config.Key(
-        [mod, "mod1"],
+        [meta, alt],
         "F4",
         command.lazy.spawn(
             "{}/.local/bin/hibernate".format(home)
@@ -212,7 +210,7 @@ keys = [
     ),
 
     #config.Key(
-    #    [mod, "control"],
+    #    [meta, control],
     #    "F3",
     #    command.lazy.spawn(
     #        "{}/.local/bin/shutup".format(home)
@@ -221,7 +219,7 @@ keys = [
     #),
 
     config.Key(
-        [mod, "control"],
+        [meta, control],
         "F4",
         command.lazy.spawn(
             "{}/.local/bin/shutdown".format(home)
@@ -230,7 +228,7 @@ keys = [
     ),
 
     config.Key(
-        [mod, "control"],
+        [meta, control],
         "F5",
         command.lazy.spawn(
             "{}/.local/bin/restart".format(home)
@@ -239,28 +237,28 @@ keys = [
     ),
 
 #    config.Key(
-#        [mod, "mod1"], # mod1=alt_l; `xmodmap`
+#        [meta, alt],
 #        "F4",
 #        command.lazy.shutdown(),
 #        desc="Shutdown the window manager"
 #    ),
 #
 #    config.Key(
-#        [mod, "mod1"],
+#        [meta, alt],
 #        "F5",
 #        command.lazy.restart(),
 #        desc="Restart the window manager"
 #    ),
 
     config.Key(
-        [mod],
+        [meta],
         "Escape",
         command.lazy.kill(),
         desc="Kill the focused window"
     ),
 
     config.Key(
-        [mod],
+        [meta],
         "space",
         command.lazy.spawn(
             'dmenu_run '
@@ -291,77 +289,77 @@ keys = [
     ),
 
     config.Key(
-        [mod],
+        [meta],
         "Return",
         command.lazy.window.toggle_maximize(),
         desc="Toggle maximise"
     ),
 
     config.Key(
-        [mod, "mod1"],
+        [meta, alt],
         "Return",
         command.lazy.window.toggle_fullscreen(),
         desc="Toggle fullscreen"
     ),
 
     config.Key(
-        [mod, "control"],
+        [meta, control],
         "Return",
         command.lazy.layout.normalize(),
         desc="Reset the windows' sizes"
     ),
 
     config.Key(
-        [mod],
+        [meta],
         "Prior",
         command.lazy.layout.previous(),
         desc="Move the focus to the previous window"
     ),
 
     config.Key(
-        [mod],
+        [meta],
         "Next",
         command.lazy.layout.next(),
         desc="Move the focus to the next window"
     ),
 
     config.Key(
-        [mod, "shift"],
+        [meta, shift],
         "Prior",
         command.lazy.layout.shuffle_up(),
         desc="Move the focused window up the stack"
     ),
 
     config.Key(
-        [mod, "shift"],
+        [meta, shift],
         "Next",
         command.lazy.layout.shuffle_down(),
         desc="Move the focused window down the stack"
     ),
 
     config.Key(
-        [mod, "control"],
+        [meta, control],
         "Prior",
         command.lazy.layout.grow(),
         desc="Make the focused window bigger"
     ),
 
     config.Key(
-        [mod, "control"],
+        [meta, control],
         "Next",
         command.lazy.layout.shrink(),
         desc="Make the focused window smaller"
     ),
 
     config.Key(
-        [mod, "mod1"],
+        [meta, alt],
         "Prior",
         command.lazy.screen.prev_group(),
         desc="Switch to the previous group"
     ),
 
     config.Key(
-        [mod, "mod1"],
+        [meta, alt],
         "Next",
         command.lazy.screen.next_group(),
         desc="Switch to the next group"
@@ -376,13 +374,13 @@ keys = [
     config.Key(
         [],
         "XF86AudioRaiseVolume",
-        command.lazy.spawn("pactl set-sink-volume 0 +5%")
+        command.lazy.spawn("pactl set-sink-volume 0 +10%")
     ),
 
     config.Key(
         [],
         "XF86AudioLowerVolume",
-        command.lazy.spawn("pactl set-sink-volume 0 -5%")
+        command.lazy.spawn("pactl set-sink-volume 0 -10%")
     ),
 
     config.Key(
@@ -395,6 +393,18 @@ keys = [
         [],
         "XF86MonBrightnessDown",
         command.lazy.spawn("xbacklight -dec 5")
+    ),
+
+    config.Key(
+        [],
+        "Print",
+        command.lazy.spawn("{} full".format(script_path("screenshot.sh")))
+    ),
+
+    config.Key(
+        [alt],
+        "Print",
+        command.lazy.spawn("{}".format(script_path("screenshot.sh")))
     )
 
     # config.Key(
@@ -418,20 +428,20 @@ keys = [
 
 mouse = [
     config.Drag(
-        [mod],
+        [meta],
         "Button1",
         command.lazy.window.set_position_floating(),
         start=command.lazy.window.get_position()
     ),
 
     config.Click(
-        [mod],
+        [meta],
         "Button2",
         command.lazy.window.bring_to_front()
     ),
 
     config.Drag(
-        [mod],
+        [meta],
         "Button3",
         command.lazy.window.set_size_floating(),
         start=command.lazy.window.get_size()
@@ -454,14 +464,14 @@ for index, (key, group_base) in enumerate(groups_base.items()):
 
     keys.extend((
         config.Key(
-            [mod],
+            [meta],
             key,
             command.lazy.screen.toggle_group(group_name),
             desc="Group: {}".format(group_name)
         ),
 
         config.Key(
-            [mod, "shift"],
+            [meta, shift],
             key,
             command.lazy.window.togroup(group_name),
             command.lazy.group[group_name].toscreen(),

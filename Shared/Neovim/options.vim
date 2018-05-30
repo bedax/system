@@ -18,9 +18,9 @@ set nocompatible
 set number
 
 " make sure the cursor always has X number of lines around it when scrolling
-set scrolloff=2
+set scrolloff=0
 "" horizontal
-set sidescrolloff=5
+set sidescrolloff=0
 
 " wrap lines without real breaks
 set wrap
@@ -70,6 +70,9 @@ set lazyredraw
 
 " tabpages and globals are needed by Taboo to persist tab names
 set sessionoptions+=tabpages,globals,localoptions
+
+" open buffers on the right pane of a new split
+set splitright
 
 " fish can cause problems
 if &shell =~# 'fish$'

@@ -3,10 +3,11 @@
 _These are some notes on how to setup the author's system. These aren't expected to be useful to anyone else._
 
 - Install Debian's minimal version (the one that includes non-free firmware, if necessary)
+- [Add to the boot arguments](https://wiki.debian.org/systemd#Installing_without_systemd). If this is done, skip the SysVinit section
 - Select nothing at the software selection menu
 - Partition:
     - An ~8gb ext4 partition for /
-    - A ~2gb ext2 partition for ~/System
+    - A ~512mb ext2 partition for ~/System
     - An ext3 partition for ~/, using the remaining space
 
 ---
@@ -100,8 +101,6 @@ Then run `sudo visudo` and add:
 
 ## Connect the dots
 
-Do this now, and again at the end of the installation.
-
 ```
 cd ~/System # the location of this repository
 sudo ./connect.sh /[this repository's location]/GNUX/usr/ /usr/
@@ -112,12 +111,15 @@ fc-cache -fv
 
 ---
 
+
 ## Set-up the environment
 
 ```
+sudo apt install coreutils
 sudo apt install build-essential make cmake autoconf automake pkg-config libtool-bin
 sudo apt install python python-pip python3 python3-pip
 sudo apt install gdebi apt-file
+sudo apt install pulseaudio
 ```
 
 ---
@@ -142,7 +144,7 @@ sudo apt install xinit x11-xserver-utils xserver-xorg-video-intel
 sudo apt install python3-dev python3-setuptools
 sudo apt install libxcb-render0-dev libffi-dev libcairo2 libpangocairo-1.0-0 libxcb-cursor-dev
 sudo apt install compton redshift hsetroot wicd xbacklight # startup stuff
-sudo apt install pm-utils pulseaudio pavucontrol pulseaudio-utils alsa-utils desktop-base
+sudo apt install maim xdotool xclip pm-utils pavucontrol pulseaudio-utils alsa-utils desktop-base
 sudo python3 -m pip install xcffib
 sudo python3 -m pip install cairocffi # this needs to be after xcffib
 ```
@@ -235,45 +237,19 @@ sudo apt install fish
 ```
 
 ```
-curl -L https://get.oh-my.fish | fish
-omf install wd pbcopy
-```
-
----
-
-
-## Rust
-
-```
-curl https://sh.rustup.rs -sSf | sh # don't modify the path as it's already done
-rustup install nightly
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+fisher fischerling/plugin-wd
+fisher oh-my-fish/plugin-pbcopy
+fisher externl/fish-symnav
+# if any plugins rely on oh-my-fish:
+#fisher tuvistavie/oh-my-fish-core
 ```
 
 ```
-rustup install nightly-2016-08-01
-sudo apt install libncursesw5-dev
-rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
+fish_config
 ```
 
-```
-cargo install cargo-check cargo-outdated
-cargo +nightly install cargo-expand
-```
-
-```
-sudo apt install libssl-dev
-cargo install cargo-tree
-```
-
----
-
-
-## Node.js
-
-```
-curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-sudo apt install -y nodejs
-```
+Set the colour to Mono Smoke,
 
 ---
 
@@ -332,6 +308,111 @@ npm install
 ---
 
 
+## Rust
+
+```
+curl https://sh.rustup.rs -sSf | sh # don't modify the path as it's already done
+rustup install nightly
+```
+
+```
+rustup install nightly-2016-08-01
+sudo apt install libncursesw5-dev
+rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
+```
+
+```
+cargo install cargo-check cargo-outdated
+cargo +nightly install cargo-expand
+```
+
+```
+sudo apt install libssl-dev
+cargo install cargo-tree
+```
+
+---
+
+
+## Node.js
+
+```
+curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+sudo apt install -y nodejs
+```
+
+---
+
+
+## Linters
+
+### Rust
+
+```
+cargo +nightly install clippy
+```
+
+### RDF
+
+```
+sudo apt install raptor2-utils
+```
+
+### (S)CSS
+
+```
+npm install -g stylelint stylelint-config-recommended
+```
+
+### HTML
+
+```
+npm install -g htmlhint
+```
+
+### Markdown
+
+```
+npm install -g markdownlint-cli
+```
+
+### JavaScript
+
+```
+npm install -g eslint
+```
+
+### JSON
+
+```
+npm install -g jsonlint
+```
+
+### Python
+
+```
+python3 -m pip install pylint flake8 flake8-docstrings
+```
+
+### Vim
+
+```
+python3 -m pip install vim-vint
+```
+
+### Shell
+
+```
+sudo apt install shellcheck
+```
+
+### English
+
+Use [LanguageTool](https://github.com/languagetool-org/languagetool).
+
+---
+
+
 ## Firefox
 
 ```
@@ -339,16 +420,16 @@ sudo apt install firefox-esr
 ```
 
 ### Add-ons:
+- EPUBReader
 - uBlock Origin
+    - default lists, plus "Adguard's Annoyance List"
 - NoScript (allow scripts globally, just use for the other stuff)
-- Decentraleyes
 - CanvasBlocker
 - HTTPS Everywhere
 - Privacy Badger
 - No Resource URI Leak (not needed for 57+)
-- EPUBReader
-- Vue.js devtools
 - Open Image in New Tab (by Maximus for pre-Quantom, and bedstash for post)
+- Vue.js devtools
 
 ---
 
@@ -373,7 +454,14 @@ The same ones as Firefox, minus EPUBReader
 
 Install this the same way as Firefox Developer Edition.
 
-Also install the Lightning extension, if it's not already.
+### Extensions
+
+- Lightning
+- SOGo Connector
+
+### Connect the email accounts, calendars, and address books
+
+See https://docs.iredmail.org/thunderbird.sogo.html
 
 ---
 
@@ -417,7 +505,7 @@ sudo apt install virtualbox
 ---
 
 
-## [djv](http://djv.sourceforge.net/)
+## [ripgrep](https://github.com/BurntSushi/ripgrep/releases), [fd](https://github.com/sharkdp/fd/releases) and [djv](http://djv.sourceforge.net/)
 
 ```
 gdebi downloaded.deb
@@ -430,7 +518,7 @@ gdebi downloaded.deb
 
 Download to `/opt`, extract, link to from `/usr/local/bin`.
 
-For OpenMW:
+### OpenMW:
 
 - [Better Dialogue Font](https://www.nexusmods.com/morrowind/mods/36873)
 - [Westly's Pluginless Head and Hair Replacer](http://download.fliggerty.com/download-127-874)
@@ -491,71 +579,66 @@ make install
 ---
 
 
-## Linters
-
-### (S)CSS
+## [Rsyncrypto 1.14](https://rsyncrypto.lingnu.com/index.php/Home_Page)
 
 ```
-npm install -g stylelint stylelint-config-recommended
+sudo apt install libargtable2-dev
+cd ~/.local/src
+wget ...
+tar xf rsyncrypto...
+cd rsyncrypto...
 ```
 
-### Rust
+Apply the following patch [from here](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=884721):
 
 ```
-cargo +nightly install clippy
+--- rsyncrypto-1.14.orig/autofd.h
++++ rsyncrypto-1.14/autofd.h
+@@ -216,7 +216,7 @@ public:
+     // unless it failed with ENOENT - the file already doesn't exist
+     static int unlink(const char *pathname)
+     {
+-        bool success=unlink( pathname )==0;
++        bool success=::unlink( pathname )==0;
+         if( !success && errno!=ENOENT )
+             throw rscerror("Erasing file", errno, pathname );
 ```
 
-### Markdown
+And then run the following commands:
 
 ```
-npm install -g markdownlint-cli
+./configure --prefix=/usr/local
+make
+sudo make install
 ```
-
-### JSON
-
-```
-npm install -g jsonlint
-```
-
-### HTML
-
-```
-npm install -g htmlhint
-```
-
-### Python
-
-```
-python3 -m pip install pylint flake8 flake8-docstrings
-```
-
-### JavaScript
-
-```
-npm install -g eslint
-```
-
-### Vim
-
-```
-python3 -m pip install vim-vint
-```
-
-### English
-
-Use [LanguageTool](https://github.com/languagetool-org/languagetool).
 
 ---
+
+
+## Schedule the backups
+
+```
+crontab -e
+```
+
+Add something like:
+
+```
+0 * * * * DISPLAY=:0 flock --nonblock /path/to/.backup.lock /path/to/.backup.sh
+```
 
 
 ## Other stuff
 
 ```
+sudo apt install openssh-client rsync rdiff-backup
 sudo apt install gparted policykit-1-gnome gksu
 sudo apt install quodlibet gstreamer1.0-plugins-bad
 sudo apt install thunar thunar-media-tags-plugin thunar-volman gvfs-backends thunar-archive-plugin xarchiver p7zip-full zip xz-utils
-sudo apt install w3m wget httpie curl viewnior mousepad nano tmux gucharmap git keepassx vlc audacity dunst lxtask virtualbox retroarch filezilla gimp gimp-help-en inkscape scribus geogebra meld picard mypaint mpv ffmpeg pandoc chromium libreoffice-writer sqlitebrowser
+sudo apt install w3m wget httpie curl viewnior mousepad nano tmux gucharmap git keepassx vlc audacity dunst lxtask virtualbox retroarch filezilla gimp gimp-help-en inkscape scribus geogebra meld picard mpv ffmpeg pandoc chromium libreoffice-writer libreoffice-calc sqlitebrowser redland-utils raptor2-utils rasqal-utils sigil gnome-calculator ncdu
 python -m pip install webpage2html
 python3 -m pip install youtube-dl
 cargo install mdbook
 ```
+
+And reconnect the dots, in case the installations disconnected any.

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+~/.cargo/bin/rustup docs
