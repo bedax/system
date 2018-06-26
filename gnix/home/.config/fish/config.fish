@@ -6,7 +6,7 @@ set __fish_git_prompt_showupstream "yes"
 
 function fish_prompt
     printf "%s%s%s%s %s>%s " \
-        (set_color $fish_color_cwd) \
+        (set_color $fish_color_history_current) \
         (prompt_pwd) \
         (set_color $fish_color_quote) \
         (__fish_git_prompt) \

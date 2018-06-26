@@ -374,13 +374,13 @@ keys = [
     config.Key(
         [],
         "XF86AudioRaiseVolume",
-        command.lazy.spawn("pactl set-sink-volume 0 +10%")
+        command.lazy.spawn("pactl set-sink-volume 0 +5%")
     ),
 
     config.Key(
         [],
         "XF86AudioLowerVolume",
-        command.lazy.spawn("pactl set-sink-volume 0 -10%")
+        command.lazy.spawn("pactl set-sink-volume 0 -5%")
     ),
 
     config.Key(

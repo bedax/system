@@ -19,7 +19,7 @@ start-pulseaudio-x11 &
 ~/.local/bin/pa-applet &
 
 # backlight
-xbacklight -set 34
+xbacklight -set 20
 
 # for thunar's mounter and gparted-pkexec; from 'policykit-1-gnome' package
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &

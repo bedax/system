@@ -1,12 +1,17 @@
 " use unix line-endings
 set fileformat=unix
 
-" syntax highlighting
-syntax on
-
 " per-type stuff
 "" filetype detection for filetype-specific plugins and indentation
 filetype indent plugin on
+
+" syntax highlighting
+syntax on
+"" fixes the problem where the highlighting stops working
+"autocmd FileType vue syntax sync fromstart
+
+" fixes slow scrolling
+set lazyredraw
 
 " mouse support
 set mouse=a
@@ -30,10 +35,16 @@ set linebreak
 " have the backspace key delete indents
 set backspace=indent,eol,start
 
+" have the arrow keys change lines
+set whichwrap+=<,>,h,l,[,]
+
+" dash as a word separator
+set iskeyword+=-
+
 " automatically reload the file if it's changed with no changes internally
 set autoread
 
-" timing allowed between keypresses of key combinations
+" timing between keypresses of key combinations
 set ttimeout
 set ttimeoutlen=100
 
@@ -56,54 +67,45 @@ set hlsearch
 " splits equalise when one is added or removed
 set equalalways
 
+" open buffers on the right pane of a new split
+set splitright
+
 " long-line marker, changing the background colour
 let &colorcolumn=join(range(80,999),",")
-
-" have the arrow keys change lines
-set whichwrap+=<,>,h,l,[,]
-
-" dash as a word separator
-set iskeyword+=-
-
-" fixes slow scrolling
-set lazyredraw
 
 " tabpages and globals are needed by Taboo to persist tab names
 set sessionoptions+=tabpages,globals,localoptions
 
-" open buffers on the right pane of a new split
-set splitright
-
-" fish can cause problems
-if &shell =~# 'fish$'
-    set shell=/bin/bash
-endif
-
 set noerrorbells
 set visualbell
 
-" disable those vim lines some files have; they can be a security risk
+" disable those vim lines some files have;
+" they can be a security risk
 set nomodeline
 
 set foldmethod=indent
 set foldnestmax=3
 set nofoldenable
 
-set noswapfile
+"set noswapfile
+
+set listchars=tab:>~,nbsp:_
+set list
 
 " indents
 set autoindent
 "" tab's (\t) visual width
-set tabstop=4
+set tabstop=3
 "" use spaces for indents
 set expandtab
 "" how many columns do the indentation operations adjust by (<< and >>)
-""" if == 0: use tabstop
 set shiftwidth=0
 "" how many columns a tab is in insert mode
-""" if != tabstop and not expandtabs: uses a combination of tabs and spaces
-""" if == -1: use shiftwidth
-""" if == 0: disable
-set softtabstop=0
+set softtabstop=3
 "" when tab is used in the 'front' of a line, use shiftwidth
 set nosmarttab
+
+" fish can cause problems
+if &shell =~# 'fish$'
+    set shell=/bin/bash
+endif

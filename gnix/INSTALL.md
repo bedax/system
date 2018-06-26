@@ -2,13 +2,14 @@
 
 _These are some notes on how to setup the author's system. These aren't expected to be useful to anyone else._
 
-- Install Debian's minimal version (the one that includes non-free firmware, if necessary)
+- Install Debian's minimal version ([the one that includes non-free firmware](https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current/amd64/iso-cd/), if necessary)
 - [Add to the boot arguments](https://wiki.debian.org/systemd#Installing_without_systemd). If this is done, skip the SysVinit section
 - Select nothing at the software selection menu
 - Partition:
-    - An ~8gb ext4 partition for /
-    - A ~512mb ext2 partition for ~/System
-    - An ext3 partition for ~/, using the remaining space
+    - A swap partition; 1.5 * RAM
+    - An ~12gb ext4 partition for /
+    - A ~512mb ext2 partition for .../backup-source/System
+    - An ext3 partition for ~, using the remaining space
 
 ---
 
@@ -18,20 +19,35 @@ _These are some notes on how to setup the author's system. These aren't expected
 Add the following to `/etc/network/interfaces`:
 
 ```
-auto wlp3s0
-iface wlp3s0 inet dhcp
-    wpa-ssid [ssid]
-    wpa-psk [key]
+# disable a device
+iface wlp3s0 inet manual
+
+# enable usb tethering
+auto enp0s20u2
+   allow-hotplug enp0s20u2
+   iface enp0s20u2 inet dhcp
+      metric 200
+
+# enable a wifi device
+auto wlx74da38d41aaa
+   iface wlx74da38d41aaa inet dhcp
+      metric 300
+      wpa-ssid [ssid]
+      wpa-psk [key]
 ```
 
-Then reboot.
+Then:
+
+```
+sudo service networking restart
+```
 
 ---
 
 
 ## SysVinit
 
-Add this to `/etc/apt/sources.list.d/nosystemd.list`:
+Add this to `/etc/apt/sources.list.d/nosystemd.list`, changing the reference to `stretch` if necessary:
 
 ```
 deb http://angband.pl/debian/ nosystemd-stretch main
@@ -102,10 +118,10 @@ Then run `sudo visudo` and add:
 ## Connect the dots
 
 ```
-cd ~/System # the location of this repository
-sudo ./connect.sh /[this repository's location]/GNUX/usr/ /usr/
-./connect.sh /[this directory's full path]/GNUX/home/ /home/[name]/
-./connect.sh /[this directory's full path]/Fonts/ /home/[name]/.fonts/
+cd .../backup-source/System # the location of this repository
+sudo ./connect.sh [this repository's full path]/gnix/usr/ /usr/
+./connect.sh [this repository's full path]/gnix/home/ /home/[name]/
+./connect.sh [this repository's full path]/Fonts/ /home/[name]/.fonts/
 fc-cache -fv
 ```
 
@@ -118,7 +134,7 @@ fc-cache -fv
 sudo apt install coreutils
 sudo apt install build-essential make cmake autoconf automake pkg-config libtool-bin
 sudo apt install python python-pip python3 python3-pip
-sudo apt install gdebi apt-file
+sudo apt install gdebi apt-file flatpak
 sudo apt install pulseaudio
 ```
 
@@ -140,11 +156,14 @@ sudo smbpasswd -a [username]
 Install the dependencies:
 
 ```
+sudo apt install compton redshift hsetroot xbacklight # startup stuff
+sudo apt install maim xdotool xclip pm-utils pulseaudio-utils alsa-utils desktop-base
+```
+
+```
 sudo apt install xinit x11-xserver-utils xserver-xorg-video-intel
 sudo apt install python3-dev python3-setuptools
 sudo apt install libxcb-render0-dev libffi-dev libcairo2 libpangocairo-1.0-0 libxcb-cursor-dev
-sudo apt install compton redshift hsetroot wicd xbacklight # startup stuff
-sudo apt install maim xdotool xclip pm-utils pavucontrol pulseaudio-utils alsa-utils desktop-base
 sudo python3 -m pip install xcffib
 sudo python3 -m pip install cairocffi # this needs to be after xcffib
 ```
@@ -177,15 +196,19 @@ Then run `crontab -e` and add:
 
 `*/3 * * * * DISPLAY=:0 /home/[name]/.config/qtile/notify-battery-low.py 12`
 
-### Fix the backlight
+### Set-up the backlight
+
+```
+sudo apt install xbacklight
+```
 
 If `xbacklight -set 50` fails, add the following to `/etc/X11/xorg.conf`:
 
 ```
 Section "Device"
-    Identifier  "Card0"
-    Driver      "intel"
-    Option      "Backlight"  "intel_backlight"
+   Identifier  "Card0"
+   Driver      "intel"
+   Option      "Backlight"  "intel_backlight"
 EndSection
 ```
 
@@ -269,6 +292,46 @@ sudo make install
 ---
 
 
+## Rust
+
+```
+curl https://sh.rustup.rs -sSf | sh # don't modify the path as it's already done
+rustup install nightly
+```
+
+```
+rustup component add rustfmt-preview
+```
+
+```
+rustup install nightly-2016-08-01
+sudo apt install libncursesw5-dev
+rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
+```
+
+```
+cargo install cargo-check cargo-outdated
+cargo +nightly install cargo-expand
+```
+
+```
+sudo apt install libssl-dev
+cargo install cargo-tree
+```
+
+---
+
+
+## Node.js
+
+```
+curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+sudo apt install -y nodejs
+```
+
+---
+
+
 ## [Neovim](https://github.com/neovim/neovim)
 
 Install Node.js/npm first. Connect to the internet and run the following for [vim-plug](https://github.com/junegunn/vim-plug):
@@ -308,42 +371,6 @@ npm install
 ---
 
 
-## Rust
-
-```
-curl https://sh.rustup.rs -sSf | sh # don't modify the path as it's already done
-rustup install nightly
-```
-
-```
-rustup install nightly-2016-08-01
-sudo apt install libncursesw5-dev
-rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
-```
-
-```
-cargo install cargo-check cargo-outdated
-cargo +nightly install cargo-expand
-```
-
-```
-sudo apt install libssl-dev
-cargo install cargo-tree
-```
-
----
-
-
-## Node.js
-
-```
-curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-sudo apt install -y nodejs
-```
-
----
-
-
 ## Linters
 
 ### Rust
@@ -358,12 +385,6 @@ cargo +nightly install clippy
 sudo apt install raptor2-utils
 ```
 
-### (S)CSS
-
-```
-npm install -g stylelint stylelint-config-recommended
-```
-
 ### HTML
 
 ```
@@ -374,6 +395,12 @@ npm install -g htmlhint
 
 ```
 npm install -g markdownlint-cli
+```
+
+### (S)CSS
+
+```
+npm install -g stylelint stylelint-config-recommended
 ```
 
 ### JavaScript
@@ -422,13 +449,14 @@ sudo apt install firefox-esr
 ### Add-ons:
 - EPUBReader
 - uBlock Origin
-    - default lists, plus "Adguard's Annoyance List"
-- NoScript (allow scripts globally, just use for the other stuff)
+    - the default lists
+    - Adguard's Annoyance List (it blocks more cookie warnings, such as those on serverfault.com)
+- NoScript (allow scripts globally, just use it for the other stuff)
 - CanvasBlocker
 - HTTPS Everywhere
 - Privacy Badger
 - No Resource URI Leak (not needed for 57+)
-- Open Image in New Tab (by Maximus for pre-Quantom, and bedstash for post)
+- Open Image in New Tab (by Maximus for pre-Quantum, and bedstash for post)
 - Vue.js devtools
 
 ---
@@ -462,6 +490,16 @@ Install this the same way as Firefox Developer Edition.
 ### Connect the email accounts, calendars, and address books
 
 See https://docs.iredmail.org/thunderbird.sogo.html
+
+---
+
+
+## Gimp
+
+```
+sudo flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref
+sudo apt install gimp-help-en
+```
 
 ---
 
@@ -518,63 +556,12 @@ gdebi downloaded.deb
 
 Download to `/opt`, extract, link to from `/usr/local/bin`.
 
-### OpenMW:
+### OpenMW extensions:
 
 - [Better Dialogue Font](https://www.nexusmods.com/morrowind/mods/36873)
 - [Westly's Pluginless Head and Hair Replacer](http://download.fliggerty.com/download-127-874)
 - [Graphic Herbalism](https://www.nexusmods.com/morrowind/mods/43140)
 - [Others](http://en.uesp.net/wiki/Morrowind:Official_Add-Ons)
-
----
-
-
-## [peek](https://github.com/phw/peek)
-
-```
-sudo apt install cmake valac libgtk-3-dev libkeybinder-3.0-dev libxml2-utils gettext txt2man
-cd ~/.local/src
-git clone https://github.com/phw/peek.git
-mkdir peek/build
-cd peek/build
-cmake -DCMAKE_INSTALL_PREFIX=/usr -DGSETTINGS_COMPILE=OFF .. # doesn't seem to like being in /usr/local for some reason
-make package
-sudo gdebi [made package name].deb
-```
-
----
-
-
-## [cbatticon](https://github.com/valr/cbatticon)
-
-```
-sudo apt install libnotify-dev
-cd ~/.local/src
-git clone https://github.com/valr/cbatticon.git
-cd cbatticon
-make
-mv cbatticon ../../bin
-```
-
----
-
-
-## [pa-applet](https://github.com/fernandotcl/pa-applet)
-
-```
-sudo apt install libpulse-dev libnotify-dev
-cd ~/.local/src
-git clone https://github.com/fernandotcl/pa-applet.git
-cd pa-applet
-./autogen.sh
-```
-
-Remove `-Werror` from `./src/Makefile.am`.
-
-```
-./configure --prefix=/home/[name]/.local
-make
-make install
-```
 
 ---
 
@@ -615,17 +602,77 @@ sudo make install
 ---
 
 
+## [cbatticon](https://github.com/valr/cbatticon)
+
+```
+sudo apt install libnotify-dev
+cd ~/.local/src
+git clone https://github.com/valr/cbatticon.git
+cd cbatticon
+make
+mv cbatticon ../../bin
+```
+
+---
+
+
+## [pa-applet](https://github.com/fernandotcl/pa-applet)
+
+```
+sudo apt install libpulse-dev libnotify-dev
+cd ~/.local/src
+git clone https://github.com/fernandotcl/pa-applet.git
+cd pa-applet
+./autogen.sh
+```
+
+Remove `-Werror` from `./src/Makefile.am`.
+
+```
+./configure --prefix=/home/[name]/.local
+make
+make install
+```
+
+---
+
+
+## [peek](https://github.com/phw/peek)
+
+```
+sudo apt install cmake valac libgtk-3-dev libkeybinder-3.0-dev libxml2-utils gettext txt2man
+cd ~/.local/src
+git clone https://github.com/phw/peek.git
+mkdir peek/build
+cd peek/build
+cmake -DCMAKE_INSTALL_PREFIX=/usr -DGSETTINGS_COMPILE=OFF .. # doesn't seem to like being in /usr/local for some reason
+make package
+sudo gdebi [made package name].deb
+```
+
+---
+
+
 ## Schedule the backups
 
 ```
+sudo apt install flock
 crontab -e
 ```
 
 Add something like:
 
 ```
-0 * * * * DISPLAY=:0 flock --nonblock /path/to/.backup.lock /path/to/.backup.sh
+0 */2 * * *  DISPLAY=:0 flock --nonblock /path/to/backup.lock /path/to/backup.sh
 ```
+
+If anything in the backup script (such as rsyncrypto) was installed to `/usr/local/bin`, this will need to be added to the crontab's PATH, due to its stripped down PATH. Add this to `crontab -e`, before anything else:
+
+```
+PATH=$PATH:/usr/local/bin
+```
+
+---
 
 
 ## Other stuff
@@ -635,7 +682,7 @@ sudo apt install openssh-client rsync rdiff-backup
 sudo apt install gparted policykit-1-gnome gksu
 sudo apt install quodlibet gstreamer1.0-plugins-bad
 sudo apt install thunar thunar-media-tags-plugin thunar-volman gvfs-backends thunar-archive-plugin xarchiver p7zip-full zip xz-utils
-sudo apt install w3m wget httpie curl viewnior mousepad nano tmux gucharmap git keepassx vlc audacity dunst lxtask virtualbox retroarch filezilla gimp gimp-help-en inkscape scribus geogebra meld picard mpv ffmpeg pandoc chromium libreoffice-writer libreoffice-calc sqlitebrowser redland-utils raptor2-utils rasqal-utils sigil gnome-calculator ncdu
+sudo apt install w3m wget httpie curl viewnior mousepad nano tmux gucharmap git keepassx vlc audacity dunst lxtask retroarch filezilla inkscape scribus geogebra meld picard mpv ffmpeg pandoc chromium libreoffice-writer libreoffice-calc sqlitebrowser redland-utils raptor2-utils rasqal-utils sigil gnome-calculator ncdu pavucontrol
 python -m pip install webpage2html
 python3 -m pip install youtube-dl
 cargo install mdbook
