@@ -7,7 +7,7 @@ _These are some notes on how to setup the author's system. These aren't expected
 - Select nothing at the software selection menu
 - Partition:
     - A swap partition; 1.5 * RAM
-    - An ~12gb ext4 partition for /
+    - A ~12gb ext4 partition for /
     - A ~512mb ext2 partition for .../backup-source/System
     - An ext3 partition for ~, using the remaining space
 
@@ -663,13 +663,7 @@ crontab -e
 Add something like:
 
 ```
-0 */2 * * *  DISPLAY=:0 flock --nonblock /path/to/backup.lock /path/to/backup.sh
-```
-
-If anything in the backup script (such as rsyncrypto) was installed to `/usr/local/bin`, this will need to be added to the crontab's PATH, due to its stripped down PATH. Add this to `crontab -e`, before anything else:
-
-```
-PATH=$PATH:/usr/local/bin
+0 */2 * * *  DISPLAY=:0 PATH=$PATH:/usr/local/bin flock --nonblock /path/to/backup.lock /path/to/backup.sh
 ```
 
 ---

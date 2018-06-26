@@ -30,3 +30,7 @@ let g:rust_recommended_style = 0
 
 " vim-rooter
 let g:rooter_change_directory_for_non_project_files = 'home'
+
+" zoomwintab
+"" this enabled was delaying the ctrl+w remapping
+let g:zoomwintab_remap = 0
