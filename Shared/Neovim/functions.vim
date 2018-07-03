@@ -20,6 +20,14 @@ fun! Focus()
 endfun
 
 
+" from: https://github.com/joeytwiddle/rc_files/blob/77f1e3e79c89105716f2e9cd7d6414b3237d9e05/.vim/plugin/joeycommands.vim#L161-175
+fun! TabDo(command)
+   let initial_tabnr = tabpagenr()
+   execute 'tabdo ' . a:command
+   call feedkeys(initial_tabnr . 'gt')
+endfun
+
+
 " like fzf's :Ag but using ripgrep
 "" from: https://github.com/junegunn/fzf.vim#advanced-customization
 fun! Rg(q_args, bang_0)

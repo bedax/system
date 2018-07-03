@@ -300,6 +300,23 @@ rustup install nightly
 ```
 
 ```
+cd ~/.local/src
+git clone https://github.com/juj/emsdk.git
+cd emsdk
+
+# until https://github.com/rust-lang/rust/issues/51856 is fixed:
+   ./emsdk install sdk-1.38.0-64bit
+   ./emsdk activate sdk-1.38.0-64bit
+# else
+   ./emsdk install latest
+   ./emsdk activate latest
+
+source ./emsdk_env.sh # will need to ctrl+d first if in fish
+rustup target add asmjs-unknown-emscripten
+rustup target add asmjs-unknown-emscripten --toolchain nightly
+```
+
+```
 rustup component add rustfmt-preview
 ```
 
@@ -317,6 +334,10 @@ cargo +nightly install cargo-expand
 ```
 sudo apt install libssl-dev
 cargo install cargo-tree
+```
+
+```
+sudo apt install valgrind lldb-3.9 # atleast 3.9
 ```
 
 ---
@@ -418,7 +439,7 @@ npm install -g jsonlint
 ### Python
 
 ```
-python3 -m pip install pylint flake8 flake8-docstrings
+python3 -m pip install flake8 flake8-docstrings
 ```
 
 ### Vim

@@ -1,6 +1,6 @@
 " fzf
 "" fd ignores .gitignore's stuff by default, and it's faster
-let $FZF_DEFAULT_COMMAND = "fd --follow --hidden ."
+let $FZF_DEFAULT_COMMAND = "fd --type f --hidden --follow"
 
 " far
 let g:far#source = 'rgnvim'
@@ -29,6 +29,7 @@ set shortmess+=c
 let g:rust_recommended_style = 0
 
 " vim-rooter
+let g:rooter_silent_chdir = 1
 let g:rooter_change_directory_for_non_project_files = 'home'
 
 " zoomwintab

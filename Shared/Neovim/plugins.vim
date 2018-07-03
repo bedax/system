@@ -14,6 +14,7 @@ endif
 
 " plugins
 call plug#begin(local_directory.'/plugged')
+
    " theme
    Plug 'https://github.com/morhetz/gruvbox'
 
@@ -51,7 +52,7 @@ call plug#begin(local_directory.'/plugged')
 
    " fuzzy finder
    Plug 'https://github.com/junegunn/fzf',
-      \ { 'dir': opt_directory.'fzf', 'do': './install --bin' }
+      \ { 'dir': opt_directory.'/fzf', 'do': './install --bin' }
    "" vim integration
    Plug 'https://github.com/junegunn/fzf.vim'
 
@@ -83,12 +84,10 @@ call plug#begin(local_directory.'/plugged')
    " disable capslock in normal mode
    Plug 'https://github.com/suxpert/vimcaps'
 
-   " change the current directory to the project's
-   Plug 'https://github.com/airblade/vim-rooter'
-
    " automated swap-file handling
    Plug 'https://github.com/gioele/vim-autoswap'
 
-   " debugger
-   "Plug 'https://github.com/dbgx/lldb.nvim'
+   " automatic directory changing
+   Plug 'https://github.com/airblade/vim-rooter'
+
 call plug#end()

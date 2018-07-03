@@ -1,14 +1,15 @@
 " use unix line-endings
 set fileformat=unix
 
-" per-type stuff
-"" filetype detection for filetype-specific plugins and indentation
-filetype indent plugin on
-
 " syntax highlighting
 syntax on
-"" fixes the problem where the highlighting stops working
+" fixes the problem where the highlighting stops working
 "autocmd FileType vue syntax sync fromstart
+
+" if plugin and indent are on, python files override the global indenting
+filetype on
+filetype indent off
+filetype plugin off
 
 " fixes slow scrolling
 set lazyredraw
@@ -29,8 +30,10 @@ set sidescrolloff=0
 
 " wrap lines without real breaks
 set wrap
-"" don't break up words when wrapping
+" don't break up words when wrapping
 set linebreak
+" don't hard break long lines
+set textwidth=0
 
 " have the backspace key delete indents
 set backspace=indent,eol,start

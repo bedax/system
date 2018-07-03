@@ -3,6 +3,7 @@ command! Focus call Focus()
 command! Substitute call Substitute()
 command! StripTrailingWhitespace call StripTrailingWhitespace()
 command! DeleteInactiveBuffers call DeleteInactiveBuffers()
+command! -nargs=+ -complete=command TabDo :call TabDo(<q-args>)
 "" from: https://github.com/junegunn/fzf.vim#advanced-customization
 command! -bang -nargs=* Rg call Rg(<q-args>, <bang>0)
 
@@ -15,7 +16,7 @@ autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 "" disable line numbers in terminal windows
 autocmd TermOpen * setlocal nonumber
 "" make splits equal on resize
-autocmd VimResized * tabdo wincmd =
+autocmd VimResized * TabDo wincmd =
 
 
 " key bindings
