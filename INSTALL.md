@@ -119,9 +119,9 @@ Then run `sudo visudo` and add:
 
 ```
 cd .../backup-source/System # the location of this repository
-sudo ./connect.sh [this repository's full path]/gnix/usr/ /usr/
-./connect.sh [this repository's full path]/gnix/home/ /home/[name]/
-./connect.sh [this repository's full path]/Fonts/ /home/[name]/.fonts/
+sudo ./connect.sh [this repository's full path]/usr/ /usr/
+./connect.sh [this repository's full path]/home/ /home/[name]/
+./connect.sh [this repository's full path]/fonts/ /home/[name]/.fonts/
 fc-cache -fv
 ```
 

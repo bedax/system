@@ -1,17 +1,15 @@
-/Shared/FileZilla/filezilla.xml
-/Shared/FileZilla/sitemanager.xml
-/Shared/Transmission/settings.json
-/Shared/.p
+/home/.config/filezilla/filezilla.xml
+/home/.config/filezilla/sitemanager.xml
+/home/.config/transmission/settings.json
+/.p
 
-/Live/Identifying*
-/Live/**/*.deb
-/Live/**/*.gz
-/Live/**/*.iso
+/live/Identifying*
+/live/**/*.deb
+/live/**/*.gz
+/live/**/*.iso
 
-/Server
-
-/Windows/FastPictureViewer Codec Pack
-/Windows/IrfanView
+/server
+/windows
 
 *.lock
 

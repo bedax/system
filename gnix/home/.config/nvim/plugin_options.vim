@@ -1,1 +1,0 @@
-../../../../Shared/Neovim/plugin_options.vim
