@@ -49,14 +49,11 @@ mono_font_style = "Regular"
 # keep this in line with dunstrc; separator_height
 border_width = 3
 
-background_colour = "3c3836"
-background_colour_with_hash = "#{}".format(background_colour)
+background_colour_with_hash = "#3c3836"
 foreground_colour = "fbf1c7"
-foreground_colour_with_hash = "#{}".format(foreground_colour)
 highlight_colour = "af3a03"
 highlight_colour_with_hash = "#{}".format(highlight_colour)
 urgent_colour = "9d0006"
-urgent_colour_with_hash = "#{}".format(urgent_colour)
 
 widget_padding = 3
 widget_defaults = {
@@ -135,7 +132,7 @@ groups_base = collections.OrderedDict([
         "init": True,
         "persist": True,
         "spawn": [
-            "vim-session-st"
+            "~/.local/bin/vim-session-st"
         ]
     }),
 
@@ -260,31 +257,7 @@ keys = [
     config.Key(
         [meta],
         "space",
-        command.lazy.spawn(
-            'dmenu_run '
-            '-b '
-            '-i '
-            '-l 7 '
-            '-fn "'
-                '{}'
-                ':style={}'
-                ':pixelsize={}'
-                ':antialias=true'
-                ':autohint=false'
-            '" '
-            '-nb "{}" '
-            '-nf "{}" '
-            '-sb "{}" '
-            '-sf "{}" '.format(
-                mono_font_name,
-                mono_font_style,
-                mono_font_size,
-                background_colour_with_hash,
-                foreground_colour_with_hash,
-                highlight_colour_with_hash,
-                foreground_colour_with_hash
-            )
-        ),
+        command.lazy.spawn(script_path("run.sh")),
         desc="Run a command"
     ),
 

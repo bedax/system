@@ -292,15 +292,10 @@ sudo make install
 ---
 
 
-## Rust
+### Emscripten
 
 ```
-curl https://sh.rustup.rs -sSf | sh # don't modify the path as it's already done
-rustup install nightly
-```
-
-```
-cd ~/.local/src
+cd ~/.local/opt
 git clone https://github.com/juj/emsdk.git
 cd emsdk
 
@@ -312,6 +307,21 @@ cd emsdk
    ./emsdk activate latest
 
 source ./emsdk_env.sh # will need to ctrl+d first if in fish
+```
+
+Make sure the paths in `~/.profile` are in line with the content of `./emsdk_set_env.sh` produced by `emsdk construct env`.
+
+---
+
+
+## Rust
+
+```
+curl https://sh.rustup.rs -sSf | sh # don't modify the path as it's already done
+rustup install nightly
+```
+
+```
 rustup target add asmjs-unknown-emscripten
 rustup target add asmjs-unknown-emscripten --toolchain nightly
 ```

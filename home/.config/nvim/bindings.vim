@@ -87,9 +87,11 @@ xnoremap <expr> p 'pgv"'.v:register.'y`>'
 noremap <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
 imap <silent> <Home> <C-O><Home>
 
-"" disable the q (recording) key binding
-""" kept pressing it accidentally
-noremap q <Nop>
+"" kept pressing these accidentally
+""" recording
+noremap q <nop>
+""" ex-mode
+noremap Q <nop>
 
 "" keep flags when repeating last :substitute
 nnoremap & :&&<CR>

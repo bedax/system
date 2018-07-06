@@ -1,3 +1,10 @@
 #!/bin/sh
 
-find . -xtype l
+
+if [ -n "$1" ]; then
+   directory="$1"
+else
+   directory="."
+fi
+
+find "$directory" -xtype l
