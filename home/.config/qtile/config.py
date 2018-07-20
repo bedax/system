@@ -132,7 +132,7 @@ groups_base = collections.OrderedDict([
         "init": True,
         "persist": True,
         "spawn": [
-            "~/.local/bin/vim-session-st"
+            "/home/tom/.local/bin/vim-session-st"
         ]
     }),
 

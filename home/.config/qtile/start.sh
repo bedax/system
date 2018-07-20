@@ -1,25 +1,25 @@
 #!/bin/sh
 
-# compositor
-compton --shadow-exclude argb &
-
 # set the background
 hsetroot -cover ~/.config/qtile/background.png &
+
+# compositor
+compton --shadow-exclude argb &
 
 # blue-light filter
 redshift &
 
+# backlight
+xbacklight -set 40
+
 # enable audio
 start-pulseaudio-x11 &
-
-# battery icon and notifications for the systray
-~/.local/bin/cbatticon --low-level 16 --critical-level 8 --hide-notification &
 
 # pulseaudio volume control for the systray
 ~/.local/bin/pa-applet &
 
-# backlight
-xbacklight -set 20
+# battery icon and notifications for the systray
+~/.local/bin/cbatticon --low-level 16 --critical-level 8 --hide-notification &
 
 # for thunar's mounter and gparted-pkexec; from 'policykit-1-gnome' package
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+loop-til-false gdb-run "$@"

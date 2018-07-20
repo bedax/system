@@ -118,10 +118,10 @@ Then run `sudo visudo` and add:
 ## Connect the dots
 
 ```
-cd .../backup-source/System # the location of this repository
-sudo ./connect.sh [this repository's full path]/usr/ /usr/
-./connect.sh [this repository's full path]/home/ /home/[name]/
-./connect.sh [this repository's full path]/fonts/ /home/[name]/.fonts/
+cd [this repository]/home/.local/bin
+sudo ./link [this repository's full path]/usr/ /usr/
+./link [this repository's full path]/home/ /home/[name]/
+./link [this repository's full path]/fonts/ /home/[name]/.fonts/
 fc-cache -fv
 ```
 
@@ -292,7 +292,7 @@ sudo make install
 ---
 
 
-### Emscripten
+## Emscripten
 
 ```
 cd ~/.local/opt
@@ -517,6 +517,7 @@ Install this the same way as Firefox Developer Edition.
 
 - Lightning
 - SOGo Connector
+- G-Hub Lite
 
 ### Connect the email accounts, calendars, and address books
 
@@ -574,10 +575,21 @@ sudo apt install virtualbox
 ---
 
 
-## [ripgrep](https://github.com/BurntSushi/ripgrep/releases), [fd](https://github.com/sharkdp/fd/releases) and [djv](http://djv.sourceforge.net/)
+## [djv](http://djv.sourceforge.net/)
 
 ```
-gdebi downloaded.deb
+sudo gdebi downloaded.deb
+```
+
+`djv_view` will likely complain about not being able to find `libpng12.so`, in which case manually [get it from jessie](http://ftp.uk.debian.org/debian/pool/main/libp/libpng/libpng12-0_1.2.50-2+deb8u3_amd64.deb) and install it with gdebi.
+
+---
+
+
+## [ripgrep](https://github.com/BurntSushi/ripgrep/releases) and [fd](https://github.com/sharkdp/fd/releases)
+
+```
+sudo gdebi downloaded.deb
 ```
 
 ---
@@ -593,6 +605,34 @@ Download to `/opt`, extract, link to from `/usr/local/bin`.
 - [Westly's Pluginless Head and Hair Replacer](http://download.fliggerty.com/download-127-874)
 - [Graphic Herbalism](https://www.nexusmods.com/morrowind/mods/43140)
 - [Others](http://en.uesp.net/wiki/Morrowind:Official_Add-Ons)
+
+---
+
+
+## Retroarch
+
+```
+sudo apt install retroarch
+```
+
+If it's buggy, like on debian stretch the enter key doesn't work, then download and install the following from a higher version (the order is important):
+
+```
+sudo gdebi libretro-core-info...
+sudo gdebi retroarch-assets...
+sudo gdebi retroarch...
+```
+
+If the icons are black, download the [`assets.zip`](http://buildbot.libretro.com/assets/frontend/assets.zip) and extract them to `~/.config/retroarch/assets/`.
+
+Update everything in the Online Updater and download thumbnails.
+
+### [Download cores](https://buildbot.libretro.com/nightly/linux/x86_64/latest/)
+
+Extract these to `~/.config/retroarch/cores/`.
+
+- `mednafen_psx_libretro.so.zip`
+- `snes9x_libretro.so.zip`
 
 ---
 
