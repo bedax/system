@@ -95,6 +95,12 @@ set nofoldenable
 set listchars=tab:>~,nbsp:_
 set list
 
+" persistent undos across buffer switches
+set undofile
+let &undodir = local_directory.'/undo'
+silent call system('rm -f '.&undodir.'/*')
+silent call system('mkdir -p '.&undodir)
+
 " indents
 set autoindent
 "" tab's (\t) visual width
