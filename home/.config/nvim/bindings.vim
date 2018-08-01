@@ -1,6 +1,7 @@
 " commands
 command! Focus call Focus()
 command! Substitute call Substitute()
+command! PopupTerminal call PopupTerminal()
 command! StripTrailingWhitespace call StripTrailingWhitespace()
 command! DeleteInactiveBuffers call DeleteInactiveBuffers()
 command! -nargs=+ -complete=command TabDo :call TabDo(<q-args>)
@@ -33,11 +34,8 @@ noremap <silent> <C-h> :Substitute <CR>
 nnoremap <silent> <nowait> <C-w> :bd <CR>
 nnoremap <A-w> <C-w>
 
-""" C-M == Ctrl+Enter
-"""" if C-M doesn't work, to find what what it should be:
-"""" enter bash and type ctrl+v followed by ctrl+enter
-"""" it will give ^?, where ? is the character to use
-noremap <silent> <C-M> :Focus <CR>
+noremap <silent> <Enter> :Focus <CR>
+noremap <silent> <Backspace> :PopupTerminal <CR>
 
 "" far
 noremap <silent> <A-h> :Farp <CR>
@@ -70,12 +68,14 @@ nnoremap <silent> <A-Enter> :ZoomWinTabToggle <CR>
 "" esc cleans the slate
 """ exit terminal mode
 tnoremap <Esc> <C-\><C-n>
-""" remove highlights
-nnoremap <silent> <Esc> :nohl <CR> <Esc>
 """ close stray fzf windows
 autocmd! FileType fzf tnoremap <buffer> <Esc> <c-c>
+""" close the popup terminal
+autocmd! FileType popup_terminal noremap <buffer> <Esc> :bd! <CR>
 """ close other window types
 autocmd! FileType help,far_vim,vim-plug noremap <buffer> <Esc> :bd <CR>
+""" remove highlights and folds
+nnoremap <silent> <Esc> :nohl <bar> set nofoldenable <CR> <Esc>
 
 "" stops p from replacing the clipboard with the replaced text
 """ from: https://stackoverflow.com/a/5093286 (rox's comment)

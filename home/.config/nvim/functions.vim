@@ -11,12 +11,20 @@ endfun
 fun! Focus()
    " cursorline should be enabled if we're not in Focus mode
    if &cursorline
-      :Goyo
-      :set cursorline!
+      Goyo
+      set cursorline!
    else
-      :Goyo!
-      :set cursorline
+      Goyo!
+      set cursorline
    endif
+endfun
+
+
+fun! PopupTerminal()
+   botright split
+   terminal
+   setfiletype popup_terminal
+   startinsert
 endfun
 
 

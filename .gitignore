@@ -2,16 +2,20 @@
 /home/.config/filezilla/filezilla.xml
 /home/.config/filezilla/sitemanager.xml
 /home/.config/transmission/settings.json
-/home/.config/retroarch/system/scph5501.bin # md5: 490f666e1afb15b7362b406ed1cea246
-/home/.config/retroarch/system/scph5502.bin # md5: 32736f17079d0b2b7024407c39bd3050
+
+# md5: 490f666e1afb15b7362b406ed1cea246
+/home/.config/retroarch/system/scph5501.bin
+# md5: 32736f17079d0b2b7024407c39bd3050
+/home/.config/retroarch/system/scph5502.bin
 
 /live/Identifying*
 /live/**/*.deb
 /live/**/*.gz
 /live/**/*.iso
 
-/server
-/windows
+/server/README.md
+/windows/FastPictureViewer Codec Pack/README.md
+/windows/INSTALL.md
 
 *.lock
 
