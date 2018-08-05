@@ -23,7 +23,7 @@ endfun
 fun! PopupTerminal()
    botright split
    terminal
-   setfiletype popup_terminal
+   noremap <buffer> <silent> <Esc> :bd! <CR>
    startinsert
 endfun
 

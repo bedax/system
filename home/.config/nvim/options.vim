@@ -51,9 +51,6 @@ set autoread
 set ttimeout
 set ttimeoutlen=100
 
-" show how much has been selected in visual mode
-set showcmd
-
 " override a search's ignorecase option if the search contains uppercase
 set ignorecase
 set smartcase

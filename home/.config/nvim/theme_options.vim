@@ -13,16 +13,27 @@ set termguicolors
 
 
 " stops things from having a lighter background colour when using gruvbox-dark
-fun! UnhighlightGruboxBackground(file_type, highlight_group)
+fun! UnhighlightGruboxBackground(highlight_group)
+   execute '
+      \ highlight '.a:highlight_group.'
+         \ ctermfg=208 ctermbg=0 guifg=#fe8019 guibg=0'
+endfun
+
+fun! AutoUnhighlightGruboxBackground(file_type, highlight_group)
    " the BufEnter bit was added because GoyoLeave was resetting it
+   let highlight_group = shellescape(a:highlight_group)
+
    execute '
       \ autocmd FileType '.a:file_type.'
          \ autocmd BufEnter <buffer>
-            \ highlight '.a:highlight_group.'
-               \ ctermfg=208 ctermbg=0 guifg=#fe8019 guibg=0'
+            \ call UnhighlightGruboxBackground('.highlight_group.')'
+
+   execute '
+      \ autocmd User GoyoLeave
+         \ call UnhighlightGruboxBackground('.highlight_group.')'
 endfun
 
 "" "::" in rust
-call UnhighlightGruboxBackground('rust', 'Delimiter')
+call AutoUnhighlightGruboxBackground('rust', 'Delimiter')
 "" lifetimes in rust
-call UnhighlightGruboxBackground('rust', 'Special')
+call AutoUnhighlightGruboxBackground('rust', 'Special')

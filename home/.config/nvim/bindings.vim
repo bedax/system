@@ -35,7 +35,7 @@ nnoremap <silent> <nowait> <C-w> :bd <CR>
 nnoremap <A-w> <C-w>
 
 noremap <silent> <Enter> :Focus <CR>
-noremap <silent> <Backspace> :PopupTerminal <CR>
+noremap <silent> <Space> :PopupTerminal <CR>
 
 "" far
 noremap <silent> <A-h> :Farp <CR>
@@ -70,10 +70,8 @@ nnoremap <silent> <A-Enter> :ZoomWinTabToggle <CR>
 tnoremap <Esc> <C-\><C-n>
 """ close stray fzf windows
 autocmd! FileType fzf tnoremap <buffer> <Esc> <c-c>
-""" close the popup terminal
-autocmd! FileType popup_terminal noremap <buffer> <Esc> :bd! <CR>
 """ close other window types
-autocmd! FileType help,far_vim,vim-plug noremap <buffer> <Esc> :bd <CR>
+autocmd! FileType help,far_vim,vim-plug noremap <buffer> <silent> <Esc> :bd <CR>
 """ remove highlights and folds
 nnoremap <silent> <Esc> :nohl <bar> set nofoldenable <CR> <Esc>
 
@@ -94,8 +92,8 @@ noremap q <nop>
 noremap Q <nop>
 
 "" keep flags when repeating last :substitute
-nnoremap & :&&<CR>
-xnoremap & :&&<CR>
+nnoremap & :&& <CR>
+xnoremap & :&& <CR>
 
 "" expand %% to current path in command mode
 """ from: https://github.com/sheerun/vimrc
