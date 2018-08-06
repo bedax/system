@@ -17,6 +17,8 @@ set lazyredraw
 " mouse support
 set mouse=a
 
+set winwidth=80
+
 " disable some quirks from vi
 set nocompatible
 
@@ -86,6 +88,9 @@ set nomodeline
 set foldmethod=indent
 set foldnestmax=3
 set nofoldenable
+
+" shows unecessary symbols at the bottom right
+set noshowcmd
 
 "set noswapfile
 

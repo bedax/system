@@ -33,19 +33,19 @@ call plug#begin(local_directory.'/plugged')
    Plug 'https://github.com/cespare/vim-toml'
 
    " completions
-   Plug 'https://github.com/roxma/nvim-completion-manager'
+"   Plug 'https://github.com/roxma/nvim-completion-manager'
    "" basic generic syntax completions for all vim-supported languages
-   Plug 'https://github.com/Shougo/neco-syntax'
+"   Plug 'https://github.com/Shougo/neco-syntax'
    "" complete words from other buffers
-   Plug 'https://github.com/fgrsnau/ncm-otherbuf'
+"   Plug 'https://github.com/fgrsnau/ncm-otherbuf'
    "" rust
-   Plug 'https://github.com/racer-rust/vim-racer'
-   Plug 'https://github.com/roxma/nvim-cm-racer'
+"   Plug 'https://github.com/racer-rust/vim-racer'
+"   Plug 'https://github.com/roxma/nvim-cm-racer'
    "" css
-   Plug 'https://github.com/calebeby/ncm-css'
+"   Plug 'https://github.com/calebeby/ncm-css'
    "" js; flow requires per-project configuration
-   Plug 'https://github.com/roxma/nvim-cm-tern',
-      \ {'do': 'npm install'}
+"   Plug 'https://github.com/roxma/nvim-cm-tern',
+"      \ {'do': 'npm install'}
 
    " session management
    Plug 'https://github.com/tpope/vim-obsession'
