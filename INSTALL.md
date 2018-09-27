@@ -19,21 +19,38 @@ _These are some notes on how to setup the author's system. These aren't expected
 Add the following to `/etc/network/interfaces`:
 
 ```
-# disable a device
-iface wlp3s0 inet manual
+# enable the loopback
+auto lo
+iface lo inet loopback
 
-# enable usb tethering
-auto enp0s20u2
-   allow-hotplug enp0s20u2
-   iface enp0s20u2 inet dhcp
+# enable top left usb tethering
+auto enp0s20u1
+   allow-hotplug enp0s20u1
+   iface enp0s20u1 inet dhcp
       metric 200
 
-# enable a wifi device
+# enable right usb tethering
+auto enp0s26u1u2
+   allow-hotplug enp0s26u1u2
+   iface enp0s26u1u2 inet dhcp
+      metric 200
+
+# enable internal wifi
+auto wlp3s0
+   iface wlp3s0 inet dhcp
+      wpa-psk [key]
+      wpa-ssid [ssid]
+      metric 300
+
+# disable internal wifi
+#iface wlp3s0 inet manual
+
+# enable external wifi
 auto wlx74da38d41aaa
    iface wlx74da38d41aaa inet dhcp
-      metric 300
-      wpa-ssid [ssid]
       wpa-psk [key]
+      wpa-ssid [ssid]
+      metric 400
 ```
 
 Then:
@@ -327,6 +344,7 @@ rustup target add asmjs-unknown-emscripten --toolchain nightly
 ```
 
 ```
+rustup component add clippy-preview
 rustup component add rustfmt-preview
 ```
 
@@ -481,14 +499,14 @@ sudo apt install firefox-esr
 - EPUBReader
 - uBlock Origin
     - the default lists
-    - Adguard's Annoyance List (it blocks more cookie warnings, such as those on serverfault.com)
+    - Adguard's Annoyance List (it blocks more cookie warnings, like those on serverfault.com)
 - NoScript (allow scripts globally, just use it for the other stuff)
-- CanvasBlocker
 - HTTPS Everywhere
 - Privacy Badger
 - No Resource URI Leak (not needed for 57+)
 - Open Image in New Tab (by Maximus for pre-Quantum, and bedstash for post)
 - Vue.js devtools
+- DownThemAll
 
 ---
 
@@ -747,7 +765,7 @@ sudo apt install openssh-client rsync rdiff-backup
 sudo apt install gparted policykit-1-gnome gksu
 sudo apt install quodlibet gstreamer1.0-plugins-bad
 sudo apt install thunar thunar-media-tags-plugin thunar-volman gvfs-backends thunar-archive-plugin xarchiver p7zip-full zip xz-utils
-sudo apt install w3m wget httpie curl viewnior mousepad nano tmux gucharmap git keepassx vlc audacity dunst lxtask retroarch filezilla inkscape scribus geogebra meld picard mpv ffmpeg pandoc chromium libreoffice-writer libreoffice-calc sqlitebrowser redland-utils raptor2-utils rasqal-utils sigil gnome-calculator ncdu pavucontrol
+sudo apt install w3m wget curl viewnior mousepad nano tmux gucharmap git keepassx vlc audacity dunst lxtask filezilla inkscape scribus geogebra meld picard mpv ffmpeg pandoc chromium libreoffice-writer libreoffice-calc sqlitebrowser redland-utils raptor2-utils rasqal-utils sigil gnome-calculator ncdu pavucontrol swi-prolog
 python -m pip install webpage2html
 python3 -m pip install youtube-dl
 cargo install mdbook

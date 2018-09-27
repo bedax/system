@@ -4,7 +4,7 @@ set fileformat=unix
 " syntax highlighting
 syntax on
 " fixes the problem where the highlighting stops working
-"autocmd FileType vue syntax sync fromstart
+syntax sync fromstart
 
 " if plugin and indent are on, python files override the global indenting
 filetype on

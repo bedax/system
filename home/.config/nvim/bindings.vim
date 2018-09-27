@@ -85,6 +85,16 @@ xnoremap <expr> p 'pgv"'.v:register.'y`>'
 noremap <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
 imap <silent> <Home> <C-O><Home>
 
+" disable the arrow keys for navigation
+"map <up> <nop>
+"map <down> <nop>
+"map <left> <nop>
+"map <right> <nop>
+"imap <up> <nop>
+"imap <down> <nop>
+"imap <left> <nop>
+"imap <right> <nop>
+
 "" kept pressing these accidentally
 """ recording
 noremap q <nop>
