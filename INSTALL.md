@@ -503,10 +503,8 @@ sudo apt install firefox-esr
 - NoScript (allow scripts globally, just use it for the other stuff)
 - HTTPS Everywhere
 - Privacy Badger
-- No Resource URI Leak (not needed for 57+)
-- Open Image in New Tab (by Maximus for pre-Quantum, and bedstash for post)
+- Open Image in New Tab (bedstash)
 - Vue.js devtools
-- DownThemAll
 
 ---
 
@@ -627,6 +625,29 @@ Download to `/opt`, extract, link to from `/usr/local/bin`.
 ---
 
 
+## Wine
+
+```
+sudo dpkg --add-architecture i386
+wget -nc https://dl.winehq.org/wine-builds/Release.key
+sudo apt-key add Release.key
+rm Release.key
+```
+
+Add this to `/etc/apt/sources.list`:
+
+```
+deb https://dl.winehq.org/wine-builds/debian/ stable main
+```
+
+```
+sudo apt-get update
+sudo apt-get install --install-recommends winehq-stable
+```
+
+---
+
+
 ## Retroarch
 
 ```
@@ -651,6 +672,26 @@ Extract these to `~/.config/retroarch/cores/`.
 
 - `mednafen_psx_libretro.so.zip`
 - `snes9x_libretro.so.zip`
+- `ppsspp_libretro.so.zip`
+
+```
+git clone https://github.com/hrydgard/ppsspp
+mv ppsspp/assets ~/.config/retroarch/system/PPSSPP
+rm -rf ppsspp
+```
+
+---
+
+
+## Project64
+
+```
+wget http://www.emulator-zone.com/download.php/emulators/n64/project64/project64_1.6.exe
+wine project64_1.6.exe
+rm project64_1.6.exe
+```
+
+Use the N-Rage input plugin. If the gamepad has two versions (`event` and `js`) use `event`. Disable `raw data`.
 
 ---
 
@@ -765,7 +806,7 @@ sudo apt install openssh-client rsync rdiff-backup
 sudo apt install gparted policykit-1-gnome gksu
 sudo apt install quodlibet gstreamer1.0-plugins-bad
 sudo apt install thunar thunar-media-tags-plugin thunar-volman gvfs-backends thunar-archive-plugin xarchiver p7zip-full zip xz-utils
-sudo apt install w3m wget curl viewnior mousepad nano tmux gucharmap git keepassx vlc audacity dunst lxtask filezilla inkscape scribus geogebra meld picard mpv ffmpeg pandoc chromium libreoffice-writer libreoffice-calc sqlitebrowser redland-utils raptor2-utils rasqal-utils sigil gnome-calculator ncdu pavucontrol swi-prolog
+sudo apt install w3m wget curl viewnior mousepad nano tmux gucharmap git keepassx vlc audacity dunst lxtask filezilla inkscape scribus geogebra meld picard mpv ffmpeg pandoc chromium libreoffice-writer libreoffice-calc sqlitebrowser redland-utils raptor2-utils rasqal-utils sigil gnome-calculator ncdu pavucontrol swi-prolog jstest-gtk
 python -m pip install webpage2html
 python3 -m pip install youtube-dl
 cargo install mdbook
