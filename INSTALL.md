@@ -806,7 +806,7 @@ sudo apt install openssh-client rsync rdiff-backup
 sudo apt install gparted policykit-1-gnome gksu
 sudo apt install quodlibet gstreamer1.0-plugins-bad
 sudo apt install thunar thunar-media-tags-plugin thunar-volman gvfs-backends thunar-archive-plugin xarchiver p7zip-full zip xz-utils
-sudo apt install w3m wget curl viewnior mousepad nano tmux gucharmap git keepassx vlc audacity dunst lxtask filezilla inkscape scribus geogebra meld picard mpv ffmpeg pandoc chromium libreoffice-writer libreoffice-calc sqlitebrowser redland-utils raptor2-utils rasqal-utils sigil gnome-calculator ncdu pavucontrol swi-prolog jstest-gtk
+sudo apt install w3m wget curl viewnior mousepad nano tmux gucharmap git keepassx vlc audacity dunst lxtask filezilla inkscape scribus geogebra meld picard mpv ffmpeg pandoc chromium libreoffice-writer libreoffice-calc sqlitebrowser redland-utils raptor2-utils rasqal-utils sigil gnome-calculator ncdu pavucontrol swi-prolog jstest-gtk pcsx2
 python -m pip install webpage2html
 python3 -m pip install youtube-dl
 cargo install mdbook

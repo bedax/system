@@ -17,13 +17,13 @@ let g:cm_complete_popup_delay = 60
 let g:cm_refresh_default_min_word_len = 1
 let g:cm_matcher = {'module': 'cm_matchers.prefix_matcher', 'case': 'case'}
 
-" airline
-let g:airline_theme = 'gruvbox'
-let g:airline_powerline_fonts = 1
+
+" lightline
+let g:lightline = { 'colorscheme': 'gruvbox' }
 "" don't show the default mode indicator
 set noshowmode
 """ needed to hide unnecessary information shown by noshowmode
-set shortmess+=c
+"set shortmess+=c
 
 " rust.vim
 let g:rust_recommended_style = 0

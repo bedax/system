@@ -64,7 +64,7 @@ call plug#begin(local_directory.'/plugged')
    Plug 'https://github.com/junegunn/goyo.vim'
 
    " status line
-   Plug 'https://github.com/vim-airline/vim-airline'
+   Plug 'https://github.com/itchyny/lightline.vim'
 
    " search and replace across files
    Plug 'https://github.com/brooth/far.vim'
