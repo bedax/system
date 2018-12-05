@@ -19,7 +19,13 @@ let g:cm_matcher = {'module': 'cm_matchers.prefix_matcher', 'case': 'case'}
 
 
 " lightline
-let g:lightline = { 'colorscheme': 'gruvbox' }
+let g:lightline = {
+\   'colorscheme': 'gruvbox',
+\   'active': {
+\      'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
+\      'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
+\   }
+\}
 "" don't show the default mode indicator
 set noshowmode
 """ needed to hide unnecessary information shown by noshowmode
