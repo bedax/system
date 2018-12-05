@@ -22,8 +22,12 @@ let g:cm_matcher = {'module': 'cm_matchers.prefix_matcher', 'case': 'case'}
 let g:lightline = {
 \   'colorscheme': 'gruvbox',
 \   'active': {
-\      'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
+\      'left': [['mode', 'paste'], ['readonly', 'relativepath', 'modified']],
 \      'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
+\   },
+\   'inactive': {
+\      'left': [['relativepath']],
+\      'right': [['lineinfo'], ['percent']]
 \   }
 \}
 "" don't show the default mode indicator
