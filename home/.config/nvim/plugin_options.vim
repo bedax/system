@@ -19,6 +19,10 @@ let g:cm_matcher = {'module': 'cm_matchers.prefix_matcher', 'case': 'case'}
 
 
 " lightline
+"" don't show the default mode indicator
+set noshowmode
+""" needed to hide unnecessary information shown by noshowmode
+"set shortmess+=c
 let g:lightline = {
 \   'colorscheme': 'gruvbox',
 \   'active': {
@@ -28,12 +32,12 @@ let g:lightline = {
 \   'inactive': {
 \      'left': [['relativepath']],
 \      'right': [['lineinfo'], ['percent']]
+\   },
+\   'enable': {
+\      'statusline': 1,
+\      'tabline': 0
 \   }
 \}
-"" don't show the default mode indicator
-set noshowmode
-""" needed to hide unnecessary information shown by noshowmode
-"set shortmess+=c
 
 " rust.vim
 let g:rust_recommended_style = 0
