@@ -344,8 +344,8 @@ rustup target add asmjs-unknown-emscripten --toolchain nightly
 ```
 
 ```
-rustup component add clippy-preview
-rustup component add rustfmt-preview
+rustup component add clippy
+rustup component add rustfmt
 ```
 
 ```
@@ -355,8 +355,18 @@ rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rus
 ```
 
 ```
-cargo install cargo-check cargo-outdated
+cargo install cargo-check cargo-outdated cargo-release cargo-deadlinks cargo-modules cargo-watch cargo-update cargo-count cargo-fuzz cargo-bloat cargo-audit cargo-cook cargo-make cargo-script
 cargo +nightly install cargo-expand
+```
+
+```
+sudo apt-get install libssl-dev pkg-config cmake zlib1g-dev
+RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo +nightly install cargo-tarpaulin
+```
+
+```
+sudo apt-get install valgrind
+cargo install cargo-profiler
 ```
 
 ```
