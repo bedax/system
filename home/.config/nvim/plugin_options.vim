@@ -30,7 +30,7 @@ let g:lightline = {
 \      'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
 \   },
 \   'inactive': {
-\      'left': [['relativepath']],
+\      'left': [['relativepath', 'modified']],
 \      'right': [['lineinfo'], ['percent']]
 \   },
 \   'enable': {

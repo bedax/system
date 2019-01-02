@@ -149,9 +149,24 @@ fc-cache -fv
 
 ```
 sudo apt install coreutils
-sudo apt install build-essential make cmake autoconf automake pkg-config libtool-bin
-sudo apt install python python-pip python3 python3-pip
-sudo apt install gdebi apt-file flatpak
+
+sudo apt install build-essential
+sudo apt install make
+sudo apt install cmake
+sudo apt install autoconf
+sudo apt install automake
+sudo apt install pkg-config
+sudo apt install libtool-bin
+
+sudo apt install python
+sudo apt install python-pip
+sudo apt install python3
+sudo apt install python3-pip
+
+sudo apt install gdebi
+sudo apt install apt-file
+sudo apt install flatpak
+
 sudo apt install pulseaudio
 ```
 
@@ -173,14 +188,35 @@ sudo smbpasswd -a [username]
 Install the dependencies:
 
 ```
-sudo apt install compton redshift hsetroot xbacklight # startup stuff
-sudo apt install maim xdotool xclip pm-utils pulseaudio-utils alsa-utils desktop-base
+# startup stuff
+sudo apt install compton
+sudo apt install redshift
+sudo apt install hsetroot
+sudo apt install xbacklight
+
+sudo apt install maim
+sudo apt install xdotool
+sudo apt install xclip
+sudo apt install pm-utils
+sudo apt install pulseaudio-utils
+sudo apt install alsa-utils
+sudo apt install desktop-base
 ```
 
 ```
-sudo apt install xinit x11-xserver-utils xserver-xorg-video-intel
-sudo apt install python3-dev python3-setuptools
-sudo apt install libxcb-render0-dev libffi-dev libcairo2 libpangocairo-1.0-0 libxcb-cursor-dev
+sudo apt install xinit
+sudo apt install x11-xserver-utils
+sudo apt install xserver-xorg-video-intel
+
+sudo apt install python3-dev
+sudo apt install python3-setuptools
+
+sudo apt install libxcb-render0-dev
+sudo apt install libffi-dev
+sudo apt install libcairo2
+sudo apt install libpangocairo-1.0-0
+sudo apt install libxcb-cursor-dev
+
 sudo python3 -m pip install xcffib
 sudo python3 -m pip install cairocffi # this needs to be after xcffib
 ```
@@ -206,7 +242,8 @@ Link `/root/.config/qtile` to `/home/[name]/.config/qtile` in case it needs debu
 Run:
 
 ```
-sudo apt install acpi libnotify-bin
+sudo apt install acpi
+sudo apt install libnotify-bin
 ```
 
 Then run `crontab -e` and add:
@@ -235,7 +272,9 @@ EndSection
 ## The login manager
 
 ```
-sudo apt install lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+sudo apt install lightdm
+sudo apt install lightdm-gtk-greeter
+sudo apt install lightdm-gtk-greeter-settings
 lightdm-gtk-greeter-settings
 ```
 
@@ -247,7 +286,9 @@ lightdm-gtk-greeter-settings
 First, run:
 
 ```
-sudo apt install libx11-dev libxinerama-dev libxft-dev
+sudo apt install libx11-dev
+sudo apt install libxinerama-dev
+sudo apt install libxft-dev
 ```
 
 Then run `make` and `sudo make install` for both, making sure to use the connected dots from above, and the correct versions.
@@ -258,7 +299,12 @@ Then run `make` and `sudo make install` for both, making sure to use the connect
 ## Configure the look
 
 ```
-sudo apt install adwaita-qt4 adwaita-qt adwaita-icon-theme gnome-themes-standard qt4-qtconfig
+sudo apt install adwaita-qt4
+sudo apt install adwaita-qt
+sudo apt install adwaita-icon-theme
+sudo apt install gnome-themes-standard
+sudo apt install qt4-qtconfig
+
 qtconfig-qt4
 ```
 
@@ -339,6 +385,11 @@ rustup install nightly
 ```
 
 ```
+sudo apt install musl-tools
+rustup target add  x86_64-unknown-linux-musl
+```
+
+```
 rustup target add asmjs-unknown-emscripten
 rustup target add asmjs-unknown-emscripten --toolchain nightly
 ```
@@ -349,13 +400,24 @@ rustup component add rustfmt
 ```
 
 ```
-rustup install nightly-2016-08-01
-sudo apt install libncursesw5-dev
-rustup run nightly-2016-08-01 cargo install --git https://github.com/murarth/rusti
+cargo install evcxr_repl
 ```
 
 ```
-cargo install cargo-check cargo-outdated cargo-release cargo-deadlinks cargo-modules cargo-watch cargo-update cargo-count cargo-fuzz cargo-bloat cargo-audit cargo-cook cargo-make cargo-script
+cargo install cargo-check
+cargo install cargo-outdated
+cargo install cargo-release
+cargo install cargo-deadlinks
+cargo install cargo-modules
+cargo install cargo-watch
+cargo install cargo-update
+cargo install cargo-count
+cargo install cargo-fuzz
+cargo install cargo-bloat
+cargo install cargo-audit
+cargo install cargo-cook
+cargo install cargo-make
+cargo install cargo-script
 cargo +nightly install cargo-expand
 ```
 
@@ -375,7 +437,8 @@ cargo install cargo-tree
 ```
 
 ```
-sudo apt install valgrind lldb-3.9 # atleast 3.9
+sudo apt install valgrind
+sudo apt install lldb-3.9 # atleast 3.9
 ```
 
 ---
@@ -759,7 +822,8 @@ mv cbatticon ../../bin
 ## [pa-applet](https://github.com/fernandotcl/pa-applet)
 
 ```
-sudo apt install libpulse-dev libnotify-dev
+sudo apt install libpulse-dev
+sudo apt install libnotify-dev
 cd ~/.local/src
 git clone https://github.com/fernandotcl/pa-applet.git
 cd pa-applet
@@ -780,7 +844,14 @@ make install
 ## [peek](https://github.com/phw/peek)
 
 ```
-sudo apt install cmake valac libgtk-3-dev libkeybinder-3.0-dev libxml2-utils gettext txt2man
+sudo apt install cmake
+sudo apt install valac
+sudo apt install libgtk-3-dev
+sudo apt install libkeybinder-3.0-dev
+sudo apt install libxml2-utils
+sudo apt install gettext
+sudo apt install txt2man
+
 cd ~/.local/src
 git clone https://github.com/phw/peek.git
 mkdir peek/build
@@ -812,11 +883,65 @@ Add something like:
 ## Other stuff
 
 ```
-sudo apt install openssh-client rsync rdiff-backup
-sudo apt install gparted policykit-1-gnome gksu
-sudo apt install quodlibet gstreamer1.0-plugins-bad
-sudo apt install thunar thunar-media-tags-plugin thunar-volman gvfs-backends thunar-archive-plugin xarchiver p7zip-full zip xz-utils
-sudo apt install w3m wget curl viewnior mousepad nano tmux gucharmap git keepassx vlc audacity dunst lxtask filezilla inkscape scribus geogebra meld picard mpv ffmpeg pandoc chromium libreoffice-writer libreoffice-calc sqlitebrowser redland-utils raptor2-utils rasqal-utils sigil gnome-calculator ncdu pavucontrol swi-prolog jstest-gtk pcsx2
+sudo apt install openssh-client
+sudo apt install rsync
+sudo apt install rdiff-backup
+
+sudo apt install gparted
+sudo apt install policykit-1-gnome
+sudo apt install gksu
+
+sudo apt install quodlibet
+sudo apt install gstreamer1.0-plugins-bad
+
+sudo apt install thunar
+sudo apt install thunar-media-tags-plugin
+sudo apt install thunar-volman
+sudo apt install gvfs-backends
+sudo apt install thunar-archive-plugin
+sudo apt install xarchiver
+sudo apt install p7zip-full
+sudo apt install zip
+sudo apt install xz-utils
+
+sudo apt install w3m
+sudo apt install wget
+sudo apt install curl
+sudo apt install viewnior
+sudo apt install mousepad
+sudo apt install nano
+sudo apt install tmux
+sudo apt install gucharmap
+sudo apt install git
+sudo apt install keepassx
+sudo apt install vlc
+sudo apt install audacity
+sudo apt install dunst
+sudo apt install lxtask
+sudo apt install filezilla
+sudo apt install inkscape
+sudo apt install scribus
+sudo apt install geogebra
+sudo apt install meld
+sudo apt install picard
+sudo apt install mpv
+sudo apt install ffmpeg
+sudo apt install pandoc
+sudo apt install chromium
+sudo apt install libreoffice-writer
+sudo apt install libreoffice-calc
+sudo apt install sqlite3
+sudo apt install sqlitebrowser
+sudo apt install redland-utils
+sudo apt install raptor2-utils
+sudo apt install rasqal-utils
+sudo apt install sigil
+sudo apt install gnome-calculator
+sudo apt install ncdu
+sudo apt install pavucontrol
+sudo apt install swi-prolog
+sudo apt install jstest-gtk
+sudo apt install pcsx2
 python -m pip install webpage2html
 python3 -m pip install youtube-dl
 cargo install mdbook
