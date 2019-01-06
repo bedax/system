@@ -10,3 +10,5 @@ fi;
 
 xclip -selection clipboard -target image/png -in $screenshot_path
 rm $screenshot_path
+
+notify-send "screenshot copied"

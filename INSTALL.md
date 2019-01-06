@@ -3,7 +3,6 @@
 _These are some notes on how to setup the author's system. These aren't expected to be useful to anyone else._
 
 - Install Debian's minimal version ([the one that includes non-free firmware](https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current/amd64/iso-cd/), if necessary)
-- [Add to the boot arguments](https://wiki.debian.org/systemd#Installing_without_systemd). If this is done, skip the SysVinit section
 - Select nothing at the software selection menu
 - Partition:
     - A swap partition; 1.5 * RAM
@@ -27,6 +26,12 @@ iface lo inet loopback
 auto enp0s20u1
    allow-hotplug enp0s20u1
    iface enp0s20u1 inet dhcp
+      metric 200
+
+# enable botton left usb tethering
+auto enp0s20u2
+   allow-hotplug enp0s20u2
+   iface enp0s20u2 inet dhcp
       metric 200
 
 # enable right usb tethering
@@ -205,7 +210,6 @@ sudo apt install desktop-base
 
 ```
 sudo apt install xinit
-sudo apt install x11-xserver-utils
 sudo apt install xserver-xorg-video-intel
 
 sudo apt install python3-dev
