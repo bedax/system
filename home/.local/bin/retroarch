@@ -1,5 +1,0 @@
-#!/bin/sh
-
-/usr/bin/retroarch --config "$HOME/.config/retroarch/retroarch.cfg" "$@"
-
-#exec flatpak run org.libretro.RetroArch --config "$HOME/.config/retroarch/retroarch.cfg" "$@"

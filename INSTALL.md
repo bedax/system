@@ -1,73 +1,539 @@
-# gnix
+# install
 
-_These are some notes on how to setup the author's system. These aren't expected to be useful to anyone else._
+_These are some notes on how to install the author's system. These aren't expected to be useful to anyone else._
 
 - Install Debian's minimal version ([the one that includes non-free firmware](https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current/amd64/iso-cd/), if necessary)
 - Select nothing at the software selection menu
 - Partition:
     - A swap partition; 1.5 * RAM
-    - A ~12gb ext4 partition for /
-    - A ~512mb ext2 partition for .../backup-source/System
+    - A ~10gb ext4 partition for /
     - An ext3 partition for ~, using the remaining space
 
----
 
-
-## Automated Wifi
-
-Add the following to `/etc/network/interfaces`:
+## update
 
 ```
-# enable the loopback
-auto lo
-iface lo inet loopback
-
-# enable top left usb tethering
-auto enp0s20u1
-   allow-hotplug enp0s20u1
-   iface enp0s20u1 inet dhcp
-      metric 200
-
-# enable botton left usb tethering
-auto enp0s20u2
-   allow-hotplug enp0s20u2
-   iface enp0s20u2 inet dhcp
-      metric 200
-
-# enable right usb tethering
-auto enp0s26u1u2
-   allow-hotplug enp0s26u1u2
-   iface enp0s26u1u2 inet dhcp
-      metric 200
-
-# enable internal wifi
-auto wlp3s0
-   iface wlp3s0 inet dhcp
-      wpa-psk [key]
-      wpa-ssid [ssid]
-      metric 300
-
-# disable internal wifi
-#iface wlp3s0 inet manual
-
-# enable external wifi
-auto wlx74da38d41aaa
-   iface wlx74da38d41aaa inet dhcp
-      wpa-psk [key]
-      wpa-ssid [ssid]
-      metric 400
+apt-get update
+apt-get upgrade
 ```
 
-Then:
+
+## sudo
 
 ```
-sudo service networking restart
+apt install sudo
+adduser [user] sudo
 ```
 
----
+
+## login
+
+```
+su - [user]
+```
 
 
-## SysVinit
+## clone
+
+```
+cd ~
+apt install git
+git clone https://.../system
+```
+
+
+## .profile
+
+```
+. ~/system/home/.profile
+```
+
+
+## mkdirs
+
+```
+mkdir -p ~/.local/src
+mkdir -p ~/.local/bin
+mkdir -p ~/.local/opt
+mkdir ~/temp
+cd ~/temp
+```
+
+
+## apt
+
+```
+sudo apt install [name]
+```
+
+### package manager stuff
+gdebi
+apt-file
+
+### build tools
+build-essential
+pkg-config
+cmake
+
+### python and its package manager
+python
+python-pip
+python3
+python3-pip
+
+### command line utilities
+coreutils
+w3m
+wget
+curl
+nano
+ncdu
+ffmpeg
+sqlite3
+git
+zip
+unzip
+xz-utils
+pandoc
+openssh-client
+shellcheck
+cloc
+
+### graphical applications
+vlc
+firefox-esr
+viewnior
+mousepad
+gucharmap
+keepassx
+audacity
+lxtask
+inkscape
+hexchat
+filezilla
+transmission
+meld
+picard
+chromium
+sqlitebrowser
+sigil
+gnome-calculator
+pavucontrol
+gparted
+geogebra
+
+### quodlibet
+quodlibet
+gstreamer1.0-plugins-bad
+
+### thunar
+thunar
+thunar-media-tags-plugin
+thunar-volman
+gvfs-backends
+policykit-1-gnome
+thunar-archive-plugin
+xarchiver
+p7zip-full
+
+### schedule stuff
+cron
+acpi
+
+### window manager stuff
+xinit
+x11-utils
+xserver-xorg-video-intel
+bspwm
+sxhkd
+dunst
+
+### appearance
+adwaita-qt
+adwaita-qt4
+adwaita-icon-theme
+gnome-themes-standard
+qt4-qtconfig
+
+### backup
+rsync
+rdiff-backup
+
+### for the local scripts
+maim
+xdotool
+xclip
+pm-utils
+pulseaudio-utils
+alsa-utils
+gksu
+
+### for the startup script
+compton
+hsetroot
+redshift
+xbacklight
+pulseaudio
+
+### for st and dmenu
+libx11-dev
+libxinerama-dev
+libxft-dev
+
+
+## pip
+
+```
+python[3] -m pip install --user --upgrade [name]
+```
+
+### pip2
+
+webpage2html
+
+### pip3
+
+youtube-dl
+flake8
+flake8-bugbear
+flake8-docstrings
+
+
+## fish
+
+```
+wget https://download.opensuse.org/repositories/shells:fish:release:2/Debian_9.0/Release.key
+sudo apt-key add - < Release.key
+rm -f Release.key
+
+echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Debian_9.0/ /' | sudo tee /etc/apt/sources.list.d/fish.list
+
+sudo apt update
+sudo apt install fish
+
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+
+fish -c 'fisher fischerling/plugin-wd'
+fish -c 'fisher oh-my-fish/plugin-pbcopy'
+# fish -c 'fisher externl/fish-symnav'
+```
+
+
+## rust
+
+```
+curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y
+rustup install nightly
+
+rustup component add clippy
+rustup component add rustfmt
+
+sudo apt install musl-tools
+rustup target add x86_64-unknown-linux-musl
+
+sudo apt install rust-lldb
+sudo apt install valgrind
+
+cargo install --force evcxr_repl
+cargo install --force cargo-deadlinks
+cargo install --force cargo-watch
+cargo install --force cargo-fuzz
+cargo install --force cargo-bloat
+cargo install --force cargo-profiler
+cargo install --force cargo-audit
+cqrgo install --force --git https://github.com/kbknapp/cargo-outdated
+cargo +nightly install --force cargo-modules
+cargo +nightly install --force cargo-expand
+
+sudo apt install libssl-dev
+cargo install --force cargo-tree
+
+sudo apt install libssl-dev zlib1g-dev
+RUSTFLAGS='--cfg procmacro2_semver_exempt' cargo +nightly install --force cargo-tarpaulin
+
+sudo apt install libssl-dev libssh2-1-dev libgit2-dev
+cargo install --force cargo-update
+
+# cargo install --force cargo-release
+# cargo install --force cargo-cook
+# cargo install --force cargo-make
+# cargo install --force cargo-script
+# cargo install --force cargo-deb
+```
+
+
+## ctags
+
+```
+cd ~/.local/src
+git clone https://github.com/universal-ctags/ctags
+cd ctags
+
+./autogen.sh
+./configure --prefix="$HOME/.local"
+make
+make install
+cd ~/temp
+```
+
+
+## node
+
+```
+curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+sudo apt install nodejs
+npm config set prefix "$HOME/.local"
+npm install -g npm-check
+```
+
+
+## parcel
+
+```
+npm install -g parcel-bundler
+```
+
+
+## neovim
+
+```
+cd ~/.local/src
+git clone "https://github.com/neovim/neovim"
+cd neovim
+
+make CMAKE_INSTALL_PREFIX="$HOME/.local"
+make install
+cd ~/temp
+
+sudo python -m pip install --user --upgrade neovim
+sudo python3 -m pip install --user --upgrade neovim
+```
+
+
+## notify-send.py
+
+```
+sudo python3 -m pip install --user --upgrade notify2
+
+cd ~/.local/src
+git clone "https://github.com/phuhl/notify-send.py"
+cd notify-send.py
+
+python3 setup.py install --force --user
+cd ~/temp
+```
+
+
+## jupyter
+
+```
+sudo apt install libzmq3-dev
+sudo apt install jupyter-core
+sudo apt install jupyter-client
+sudo apt install jupyter-notebook
+sudo apt install jupyter-qtconsole
+
+cargo install --force evcxr_jupyter
+evcxr_jupyter --install
+
+npm install -g ijavascript --zmq-external
+ijsinstall
+```
+
+
+## virtualbox
+
+```
+echo "deb http://ftp.debian.org/debian stretch-backports main contrib" | sudo tee -a "/etc/apt/sources.list"
+
+sudo apt update
+sudo apt install virtualbox
+```
+
+
+## samba
+
+```
+sudo apt install samba
+sudo smbpasswd -a "$USER"
+```
+
+
+## gimp
+
+```
+cd ~/.local/opt
+wget "https://github.com/aferrero2707/gimp-appimage/releases/download/continuous/GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage"
+
+chmod +x GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage
+ln -s ~/.local/opt/GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage ~/.local/bin/gimp
+cd ~/temp
+
+# sudo apt install gimp-help-en
+
+```
+
+
+## retroarch
+
+```
+cd ~/.local/opt
+wget "https://bintray.com/probono/AppImages/download_file?file_path=RetroArch-1.5.0.glibc2.17-x86_64.AppImage" -O "RetroArch-1.5.0.glibc2.17-x86_64.AppImage"
+
+chmod +x RetroArch-1.5.0.glibc2.17-x86_64.AppImage
+ln -s ~/.local/opt/RetroArch-1.5.0.glibc2.17-x86_64.AppImage ~/.local/bin/retroarch
+
+mkdir -p ~/.config/retroarch/assets
+mkdir -p ~/.config/retroarch/cores
+mkdir -p ~/.config/retroarch/system
+
+cd ~/.config/retroarch/assets
+wget "http://buildbot.libretro.com/assets/frontend/assets.zip"
+unzip assets.zip
+rm -f assets.zip
+
+# for each core:
+cd ~/.config/retroarch/cores/
+wget "https://buildbot.libretro.com/nightly/linux/x86_64/latest/[name].zip"
+unzip "[name].zip"
+rm -f "[name].zip"
+
+git clone "https://github.com/hrydgard/ppsspp"
+mv ppsspp/assets ~/.config/retroarch/system/PPSSPP
+rm -rf ppsspp
+cd ~/temp
+```
+
+### cores
+
+- `mednafen_psx_libretro.so`
+- `snes9x_libretro.so`
+- `ppsspp_libretro.so`
+
+
+## wine
+
+```
+sudo dpkg --add-architecture i386
+
+wget "https://dl.winehq.org/wine-builds/winehq.key"
+sudo apt-key add winehq.key
+rm -f winehq.key
+
+echo "deb https://dl.winehq.org/wine-builds/debian/ stable main" | sudo tee -a "/etc/apt/sources.list"
+
+sudo apt-get update
+sudo apt-get install --install-recommends winehq-stable
+```
+
+
+## project64
+
+```
+wget http://www.emulator-zone.com/download.php/emulators/n64/project64/project64_1.6.exe
+wine project64_1.6.exe
+rm -f project64_1.6.exe
+```
+
+
+## sources
+
+```
+wget [link]
+tar xf [archive]
+rm -f [archive]
+
+mv [extracted] ~/.local/src/
+```
+
+### links
+
+- `https://dl.suckless.org/st/st-0.7.tar.gz`
+- `https://dl.suckless.org/st/st-0.8.1.tar.gz`
+- `https://dl.suckless.org/tools/dmenu-4.8.tar.gz`
+- `https://netcologne.dl.sourceforge.net/project/rsyncrypto/rsyncrypto/1.14/rsyncrypto-1.14.tar.bz2`
+
+
+## rsyncrypto
+
+```
+cd ~/.local/src/rsyncrypto-1.14
+connect-dots --without-suckless --without-fonts --without-root
+sudo apt install libargtable2-dev
+
+./configure --prefix="$HOME/.local"
+make
+make install
+cd ~/temp
+```
+
+
+## binaries
+
+```
+wget [link]
+tar xf [archive]
+rm -f [archive]
+mv [extracted] ~/.local/opt/[opt name]
+ln -s ~/.local/opt/[opt name]/[opt bin name] ~/.local/bin/[bin name]
+```
+
+### firefox-dev
+
+link: `https://download-installer.cdn.mozilla.net/pub/devedition/releases/66.0b2/linux-x86_64/en-GB/firefox-66.0b2.tar.bz2`
+opt name: `firefox-dev`
+opt bin name: `firefox`
+bin name: `firefox-dev`
+
+### thunderbird
+
+link: `https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/60.4.0/linux-x86_64/en-GB/thunderbird-60.4.0.tar.bz2`
+opt name: `thunderbird`
+opt bin name: `thunderbird`
+bin name: `thunderbird`
+
+### blender
+
+before: `sudo apt install libglu1-mesa`
+
+link: `https://mirrors.dotsrc.org/blender/blender-release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2`
+opt name: `blender-2.79b`
+opt bin name: `blender`
+bin name: `blender`
+
+### protege
+
+link: `https://github.com/protegeproject/protege-distribution/releases/download/v5.5.0-beta-8/Protege-5.5.0-beta-8-linux.tar.gz`
+opt name: `protege-5.5.0-beta-8`
+opt bin name: `run.sh`
+bin name: `protege`
+
+### openmw
+
+link: `https://downloads.openmw.org/linux/other/openmw-0.44.0-Linux-64Bit.tar.gz`
+opt name: `openmw-0.44.0`
+opt bin name: `openmw-launcher`
+bin name: `openmw-launcher`
+
+after: `ln -s ~/.local/opt/[opt name]/openmw-wizard ~/.local/bin/openmw-wizard`
+
+
+## debs
+
+```
+wget [link]
+sudo gdebi [downloaded.deb]
+rm -f [downloaded.deb]
+```
+
+### links
+
+- `https://datapacket.dl.sourceforge.net/project/djv/djv-stable/1.2.5/DJV_1.2.5_amd64.deb`
+- `https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb`
+- `https://github.com/sharkdp/fd/releases/download/v7.2.0/fd_7.2.0_amd64.deb`
+
+
+## sysvinit
 
 Add this to `/etc/apt/sources.list.d/nosystemd.list`, changing the reference to `stretch` if necessary:
 
@@ -104,475 +570,55 @@ cp /usr/share/sysvinit/inittab /etc/inittab
 apt purge systemd*
 ```
 
----
 
-
-## Add sudo
-
-```
-su
-apt install sudo
-adduser [username] sudo
-/sbin/shutdown -r now
-```
-
----
-
-
-## Let others shutdown
-
-Run:
+## sudoers
 
 ```
 sudo addgroup demi
-sudo adduser [name] demi
+sudo adduser [user] demi
 ```
 
-Then run `sudo visudo` and add:
+Run `visudo` and add:
 
 ```
-%demi ALL=NOPASSWD:/sbin/shutdown,/usr/sbin/pm-suspend,/usr/sbin/pm-suspend-hybrid,/usr/sbin/pm-hibernate
+%demi ALL=NOPASSWD:/sbin/shutdown
+%demi ALL=NOPASSWD:/usr/sbin/pm-suspend
+%demi ALL=NOPASSWD:/usr/sbin/pm-suspend-hybrid
+%demi ALL=NOPASSWD:/usr/sbin/pm-hibernate
 ```
 
----
 
+## crontab
 
-## Connect the dots
+Run `crontab -e` and add:
 
 ```
-cd [this repository]/home/.local/bin
-sudo ./link [this repository's full path]/usr/ /usr/
-./link [this repository's full path]/home/ /home/[name]/
-./link [this repository's full path]/fonts/ /home/[name]/.fonts/
-fc-cache -fv
+*/3 * * * *  . "$HOME/.profile"; DISPLAY=:0  notify-if-battery-low 12 6
+# 0 */2 * * *  . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" backup
 ```
 
----
 
+## connect
 
-## Set-up the environment
-
-```
-sudo apt install coreutils
-
-sudo apt install build-essential
-sudo apt install make
-sudo apt install cmake
-sudo apt install autoconf
-sudo apt install automake
-sudo apt install pkg-config
-sudo apt install libtool-bin
-
-sudo apt install python
-sudo apt install python-pip
-sudo apt install python3
-sudo apt install python3-pip
-
-sudo apt install gdebi
-sudo apt install apt-file
-sudo apt install flatpak
-
-sudo apt install pulseaudio
-```
-
----
-
-
-## Samba
-
-```
-sudo apt install samba
-sudo smbpasswd -a [username]
-```
-
----
-
-
-## The window manager
-
-Install the dependencies:
-
-```
-# startup stuff
-sudo apt install compton
-sudo apt install redshift
-sudo apt install hsetroot
-sudo apt install xbacklight
-
-sudo apt install maim
-sudo apt install xdotool
-sudo apt install xclip
-sudo apt install pm-utils
-sudo apt install pulseaudio-utils
-sudo apt install alsa-utils
-sudo apt install desktop-base
-```
-
-```
-sudo apt install xinit
-sudo apt install xserver-xorg-video-intel
-
-sudo apt install python3-dev
-sudo apt install python3-setuptools
-
-sudo apt install libxcb-render0-dev
-sudo apt install libffi-dev
-sudo apt install libcairo2
-sudo apt install libpangocairo-1.0-0
-sudo apt install libxcb-cursor-dev
-
-sudo python3 -m pip install xcffib
-sudo python3 -m pip install cairocffi # this needs to be after xcffib
-```
-
-Then install qtile:
-
-```
-sudo python3 -m pip install qtile
-```
-
-Or if installing from source:
-
-```
-cd ~/.local/src/qtile-[version]/
-python3 ./setup.py build
-sudo python3 ./setup.py install
-```
-
-Link `/root/.config/qtile` to `/home/[name]/.config/qtile` in case it needs debugging with `sudo ~/.config/qtile/start_debugging.sh`.
-
-### Low battery notifications
-
-Run:
-
-```
-sudo apt install acpi
-sudo apt install libnotify-bin
-```
-
-Then run `crontab -e` and add:
-
-`*/3 * * * * DISPLAY=:0 /home/[name]/.config/qtile/notify-battery-low.py 12`
-
-### Set-up the backlight
-
-```
-sudo apt install xbacklight
-```
-
-If `xbacklight -set 50` fails, add the following to `/etc/X11/xorg.conf`:
-
-```
-Section "Device"
-   Identifier  "Card0"
-   Driver      "intel"
-   Option      "Backlight"  "intel_backlight"
-EndSection
-```
-
----
-
-
-## The login manager
-
-```
-sudo apt install lightdm
-sudo apt install lightdm-gtk-greeter
-sudo apt install lightdm-gtk-greeter-settings
-lightdm-gtk-greeter-settings
-```
-
----
-
-
-## [st](https://st.suckless.org/) and [dmenu](https://tools.suckless.org/dmenu/)
-
-First, run:
-
-```
-sudo apt install libx11-dev
-sudo apt install libxinerama-dev
-sudo apt install libxft-dev
-```
-
-Then run `make` and `sudo make install` for both, making sure to use the connected dots from above, and the correct versions.
-
----
-
-
-## Configure the look
-
-```
-sudo apt install adwaita-qt4
-sudo apt install adwaita-qt
-sudo apt install adwaita-icon-theme
-sudo apt install gnome-themes-standard
-sudo apt install qt4-qtconfig
-
-qtconfig-qt4
-```
-
----
-
-
-## [Fish](https://fishshell.com/)
-
-```
-wget -nv https://download.opensuse.org/repositories/shells:fish:release:2/Debian_9.0/Release.key -O Release.key
-sudo apt-key add - < Release.key
-rm Release.key
-sudo echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Debian_9.0/ /' > /etc/apt/sources.list.d/fish.list
-sudo apt update
-sudo apt install fish
-```
-
-```
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-fisher fischerling/plugin-wd
-fisher oh-my-fish/plugin-pbcopy
-fisher externl/fish-symnav
-# if any plugins rely on oh-my-fish:
-#fisher tuvistavie/oh-my-fish-core
-```
-
-```
-fish_config
-```
-
-Set the colour to Mono Smoke,
-
----
-
-
-## [ctags](https://github.com/universal-ctags/ctags)
-
-```
-cd ~/.local/src
-git clone https://github.com/universal-ctags/ctags.git
-cd ctags
-./autogen.sh
-./configure
-make
-sudo make install
-```
-
----
-
-
-## Emscripten
-
-```
-cd ~/.local/opt
-git clone https://github.com/juj/emsdk.git
-cd emsdk
-
-# until https://github.com/rust-lang/rust/issues/51856 is fixed:
-   ./emsdk install sdk-1.38.0-64bit
-   ./emsdk activate sdk-1.38.0-64bit
-# else
-   ./emsdk install latest
-   ./emsdk activate latest
-
-source ./emsdk_env.sh # will need to ctrl+d first if in fish
-```
-
-Make sure the paths in `~/.profile` are in line with the content of `./emsdk_set_env.sh` produced by `emsdk construct env`.
-
----
-
-
-## Rust
-
-```
-curl https://sh.rustup.rs -sSf | sh # don't modify the path as it's already done
-rustup install nightly
-```
-
-```
-sudo apt install musl-tools
-rustup target add  x86_64-unknown-linux-musl
-```
-
-```
-rustup target add asmjs-unknown-emscripten
-rustup target add asmjs-unknown-emscripten --toolchain nightly
-```
-
-```
-rustup component add clippy
-rustup component add rustfmt
-```
-
-```
-cargo install evcxr_repl
-```
-
-```
-cargo install cargo-check
-cargo install cargo-outdated
-cargo install cargo-release
-cargo install cargo-deadlinks
-cargo install cargo-modules
-cargo install cargo-watch
-cargo install cargo-update
-cargo install cargo-count
-cargo install cargo-fuzz
-cargo install cargo-bloat
-cargo install cargo-audit
-cargo install cargo-cook
-cargo install cargo-make
-cargo install cargo-script
-cargo +nightly install cargo-expand
-```
-
-```
-sudo apt-get install libssl-dev pkg-config cmake zlib1g-dev
-RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo +nightly install cargo-tarpaulin
-```
-
-```
-sudo apt-get install valgrind
-cargo install cargo-profiler
-```
-
-```
-sudo apt install libssl-dev
-cargo install cargo-tree
-```
-
-```
-sudo apt install valgrind
-sudo apt install lldb-3.9 # atleast 3.9
-```
-
----
-
-
-## Node.js
-
-```
-curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-sudo apt install -y nodejs
-```
-
----
-
-
-## [Neovim](https://github.com/neovim/neovim)
-
-Install Node.js/npm first. Connect to the internet and run the following for [vim-plug](https://github.com/junegunn/vim-plug):
-
-```
-sudo apt install curl
-```
-
-Then:
-
-```
-make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
-sudo python -m pip install neovim
-sudo python3 -m pip install neovim
-```
-
-Then for nvim-completion-manager:
-
-```
-cargo install racer
-rustup component add rust-src
-racer complete std::io::B # a test; should return things beginning with B
 ```
-
-```
-sudo python3 -m pip install jedi
-```
-
-After the first :PlugInstall, this may still be needed (but shouldn't be):
-
-```
-cd ~/.local/share/nvim/plugged/nvim-cm-tern/
-npm install
-```
-
----
-
-
-## Linters
-
-### Rust
-
-```
-cargo +nightly install clippy
-```
-
-### RDF
-
-```
-sudo apt install raptor2-utils
-```
-
-### HTML
-
-```
-npm install -g htmlhint
-```
-
-### Markdown
-
+connect-dots --with-interfaces
 ```
-npm install -g markdownlint-cli
-```
-
-### (S)CSS
-
-```
-npm install -g stylelint stylelint-config-recommended
-```
-
-### JavaScript
-
-```
-npm install -g eslint
-```
-
-### JSON
-
-```
-npm install -g jsonlint
-```
-
-### Python
-
-```
-python3 -m pip install flake8 flake8-docstrings
-```
-
-### Vim
 
-```
-python3 -m pip install vim-vint
-```
 
-### Shell
+## restart
 
 ```
-sudo apt install shellcheck
+rmdir ~/temp
+sudo shutdown -r now
 ```
-
-### English
 
-Use [LanguageTool](https://github.com/languagetool-org/languagetool).
 
----
+## setup
 
+### firefox
 
-## Firefox
-
-```
-sudo apt install firefox-esr
-```
+Install the following addons for firefox and firefox-dev (skip epubreader for firefox-dev):
 
-### Add-ons:
 - EPUBReader
 - uBlock Origin
     - the default lists
@@ -581,374 +627,50 @@ sudo apt install firefox-esr
 - HTTPS Everywhere
 - Privacy Badger
 - Open Image in New Tab (bedstash)
+- Maximizer for YouTube
 - Vue.js devtools
 
----
 
-
-## [Firefox Developer Edition](https://www.mozilla.org/en-GB/firefox/developer/)
-
-Download to `/opt` and run:
-
-```
-sudo chown -R [user_name]:[user_name] /opt/firefox-dev/
-sudo ln -s /opt/firefox-dev/firefox /usr/local/bin/firefox-dev
-```
-
-### Install extensions
-
-The same ones as Firefox, minus EPUBReader
-
----
-
-
-## [Thunderbird](https://www.mozilla.org/en-US/thunderbird/all/)
-
-Install this the same way as Firefox Developer Edition.
-
-### Extensions
+### thunderbird
 
 - Lightning
 - SOGo Connector
 - G-Hub Lite
 
-### Connect the email accounts, calendars, and address books
+#### connect the email accounts, calendars, and address books
 
 See https://docs.iredmail.org/thunderbird.sogo.html
 
----
 
+### blender animation nodes
 
-## Gimp
-
-```
-sudo flatpak install https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref
-sudo apt install gimp-help-en
-```
-
----
-
-
-## Blender
-
-First run:
-
-```
-sudo apt install libglu1-mesa
-```
-
-Then download blender to `/opt/blender` and link the binary to `/usr/local/bin/blender`.
-
-### [Animation Nodes](https://github.com/JacquesLucke/animation_nodes)
-
-- Download from: https://github.com/JacquesLucke/animation_nodes/releases
+- Download from: `https://github.com/JacquesLucke/animation_nodes/releases`
 - Open Blender
 - Go to `User Preferences > Add ons`
 - Click `Install from File` and choose the downloaded file
 - Activate the add-on
 
----
 
-
-## VirtualBox
-
-Add the following to `/etc/apt/sources.list`:
-
-```
-deb http://ftp.debian.org/debian stretch-backports main contrib
-```
-
-Then:
-
-```
-sudo apt update
-sudo apt install virtualbox
-```
-
----
-
-
-## [djv](http://djv.sourceforge.net/)
-
-```
-sudo gdebi downloaded.deb
-```
+### djv
 
 `djv_view` will likely complain about not being able to find `libpng12.so`, in which case manually [get it from jessie](http://ftp.uk.debian.org/debian/pool/main/libp/libpng/libpng12-0_1.2.50-2+deb8u3_amd64.deb) and install it with gdebi.
 
----
 
-
-## [ripgrep](https://github.com/BurntSushi/ripgrep/releases) and [fd](https://github.com/sharkdp/fd/releases)
-
-```
-sudo gdebi downloaded.deb
-```
-
----
-
-
-## [Protege](https://protege.stanford.edu/), [OpenMW](https://downloads.openmw.org/linux/other/), and [Dwarf Fortress](http://www.bay12games.com/dwarves/)
-
-Download to `/opt`, extract, link to from `/usr/local/bin`.
-
-### OpenMW extensions:
+### openmw
 
 - [Better Dialogue Font](https://www.nexusmods.com/morrowind/mods/36873)
 - [Westly's Pluginless Head and Hair Replacer](http://download.fliggerty.com/download-127-874)
 - [Graphic Herbalism](https://www.nexusmods.com/morrowind/mods/43140)
 - [Others](http://en.uesp.net/wiki/Morrowind:Official_Add-Ons)
 
----
 
-
-## Wine
-
-```
-sudo dpkg --add-architecture i386
-wget -nc https://dl.winehq.org/wine-builds/Release.key
-sudo apt-key add Release.key
-rm Release.key
-```
-
-Add this to `/etc/apt/sources.list`:
-
-```
-deb https://dl.winehq.org/wine-builds/debian/ stable main
-```
-
-```
-sudo apt-get update
-sudo apt-get install --install-recommends winehq-stable
-```
-
----
-
-
-## Retroarch
-
-```
-sudo apt install retroarch
-```
-
-If it's buggy, like on debian stretch the enter key doesn't work, then download and install the following from a higher version (the order is important):
-
-```
-sudo gdebi libretro-core-info...
-sudo gdebi retroarch-assets...
-sudo gdebi retroarch...
-```
-
-If the icons are black, download the [`assets.zip`](http://buildbot.libretro.com/assets/frontend/assets.zip) and extract them to `~/.config/retroarch/assets/`.
-
-Update everything in the Online Updater and download thumbnails.
-
-### [Download cores](https://buildbot.libretro.com/nightly/linux/x86_64/latest/)
-
-Extract these to `~/.config/retroarch/cores/`.
-
-- `mednafen_psx_libretro.so.zip`
-- `snes9x_libretro.so.zip`
-- `ppsspp_libretro.so.zip`
-
-```
-git clone https://github.com/hrydgard/ppsspp
-mv ppsspp/assets ~/.config/retroarch/system/PPSSPP
-rm -rf ppsspp
-```
-
----
-
-
-## Project64
-
-```
-wget http://www.emulator-zone.com/download.php/emulators/n64/project64/project64_1.6.exe
-wine project64_1.6.exe
-rm project64_1.6.exe
-```
+### project64
 
 Use the N-Rage input plugin. If the gamepad has two versions (`event` and `js`) use `event`. Disable `raw data`.
 
----
 
+## todo
 
-## [Rsyncrypto 1.14](https://rsyncrypto.lingnu.com/index.php/Home_Page)
-
-```
-sudo apt install libargtable2-dev
-cd ~/.local/src
-wget ...
-tar xf rsyncrypto...
-cd rsyncrypto...
-```
-
-Apply the following patch [from here](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=884721):
-
-```
---- rsyncrypto-1.14.orig/autofd.h
-+++ rsyncrypto-1.14/autofd.h
-@@ -216,7 +216,7 @@ public:
-     // unless it failed with ENOENT - the file already doesn't exist
-     static int unlink(const char *pathname)
-     {
--        bool success=unlink( pathname )==0;
-+        bool success=::unlink( pathname )==0;
-         if( !success && errno!=ENOENT )
-             throw rscerror("Erasing file", errno, pathname );
-```
-
-And then run the following commands:
-
-```
-./configure --prefix=/usr/local
-make
-sudo make install
-```
-
----
-
-
-## [cbatticon](https://github.com/valr/cbatticon)
-
-```
-sudo apt install libnotify-dev
-cd ~/.local/src
-git clone https://github.com/valr/cbatticon.git
-cd cbatticon
-make
-mv cbatticon ../../bin
-```
-
----
-
-
-## [pa-applet](https://github.com/fernandotcl/pa-applet)
-
-```
-sudo apt install libpulse-dev
-sudo apt install libnotify-dev
-cd ~/.local/src
-git clone https://github.com/fernandotcl/pa-applet.git
-cd pa-applet
-./autogen.sh
-```
-
-Remove `-Werror` from `./src/Makefile.am`.
-
-```
-./configure --prefix=/home/[name]/.local
-make
-make install
-```
-
----
-
-
-## [peek](https://github.com/phw/peek)
-
-```
-sudo apt install cmake
-sudo apt install valac
-sudo apt install libgtk-3-dev
-sudo apt install libkeybinder-3.0-dev
-sudo apt install libxml2-utils
-sudo apt install gettext
-sudo apt install txt2man
-
-cd ~/.local/src
-git clone https://github.com/phw/peek.git
-mkdir peek/build
-cd peek/build
-cmake -DCMAKE_INSTALL_PREFIX=/usr -DGSETTINGS_COMPILE=OFF .. # doesn't seem to like being in /usr/local for some reason
-make package
-sudo gdebi [made package name].deb
-```
-
----
-
-
-## Schedule the backups
-
-```
-sudo apt install flock
-crontab -e
-```
-
-Add something like:
-
-```
-0 */2 * * *  DISPLAY=:0 PATH=$PATH:/usr/local/bin flock --nonblock /path/to/backup.lock /path/to/backup.sh
-```
-
----
-
-
-## Other stuff
-
-```
-sudo apt install openssh-client
-sudo apt install rsync
-sudo apt install rdiff-backup
-
-sudo apt install gparted
-sudo apt install policykit-1-gnome
-sudo apt install gksu
-
-sudo apt install quodlibet
-sudo apt install gstreamer1.0-plugins-bad
-
-sudo apt install thunar
-sudo apt install thunar-media-tags-plugin
-sudo apt install thunar-volman
-sudo apt install gvfs-backends
-sudo apt install thunar-archive-plugin
-sudo apt install xarchiver
-sudo apt install p7zip-full
-sudo apt install zip
-sudo apt install xz-utils
-
-sudo apt install w3m
-sudo apt install wget
-sudo apt install curl
-sudo apt install viewnior
-sudo apt install mousepad
-sudo apt install nano
-sudo apt install tmux
-sudo apt install gucharmap
-sudo apt install git
-sudo apt install keepassx
-sudo apt install vlc
-sudo apt install audacity
-sudo apt install dunst
-sudo apt install lxtask
-sudo apt install filezilla
-sudo apt install inkscape
-sudo apt install scribus
-sudo apt install geogebra
-sudo apt install meld
-sudo apt install picard
-sudo apt install mpv
-sudo apt install ffmpeg
-sudo apt install pandoc
-sudo apt install chromium
-sudo apt install libreoffice-writer
-sudo apt install libreoffice-calc
-sudo apt install sqlite3
-sudo apt install sqlitebrowser
-sudo apt install redland-utils
-sudo apt install raptor2-utils
-sudo apt install rasqal-utils
-sudo apt install sigil
-sudo apt install gnome-calculator
-sudo apt install ncdu
-sudo apt install pavucontrol
-sudo apt install swi-prolog
-sudo apt install jstest-gtk
-sudo apt install pcsx2
-python -m pip install webpage2html
-python3 -m pip install youtube-dl
-cargo install mdbook
-```
-
-And reconnect the dots, in case the installations disconnected any.
+- .mozilla/firefox/user.js
+- autostart; `http://forums.debian.net/viewtopic.php?f=16&t=29333`
+- geany

@@ -1,0 +1,30 @@
+#!/bin/sh
+
+
+if_not_running() {
+   if ! [ "$(pgrep --full "$*")" ]; then
+      "$@" &
+   fi
+}
+
+
+# set the brightness
+xbacklight -set 40
+
+# set background colour
+hsetroot -solid "$BACKGROUND_COLOUR"
+
+# start the compositor
+if_not_running compton --shadow-exclude argb
+
+# start the blue light filter
+if_not_running redshift
+
+# start the audio server
+if_not_running start-pulseaudio-x11
+
+# start the jupyter notebook server
+if_not_running jupyter notebook --no-browser --notebook-dir="$XDG_DOCUMENTS_DIR"
+
+# for thunar's mounter; from 'policykit-1-gnome' package
+if_not_running /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1

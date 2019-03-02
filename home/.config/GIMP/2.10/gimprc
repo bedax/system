@@ -1,0 +1,69 @@
+# GIMP gimprc
+# 
+# This is your personal gimprc file.  Any variable defined in this file takes
+# precedence over the value defined in the system-wide gimprc:
+# /app/etc/gimp/2.0/gimprc
+# Most values can be set within GIMP by changing some options in the
+# Preferences dialog.
+
+(import-raw-plug-in "${gimp_plug_in_dir}/plug-ins/file-raw-placeholder")
+(monitor-xresolution 124.000000)
+(monitor-yresolution 122.000000)
+(default-view
+    (show-menubar yes)
+    (show-statusbar yes)
+    (show-rulers no)
+    (show-scrollbars yes)
+    (show-selection yes)
+    (show-layer-boundary yes)
+    (show-guides yes)
+    (show-grid no)
+    (show-sample-points yes)
+    (snap-to-guides yes)
+    (snap-to-grid no)
+    (snap-to-canvas no)
+    (snap-to-path no)
+    (padding-mode default)
+    (padding-color (color-rgb 1.000000 1.000000 1.000000)))
+(default-fullscreen-view
+    (show-menubar yes)
+    (show-statusbar yes)
+    (show-rulers no)
+    (show-scrollbars yes)
+    (show-selection yes)
+    (show-layer-boundary yes)
+    (show-guides yes)
+    (show-grid no)
+    (show-sample-points yes)
+    (snap-to-guides yes)
+    (snap-to-grid no)
+    (snap-to-canvas no)
+    (snap-to-path no)
+    (padding-mode default)
+    (padding-color (color-rgb 1.000000 1.000000 1.000000)))
+(icon-size small)
+(user-manual-online yes)
+(layer-new-fill-type white)
+(layer-merge-active-group-only no)
+(layer-merge-discard-invisible yes)
+(selection-grow-radius 2.000000)
+(selection-border-radius 3.000000)
+(selection-border-style hard)
+(fill-options
+    (style solid)
+    (antialias yes))
+(stroke-options
+    (style solid)
+    (antialias yes)
+    (method line)
+    (width 6.000000)
+    (unit pixels)
+    (cap-style butt)
+    (join-style miter)
+    (miter-limit 10.000000)
+    (dash-offset 0.000000)
+    (dash-info 0)
+    (emulate-brush-dynamics no))
+
+
+# end of gimprc

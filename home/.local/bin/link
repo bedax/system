@@ -1,9 +1,0 @@
-#!/bin/sh
-
-cp \
-    --symbolic-link \
-    --recursive \
-    --no-dereference \
-    --force \
-    --verbose \
-    $1/. $2

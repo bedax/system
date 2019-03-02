@@ -15,11 +15,11 @@ function fish_prompt
 end
 
 
-# Turn off the greeting
-#set fish_greeting
+# turn off the greeting
+set fish_greeting
 
 
-# Fix the del key
+# fix the del key
 ## from: https://github.com/fish-shell/fish-shell/issues/2139#issuecomment-305506138
 if status is-interactive
     switch $TERM

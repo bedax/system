@@ -1,3 +1,0 @@
-{
-  "extends": "~/.npm-global/lib/node_modules/stylelint-config-recommended"
-}

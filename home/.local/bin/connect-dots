@@ -1,0 +1,139 @@
+#!/usr/bin/env python3
+
+import os
+import subprocess
+import sys
+
+
+
+def fail(message):
+   print("error: {}".format(message), file=sys.stderr)
+   sys.exit(1)
+
+
+def command(line, check=True, capture_stdout=True, directory=None):
+   stdout = subprocess.PIPE if capture_stdout else None
+   process = subprocess.run(line, stdout=stdout, cwd=directory)
+
+   if capture_stdout:
+      output = process.stdout.strip().decode("utf-8")
+   else:
+      output = None
+
+   if check and process.returncode != 0:
+      fail("the following command failed: {line} [{cpde}]".format(
+         code=process.returncode,
+         line=line
+      ))
+
+   return output
+
+
+def copy_fonts():
+   source = os.path.join(os.environ["SYSTEM"], "fonts")
+   destination = os.path.expanduser("~/.fonts")
+
+   command(["rm", "-rf", destination])
+   command(["cp", "-r", source, destination])
+   command(["fc-cache", "-f"])
+
+
+def render_template(path, **kwargs):
+   source_path = os.path.join(os.environ["SYSTEM"], path.lstrip("/"))
+   destination_path = os.path.splitext(source_path)[0]
+
+   with open(source_path, "r") as f:
+      source_content = f.read()
+
+   destination_content = source_content.format(**os.environ, **kwargs)
+
+   with open(destination_path, "w") as f:
+      f.write(destination_content)
+
+
+def render_dots():
+   render_template("/home/.gtkrc-2.0.template")
+   render_template("/home/.config/Trolltech.conf.template")
+   render_template("/home/.config/dunst/dunstrc.template")
+   render_template("/home/.local/src/st-0.7/config.h.template")
+   render_template("/home/.local/src/st-0.8.1/config.h.template")
+   render_template("/home/.local/src/dmenu-4.8/config.h.template")
+
+
+def render_interfaces():
+   wifi_name = input("enter the wifi name: ")
+   wifi_password = input("enter the wifi password: ")
+
+   render_template(
+      "/etc/network/interfaces.template",
+      WIFI_PASSWORD=wifi_password,
+      WIFI_NAME=wifi_name
+   )
+
+
+def restart_networking():
+   command(
+      ["sudo", "service", "networking", "restart"],
+      capture_stdout=False,
+      check=False
+   )
+
+
+def link_dots(relative_path, destination, sudo=False):
+   source = os.path.join(os.environ["SYSTEM"], relative_path.lstrip("/"))
+
+   command_args = [
+      "cp",
+      "--symbolic-link",
+      "--recursive",
+      "--no-dereference",
+      "--force",
+      os.path.join(source, "."),
+      destination.rstrip("/")
+   ]
+
+   if sudo:
+      command_args.insert(0, "sudo")
+
+   command(command_args)
+
+
+def compile_suckless():
+   make_command = ["make", "clean", "install"]
+   source_path = os.path.expanduser("~/.local/src")
+
+   command(make_command, directory=os.path.join(source_path, "st-0.7"))
+   command(make_command, directory=os.path.join(source_path, "st-0.8.1"))
+   command(make_command, directory=os.path.join(source_path, "dmenu-4.8"))
+
+
+def run():
+   argv = sys.argv[1:]
+   with_interfaces = "--with-interfaces" in argv
+   without_suckless = "--without-suckless" in argv
+   without_fonts = "--without-fonts" in argv
+   without_root = "--without-root" in argv
+
+   render_dots()
+
+   if with_interfaces:
+      render_interfaces()
+
+   if not without_root:
+      link_dots("/etc/", "/etc/", sudo=True)
+
+   link_dots("/home/", os.path.expanduser("~"))
+
+   if not without_fonts:
+      copy_fonts()
+
+   if not without_suckless:
+      compile_suckless()
+
+   if with_interfaces and not without_root:
+      restart_networking()
+
+
+
+if __name__ == "__main__":
+   run()

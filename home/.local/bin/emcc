@@ -1,5 +1,0 @@
-#!/bin/sh
-
-~/.local/opt/emsdk/emscripten/1.38.0/emcc "-s" "LEGACY_VM_SUPPORT=1" "$@"
-
-#~/.local/opt/emsdk/emscripten/1.38.0/emcc "$@"

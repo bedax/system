@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# from: https://unix.stackexchange.com/a/107039
-dpkg --list | grep "^rc" | cut -d " " -f 3 | xargs sudo dpkg --purge

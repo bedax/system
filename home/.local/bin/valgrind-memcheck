@@ -1,3 +1,0 @@
-#!/bin/sh
-
-valgrind --tool=memcheck --redzone-size=128 "$@"
