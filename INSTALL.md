@@ -351,14 +351,6 @@ sudo apt install virtualbox
 ```
 
 
-## samba
-
-```
-sudo apt install samba
-sudo smbpasswd -a "$USER"
-```
-
-
 ## gimp
 
 ```
@@ -372,43 +364,6 @@ cd ~/temp
 # sudo apt install gimp-help-en
 
 ```
-
-
-## retroarch
-
-```
-cd ~/.local/opt
-wget "https://bintray.com/probono/AppImages/download_file?file_path=RetroArch-1.5.0.glibc2.17-x86_64.AppImage" -O "RetroArch-1.5.0.glibc2.17-x86_64.AppImage"
-
-chmod +x RetroArch-1.5.0.glibc2.17-x86_64.AppImage
-ln -s ~/.local/opt/RetroArch-1.5.0.glibc2.17-x86_64.AppImage ~/.local/bin/retroarch
-
-mkdir -p ~/.config/retroarch/assets
-mkdir -p ~/.config/retroarch/cores
-mkdir -p ~/.config/retroarch/system
-
-cd ~/.config/retroarch/assets
-wget "http://buildbot.libretro.com/assets/frontend/assets.zip"
-unzip assets.zip
-rm -f assets.zip
-
-# for each core:
-cd ~/.config/retroarch/cores/
-wget "https://buildbot.libretro.com/nightly/linux/x86_64/latest/[name].zip"
-unzip "[name].zip"
-rm -f "[name].zip"
-
-git clone "https://github.com/hrydgard/ppsspp"
-mv ppsspp/assets ~/.config/retroarch/system/PPSSPP
-rm -rf ppsspp
-cd ~/temp
-```
-
-### cores
-
-- `mednafen_psx_libretro.so`
-- `snes9x_libretro.so`
-- `ppsspp_libretro.so`
 
 
 ## wine
@@ -485,13 +440,6 @@ opt name: `firefox-dev`
 opt bin name: `firefox`
 bin name: `firefox-dev`
 
-### thunderbird
-
-link: `https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/60.4.0/linux-x86_64/en-GB/thunderbird-60.4.0.tar.bz2`
-opt name: `thunderbird`
-opt bin name: `thunderbird`
-bin name: `thunderbird`
-
 ### blender
 
 before: `sudo apt install libglu1-mesa`
@@ -500,13 +448,6 @@ link: `https://mirrors.dotsrc.org/blender/blender-release/Blender2.79/blender-2.
 opt name: `blender-2.79b`
 opt bin name: `blender`
 bin name: `blender`
-
-### protege
-
-link: `https://github.com/protegeproject/protege-distribution/releases/download/v5.5.0-beta-8/Protege-5.5.0-beta-8-linux.tar.gz`
-opt name: `protege-5.5.0-beta-8`
-opt bin name: `run.sh`
-bin name: `protege`
 
 ### openmw
 
@@ -531,44 +472,6 @@ rm -f [downloaded.deb]
 - `https://datapacket.dl.sourceforge.net/project/djv/djv-stable/1.2.5/DJV_1.2.5_amd64.deb`
 - `https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb`
 - `https://github.com/sharkdp/fd/releases/download/v7.2.0/fd_7.2.0_amd64.deb`
-
-
-## sysvinit
-
-Add this to `/etc/apt/sources.list.d/nosystemd.list`, changing the reference to `stretch` if necessary:
-
-```
-deb http://angband.pl/debian/ nosystemd-stretch main
-```
-
-Add this to `/etc/apt/preferences.d/nosystemd`:
-
-```
-Package: *
-Pin: origin angband.pl
-Pin-Priority: 1100
-
-Package: libsystemd0
-Pin: version *
-Pin-Priority: 500
-
-Package: *systemd*
-Pin: release *
-Pin-Priority: -1
-```
-
-Then run:
-
-```
-su
-apt update
-apt upgrade
-apt install kilobyte-archive-keyring
-apt install sysvinit-core sysvinit-utils
-cp /usr/share/sysvinit/inittab /etc/inittab
-/sbin/shutdown -r now
-apt purge systemd*
-```
 
 
 ## sudoers
@@ -629,17 +532,6 @@ Install the following addons for firefox and firefox-dev (skip epubreader for fi
 - Open Image in New Tab (bedstash)
 - Maximizer for YouTube
 - Vue.js devtools
-
-
-### thunderbird
-
-- Lightning
-- SOGo Connector
-- G-Hub Lite
-
-#### connect the email accounts, calendars, and address books
-
-See https://docs.iredmail.org/thunderbird.sogo.html
 
 
 ### blender animation nodes
