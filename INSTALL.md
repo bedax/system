@@ -435,28 +435,34 @@ ln -s ~/.local/opt/[opt name]/[opt bin name] ~/.local/bin/[bin name]
 
 ### firefox-dev
 
-link: `https://download-installer.cdn.mozilla.net/pub/devedition/releases/66.0b2/linux-x86_64/en-GB/firefox-66.0b2.tar.bz2`
-opt name: `firefox-dev`
-opt bin name: `firefox`
-bin name: `firefox-dev`
+```
+link: https://download-installer.cdn.mozilla.net/pub/devedition/releases/66.0b2/linux-x86_64/en-GB/firefox-66.0b2.tar.bz2
+opt name: firefox-dev
+opt bin name: firefox
+bin name: firefox-dev
+```
 
 ### blender
 
-before: `sudo apt install libglu1-mesa`
+```
+before: sudo apt install libglu1-mesa
 
-link: `https://mirrors.dotsrc.org/blender/blender-release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2`
-opt name: `blender-2.79b`
-opt bin name: `blender`
-bin name: `blender`
+link: https://mirrors.dotsrc.org/blender/blender-release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2
+opt name: blender-2.79b
+opt bin name: blender
+bin name: blender
+```
 
 ### openmw
 
-link: `https://downloads.openmw.org/linux/other/openmw-0.44.0-Linux-64Bit.tar.gz`
-opt name: `openmw-0.44.0`
-opt bin name: `openmw-launcher`
-bin name: `openmw-launcher`
+```
+link: https://downloads.openmw.org/linux/other/openmw-0.44.0-Linux-64Bit.tar.gz
+opt name: openmw-0.44.0
+opt bin name: openmw-launcher
+bin name: openmw-launcher
 
-after: `ln -s ~/.local/opt/[opt name]/openmw-wizard ~/.local/bin/openmw-wizard`
+after: ln -s ~/.local/opt/[opt name]/openmw-wizard ~/.local/bin/openmw-wizard
+```
 
 
 ## debs
