@@ -325,18 +325,6 @@ cd ~/temp
 ```
 
 
-## notify-send.sh
-
-```
-sudo apt install bash libglib2.0-bin
-
-cd ~/.local/src
-git clone https://github.com/vlevit/notify-send.sh
-ln -s ~/.local/src/notify-send.sh/notify-send.sh ~/.local/bin/notify-send.sh
-cd ~/temp
-```
-
-
 ## jupyter
 
 ```
