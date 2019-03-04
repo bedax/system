@@ -1,3 +1,17 @@
 #!/bin/sh
 
-gksudo service networking restart
+notify_success() {
+   notify-send.py \
+      --urgency low \
+      --replaces-process confirmation \
+      "connected" &
+}
+
+notify_failure() {
+   notify-send.py \
+      --urgency low \
+      --replaces-process confirmation \
+      "unable to connect" &
+}
+
+(gksudo service networking restart && notify_success) || notify_failure

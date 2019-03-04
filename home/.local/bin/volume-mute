@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+import subprocess
+
+
+output = subprocess.check_output(["amixer", "set", "Master", "toggle"])
+status = output.splitlines()[-1].rsplit(b" ", 1)[-1]
+muted = True if status == b"[off]" else False
+
+subprocess.run([
+   "notify-send.py",
+   "--urgency", "low",
+   "--replaces-process", "confirmation",
+   "volume muted" if muted else "volume unmuted"
+])

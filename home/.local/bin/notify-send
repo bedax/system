@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+
+import os
+import subprocess
+import sys
+import tempfile
+
+
+
+def replace_file_arg(name):
+   if name is not None:
+      file_name = "notify-send-id-{}".format(name)
+      file_path = os.path.join(tempfile.gettempdir(), file_name)
+      return "--replace-file={}".format(file_path)
+
+
+def args():
+   argv = sys.argv[1:]
+   name = None
+   bin = []
+
+   for (index, arg) in enumerate(argv):
+      if arg.startswith("--replace-name="):
+         name = arg.split("--replace-name=", 1)[-1]
+         bin.append(index)
+
+   if name is not None:
+      for (index, arg) in enumerate(argv):
+         if arg.startswith("--replace-file="):
+            bin.append(index)
+         elif arg == "-R":
+            bin.append(index)
+            bin.append(index+1)
+
+   filtered_argv = [a for i, a in enumerate(argv) if i not in bin]
+   file_arg = replace_file_arg(name)
+
+   if file_arg is not None:
+      filtered_argv.insert(0, file_arg)
+
+   return filtered_argv
+
+
+def main():
+   subprocess.run(["notify-send.sh", *args()])
+
+
+
+if __name__ == "__main__":
+   main()

@@ -107,7 +107,7 @@ def compile_suckless():
    command(make_command, directory=os.path.join(source_path, "dmenu-4.8"))
 
 
-def run():
+def main():
    argv = sys.argv[1:]
    with_interfaces = "--with-interfaces" in argv
    without_suckless = "--without-suckless" in argv
@@ -136,4 +136,4 @@ def run():
 
 
 if __name__ == "__main__":
-   run()
+   main()

@@ -1,0 +1,3 @@
+# fixes the del key for st when running bash or python3
+## see: https://wiki.archlinux.org/index.php/st
+set enable-keypad on

@@ -3,13 +3,36 @@
 
 screenshot_path="$HOME/screenshot-$(date +%y-%m-%d--%H-%M-%S).png"
 
-if [ "$1" = "full" ]; then
-    maim --hidecursor "$screenshot_path"
-else
-    maim --hidecursor --windowid="$(xdotool getactivewindow)" "$screenshot_path"
-fi;
+screenshot_full() {
+   maim --hidecursor "$screenshot_path"
+}
 
-xclip -selection clipboard -target image/png -in "$screenshot_path"
-rm -f "$screenshot_path"
+screenshot_window() {
+   maim --hidecursor "$screenshot_path" \
+        --windowid="$(xdotool getactivewindow)"
+}
 
-notify-send.py --replaces-process "screenshot" "Screenshot taken" &
+screenshot() {
+   if [ "$1" = "full" ]; then
+      screenshot_full
+   else
+      screenshot_window
+   fi;
+}
+
+copy_screenshot() {
+   xclip -selection clipboard -target image/png -in "$screenshot_path"
+   rm -f "$screenshot_path"
+}
+
+notify_success() {
+   notify-send.py \
+      --urgency low \
+      --replaces-process confirmation \
+      "screenshot copied" &
+}
+
+
+screenshot "$1"
+copy_screenshot
+notify_success

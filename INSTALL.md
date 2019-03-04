@@ -13,6 +13,7 @@ _These are some notes on how to install the author's system. These aren't expect
 ## update
 
 ```
+su
 apt-get update
 apt-get upgrade
 ```
@@ -320,6 +321,18 @@ git clone "https://github.com/phuhl/notify-send.py"
 cd notify-send.py
 
 python3 setup.py install --force --user
+cd ~/temp
+```
+
+
+## notify-send.sh
+
+```
+sudo apt install bash libglib2.0-bin
+
+cd ~/.local/src
+git clone https://github.com/vlevit/notify-send.sh
+ln -s ~/.local/src/notify-send.sh/notify-send.sh ~/.local/bin/notify-send.sh
 cd ~/temp
 ```
 
