@@ -178,6 +178,7 @@ libxinerama-dev
 libxft-dev
 
 ### other
+fontconfig
 cron
 
 

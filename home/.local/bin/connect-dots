@@ -89,7 +89,7 @@ def link_dots(relative_path, destination, sudo=False):
       "--no-dereference",
       "--force",
       os.path.join(source, "."),
-      destination.rstrip("/")
+      os.path.join(destination, "")
    ]
 
    if sudo:
