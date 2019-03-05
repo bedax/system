@@ -9,4 +9,4 @@ wget \
     --convert-links \
     --adjust-extension \
     --restrict-file-names=windows \
-    $1
+    "$1"

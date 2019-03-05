@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+
+import subprocess
+import sys
+
+
+
+def charging():
+   with open("/sys/class/power_supply/AC/online", "r") as f:
+      return f.read().strip() == "1"
+
+
+def percent_remaining():
+   with open("/sys/class/power_supply/BAT0/capacity", "r") as f:
+      return int(f.read().strip())
+
+
+def low_percentage():
+   return int(sys.argv[1]) if len(sys.argv) > 1 else 8
+
+
+def lowest_percentage():
+   return int(sys.argv[2]) if len(sys.argv) > 2 else 4
+
+
+def main():
+   if not charging():
+      percentage = percent_remaining()
+
+      if percentage < lowest_percentage():
+         subprocess.run("hibernate")
+      elif percentage < low_percentage():
+         subprocess.run([
+            "notify-send.py",
+            "--urgency", "critical",
+            "--replaces-process", "battery",
+            "battery low", "{}%".format(percentage)
+         ])
+
+
+
+if __name__ == "__main__":
+   main()

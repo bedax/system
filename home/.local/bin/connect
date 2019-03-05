@@ -9,7 +9,7 @@ notify_success() {
 
 notify_failure() {
    notify-send.py \
-      --urgency low \
+      --urgency critical \
       --replaces-process confirmation \
       "unable to connect" &
 }

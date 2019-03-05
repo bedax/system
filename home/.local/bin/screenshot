@@ -32,7 +32,12 @@ notify_success() {
       "screenshot copied" &
 }
 
+notify_failure() {
+   notify-send.py \
+      --urgency critical \
+      --replaces-process confirmation \
+      "failed to copy the screenshot" &
+}
 
-screenshot "$1"
-copy_screenshot
-notify_success
+
+(screenshot "$1" && copy_screenshot && notify_success) || notify_failure

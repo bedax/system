@@ -137,10 +137,6 @@ thunar-archive-plugin
 xarchiver
 p7zip-full
 
-### schedule stuff
-cron
-acpi
-
 ### window manager stuff
 xinit
 x11-utils
@@ -180,6 +176,9 @@ pulseaudio
 libx11-dev
 libxinerama-dev
 libxft-dev
+
+### other
+cron
 
 
 ## pip
@@ -503,7 +502,7 @@ Run `visudo` and add:
 Run `crontab -e` and add:
 
 ```
-*/3 * * * *  . "$HOME/.profile"; DISPLAY=:0  notify-if-battery-low 12 6
+*/3 * * * *  . "$HOME/.profile"; DISPLAY=:0  react-to-low-battery 12 6
 # 0 */2 * * *  . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" backup
 ```
 
