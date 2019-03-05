@@ -15,12 +15,12 @@ def percent_remaining():
       return int(f.read().strip())
 
 
-def low_percentage():
-   return int(sys.argv[1]) if len(sys.argv) > 1 else 8
-
-
 def lowest_percentage():
    return int(sys.argv[2]) if len(sys.argv) > 2 else 4
+
+
+def low_percentage():
+   return int(sys.argv[1]) if len(sys.argv) > 1 else 8
 
 
 def main():
