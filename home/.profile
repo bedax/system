@@ -37,9 +37,8 @@ export PADDING="8"
 
 HOME_PATH="$HOME/.local/bin"
 CARGO_PATH="$HOME/.cargo/bin"
-NPM_PATH="$HOME/.npm-global/bin"
 FZF_PATH="$HOME/.local/opt/fzf/bin"
-export PATH="$FZF_PATH:$NPM_PATH:$CARGO_PATH:$HOME_PATH:$PATH"
+export PATH="$FZF_PATH:$CARGO_PATH:$HOME_PATH:$PATH"
 
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --no-ignore --follow"
