@@ -38,7 +38,7 @@ su - [user]
 
 ```
 cd ~
-apt install git
+sudo apt install git
 git clone https://.../system
 ```
 
@@ -74,6 +74,7 @@ apt-file
 ### build tools
 build-essential
 pkg-config
+automake
 cmake
 
 ### python and its package manager
@@ -200,6 +201,26 @@ flake8-bugbear
 flake8-docstrings
 
 
+## neovim
+
+```
+cd ~/.local/src
+git clone "https://github.com/neovim/neovim"
+cd neovim
+
+sudo apt install libtool-bin
+make CMAKE_EXTRA_FLAGS=-DCMAKE_INSTALL_PREFIX="$HOME/.local"
+make install
+cd ~/temp
+
+python -m pip install --user --upgrade neovim
+python3 -m pip install --user --upgrade neovim
+
+~/system/home/.local/bin/connect-dots \
+   --without-suckless --without-fonts --without-root
+```
+
+
 ## fish
 
 ```
@@ -285,29 +306,6 @@ curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
 sudo apt install nodejs
 npm config set prefix "$HOME/.local"
 npm install -g npm-check
-```
-
-
-## parcel
-
-```
-npm install -g parcel-bundler
-```
-
-
-## neovim
-
-```
-cd ~/.local/src
-git clone "https://github.com/neovim/neovim"
-cd neovim
-
-make CMAKE_INSTALL_PREFIX="$HOME/.local"
-make install
-cd ~/temp
-
-sudo python -m pip install --user --upgrade neovim
-sudo python3 -m pip install --user --upgrade neovim
 ```
 
 
@@ -573,3 +571,4 @@ Use the N-Rage input plugin. If the gamepad has two versions (`event` and `js`) 
 - .mozilla/firefox/user.js
 - autostart; `http://forums.debian.net/viewtopic.php?f=16&t=29333`
 - geany
+- setup neovim

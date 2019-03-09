@@ -13,10 +13,10 @@ screenshot_window() {
 }
 
 screenshot() {
-   if [ "$1" = "full" ]; then
-      screenshot_full
-   else
+   if [ "$1" = "window" ]; then
       screenshot_window
+   else
+      screenshot_full
    fi;
 }
 

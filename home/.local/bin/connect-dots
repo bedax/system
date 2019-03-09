@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import re
 import subprocess
 import sys
 
@@ -26,13 +27,11 @@ def acquire_sudo_session():
    command(["sudo", "-S", "echo"], capture_stdout=False)
 
 
-def copy_fonts():
-   source = os.path.join(os.environ["SYSTEM"], "fonts")
-   destination = os.path.expanduser("~/.fonts")
+def render_template_string(template, **kwargs):
+   env = {**os.environ, **kwargs}
+   regex = r"{{\s*(\w+)\s*}}"
 
-   command(["rm", "-rf", destination])
-   command(["cp", "-r", source, destination])
-   command(["fc-cache", "-f"])
+   return re.sub(regex, lambda match: env[match.group(1)], template)
 
 
 def render_template(path, **kwargs):
@@ -42,7 +41,7 @@ def render_template(path, **kwargs):
    with open(source_path, "r") as f:
       source_content = f.read()
 
-   destination_content = source_content.format(**os.environ, **kwargs)
+   destination_content = render_template_string(source_content, **kwargs)
 
    with open(destination_path, "w") as f:
       f.write(destination_content)
@@ -89,6 +88,15 @@ def link_dots(system_path, destination, sudo=False):
       command_args.insert(0, "sudo")
 
    command(command_args)
+
+
+def copy_fonts():
+   source = os.path.join(os.environ["SYSTEM"], "fonts")
+   destination = os.path.expanduser("~/.fonts")
+
+   command(["rm", "-rf", destination])
+   command(["cp", "-r", source, destination])
+   command(["fc-cache", "-f"])
 
 
 def compile_suckless():

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-SYSTEM="$HOME/system"
+export SYSTEM="$HOME/system"
 
 
 export COLOUR_0="#282828"
@@ -22,7 +22,7 @@ export COLOUR_13="#d3869b"
 export COLOUR_14="#8ec07c"
 export COLOUR_15="#ebdbb2"
 
-export BACKGROUND_COLOIR="$COLOUR_0"
+export BACKGROUND_COLOUR="$COLOUR_0"
 export FOREGROUND_COLOUR="$COLOUR_15"
 export HIGHLIGHT_COLOUR="#af3a03"
 

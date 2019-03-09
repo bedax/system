@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "{FONT_NAME}:style={FONT_STYLE}:pixelsize={FONT_SIZE}:antialias=true:autohint=false";
-static int borderpx = {PADDING};
+static char *font = "{{ FONT_NAME }}:style={{ FONT_STYLE }}:pixelsize={{ FONT_SIZE }}:antialias=true:autohint=false";
+static int borderpx = {{ PADDING }};
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -25,7 +25,7 @@ char *vtiden = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
 static float cwscale = 1.0;
-static float chscale = {LINE_HEIGHT};
+static float chscale = {{ LINE_HEIGHT }};
 
 /*
  * word delimiter string
@@ -54,7 +54,7 @@ static unsigned int blinktimeout = 800;
 /*
  * thickness of underline and bar cursors
  */
-static unsigned int cursorthickness = {BORDER_WIDTH};
+static unsigned int cursorthickness = {{ BORDER_WIDTH }};
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
@@ -85,30 +85,30 @@ unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"$COLOUR_0",
-	"$COLOUR_1",
-	"$COLOUR_2",
-	"$COLOUR_3",
-	"$COLOUR_4",
-	"$COLOUR_5",
-	"$COLOUR_6",
-	"$COLOUR_7",
+	"{{ COLOUR_0 }}",
+	"{{ COLOUR_1 }}",
+	"{{ COLOUR_2 }}",
+	"{{ COLOUR_3 }}",
+	"{{ COLOUR_4 }}",
+	"{{ COLOUR_5 }}",
+	"{{ COLOUR_6 }}",
+	"{{ COLOUR_7 }}",
 
 	/* 8 bright colors */
-	"$COLOUR_8",
-	"$COLOUR_9",
-	"$COLOUR_10",
-	"$COLOUR_11",
-	"$COLOUR_12",
-	"$COLOUR_13",
-	"$COLOUR_14",
-	"$COLOUR_15",
+	"{{ COLOUR_8 }}",
+	"{{ COLOUR_9 }}",
+	"{{ COLOUR_10 }}",
+	"{{ COLOUR_11 }}",
+	"{{ COLOUR_12 }}",
+	"{{ COLOUR_13 }}",
+	"{{ COLOUR_14 }}",
+	"{{ COLOUR_15 }}",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"$COLOUR_15",
-	"$COLOUR_0",
+	"{{ COLOUR_15 }}",
+	"{{ COLOUR_0 }}",
 };
 
 
