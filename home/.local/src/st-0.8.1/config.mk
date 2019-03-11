@@ -4,7 +4,7 @@ VERSION = 0.8.1
 # Customize below to fit your system
 
 # paths
-PREFIX = $(HOME)/.local/opt/st-${VERSION}
+PREFIX = $(HOME)/.local
 MANPREFIX = $(PREFIX)/share/man
 
 X11INC = /usr/X11R6/include

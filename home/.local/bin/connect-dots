@@ -51,7 +51,6 @@ def render_dots():
    render_template("/home/.gtkrc-2.0.template")
    render_template("/home/.config/Trolltech.conf.template")
    render_template("/home/.config/dunst/dunstrc.template")
-   render_template("/home/.local/src/st-0.7/config.h.template")
    render_template("/home/.local/src/st-0.8.1/config.h.template")
    render_template("/home/.local/src/dmenu-4.8/config.h.template")
 
@@ -103,7 +102,6 @@ def compile_suckless():
    make_command = ["make", "clean", "install"]
    source_path = os.path.expanduser("~/.local/src")
 
-   command(make_command, directory=os.path.join(source_path, "st-0.7"))
    command(make_command, directory=os.path.join(source_path, "st-0.8.1"))
    command(make_command, directory=os.path.join(source_path, "dmenu-4.8"))
 

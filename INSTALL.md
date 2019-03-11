@@ -220,12 +220,14 @@ python3 -m pip install --user --upgrade neovim
    --without-suckless --without-fonts --without-root
 ```
 
+Launch `nvim` and let it install the plugins, then run `:Obsess ~/.vim-session` and exit, ignoring any errors.
+
 
 ## fish
 
 ```
 wget https://download.opensuse.org/repositories/shells:fish:release:2/Debian_9.0/Release.key
-sudo apt-key add - < Release.key
+sudo apt-key add Release.key
 rm -f Release.key
 
 echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/2/Debian_9.0/ /' | sudo tee /etc/apt/sources.list.d/fish.list
@@ -235,9 +237,9 @@ sudo apt install fish
 
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
-fish -c 'fisher fischerling/plugin-wd'
-fish -c 'fisher oh-my-fish/plugin-pbcopy'
-# fish -c 'fisher externl/fish-symnav'
+fish -c "fisher add fischerling/plugin-wd"
+fish -c "fisher add oh-my-fish/plugin-pbcopy"
+# fish -c "fisher add externl/fish-symnav"
 ```
 
 
@@ -262,13 +264,17 @@ cargo install --force cargo-watch
 cargo install --force cargo-fuzz
 cargo install --force cargo-bloat
 cargo install --force cargo-profiler
-cargo install --force cargo-audit
-cqrgo install --force --git https://github.com/kbknapp/cargo-outdated
-cargo +nightly install --force cargo-modules
 cargo +nightly install --force cargo-expand
+cargo +nightly install --force cargo-modules
+
+sudo apt install libssl-dev
+cargo install --force cargo-audit
 
 sudo apt install libssl-dev
 cargo install --force cargo-tree
+
+sudo apt install libssl-dev
+cqrgo install --force --git https://github.com/kbknapp/cargo-outdated
 
 sudo apt install libssl-dev zlib1g-dev
 RUSTFLAGS='--cfg procmacro2_semver_exempt' cargo +nightly install --force cargo-tarpaulin
@@ -277,10 +283,12 @@ sudo apt install libssl-dev libssh2-1-dev libgit2-dev
 cargo install --force cargo-update
 
 # cargo install --force cargo-release
-# cargo install --force cargo-cook
 # cargo install --force cargo-make
 # cargo install --force cargo-script
 # cargo install --force cargo-deb
+
+# sudo apt install libssl-dev
+# cargo install --force cargo-cook
 ```
 
 
@@ -312,13 +320,13 @@ npm install -g npm-check
 ## notify-send.py
 
 ```
-sudo python3 -m pip install --user --upgrade notify2
+python3 -m pip install --user --upgrade notify2
 
 cd ~/.local/src
-git clone "https://github.com/phuhl/notify-send.py"
+git clone https://github.com/phuhl/notify-send.py
 cd notify-send.py
 
-python3 setup.py install --force --user
+python3 setup.py install --user --force
 cd ~/temp
 ```
 
@@ -397,12 +405,14 @@ wget [link]
 tar xf [archive]
 rm -f [archive]
 
-mv [extracted] ~/.local/src/
+rm -rf ~/.local/src/[extracted_name]
+mv [extracted_name] ~/.local/src/
+
+connect-dots --without-suckless --without-fonts --without-root
 ```
 
 ### links
 
-- `https://dl.suckless.org/st/st-0.7.tar.gz`
 - `https://dl.suckless.org/st/st-0.8.1.tar.gz`
 - `https://dl.suckless.org/tools/dmenu-4.8.tar.gz`
 - `https://netcologne.dl.sourceforge.net/project/rsyncrypto/rsyncrypto/1.14/rsyncrypto-1.14.tar.bz2`
@@ -412,8 +422,7 @@ mv [extracted] ~/.local/src/
 
 ```
 cd ~/.local/src/rsyncrypto-1.14
-connect-dots --without-suckless --without-fonts --without-root
-sudo apt install libargtable2-dev
+sudo apt install libssl-dev libargtable2-dev
 
 ./configure --prefix="$HOME/.local"
 make
@@ -571,4 +580,3 @@ Use the N-Rage input plugin. If the gamepad has two versions (`event` and `js`) 
 - .mozilla/firefox/user.js
 - autostart; `http://forums.debian.net/viewtopic.php?f=16&t=29333`
 - geany
-- setup neovim
