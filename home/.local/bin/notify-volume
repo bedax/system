@@ -1,0 +1,3 @@
+#!/bin/sh
+
+notify-confirmation "volume" "$(volume-get)"

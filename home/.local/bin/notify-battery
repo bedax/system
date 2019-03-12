@@ -1,0 +1,10 @@
+#!/bin/sh
+
+percentage="$(cat /sys/class/power_supply/BAT0/capacity)%"
+charging="$(cat /sys/class/power_supply/AC/online)"
+
+if [ "$charging" -eq 1 ]; then
+   notify-confirmation "battery charging" "$percentage"
+else
+   notify-confirmation "battery discharging" "$percentage"
+fi;

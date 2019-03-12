@@ -1,0 +1,3 @@
+#!/bin/sh
+
+notify-confirmation "$(date "+%A %d/%m/%y %H:%M:%S")"

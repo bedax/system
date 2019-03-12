@@ -2,7 +2,4 @@
 
 volume-set +5%
 
-notify-send.py \
-   --urgency low \
-   --replaces-process confirmation \
-   "volume increased" "$(volume-get)" &
+notify-confirmation "volume increased" "$(volume-get)"

@@ -2,7 +2,4 @@
 
 xbacklight -inc 5
 
-notify-send.py \
-   --urgency low \
-   --replaces-process confirmation \
-   "brightness increased" "$(brightness-get)%" &
+notify-confirmation "brightness increased" "$(brightness-get)%"

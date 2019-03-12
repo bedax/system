@@ -369,7 +369,6 @@ ln -s ~/.local/opt/GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage ~/.l
 cd ~/temp
 
 # sudo apt install gimp-help-en
-
 ```
 
 
@@ -532,9 +531,9 @@ sudo shutdown -r now
 
 ## setup
 
-### firefox
+### browsers
 
-Install the following addons for firefox and firefox-dev (skip epubreader for firefox-dev):
+Install the following addons for firefox, firefox-dev (minus epubreader), and chromium (where relevant):
 
 - EPUBReader
 - uBlock Origin
@@ -580,3 +579,20 @@ Use the N-Rage input plugin. If the gamepad has two versions (`event` and `js`) 
 - .mozilla/firefox/user.js
 - autostart; `http://forums.debian.net/viewtopic.php?f=16&t=29333`
 - geany
+
+### bspwm
+
+### sxhkd
+- mod+space dmenu
+- mod+alt+space st
+- mod+enter toggle fullscreen
+- mod+f5 reload sxhkd
+- mod+alt+f5 reload wm
+- mod+number toggles desktop
+- mod+del kills the window
+- mod+esc sleep
+- mod+alt+esc deep-sleep
+- mod+f1 notify-time
+- mod+f2 notify-battery
+- mod+f3 notify-desktop
+- mod+f4 notify-volume

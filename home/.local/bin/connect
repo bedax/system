@@ -1,17 +1,11 @@
 #!/bin/sh
 
 notify_success() {
-   notify-send.py \
-      --urgency low \
-      --replaces-process confirmation \
-      "connected" &
+   notify-confirmation "connected"
 }
 
 notify_failure() {
-   notify-send.py \
-      --urgency critical \
-      --replaces-process confirmation \
-      "unable to connect" &
+   notify-confirmation-critical "unable to connect"
 }
 
 (gksudo service networking restart && notify_success) || notify_failure

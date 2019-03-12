@@ -26,17 +26,11 @@ copy_screenshot() {
 }
 
 notify_success() {
-   notify-send.py \
-      --urgency low \
-      --replaces-process confirmation \
-      "screenshot copied" &
+   notify-confirmation "screenshot copied"
 }
 
 notify_failure() {
-   notify-send.py \
-      --urgency critical \
-      --replaces-process confirmation \
-      "failed to copy the screenshot" &
+   notify-confirmation-critical "failed to copy the screenshot"
 }
 
 

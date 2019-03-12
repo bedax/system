@@ -6,9 +6,7 @@ import subprocess
 
 def notify(muted):
    subprocess.run([
-      "notify-send.py",
-      "--urgency", "low",
-      "--replaces-process", "confirmation",
+      "notify-confirmation",
       "volume muted" if muted else "volume unmuted"
    ])
 
