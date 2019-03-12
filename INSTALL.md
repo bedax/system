@@ -581,6 +581,9 @@ Use the N-Rage input plugin. If the gamepad has two versions (`event` and `js`) 
 - geany
 
 ### bspwm
+- run autostart
+- `wmname = "LG3D"` if needed by libreoffice-writer (see xmonad faq)
+- rules for firefox, firefox-dev, chromium, vim-session-st, and keepassx, and autostart them
 
 ### sxhkd
 - mod+space dmenu
@@ -589,6 +592,7 @@ Use the N-Rage input plugin. If the gamepad has two versions (`event` and `js`) 
 - mod+f5 reload sxhkd
 - mod+alt+f5 reload wm
 - mod+number toggles desktop
+- mod+alt+number moves focused window to desktop
 - mod+del kills the window
 - mod+esc sleep
 - mod+alt+esc deep-sleep
@@ -596,3 +600,15 @@ Use the N-Rage input plugin. If the gamepad has two versions (`event` and `js`) 
 - mod+f2 notify-battery
 - mod+f3 notify-desktop
 - mod+f4 notify-volume
+- mod+Prior previous window
+- mod+Next next window
+- mod+alt+Prior move window up
+- mod+alt+Next move window down
+- Print screenshot
+- alt+Print screenshot window
+- XF86MonBrightnessUp brightness-increase
+- XF86MonBrightnessDown brightness-decrease
+- XF86AudioRaiseVolume volume-increase
+- XF86AudioLowerVolume volume-decrease
+- XF86AudioMute volume-mute
+- XF86Launch1
