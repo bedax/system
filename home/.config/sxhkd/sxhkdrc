@@ -43,9 +43,6 @@ XF86AudioLowerVolume
 XF86AudioMute
    volume-mute
 
-# XF86Launch1
-#    echo unused
-
 # close the focused window
 super + Delete
    bspc node focused --close
