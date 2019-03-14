@@ -1,0 +1,97 @@
+# toggle fullscreen
+super + Return
+   if [ -n "$(bspc query --nodes --node focused.fullscreen)" ]; then \
+      bspc node focused --state tiled; \
+   else \
+      bspc node focused --state fullscreen; \
+   fi
+
+# exit bspwm and sxhkd
+super + alt + F4
+   bspc quit; \
+   killall sxhkd
+
+# reload bspwm and sxhkd
+super + alt + F5
+   bspc wm -r; \
+   pkill -USR1 --exact sxhkd
+
+# select the given desktop
+super + {1-9,0}
+   bspc desktop --focus '^{1-9,10}'
+
+# move the focused window to the given desktop
+super + alt + {1-9,0}
+   bspc node focused --to-desktop '^{1-9,10}'
+
+# close the focused window
+super + Delete
+   bspc node focused --close
+
+# kill the focused window
+super + alt + Delete
+   bspc node focused --kill
+
+# focus the previous window
+super + Prior
+   bspc node --focus prev.local
+
+# focus the next window
+super + Next
+   bspc node --focus next.local
+
+# move the current window up
+super + alt + Prior
+   bspc node focused --swap prev.local
+
+# move the current window down
+super + alt + Next
+   bspc node focused --swap next.local
+
+super + @space
+   dmenu_run
+
+super + alt + @space
+   st
+
+super + Escape
+   shallow-sleep
+
+super + alt + Escape
+   deep-sleep
+
+super + F1
+   notify-time
+
+super + F2
+   notify-battery
+
+super + F3
+   notify-desktop
+
+super + F4
+   notify-volume
+
+Print
+   screenshot
+
+alt + Print
+   screenshot window
+
+XF86MonBrightnessUp
+   brightness-increase
+
+XF86MonBrightnessDown
+   brightness-decrease
+
+XF86AudioRaiseVolume
+   volume-increase
+
+XF86AudioLowerVolume
+   volume-decrease
+
+XF86AudioMute
+   volume-mute
+
+# XF86Launch1
+#    echo unused
