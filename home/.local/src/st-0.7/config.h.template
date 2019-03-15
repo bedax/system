@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char font[] = "{{ MONO_FONT_NAME }}:style={{ FONT_STYLE }}:pixelsize={{ FONT_SIZE }}:antialias=true:autohint=false";
+static char font[] = "{{ MONO_FONT_NAME }}:style={{ FONT_STYLE }}:pixelsize={{ NORMAL_FONT_SIZE }}:antialias=true:autohint=false";
 static int borderpx = {{ PADDING }};
 
 /*
