@@ -2,7 +2,7 @@
 
 
 if_not_running() {
-   if ! [ "$(pgrep --full "$*")" ]; then
+   if [ -z "$(pgrep --full "$*")" ]; then
       "$@" &
    fi
 }
@@ -11,10 +11,10 @@ if_not_running() {
 # set the brightness
 xbacklight -set 40 &
 
-# set background colour
+# set the background colour
 hsetroot -solid "$BACKGROUND_COLOUR" &
 
-# the hotkey daemon
+# start the hotkey daemon
 if_not_running sxhkd
 
 # start the compositor

@@ -1,5 +1,5 @@
 if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -le 1 ]; then
-   exec startx
+   exec startx > /dev/null
 else
-   . .bashrc
+   . ~/.bashrc
 fi
