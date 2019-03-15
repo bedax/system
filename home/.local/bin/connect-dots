@@ -14,7 +14,7 @@ def fail(message):
 
 def command(line, check=True, capture_stdout=True, directory=None):
    stdout = subprocess.PIPE if capture_stdout else None
-   process = subprocess.run(line, stdout=stdout, cwd=directory)
+   process = subprocess.run(line, stdout=stdout, stderr=stdout, cwd=directory)
 
    if check and process.returncode != 0:
       fail("the following command failed: {line} [{code}]".format(
