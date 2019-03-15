@@ -546,6 +546,8 @@ Install the following addons for firefox, firefox-dev (minus epubreader), and ch
 - Maximizer for YouTube
 - Vue.js devtools
 
+`ln -s ~/.mozilla/firefox/user.js ~/.mozilla/firefox/[profile]/user.js`
+
 
 ### blender animation nodes
 
@@ -572,9 +574,3 @@ Install the following addons for firefox, firefox-dev (minus epubreader), and ch
 ### project64
 
 Use the N-Rage input plugin. If the gamepad has two versions (`event` and `js`) use `event`. Disable `raw data`.
-
-
-## todo
-
-- .mozilla/firefox/user.js
-- geany

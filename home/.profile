@@ -26,9 +26,10 @@ export BACKGROUND_COLOUR="$COLOUR_0"
 export FOREGROUND_COLOUR="$COLOUR_15"
 export HIGHLIGHT_COLOUR="#af3a03"
 
-export FONT_NAME="Fira Mono"
+export MONO_FONT_NAME="Fira Mono"
+export NORMAL_FONT_NAME="Lato"
 export FONT_STYLE="Regular"
-export FONT_SIZE_SMALL="12"
+export FONT_SIZE_SMALL="10"
 export FONT_SIZE="14"
 
 export BORDER_WIDTH="3"

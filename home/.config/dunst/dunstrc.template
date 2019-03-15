@@ -51,7 +51,7 @@
     # Draw a line of "separator_height" pixel height between two
     # notifications.
     # Set to 0 to disable.
-    separator_height = {{ PADDING }}
+    separator_height = {{ BORDER_WIDTH }}
 
     # Padding between text and separator.
     padding = {{ PADDING }}
@@ -72,7 +72,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = "{{ BACKGROUND_COLOUR }}"
+    separator_color = auto
 
     # Sort messages by urgency.
     sort = false
@@ -85,7 +85,7 @@
 
     ### Text ###
 
-    font = {{ FONT_NAME }} {{ FONT_SIZE_SMALL }}
+    font = {{ MONO_FONT_NAME }} {{ FONT_SIZE_SMALL }}
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -259,7 +259,7 @@
 [urgency_critical]
     background = "{{ HIGHLIGHT_COLOUR }}"
     foreground = "{{ BACKGROUND_COLOUR }}"
-    frame_color = "{{ BACKGROUND_COLOUR }}"
+    frame_color = "{{ HIGHLIGHT_COLOUR }}"
     timeout = 0
     # Icon for notifications with critical urgency, uncomment to enable
     #icon = /path/to/icon
