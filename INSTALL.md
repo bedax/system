@@ -577,8 +577,4 @@ Use the N-Rage input plugin. If the gamepad has two versions (`event` and `js`) 
 ## todo
 
 - .mozilla/firefox/user.js
-- autostart; `http://forums.debian.net/viewtopic.php?f=16&t=29333`
 - geany
-
-### bspwm
-- `wmname = "LG3D"` if needed by libreoffice-writer (see xmonad faq)
