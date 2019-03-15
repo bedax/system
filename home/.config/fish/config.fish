@@ -1,3 +1,7 @@
+# turn off the greeting
+set fish_greeting
+
+
 # prompt
 ## from: https://wiki.archlinux.org/index.php/Fish#Put_git_status_in_prompt
 set __fish_git_prompt_showdirtystate "yes"
@@ -13,10 +17,6 @@ function fish_prompt
         (set_color normal) \
         (set_color normal)
 end
-
-
-# turn off the greeting
-set fish_greeting
 
 
 # fix the del key

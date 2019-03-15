@@ -9,10 +9,10 @@ if_not_running() {
 
 
 # set the brightness
-xbacklight -set 40
+xbacklight -set 40 &
 
 # set background colour
-hsetroot -solid "$BACKGROUND_COLOUR"
+hsetroot -solid "$BACKGROUND_COLOUR" &
 
 # the hotkey daemon
 if_not_running sxhkd

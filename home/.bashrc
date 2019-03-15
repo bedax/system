@@ -1,3 +1,3 @@
-source ~/.profile
+. ~/.profile
 
-fish
+exec fish
