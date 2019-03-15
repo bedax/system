@@ -28,6 +28,7 @@ export HIGHLIGHT_COLOUR="#af3a03"
 
 export FONT_NAME="Fira Mono"
 export FONT_STYLE="Regular"
+export FONT_SIZE_SMALL="12"
 export FONT_SIZE="14"
 
 export BORDER_WIDTH="3"
