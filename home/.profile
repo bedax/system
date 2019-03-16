@@ -35,6 +35,7 @@ export NORMAL_FONT_SIZE="14"
 export BORDER_WIDTH="3"
 export LINE_HEIGHT="1.236"
 export PADDING="8"
+export PADDING_DOUBLED="16"
 
 
 HOME_PATH="$HOME/.local/bin"
