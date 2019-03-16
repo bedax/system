@@ -161,6 +161,7 @@ rdiff-backup
 maim
 xdotool
 xclip
+jshon
 pm-utils
 pulseaudio-utils
 alsa-utils

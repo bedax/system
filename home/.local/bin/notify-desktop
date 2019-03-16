@@ -1,4 +1,4 @@
 #!/bin/sh
 
-# https://www.reddit.com/r/bspwm/comments/6je1z5/print_current_desktop_name/
-# https://www.reddit.com/r/bspwm/comments/5ze52p/get_name_of_focused_desktop/
+name=$(bspc query -T -d focused | jshon -e name -u)
+notify-confirmation "desktop" "$name"
