@@ -172,6 +172,7 @@ compton
 hsetroot
 redshift
 xbacklight
+x11-xserver-utils
 pulseaudio
 
 ### for st and dmenu
