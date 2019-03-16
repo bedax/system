@@ -31,7 +31,7 @@
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = center
+    alignment = right
 
     # The frequency with wich text that is longer than the notification
     # window allows bounces back and forth.
@@ -51,7 +51,6 @@
     # Ignore newlines '\n' in notifications.
     ignore_newline = no
 
-
     # The geometry of the window:
     #   [{width}]x{height}[+/-{x}+/-{y}]
     # The geometry of the message window.
@@ -64,7 +63,7 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "300x7+533+0"
+    geometry = "0x7-{{ PADDING }}+{{ PADDING }}"
 
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
