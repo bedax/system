@@ -69,7 +69,7 @@ super + alt + Next
 
 # select the given desktop
 super + {1-9,0}
-   bspc desktop --focus "^{1-9,10}";
+   bspc desktop --focus "^{1-9,10}"; \
    notify-desktop
 
 # move the focused window to the given desktop
