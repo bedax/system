@@ -11,7 +11,7 @@ bspc config left_padding "$PADDING"
 bspc config window_gap "$PADDING"
 
 bspc config border_width "$BORDER_WIDTH"
-bspc config normal_border_color "$COLOUR_1"
+bspc config normal_border_color "$FOREGROUND_COLOUR"
 bspc config active_border_color "$FOREGROUND_COLOUR"
 bspc config focused_border_color "$HIGHLIGHT_COLOUR"
 
