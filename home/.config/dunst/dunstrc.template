@@ -175,7 +175,7 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = {{ BACKGROUND_COLOUR }}
     foreground = {{ FOREGROUND_COLOUR }}
-    timeout = 2
+    timeout = 1
 
 [urgency_normal]
     background = {{ BACKGROUND_COLOUR }}
