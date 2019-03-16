@@ -29,7 +29,7 @@ export HIGHLIGHT_COLOUR="#af3a03"
 export MONO_FONT_NAME="Fira Mono"
 export NORMAL_FONT_NAME="Lato"
 export FONT_STYLE="Regular"
-export SMALL_FONT_SIZE="10"
+export SMALL_FONT_SIZE="11"
 export NORMAL_FONT_SIZE="14"
 
 export BORDER_WIDTH="3"

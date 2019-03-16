@@ -4,11 +4,11 @@
 
 bspc monitor --reset-desktops I II III IV V VI VII VIII IX X
 
-bspc config top_padding "$PADDING"
-bspc config right_padding "$PADDING"
-bspc config bottom_padding "$PADDING"
-bspc config left_padding "$PADDING"
-bspc config window_gap "$PADDING"
+bspc config top_padding 0
+bspc config right_padding 0
+bspc config bottom_padding 0
+bspc config left_padding 0
+bspc config window_gap "$PADDING_DOUBLED"
 
 bspc config border_width "$BORDER_WIDTH"
 bspc config normal_border_color "$FOREGROUND_COLOUR"
