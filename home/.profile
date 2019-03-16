@@ -32,9 +32,9 @@ export FONT_STYLE="Regular"
 export SMALL_FONT_SIZE="10"
 export NORMAL_FONT_SIZE="14"
 
-export BORDER_WIDTH="2"
+export BORDER_WIDTH="3"
 export LINE_HEIGHT="1.236"
-export PADDING="16"
+export PADDING="8"
 
 
 HOME_PATH="$HOME/.local/bin"
