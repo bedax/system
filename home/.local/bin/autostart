@@ -15,7 +15,16 @@ xbacklight -set 40 &
 hsetroot -solid "$BACKGROUND_COLOUR" &
 
 # sets the mouse cursor to the arrow
-xsetroot -cursor_name left_ptr
+xsetroot -cursor_name left_ptr &
+
+# disable capslock; remaps it to shift
+xmodmap -e "keycode 66 = hift_L NoSymbol Shift_L" &
+
+# open port 80
+upnpc -r 80 TCP &
+
+# set the domains to point to this machine
+set-dyn-dns &
 
 # start the hotkey daemon
 if_not_running sxhkd
@@ -30,7 +39,7 @@ if_not_running redshift
 if_not_running start-pulseaudio-x11
 
 # start the jupyter notebook server
-if_not_running jupyter notebook --no-browser --notebook-dir="$XDG_DOCUMENTS_DIR"
+if_not_running jupyter notebook --no-browser --notebook-dir="$(xdg-user-dir DOCUMENTS)"
 
 # for thunar's mounter; from 'policykit-1-gnome' package
 if_not_running /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1

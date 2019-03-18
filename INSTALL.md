@@ -85,6 +85,7 @@ python3-pip
 
 ### command line utilities
 coreutils
+less
 w3m
 wget
 curl
@@ -92,6 +93,8 @@ nano
 ncdu
 ffmpeg
 sqlite3
+miniupnpc
+net-tools
 git
 zip
 unzip
@@ -172,6 +175,7 @@ compton
 hsetroot
 redshift
 xbacklight
+xdg-user-dirs
 x11-xserver-utils
 pulseaudio
 
@@ -251,14 +255,12 @@ fish -c "fisher add oh-my-fish/plugin-pbcopy"
 curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y
 rustup install nightly
 
-rustup component add clippy
-rustup component add rustfmt
+rustup component add clippy rustfmt
 
 sudo apt install musl-tools
 rustup target add x86_64-unknown-linux-musl
 
-sudo apt install rust-lldb
-sudo apt install valgrind
+sudo apt install rust-lldb valgrind
 
 cargo install --force evcxr_repl
 cargo install --force cargo-deadlinks
@@ -322,7 +324,7 @@ npm install -g npm-check
 ## notify-send.py
 
 ```
-python3 -m pip install --user --upgrade notify2
+sudo apt install python3-notify2
 
 cd ~/.local/src
 git clone https://github.com/phuhl/notify-send.py
@@ -340,7 +342,6 @@ sudo apt install libzmq3-dev
 sudo apt install jupyter-core
 sudo apt install jupyter-client
 sudo apt install jupyter-notebook
-sudo apt install jupyter-qtconsole
 
 cargo install --force evcxr_jupyter
 evcxr_jupyter --install
@@ -358,6 +359,17 @@ echo "deb http://ftp.debian.org/debian stretch-backports main contrib" | sudo te
 sudo apt update
 sudo apt install virtualbox
 ```
+
+
+## apache
+
+```
+sudo apt install apache2
+sudo ln -s /home/[user]/www/[apache.conf] /etc/apache2/sites-enabled/[apache.conf]
+sudo service apache2 reload
+```
+
+Create/update the `home/.local/bin/set-dyn-dns` script.
 
 
 ## gimp
@@ -542,7 +554,7 @@ Install the following addons for firefox, firefox-dev (minus epubreader), and ch
     - the default lists
     - Adguard's Annoyance List (it blocks more cookie warnings, like those on serverfault.com)
 - NoScript (allow scripts globally, just use it for the other stuff)
-- HTTPS Everywhere
+- Smart HTTPS
 - Privacy Badger
 - Open Image in New Tab (bedstash)
 - Maximizer for YouTube

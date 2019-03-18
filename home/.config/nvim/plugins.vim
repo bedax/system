@@ -81,9 +81,6 @@ call plug#begin(local_directory.'/plugged')
    " word counter
    Plug 'https://github.com/ChesleyTan/wordCount.vim'
 
-   " disable capslock in normal mode
-   Plug 'https://github.com/suxpert/vimcaps'
-
    " automated swap-file handling
    Plug 'https://github.com/gioele/vim-autoswap'
 

@@ -5,15 +5,15 @@ static int topbar = 0;                      /* -b  option; if 0, dmenu appears a
 /* -fn option overrides fonts[0]; default X11 font or font set */
 
 static const char *fonts[] = {
-	"{{ MONO_FONT_NAME }}:style={{ FONT_STYLE }}:pixelsize={{ NORMAL_FONT_SIZE }}:antialias=true:autohint=false"
+	"Fira Mono:style=Regular:pixelsize=14:antialias=true:autohint=false"
 };
 
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "{{ FOREGROUND_COLOUR }}", "{{ BACKGROUND_COLOUR }}" },
-	[SchemeSel] = { "{{ FOREGROUND_COLOUR }}", "{{ HIGHLIGHT_COLOUR }}" },
+	[SchemeNorm] = { "#ebdbb2", "#282828" },
+	[SchemeSel] = { "#ebdbb2", "#af3a03" },
 	[SchemeOut] = { "#000000", "#00ffff" },
 };
 
