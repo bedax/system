@@ -12,17 +12,18 @@ auto wlp3s0
    iface wlp3s0 inet dhcp
       wpa-ssid {{ WIFI_NAME }}
       wpa-psk {{ WIFI_PASSWORD }}
-      metric 300
+      metric 400
 
 # disable internal wifi
 #iface wlp3s0 inet manual
 
 # enable external wifi
 auto wlx74da38d41aaa
+   allow-hotplug wlx74da38d41aaa
    iface wlx74da38d41aaa inet dhcp
       wpa-ssid {{ WIFI_NAME }}
       wpa-psk {{ WIFI_PASSWORD }}
-      metric 400
+      metric 300
 
 # enable top left usb tethering
 auto enp0s20u1
