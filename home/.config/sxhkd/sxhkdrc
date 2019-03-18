@@ -74,7 +74,9 @@ super + {1-9,0}
 
 # move the focused window to the given desktop
 super + alt + {1-9,0}
-   bspc node focused --to-desktop "^{1-9,10}"
+   bspc node focused --to-desktop "^{1-9,10}"; \
+   bspc desktop --focus "^{1-9,10}"; \
+   notify-desktop
 
 # exit bspwm and sxhkd
 super + alt + F4
