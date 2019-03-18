@@ -175,7 +175,6 @@ compton
 hsetroot
 redshift
 xbacklight
-xdg-user-dirs
 x11-xserver-utils
 pulseaudio
 
@@ -332,22 +331,6 @@ cd notify-send.py
 
 python3 setup.py install --user --force
 cd ~/temp
-```
-
-
-## jupyter
-
-```
-sudo apt install libzmq3-dev
-sudo apt install jupyter-core
-sudo apt install jupyter-client
-sudo apt install jupyter-notebook
-
-cargo install --force evcxr_jupyter
-evcxr_jupyter --install
-
-npm install -g ijavascript --zmq-external
-ijsinstall
 ```
 
 
