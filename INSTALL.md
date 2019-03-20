@@ -325,6 +325,7 @@ npm install -g npm-check
 
 ```
 # dbus-x11 is required when running notify-send.py with cron
+# see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=918149
 sudo apt install python3-notify2 dbus-x11
 
 cd ~/.local/src
