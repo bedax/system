@@ -324,7 +324,8 @@ npm install -g npm-check
 ## notify-send.py
 
 ```
-sudo apt install python3-notify2
+# dbus-x11 is required when running notify-send.py with cron
+sudo apt install python3-notify2 dbus-x11
 
 cd ~/.local/src
 git clone https://github.com/phuhl/notify-send.py
