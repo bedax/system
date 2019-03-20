@@ -11,6 +11,9 @@ filetype on
 filetype indent off
 filetype plugin off
 
+" lets parcel respond to file writes
+"set backupcopy=yes
+
 " fixes slow scrolling
 set lazyredraw
 

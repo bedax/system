@@ -184,6 +184,7 @@ libxinerama-dev
 libxft-dev
 
 ### other
+network-manager
 fontconfig
 cron
 
@@ -515,7 +516,7 @@ Run `crontab -e` and add:
 ## connect
 
 ```
-connect-dots --with-interfaces
+connect-dots
 ```
 
 

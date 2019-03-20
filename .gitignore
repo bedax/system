@@ -1,6 +1,5 @@
 /.p
 /..p.lock
-/etc/network/interfaces
 /home/.local/bin/set-dyn-dns
 
 # md5: 490f666e1afb15b7362b406ed1cea246

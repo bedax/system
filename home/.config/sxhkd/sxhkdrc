@@ -17,10 +17,10 @@ super + F2
    notify-battery
 
 super + F3
-   notify-desktop
+   notify-volume
 
 super + F4
-   notify-volume
+   notify-desktop
 
 Print
    screenshot

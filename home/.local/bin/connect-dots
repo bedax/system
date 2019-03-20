@@ -55,21 +55,6 @@ def render_dots():
    render_template("/home/.local/src/dmenu-4.8/config.h.template")
 
 
-def render_interfaces():
-   wifi_name = input("enter the wifi name: ")
-   wifi_password = input("enter the wifi password: ")
-
-   render_template(
-      "/etc/network/interfaces.template",
-      WIFI_PASSWORD=wifi_password,
-      WIFI_NAME=wifi_name
-   )
-
-
-def restart_networking():
-   command(["sudo", "service", "networking", "restart"], check=False)
-
-
 def link_dots(system_path, destination, sudo=False):
    source = os.path.join(os.environ["SYSTEM"], system_path.lstrip("/"))
 
@@ -108,7 +93,6 @@ def compile_suckless():
 
 def main():
    argv = sys.argv[1:]
-   with_interfaces = "--with-interfaces" in argv
    without_suckless = "--without-suckless" in argv
    without_fonts = "--without-fonts" in argv
    without_root = "--without-root" in argv
@@ -117,9 +101,6 @@ def main():
       acquire_sudo_session()
 
    render_dots()
-
-   if with_interfaces:
-      render_interfaces()
 
    if not without_root:
       link_dots("/etc/", "/etc/", sudo=True)
@@ -131,9 +112,6 @@ def main():
 
    if not without_suckless:
       compile_suckless()
-
-   if with_interfaces and not without_root:
-      restart_networking()
 
 
 
