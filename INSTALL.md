@@ -108,7 +108,6 @@ cloc
 vlc
 firefox-esr
 viewnior
-mousepad
 gucharmap
 keepassx
 audacity
@@ -118,11 +117,11 @@ hexchat
 filezilla
 transmission
 meld
+geany
 picard
 chromium
 sqlitebrowser
 sigil
-gnome-calculator
 pavucontrol
 gparted
 geogebra
@@ -373,6 +372,18 @@ cd ~/temp
 ```
 
 
+## geany
+
+```
+git clone https://github.com/geany/geany-themes/
+mkdir -p ~/.config/geany/colorschemes
+mv geany-themes/colorschemes/*.conf ~/.config/geany/colorschemes/
+rm -rf geany-themes
+```
+
+---
+
+
 ## wine
 
 ```
@@ -545,6 +556,7 @@ Install the following addons for firefox, firefox-dev (minus epubreader), and ch
 - Privacy Badger
 - Open Image in New Tab (bedstash)
 - Maximizer for YouTube
+- Axe Developer Tools
 - Vue.js devtools
 
 `ln -s ~/.mozilla/firefox/user.js ~/.mozilla/firefox/[profile]/user.js`

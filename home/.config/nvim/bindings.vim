@@ -34,7 +34,7 @@ noremap <silent> <C-h> :Substitute <CR>
 nnoremap <silent> <nowait> <C-w> :bd <CR>
 nnoremap <A-w> <C-w>
 
-noremap <silent> <Enter> :Focus <CR>
+"noremap <silent> <Enter> :Focus <CR>
 noremap <silent> <Space> :PopupTerminal <CR>
 
 "" far
