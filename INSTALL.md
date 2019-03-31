@@ -118,6 +118,7 @@ filezilla
 transmission
 meld
 geany
+leafpad
 picard
 chromium
 sqlitebrowser
