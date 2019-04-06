@@ -6,7 +6,6 @@ _These are some notes on how to install the author's system. These aren't expect
 - 7zip
 - [chromium](https://download-chromium.appspot.com/)
 - [ext2read](https://sourceforge.net/projects/ext2read/)
-- edge
 - fastpictureviewer codec pack
 - firefox
 - firefox dev
@@ -15,12 +14,15 @@ _These are some notes on how to install the author's system. These aren't expect
 - internet explorer 11 down to 6
 - keepassx
 - link shell extension
+- filezilla
 - malwarebytes
 - meld
 - nodejs
 - python3
 - quod libet
 - steam
+- gimp
+- inkscape
 - svg explorer extension
 - vlc
 
@@ -34,10 +36,11 @@ Add the above paths to the user's PATH, with unxutils at the bottom of the list 
 
 ## Pins
 
-- firefox
+- explorer
 - geany
+- firefox-dev
+- firefox
+- git's terminal
 - vlc
 - quod libet
 - keepassx
-- git's terminal
-- explorer
