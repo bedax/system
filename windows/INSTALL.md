@@ -7,22 +7,22 @@ _These are some notes on how to install the author's system. These aren't expect
 - [chromium](https://download-chromium.appspot.com/)
 - [ext2read](https://sourceforge.net/projects/ext2read/)
 - fastpictureviewer codec pack
+- filezilla
 - firefox
 - firefox dev
 - geany
+- gimp
 - git
+- inkscape
 - internet explorer 11 down to 6
 - keepassx
 - link shell extension
-- filezilla
 - malwarebytes
 - meld
 - nodejs
 - python3
 - quod libet
 - steam
-- gimp
-- inkscape
 - svg explorer extension
 - vlc
 
