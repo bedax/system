@@ -2,6 +2,9 @@ super + space
    dmenu_run
 
 super + alt + space
+   dmenu_find
+
+super + ctrl + space
    st
 
 super + Escape
