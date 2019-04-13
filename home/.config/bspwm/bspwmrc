@@ -36,8 +36,7 @@ bspc config initial_polarity first_child
 
 # find the class name with: `xprop | grep WM_CLASS`
 bspc rule --add "st-256color" --one-shot desktop="^2"
-bspc rule --add "Firefox Developer Edition" desktop="^3"
-bspc rule --add "Firefox-esr" desktop="^4"
+bspc rule --add "Firefox-esr" desktop="^3"
 bspc rule --add "Keepassx" desktop="^10"
 
 bspc wm --adopt-orphans

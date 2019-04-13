@@ -85,6 +85,7 @@ python3-pip
 
 ### command line utilities
 coreutils
+lua-check
 less
 w3m
 wget
@@ -103,6 +104,8 @@ pandoc
 openssh-client
 shellcheck
 cloc
+tree
+netcat-openbsd
 
 ### graphical applications
 vlc
@@ -117,7 +120,6 @@ hexchat
 filezilla
 transmission
 meld
-leafpad
 picard
 chromium
 sqlitebrowser
@@ -454,6 +456,17 @@ tar xf [archive]
 rm -f [archive]
 mv [extracted] ~/.local/opt/[opt name]
 ln -s ~/.local/opt/[opt name]/[opt bin name] ~/.local/bin/[bin name]
+```
+
+### Textadept
+
+```
+link: https://foicica.com/textadept/download/textadept_10.3.x86_64.tgz
+opt name: textadept_10.3
+opt bin name: textadept
+bin name: textadept
+
+after: ln -s ~/.local/opt/[opt name]/textadept-curses ~/.local/bin/textadept-curses
 ```
 
 ### firefox-dev

@@ -39,7 +39,6 @@ Add the above paths to the user's PATH, with unxutils at the bottom of the list 
 - explorer
 - geany
 - firefox-dev
-- firefox
 - git's terminal
 - vlc
 - quod libet
