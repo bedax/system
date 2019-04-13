@@ -466,7 +466,10 @@ opt name: textadept_10.3
 opt bin name: textadept
 bin name: textadept
 
-after: ln -s ~/.local/opt/[opt name]/textadept-curses ~/.local/bin/textadept-curses
+after:
+cd ~/.textadept
+git clone https://github.com/rgieseke/textadept-themes.git themes
+ln -s ~/.local/opt/[opt name]/textadept-curses ~/.local/bin/textadept-curses
 ```
 
 ### firefox-dev
