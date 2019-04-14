@@ -18,6 +18,7 @@
 -- https://github.com/lundmark/textadept_swm
    -- or use findsetword at: https://foicica.com/wiki/gmc
    -- or findall or multiedit at: https://bitbucket.org/SirAlaran/ta-common
+   -- Ctrl+Alt+Shift+H
 
 -- https://foicica.com/wiki/terminal-here
    -- or open-terminal: https://bitbucket.org/a_baez/ta-common
@@ -49,5 +50,5 @@
 
 require("theme")
 require("options")
-require("key_bindings")
-require("event_bindings")
+
+events.connect("SCN", require("functions.zoom_line_numbers"))

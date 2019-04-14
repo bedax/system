@@ -16,7 +16,7 @@ buffer.edge_column = 79
 -- disable code folding
 buffer.margin_width_n[2] = 0
 
-io.quick_open_max = 16
+io.quick_open_max = 1024 * 1024
 
 textadept.editing.auto_pairs = nil
 textadept.editing.typeover_chars = nil
