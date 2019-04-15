@@ -1,19 +1,18 @@
 -- todo:
 
--- detect tab width and type from file
--- detect eol type from file
+-- ctrl+h should work with selections, and then deselect
+-- find_inc ctrl+h should highlight the content of find_inc input
+-- highlight search matches while searching like vim's *
+-- in the filtered list pgup and pgdn should work
 
--- ensure non atomic save
--- ensure consistent line endings
--- highlight search matches while searching
-
--- use current word for find; https://foicica.com/wiki/goto-nearest-occurrence
+-- ctrl+f should use the word under the cursor; https://foicica.com/wiki/goto-nearest-occurrence
    -- or use findsetword at: https://foicica.com/wiki/gmc
    -- or: https://github.com/gabdub/ta-tweaks/wiki/goto_nearest-module
 
--- strip new lines at end
--- force new line at end; https://foicica.com/wiki/final-newline
 -- word counter; https://foicica.com/wiki/stats
+-- when tabs are enabled disable mru on close
+-- don't allow a buffer to be put in the background if it's unsaved; prompt to save
+-- make sure the active view is a minimum of 80 wide
 
 -- https://github.com/lundmark/textadept_swm
    -- or use findsetword at: https://foicica.com/wiki/gmc
@@ -22,6 +21,11 @@
 
 -- https://foicica.com/wiki/terminal-here
    -- or open-terminal: https://bitbucket.org/a_baez/ta-common
+
+-- ensure non atomic save
+-- ensure consistent line endings
+-- detect tab width and type from file
+-- detect eol type from file
 
 -- https://foicica.com/wiki/export
 -- https://foicica.com/wiki/filediff
@@ -32,13 +36,6 @@
 
 -- areturn - focus view
 -- creturn - maximise view
--- co - rooted file open
--- ct - new tab
--- cn - new split
--- cv - new vsplit
--- ctrl-f find inc
--- ctrl-r find replace
--- alt-arrows (pgup pgdown) move between views
 
 -- https://medium.com/@a_baez/beautify-textadept-87a0c6e384a8
 -- https://foicica.com/wiki/textadept-viewer
@@ -50,5 +47,7 @@
 
 require("theme")
 require("options")
+require("filters").set_filters()
 
-events.connect("SCN", require("functions.zoom_line_numbers"))
+require("modules.zoom_line_numbers")
+require("modules.tabs_arg")

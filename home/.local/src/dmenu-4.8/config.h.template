@@ -13,7 +13,7 @@ static const char *prompt      = NULL;      /* -p  option; prompt to the left of
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
 	[SchemeNorm] = { "{{ FOREGROUND_COLOUR }}", "{{ BACKGROUND_COLOUR }}" },
-	[SchemeSel] = { "{{ FOREGROUND_COLOUR }}", "{{ HIGHLIGHT_COLOUR }}" },
+	[SchemeSel] = { "{{ BACKGROUND_COLOUR }}", "{{ HIGHLIGHT_COLOUR }}" },
 	[SchemeOut] = { "#000000", "#00ffff" },
 };
 

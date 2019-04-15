@@ -1,0 +1,3 @@
+#!/bin/sh
+
+textadept --force --nosession --tabs "$@"

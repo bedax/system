@@ -109,7 +109,6 @@ netcat-openbsd
 
 ### graphical applications
 vlc
-firefox-esr
 viewnior
 gucharmap
 keepassx
@@ -374,22 +373,6 @@ cd ~/temp
 ```
 
 
-## geany
-
-```
-sudo apt install geany
-sudo apt install geany-plugin-pairtaghighlighter
-sudo apt install geany-plugin-addons
-
-git clone https://github.com/geany/geany-themes/
-mkdir -p ~/.config/geany/colorschemes
-mv geany-themes/colorschemes/*.conf ~/.config/geany/colorschemes/
-rm -rf geany-themes
-```
-
----
-
-
 ## wine
 
 ```
@@ -467,12 +450,9 @@ opt bin name: textadept
 bin name: textadept
 
 after:
-ln -s ~/.local/opt/[opt name]/textadept-curses ~/.local/bin/textadept-curses
-ln -s ~/.local/bin/textadept-curses ~/.local/bin/tac
-ln -s ~/.local/bin/textadept ~/.local/bin/ta
-
 cd ~/.textadept
 git clone https://github.com/rgieseke/textadept-themes.git themes
+ln -s ~/.local/opt/[opt name]/textadept-curses ~/.local/bin/textadept-curses
 ```
 
 ### firefox-dev
@@ -583,16 +563,6 @@ Install the following addons for firefox, firefox-dev (minus epubreader), and ch
 - Vue.js devtools
 
 `ln -s ~/.mozilla/firefox/user.js ~/.mozilla/firefox/[profile]/user.js`
-
-
-### geany
-
-Download/enable the following plugins
-
-- Split Window
-- Scope or Debugger
-- Pair Tag Highlighter
-- Addons
 
 
 ### blender animation nodes
