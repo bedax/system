@@ -18,6 +18,12 @@ M.default_filter = {
    -- other directories
    "!/%.cache$",
 
+   -- windows stuff
+   "!/desktop.ini$",
+   "!/ntuser.ini$",
+   "!/NTUSER.DAT",
+   "!/ntuser.dat",
+
    -- file types
    "!.7z",
    "!.a",
@@ -59,10 +65,20 @@ M.home_filter = function()
    local home = require("rooted_open").get_home()
    local filter = { "!^" .. home .. "/%." }
 
-   if not require("rooted_open").on_windows() then
+   if WIN32 then
+      table.insert(filter, "!^" .. home .. "/AppData")
+      table.insert(filter, "!^" .. home .. "/Documents")
+      table.insert(filter, "!^" .. home .. "/Favorites")
+      table.insert(filter, "!^" .. home .. "/IntelGraphicsProfile")
+      table.insert(filter, "!^" .. home .. "/Links")
+      table.insert(filter, "!^" .. home .. "/local")
+      table.insert(filter, "!^" .. home .. "/MicrosoftEdgeBackups")
+      table.insert(filter, "!^" .. home .. "/scoop")
+      table.insert(filter, "!^" .. home .. "/Searches")
+   else
       table.insert(filter, "!^" .. home .. "/music")
       table.insert(filter, "!^" .. home .. "/previous")
-      table.insert(filter, "!^" .. home .. "/www/[^/\\]+/")
+      table.insert(filter, "!^" .. home .. "/www/[^/]+/")
    end
 
    for i=1, #M.default_filter do

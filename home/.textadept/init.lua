@@ -13,6 +13,8 @@
 -- when tabs are enabled disable mru on close
 -- don't allow a buffer to be put in the background if it's unsaved; prompt to save
 -- make sure the active view is a minimum of 80 wide
+-- the first item of a filteredlist should be active at first for selecting and the text box should be active always for text input
+-- if a filteredlist is showing "bin/script.py" then "script bin" should find it, not just "bin script"
 
 -- https://github.com/lundmark/textadept_swm
    -- or use findsetword at: https://foicica.com/wiki/gmc

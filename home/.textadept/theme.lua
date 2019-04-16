@@ -1,6 +1,6 @@
 if not CURSES then
    buffer:set_theme(
       "base16-ashes-dark",
-      { font = "Fira Mono", fontsize = 11 }
+      { font = "Fira Mono Medium", fontsize = 11 }
    )
 end

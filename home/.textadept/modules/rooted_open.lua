@@ -1,13 +1,8 @@
 local M = {}
 
 
-M.on_windows = function()
-   local path_sep = package.config:sub(1, 1)
-   return path_sep == "\\"
-end
-
 M.get_home = function()
-   return M.on_windows() and os.getenv("USERHOME") or os.getenv("HOME")
+   return WIN32 and os.getenv("USERPROFILE") or os.getenv("HOME")
 end
 
 M.get_project_root = function()
