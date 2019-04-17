@@ -184,7 +184,7 @@
 
 [urgency_critical]
     background = {{ HIGHLIGHT_COLOUR }}
-    foreground = {{ FOREGROUND_COLOUR }}
+    foreground = {{ BACKGROUND_COLOUR }}
     timeout = 0
 
 

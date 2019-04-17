@@ -30,7 +30,7 @@ set-dyn-dns &
 if_not_running sxhkd
 
 # start the compositor
-if_not_running compton --shadow-exclude argb
+if_not_running compton
 
 # start the blue light filter
 if_not_running redshift

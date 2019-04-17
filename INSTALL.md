@@ -561,6 +561,7 @@ Install the following addons for firefox, firefox-dev (minus epubreader), and ch
 - Maximizer for YouTube
 - Axe Developer Tools
 - Vue.js devtools
+- Wappalyzer
 
 `ln -s ~/.mozilla/firefox/user.js ~/.mozilla/firefox/[profile]/user.js`
 

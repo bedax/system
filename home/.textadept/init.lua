@@ -4,6 +4,9 @@
 -- find_inc ctrl+h should highlight the content of find_inc input
 -- highlight search matches while searching like vim's *
 -- in the filtered list pgup and pgdn should work
+-- remove the file type from the status bar
+-- show an 'unsaved' indicator on the left of the status bar
+   -- one for each view; -*---, hide if ----
 
 -- ctrl+f should use the word under the cursor; https://foicica.com/wiki/goto-nearest-occurrence
    -- or use findsetword at: https://foicica.com/wiki/gmc
@@ -12,6 +15,7 @@
 -- word counter; https://foicica.com/wiki/stats
 -- when tabs are enabled disable mru on close
 -- don't allow a buffer to be put in the background if it's unsaved; prompt to save
+   -- or at least notify in the status bar if there's an unsaved buffer in the background
 -- make sure the active view is a minimum of 80 wide
 -- the first item of a filteredlist should be active at first for selecting and the text box should be active always for text input
 -- if a filteredlist is showing "bin/script.py" then "script bin" should find it, not just "bin script"
