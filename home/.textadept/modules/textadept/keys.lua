@@ -52,8 +52,6 @@ alt("e", tools_menu[_L['Select Co_mmand']][2])
 
 -- Buffer
 local buffer_menu = textadept.menu.menubar[_L['_Buffer']]
-ctrl("s\t", buffer_menu[_L['_Previous Buffer']][2])
-ctrl("\t", buffer_menu[_L['_Next Buffer']][2])
 ctrl("b", function() ui.switch_buffer(true) end)
 
 -- View
@@ -70,6 +68,8 @@ ctrl("0", view_menu[_L['_Reset Zoom']][2])
 
 -- Other
 ctrl("t", function() ui.tabs = not ui.tabs end)
+ctrl("pgup", require("mru").previous_buffer)
+ctrl("pgdn", require("mru").next_buffer)
 ctrl(" ", require("open").terminal)
 
 
