@@ -25,9 +25,6 @@
    -- or findall or multiedit at: https://bitbucket.org/SirAlaran/ta-common
    -- Ctrl+Alt+Shift+H
 
--- https://foicica.com/wiki/terminal-here
-   -- or open-terminal: https://bitbucket.org/a_baez/ta-common
-
 -- ensure non atomic save
 -- ensure consistent line endings
 -- detect tab width and type from file

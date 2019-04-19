@@ -62,7 +62,7 @@ M.default_filter = {
 
 
 M.home_filter = function()
-   local home = require("rooted_open").get_home()
+   local home = require("open").home_path()
    local filter = { "!^" .. home .. "/%." }
 
    if WIN32 then
@@ -90,7 +90,7 @@ end
 
 
 M.set_filters = function()
-   local home = require("rooted_open").get_home()
+   local home = require("open").home_path()
    lfs.default_filter = M.default_filter
    io.quick_open_filters[home] = M.home_filter()
 end

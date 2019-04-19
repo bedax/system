@@ -184,7 +184,7 @@
 
 [urgency_critical]
     background = #95aec7
-    foreground = #f3f4f5
+    foreground = #1c2023
     timeout = 0
 
 

@@ -12,10 +12,9 @@ end
 
 
 -- File
-local rooted_open = require("rooted_open")
 ctrl("n", buffer.new)
-ctrl("o", rooted_open.quick_open)
-alt("o", rooted_open.quick_open_home)
+ctrl("o", require("open").quick_open)
+alt("o", require("open").quick_open_home)
 ctrl("i", io.open_file)
 alt("i", io.open_recent_file)
 ctrl("f4", io.reload_file)
@@ -71,6 +70,7 @@ ctrl("0", view_menu[_L['_Reset Zoom']][2])
 
 -- Other
 ctrl("t", function() ui.tabs = not ui.tabs end)
+ctrl(" ", require("open").terminal)
 
 
 keys.find_incremental = {
