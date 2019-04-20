@@ -222,6 +222,7 @@ M.handler = mru_ctrl_tab_handler
 
 M.previous_buffer = function()
    if ui.tabs then
+      local buffer_menu = textadept.menu.menubar[_L['_Buffer']]
       buffer_menu[_L['_Previous Buffer']][2]()
    else
       M.handler(true)
@@ -230,6 +231,7 @@ end
 
 M.next_buffer = function()
    if ui.tabs then
+      local buffer_menu = textadept.menu.menubar[_L['_Buffer']]
       buffer_menu[_L['_Next Buffer']][2]()
    else
       M.handler(false)

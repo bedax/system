@@ -1,5 +1,11 @@
 -- todo:
 
+-- ctrl+f should use the word under the cursor, it should highlight it (replacing ctrl+h)
+   -- and when enter is pressed it should clear highlights and rehighlight the entered search
+      -- https://foicica.com/wiki/goto-nearest-occurrence
+      -- or: findsetword at: https://foicica.com/wiki/gmc
+      -- or: https://github.com/gabdub/ta-tweaks/wiki/goto_nearest-module
+
 -- ctrl+h should work with selections, and then deselect
 -- find_inc ctrl+h should highlight the content of find_inc input
 -- highlight search matches while searching like vim's *
@@ -7,10 +13,6 @@
 -- remove the file type from the status bar
 -- show an 'unsaved' indicator on the left of the status bar
    -- one for each view; -*---, hide if ----
-
--- ctrl+f should use the word under the cursor; https://foicica.com/wiki/goto-nearest-occurrence
-   -- or use findsetword at: https://foicica.com/wiki/gmc
-   -- or: https://github.com/gabdub/ta-tweaks/wiki/goto_nearest-module
 
 -- word counter; https://foicica.com/wiki/stats
 -- when tabs are enabled disable mru on close
@@ -33,9 +35,6 @@
 -- https://foicica.com/wiki/export
 -- https://foicica.com/wiki/filediff
 -- https://bitbucket.org/SirAlaran/ta-common/src
--- https://foicica.com/wiki/control-tab-mru
-   -- or, more limited: https://foicica.com/wiki/previous-buffer-z-order
-   -- or: https://github.com/gabdub/ta-tweaks/wiki/ctrl_tab_mru-module
 
 -- areturn - focus view
 -- creturn - maximise view

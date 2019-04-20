@@ -56,20 +56,20 @@ ctrl("b", function() ui.switch_buffer(true) end)
 
 -- View
 local view_menu = textadept.menu.menubar[_L['_View']]
-ctrl("pgup", view_menu[_L['_Previous View']][2])
-ctrl("pgdn", view_menu[_L['_Next View']][2])
-ctrl("\n", view_menu[_L['Split View _Vertical']][2])
-alt("\n", view_menu[_L['Split View _Horizontal']][2])
-ctrl("\b", view_menu[_L['_Unsplit View']][2])
-alt("\b", view_menu[_L['Unsplit _All Views']][2])
+ctrl("s\t", view_menu[_L['_Previous View']][2])
+ctrl("\t", view_menu[_L['_Next View']][2])
+ctrl("\b", view_menu[_L['Split View _Vertical']][2])
+alt("\b", view_menu[_L['Split View _Horizontal']][2])
+ctrl("\n", view_menu[_L['_Unsplit View']][2])
+alt("\n", view_menu[_L['Unsplit _All Views']][2])
 ctrl("-", buffer.zoom_out)
 ctrl("=", buffer.zoom_in)
 ctrl("0", view_menu[_L['_Reset Zoom']][2])
 
 -- Other
 ctrl("t", function() ui.tabs = not ui.tabs end)
-ctrl("pgup", require("mru").previous_buffer)
-ctrl("pgdn", require("mru").next_buffer)
+ctrl("pgup", require("mru_buffers").previous_buffer)
+ctrl("pgdn", require("mru_buffers").next_buffer)
 ctrl(" ", require("open").terminal)
 
 

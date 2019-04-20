@@ -97,6 +97,7 @@ sqlite3
 miniupnpc
 net-tools
 git
+htop
 zip
 unzip
 xz-utils
@@ -113,7 +114,6 @@ viewnior
 gucharmap
 keepassx
 audacity
-lxtask
 inkscape
 hexchat
 filezilla

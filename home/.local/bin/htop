@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if tty -s; then
+   /usr/bin/htop
+else
+   st -e /usr/bin/htop
+fi
