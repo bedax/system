@@ -84,48 +84,48 @@ python3
 python3-pip
 
 ### command line utilities
+cloc
 coreutils
-lua-check
-less
-w3m
-wget
 curl
-nano
-ncdu
 ffmpeg
-sqlite3
-miniupnpc
-net-tools
 git
 htop
-zip
-unzip
-xz-utils
-pandoc
-openssh-client
-shellcheck
-cloc
-tree
+less
+lua-check
+miniupnpc
+nano
+ncdu
 netcat-openbsd
+net-tools
+openssh-client
+pandoc
+shellcheck
+sqlite3
+tree
+unzip
+w3m
+wget
+xz-utils
+zip
 
 ### graphical applications
-vlc
-viewnior
-gucharmap
-keepassx
 audacity
-inkscape
-hexchat
-filezilla
-transmission
-meld
-picard
 chromium
-sqlitebrowser
-sigil
-pavucontrol
-gparted
+filezilla
 geogebra
+gparted
+gucharmap
+hexchat
+inkscape
+keepassx
+meld
+pavucontrol
+picard
+sigil
+sqlitebrowser
+transmission
+viewnior
+vlc
 
 ### quodlibet
 quodlibet
@@ -161,22 +161,22 @@ rsync
 rdiff-backup
 
 ### for the local scripts
-maim
-xdotool
-xclip
-jshon
-pm-utils
-pulseaudio-utils
 alsa-utils
 gksu
+jshon
+maim
+pm-utils
+pulseaudio-utils
+xclip
+xdotool
 
 ### for the startup script
 compton
 hsetroot
-redshift
-xbacklight
-x11-xserver-utils
 pulseaudio
+redshift
+x11-xserver-utils
+xbacklight
 
 ### for st and dmenu
 libx11-dev
@@ -205,28 +205,6 @@ youtube-dl
 flake8
 flake8-bugbear
 flake8-docstrings
-
-
-## neovim
-
-```
-cd ~/.local/src
-git clone "https://github.com/neovim/neovim"
-cd neovim
-
-sudo apt install libtool-bin
-make CMAKE_EXTRA_FLAGS=-DCMAKE_INSTALL_PREFIX="$HOME/.local"
-make install
-cd ~/temp
-
-python -m pip install --user --upgrade neovim
-python3 -m pip install --user --upgrade neovim
-
-~/system/home/.local/bin/connect-dots \
-   --without-suckless --without-fonts --without-root
-```
-
-Launch `nvim` and let it install the plugins, then run `:Obsess ~/.vim-session` and exit, ignoring any errors.
 
 
 ## fish
@@ -296,21 +274,6 @@ cargo install --force cargo-update
 ```
 
 
-## ctags
-
-```
-cd ~/.local/src
-git clone https://github.com/universal-ctags/ctags
-cd ctags
-
-./autogen.sh
-./configure --prefix="$HOME/.local"
-make
-make install
-cd ~/temp
-```
-
-
 ## node
 
 ```
@@ -355,7 +318,26 @@ sudo ln -s /home/[user]/www/[apache.conf] /etc/apache2/sites-enabled/[apache.con
 sudo service apache2 reload
 ```
 
-Create/update the `home/.local/bin/set-dyn-dns` script.
+Create/update the `home/.local/bin/set-dyn-dns` script:
+
+```
+#!/bin/sh
+
+request() {
+   wget \
+      --quiet \
+      --read-timeout=0.0 \
+      --waitretry=5 \
+      --tries=400 \
+      --background \
+      --output-file=/dev/null \
+      --output-document=/dev/null \
+      "$1"
+}
+
+# for each hosted domain:
+request [set dns ip link]
+```
 
 
 ## gimp
@@ -395,6 +377,12 @@ sudo apt-get install --install-recommends winehq-stable
 wget http://www.emulator-zone.com/download.php/emulators/n64/project64/project64_1.6.exe
 wine project64_1.6.exe
 rm -f project64_1.6.exe
+```
+
+Start with:
+
+```
+wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Project64\ 1.6/Project64.exe "$@"
 ```
 
 
@@ -548,7 +536,7 @@ sudo shutdown -r now
 
 ### browsers
 
-Install the following addons for firefox, firefox-dev (minus epubreader), and chromium (where relevant):
+Install the following addons for firefox-dev and chromium (where relevant):
 
 - EPUBReader
 - uBlock Origin

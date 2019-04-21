@@ -1,5 +1,8 @@
 -- todo:
 
+-- ctrl \t s\t same as ctrl pgdn pgpu
+-- ctrl arrows move views
+
 -- ctrl+f should use the word under the cursor, it should highlight it (replacing ctrl+h)
    -- and when enter is pressed it should clear highlights and rehighlight the entered search
       -- https://foicica.com/wiki/goto-nearest-occurrence
@@ -39,6 +42,7 @@
 -- areturn - focus view
 -- creturn - maximise view
 
+-- https://github.com/editorconfig/editorconfig-textadept
 -- https://medium.com/@a_baez/beautify-textadept-87a0c6e384a8
 -- https://foicica.com/wiki/textadept-viewer
 -- https://medium.com/@a_baez/a-textadept-module-db906f195195
