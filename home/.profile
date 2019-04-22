@@ -37,7 +37,4 @@ export SYSTEM="$HOME/system"
 
 HOME_PATH="$HOME/.local/bin"
 CARGO_PATH="$HOME/.cargo/bin"
-FZF_PATH="$HOME/.local/opt/fzf/bin"
-export PATH="$FZF_PATH:$CARGO_PATH:$HOME_PATH:$PATH"
-
-export FZF_DEFAULT_COMMAND="fd --type f --hidden --no-ignore --follow"
+export PATH="$CARGO_PATH:$HOME_PATH:$PATH"

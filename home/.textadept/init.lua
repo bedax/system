@@ -1,7 +1,17 @@
 -- todo:
 
--- ctrl \t s\t same as ctrl pgdn pgpu
--- ctrl arrows move views
+-- ctrl+alt+h ignore case
+-- when tabs are enabled disable mru on close
+-- make sure the active view is a minimum of 80 wide
+-- ctrl+h should work with selections, and then deselect
+-- find_inc ctrl+h should highlight the content of find_inc input
+-- highlight search matches while searching like vim's *
+-- in the filtered list pgup and pgdn should work
+-- remove the file type from the status bar
+-- don't allow a buffer to be put in the background if it's unsaved; prompt to save
+   -- or at least notify in the status bar if there's an unsaved buffer in the background
+-- show an 'unsaved' indicator on the left of the status bar
+   -- one for each view; -*---, hide if ----
 
 -- ctrl+f should use the word under the cursor, it should highlight it (replacing ctrl+h)
    -- and when enter is pressed it should clear highlights and rehighlight the entered search
@@ -9,19 +19,7 @@
       -- or: findsetword at: https://foicica.com/wiki/gmc
       -- or: https://github.com/gabdub/ta-tweaks/wiki/goto_nearest-module
 
--- ctrl+h should work with selections, and then deselect
--- find_inc ctrl+h should highlight the content of find_inc input
--- highlight search matches while searching like vim's *
--- in the filtered list pgup and pgdn should work
--- remove the file type from the status bar
--- show an 'unsaved' indicator on the left of the status bar
-   -- one for each view; -*---, hide if ----
-
 -- word counter; https://foicica.com/wiki/stats
--- when tabs are enabled disable mru on close
--- don't allow a buffer to be put in the background if it's unsaved; prompt to save
-   -- or at least notify in the status bar if there's an unsaved buffer in the background
--- make sure the active view is a minimum of 80 wide
 -- the first item of a filteredlist should be active at first for selecting and the text box should be active always for text input
 -- if a filteredlist is showing "bin/script.py" then "script bin" should find it, not just "bin script"
 
@@ -39,14 +37,10 @@
 -- https://foicica.com/wiki/filediff
 -- https://bitbucket.org/SirAlaran/ta-common/src
 
--- areturn - focus view
--- creturn - maximise view
-
 -- https://github.com/editorconfig/editorconfig-textadept
 -- https://medium.com/@a_baez/beautify-textadept-87a0c6e384a8
 -- https://foicica.com/wiki/textadept-viewer
 -- https://medium.com/@a_baez/a-textadept-module-db906f195195
--- https://foicica.com/wiki/wait-mode
 -- https://foicica.com/wiki/line-number-margin
 -- https://foicica.com/wiki/distraction-free-mode
 

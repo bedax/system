@@ -1,3 +1,6 @@
 #!/bin/sh
 
-textadept-curses --force --nosession "$@"
+# textadept-curses --force --nosession "$@"
+
+# using the following instead of above as ctrl+z doesn't work in fish
+sh -c "textadept-curses --force --nosession $*"
