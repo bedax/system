@@ -17,9 +17,6 @@ hsetroot -solid "$BACKGROUND_COLOUR" &
 # sets the mouse cursor to the arrow
 xsetroot -cursor_name left_ptr &
 
-# disable capslock; remaps it to shift
-xmodmap -e "keycode 66 = Shift_L NoSymbol Shift_L" &
-
 # open port 80
 upnpc -r 80 TCP &
 

@@ -51,7 +51,6 @@ def render_dots():
    render_template("/home/.gtkrc-2.0.template")
    render_template("/home/.config/Trolltech.conf.template")
    render_template("/home/.config/dunst/dunstrc.template")
-   render_template("/home/.config/geany/geany.conf.template")
    render_template("/home/.local/src/st-0.8.1/config.h.template")
    render_template("/home/.local/src/dmenu-4.8/config.h.template")
 

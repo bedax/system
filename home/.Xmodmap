@@ -1,0 +1,2 @@
+! disable capslock; remap it to alt
+keycode 66 = Alt_L Meta_L Alt_L Meta_L
