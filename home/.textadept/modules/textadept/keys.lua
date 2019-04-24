@@ -56,10 +56,8 @@ ctrl("b", function() ui.switch_buffer(true) end)
 
 -- View
 local view_menu = textadept.menu.menubar[_L['_View']]
-ctrl("left", view_menu[_L['_Previous View']][2])
-ctrl("up", view_menu[_L['_Previous View']][2])
-ctrl("right", view_menu[_L['_Next View']][2])
-ctrl("down", view_menu[_L['_Next View']][2])
+ctrl("pgup", view_menu[_L['_Previous View']][2])
+ctrl("pgdn", view_menu[_L['_Next View']][2])
 ctrl("\b", view_menu[_L['Split View _Vertical']][2])
 alt("\b", view_menu[_L['Split View _Horizontal']][2])
 ctrl("\n", view_menu[_L['_Unsplit View']][2])
@@ -70,10 +68,8 @@ ctrl("=", buffer.zoom_in)
 
 -- Other
 ctrl("t", function() ui.tabs = not ui.tabs end)
-ctrl("pgup", require("mru_buffers").previous_buffer)
-ctrl("s\t", require("mru_buffers").previous_buffer)
-ctrl("pgdn", require("mru_buffers").next_buffer)
-ctrl("\t", require("mru_buffers").next_buffer)
+ctrl("s\t", buffer_menu[_L['_Previous Buffer']][2]())
+ctrl("\t", buffer_menu[_L['_Next Buffer']][2]())
 ctrl(" ", require("open").terminal)
 
 

@@ -8,7 +8,7 @@
 -- in the filteredlists e.g. "bin/script.py" should be found by "script bin" as well as "bin script"
 -- the list of a filteredlist should always be active for the up and down arrow keys, the page keys, and enter, and the text box should always be active for all other keys
 
--- search dialogs (find incremental, etc) should start with the current selection or the word under the cursor in its input box
+-- search dialogs (find incremental, etc) should start with the current selection in its input box, or the word under the cursor, or the previous search
    -- highlight the input box content when launching the search dialog (replacing ctrl+h)
       -- when enter is pressed (or ctrl+h), clear highlights and rehighlight the entered text
          -- https://foicica.com/wiki/goto-nearest-occurrence
@@ -17,7 +17,10 @@
    -- notify in red in the status bar if there's an unsaved buffer in the background
    -- one for each view, hide if all saved
 
+-- find_inc should not be case sensitive by default
+-- ctrl+r should be case sensitive by default, alt to ignore
 -- ctrl+alt+h ignore case
+
 -- ctrl+h should work with selections, and then deselect
 -- make sure the active view is always a minimum of [80] wide
 -- when tabs are enabled disable mru on close
