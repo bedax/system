@@ -240,12 +240,12 @@ rustup target add x86_64-unknown-linux-musl
 
 sudo apt install rust-lldb valgrind
 
-cargo install --force evcxr_repl
-cargo install --force cargo-deadlinks
-cargo install --force cargo-watch
-cargo install --force cargo-fuzz
 cargo install --force cargo-bloat
+cargo install --force cargo-deadlinks
+cargo install --force cargo-fuzz
 cargo install --force cargo-profiler
+cargo install --force cargo-watch
+cargo install --force evcxr_repl
 cargo +nightly install --force cargo-expand
 cargo +nightly install --force cargo-modules
 
@@ -264,10 +264,10 @@ RUSTFLAGS='--cfg procmacro2_semver_exempt' cargo +nightly install --force cargo-
 sudo apt install libssl-dev libssh2-1-dev libgit2-dev
 cargo install --force cargo-update
 
-# cargo install --force cargo-release
-# cargo install --force cargo-make
-# cargo install --force cargo-script
 # cargo install --force cargo-deb
+# cargo install --force cargo-make
+# cargo install --force cargo-release
+# cargo install --force cargo-script
 
 # sudo apt install libssl-dev
 # cargo install --force cargo-cook

@@ -8,7 +8,6 @@ _These are some notes on how to install the author's system. These aren't expect
 - [ext2read](https://sourceforge.net/projects/ext2read/)
 - fastpictureviewer codec pack
 - filezilla
-- firefox
 - firefox dev
 - geany
 - gimp
@@ -40,6 +39,5 @@ Add the above paths to the user's PATH, with unxutils at the bottom of the list 
 - geany
 - firefox-dev
 - git's terminal
-- vlc
 - quod libet
 - keepassx
