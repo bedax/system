@@ -8,7 +8,7 @@ end
 
 
 -- Unused
--- ['l', 'm', 'p']
+-- ["l", "m", "p"]
 
 
 -- File
@@ -25,52 +25,52 @@ alt("w", io.close_all_buffers)
 ctrl("q", quit)
 
 -- Edit
-local edit_menu = textadept.menu.menubar[_L['_Edit']]
+local edit_menu = textadept.menu.menubar[_L["_Edit"]]
 ctrl("z", buffer.undo)
 ctrl("y", buffer.redo)
 ctrl("x", buffer.cut)
 ctrl("c", buffer.copy)
 ctrl("v", buffer.paste)
 ctrl("a", buffer.select_all)
-ctrl("j", edit_menu[_L['_Match Brace']][2])
+ctrl("j", edit_menu[_L["_Match Brace"]][2])
 ctrl("h", textadept.editing.highlight_word)
 ctrl("d", textadept.editing.block_comment)
-ctrl("k", edit_menu[_L['_Filter Through']][2])
+ctrl("k", edit_menu[_L["_Filter Through"]][2])
 ctrl("u", buffer.lower_case)
 alt("u", buffer.upper_case)
 
 -- Search
-local search_menu = textadept.menu.menubar[_L['_Search']]
+local search_menu = textadept.menu.menubar[_L["_Search"]]
 ctrl("f", ui.find.find_incremental)
-ctrl("r", search_menu[_L['_Find']][2])
+ctrl("r", search_menu[_L["_Find"]][2])
 ctrl("g", textadept.editing.goto_line)
 
 -- Tools
-local tools_menu = textadept.menu.menubar[_L['_Tools']]
-ctrl("e", tools_menu[_L['Command _Entry']][2])
-alt("e", tools_menu[_L['Select Co_mmand']][2])
+local tools_menu = textadept.menu.menubar[_L["_Tools"]]
+ctrl("e", tools_menu[_L["Command _Entry"]][2])
+alt("e", tools_menu[_L["Select Co_mmand"]][2])
 
 -- Buffer
-local buffer_menu = textadept.menu.menubar[_L['_Buffer']]
+local buffer_menu = textadept.menu.menubar[_L["_Buffer"]]
 ctrl("b", function() ui.switch_buffer(true) end)
 
 -- View
-local view_menu = textadept.menu.menubar[_L['_View']]
-ctrl("left", view_menu[_L['_Previous View']][2])
-ctrl("up", view_menu[_L['_Previous View']][2])
-ctrl("right", view_menu[_L['_Next View']][2])
-ctrl("down", view_menu[_L['_Next View']][2])
-ctrl("\b", view_menu[_L['Split View _Vertical']][2])
-alt("\b", view_menu[_L['Split View _Horizontal']][2])
-ctrl("\n", view_menu[_L['_Unsplit View']][2])
-alt("\n", view_menu[_L['Unsplit _All Views']][2])
-ctrl("0", view_menu[_L['_Reset Zoom']][2])
+local view_menu = textadept.menu.menubar[_L["_View"]]
+ctrl("left", view_menu[_L["_Previous View"]][2])
+ctrl("up", view_menu[_L["_Previous View"]][2])
+ctrl("right", view_menu[_L["_Next View"]][2])
+ctrl("down", view_menu[_L["_Next View"]][2])
+ctrl("\b", view_menu[_L["Split View _Vertical"]][2])
+alt("\b", view_menu[_L["Split View _Horizontal"]][2])
+ctrl("\n", view_menu[_L["_Unsplit View"]][2])
+alt("\n", view_menu[_L["Unsplit _All Views"]][2])
+ctrl("0", view_menu[_L["_Reset Zoom"]][2])
 ctrl("-", buffer.zoom_out)
 ctrl("=", buffer.zoom_in)
 
 -- Other
-ctrl("pgup", buffer_menu[_L['_Previous Buffer']][2]())
-ctrl("pgdn", buffer_menu[_L['_Next Buffer']][2]())
+ctrl("pgup", buffer_menu[_L["_Previous Buffer"]][2])
+ctrl("pgdn", buffer_menu[_L["_Next Buffer"]][2])
 ctrl("t", function() ui.tabs = not ui.tabs end)
 ctrl(" ", require("open").terminal)
 
