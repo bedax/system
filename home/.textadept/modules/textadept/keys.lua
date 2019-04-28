@@ -81,6 +81,31 @@ events.connect(events.SUSPEND, function()
 end, 1)
 
 
+ctrl("1", function()
+   ui.find.find_incremental()
+   ui.command_entry:set_text("text")
+end)
+
+
+ctrl("2", function()
+   search_menu[_L["_Find"]][2]()
+   ui.find.find_entry_text = "text"
+end)
+
+
+
+ctrl("3", function()
+   -- move to last view
+   local last_view = _VIEWS[#_VIEWS]
+   while view ~= last_view do
+      ui.goto_view(1)
+   end
+
+   local vertical = #_VIEWS % 2 == 1
+   view:split(vertical)
+end)
+
+
 keys.find_incremental = {
    ["\n"] = function()
       ui.find.find_entry_text = ui.command_entry:get_text() -- save

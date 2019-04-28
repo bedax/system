@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sensible-browser "$(dirname "$(rustup doc --path)")/error-index.html"

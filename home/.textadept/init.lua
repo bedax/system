@@ -1,29 +1,30 @@
 -- todo:
 
 -- ensure non atomic save
+-- detect eol type from file
 -- ensure consistent line endings
 -- detect tab width and type from file
--- detect eol type from file
+-- when tabs are enabled disable mru on close
 
 -- in the filteredlists e.g. "bin/script.py" should be found by "script bin" as well as "bin script"
 -- the list of a filteredlist should always be active for the up and down arrow keys, the page keys, and enter, and the text box should always be active for all other keys
+
+-- make sure the active view is always a minimum of [80] wide
+   -- connect to events.VIEW_NEW
 
 -- search dialogs (find incremental, etc) should start with the current selection in its input box, or the word under the cursor, or the previous search
    -- highlight the input box content when launching the search dialog (replacing ctrl+h)
       -- when enter is pressed (or ctrl+h), clear highlights and rehighlight the entered text
          -- https://foicica.com/wiki/goto-nearest-occurrence
-
--- show an 'unsaved' indicator on the left of the status bar
-   -- notify in red in the status bar if there's an unsaved buffer in the background
-   -- one for each view, hide if all saved
+   -- if getting initial text from selection, deselect after getting it
 
 -- find_inc should not be case sensitive by default
 -- ctrl+r should be case sensitive by default, alt to ignore
 -- ctrl+alt+h ignore case
 
--- ctrl+h should work with selections, and then deselect
--- make sure the active view is always a minimum of [80] wide
--- when tabs are enabled disable mru on close
+-- show an 'unsaved' indicator on the left of the status bar
+   -- notify in red in the status bar if there's an unsaved buffer in the background
+   -- one for each view, hide if all saved
 
 -- https://foicica.com/wiki/stats
 -- https://foicica.com/wiki/export
