@@ -1,6 +1,6 @@
 ui.tabs = false
 
-buffer.tab_width = WIN32 and 4 or 3
+buffer.tab_width = 3
 buffer.use_tabs = false
 
 buffer.wrap_mode = buffer.WRAP_WORD

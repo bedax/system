@@ -3,6 +3,6 @@ function handler()
 end
 
 args.register(
-   '-t', '--tabs', 0, handler,
-   "Opens with the tab bar showing"
+   "-t", "--tabs", 0, handler,
+   "Opens with the tab bar enabled"
 )

@@ -8,7 +8,7 @@ end
 
 
 -- Unused
--- ["l", "m", "p"]
+-- ["l", "m"]
 
 
 -- File
@@ -16,7 +16,7 @@ ctrl("n", buffer.new)
 ctrl("o", require("open").quick_open)
 alt("o", require("open").quick_open_home)
 ctrl("i", io.open_file)
-alt("i", io.open_recent_file)
+ctrl("p", io.open_recent_file)
 ctrl("f4", io.reload_file)
 ctrl("s", io.save_file)
 alt("s", io.save_file_as)
@@ -52,6 +52,8 @@ alt("e", tools_menu[_L["Select Co_mmand"]][2])
 
 -- Buffer
 local buffer_menu = textadept.menu.menubar[_L["_Buffer"]]
+ctrl("pgup", buffer_menu[_L["_Previous Buffer"]][2])
+ctrl("pgdn", buffer_menu[_L["_Next Buffer"]][2])
 ctrl("b", function() ui.switch_buffer(true) end)
 
 -- View
@@ -60,8 +62,7 @@ ctrl("left", view_menu[_L["_Previous View"]][2])
 ctrl("up", view_menu[_L["_Previous View"]][2])
 ctrl("right", view_menu[_L["_Next View"]][2])
 ctrl("down", view_menu[_L["_Next View"]][2])
-ctrl("\b", view_menu[_L["Split View _Vertical"]][2])
-alt("\b", view_menu[_L["Split View _Horizontal"]][2])
+ctrl("\b", require("split_view"))
 ctrl("\n", view_menu[_L["_Unsplit View"]][2])
 alt("\n", view_menu[_L["Unsplit _All Views"]][2])
 ctrl("0", view_menu[_L["_Reset Zoom"]][2])
@@ -69,8 +70,6 @@ ctrl("-", buffer.zoom_out)
 ctrl("=", buffer.zoom_in)
 
 -- Other
-ctrl("pgup", buffer_menu[_L["_Previous Buffer"]][2])
-ctrl("pgdn", buffer_menu[_L["_Next Buffer"]][2])
 ctrl("t", function() ui.tabs = not ui.tabs end)
 ctrl(" ", require("open").terminal)
 
@@ -92,18 +91,6 @@ ctrl("2", function()
    ui.find.find_entry_text = "text"
 end)
 
-
-
-ctrl("3", function()
-   -- move to last view
-   local last_view = _VIEWS[#_VIEWS]
-   while view ~= last_view do
-      ui.goto_view(1)
-   end
-
-   local vertical = #_VIEWS % 2 == 1
-   view:split(vertical)
-end)
 
 
 keys.find_incremental = {

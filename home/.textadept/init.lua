@@ -4,13 +4,16 @@
 -- detect eol type from file
 -- ensure consistent line endings
 -- detect tab width and type from file
--- when tabs are enabled disable mru on close
 
 -- in the filteredlists e.g. "bin/script.py" should be found by "script bin" as well as "bin script"
 -- the list of a filteredlist should always be active for the up and down arrow keys, the page keys, and enter, and the text box should always be active for all other keys
 
--- make sure the active view is always a minimum of [80] wide
+-- make sure the main view is always a minimum of [80] wide
+   -- note the current view#, switch to first, set it to 80, switch back to #
    -- connect to events.VIEW_NEW
+   -- look at events.UPDATE_UI
+
+-- events.FILE_CHANGED reload automatically if no modifications
 
 -- search dialogs (find incremental, etc) should start with the current selection in its input box, or the word under the cursor, or the previous search
    -- highlight the input box content when launching the search dialog (replacing ctrl+h)
@@ -21,6 +24,11 @@
 -- find_inc should not be case sensitive by default
 -- ctrl+r should be case sensitive by default, alt to ignore
 -- ctrl+alt+h ignore case
+
+-- switch ctrl+h to find/replace and ctrl+r to reload
+
+-- when tabs are enabled disable mru on close
+   -- look at events.BUFFER_DELETED and events.BUFFER_BEFORE_SWITCH
 
 -- show an 'unsaved' indicator on the left of the status bar
    -- notify in red in the status bar if there's an unsaved buffer in the background
@@ -42,5 +50,7 @@ require("theme")
 require("options")
 require("filters").set_filters()
 
+require("modules.status_bar")
 require("modules.zoom_line_numbers")
+require("modules.tab_width_arg")
 require("modules.tabs_arg")
