@@ -8,11 +8,6 @@
 -- in the filteredlists e.g. "bin/script.py" should be found by "script bin" as well as "bin script"
 -- the list of a filteredlist should always be active for the up and down arrow keys, the page keys, and enter, and the text box should always be active for all other keys
 
--- make sure the main view is always a minimum of [80] wide
-   -- note the current view#, switch to first, set it to 80, switch back to #
-   -- connect to events.VIEW_NEW
-   -- look at events.UPDATE_UI
-
 -- events.FILE_CHANGED reload automatically if no modifications
 
 -- search dialogs (find incremental, etc) should start with the current selection in its input box, or the word under the cursor, or the previous search
@@ -29,10 +24,6 @@
 
 -- when tabs are enabled disable mru on close
    -- look at events.BUFFER_DELETED and events.BUFFER_BEFORE_SWITCH
-
--- show an 'unsaved' indicator on the left of the status bar
-   -- notify in red in the status bar if there's an unsaved buffer in the background
-   -- one for each view, hide if all saved
 
 -- https://foicica.com/wiki/stats
 -- https://foicica.com/wiki/export
@@ -52,5 +43,6 @@ require("filters").set_filters()
 
 require("modules.status_bar")
 require("modules.zoom_line_numbers")
+require("modules.min_width_view")
 require("modules.tab_width_arg")
 require("modules.tabs_arg")
