@@ -7,11 +7,13 @@ super + alt + space
 super + ctrl + space
    st
 
+
 super + Escape
    shallow-sleep
 
 super + alt + Escape
    deep-sleep
+
 
 super + F1
    notify-time
@@ -25,11 +27,13 @@ super + F3
 super + F4
    notify-desktop
 
+
 Print
    screenshot
 
 alt + Print
    screenshot window
+
 
 XF86MonBrightnessUp
    brightness-increase
@@ -46,6 +50,7 @@ XF86AudioLowerVolume
 XF86AudioMute
    volume-mute
 
+
 # close the focused window
 super + Delete
    bspc node focused --close
@@ -53,6 +58,23 @@ super + Delete
 # kill the focused window
 super + alt + Delete
    bspc node focused --kill
+
+
+# focus the westward window
+super + Left
+   bspc node --focus west.local
+
+# focus the eastward window
+super + Right
+   bspc node --focus east.local
+
+# focus the northward window
+super + Up
+   bspc node --focus north.local
+
+# focus the southward window
+super + Down
+   bspc node --focus south.local
 
 # focus the previous window
 super + Prior
@@ -62,6 +84,23 @@ super + Prior
 super + Next
    bspc node --focus next.local
 
+
+# swap with the westward window
+super + alt + Left
+   bspc node focused --swap west.local
+
+# swap with the eastward window
+super + alt + Right
+   bspc node focused --swap east.local
+
+# swap with the northward window
+super + alt + Up
+   bspc node focused --swap north.local
+
+# swap with the southward window
+super + alt + Down
+   bspc node focused --swap south.local
+
 # move the current window up
 super + alt + Prior
    bspc node focused --swap prev.local
@@ -69,6 +108,7 @@ super + alt + Prior
 # move the current window down
 super + alt + Next
    bspc node focused --swap next.local
+
 
 # select the given desktop
 super + {1-9,0}
@@ -78,6 +118,7 @@ super + {1-9,0}
 # move the focused window to the given desktop
 super + alt + {1-9,0}
    bspc node focused --to-desktop "^{1-9,10}"
+
 
 # exit bspwm and sxhkd
 super + alt + F4
@@ -89,6 +130,7 @@ super + alt + F5
    bspc wm -r; \
    pkill -USR1 --exact sxhkd; \
    notify-confirmation "reloaded"
+
 
 # toggle fullscreen
 super + Return

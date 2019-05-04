@@ -66,8 +66,13 @@ M.quick_open_home = function()
 end
 
 M.terminal = function()
-   local terminal = WIN32 and "git-bash.exe" or "st"
-   os.spawn(terminal, M.current_path())
+   local command = WIN32 and "git-bash.exe" or "st"
+   os.spawn(command, M.current_path())
+end
+
+M.file_manager = function()
+   local command = WIN32 and "explorer.exe" or "thunar"
+   os.spawn(command, M.current_path())
 end
 
 

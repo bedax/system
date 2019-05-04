@@ -1,3 +1,20 @@
+function relative_path()
+   local root = require("open").project_path()
+   local path = ""
+
+   if buffer.filename and root then
+      local s, e = buffer.filename:find(root, 1, true)
+
+      if s == nil then
+         path = buffer.filename
+      else
+         path = buffer.filename:sub(e+2, #buffer.filename)
+      end
+   end
+
+   return path
+end
+
 function in_view(buffer)
    for i = 1, #_VIEWS do
       if buffer == _VIEWS[i].buffer then
@@ -67,12 +84,13 @@ events.connect(events.UPDATE_UI, function(updated)
    local lexer = buffer:private_lexer_call(lexer_language):match("^[^/]+")
 
    local format = CURSES and
-      "%s  %s  %s  %s  %s  %s  %s" or
-      "%s    %s    %s    %s    %s    %s    %s"
+      "%s  %s  %s  %s  %s  %s  %s  %s" or
+      "%s    %s    %s    %s    %s    %s    %s    %s"
 
    local text = string.format(
       format,
       unsaved_buffers(),
+      relative_path(),
       line_string,
       column_string,
       tabs_string,

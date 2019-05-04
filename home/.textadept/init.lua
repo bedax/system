@@ -1,12 +1,8 @@
 -- todo:
 
--- ensure non atomic save
 -- detect eol type from file
 -- ensure consistent line endings
--- detect tab width and type from file
-
--- in the filteredlists e.g. "bin/script.py" should be found by "script bin" as well as "bin script"
--- the list of a filteredlist should always be active for the up and down arrow keys, the page keys, and enter, and the text box should always be active for all other keys
+-- detect tab type and width from file
 
 -- events.FILE_CHANGED reload automatically if no modifications
 
@@ -16,14 +12,19 @@
          -- https://foicica.com/wiki/goto-nearest-occurrence
    -- if getting initial text from selection, deselect after getting it
 
--- find_inc should not be case sensitive by default
--- ctrl+r should be case sensitive by default, alt to ignore
--- ctrl+alt+h ignore case
+-- ctrl+h case sensitive
+-- ctrl+alt+h case insensitive
+-- ctrl+f case insensitive
+-- ctrl+alt+f case sensitive
 
--- switch ctrl+h to find/replace and ctrl+r to reload
+-- resize views when resize ui, probably with events.UPDATE_UI
+   -- using a variable to keep track of the previous size
 
 -- when tabs are enabled disable mru on close
    -- look at events.BUFFER_DELETED and events.BUFFER_BEFORE_SWITCH
+
+-- in the filteredlists e.g. "bin/script.py" should be found by "script bin" as well as "bin script"
+-- the list of a filteredlist should always be active for the up and down arrow keys, the page keys, and enter, and the text box should always be active for all other keys
 
 -- https://foicica.com/wiki/stats
 -- https://foicica.com/wiki/export
@@ -34,7 +35,6 @@
 -- https://medium.com/@a_baez/beautify-textadept-87a0c6e384a8
 -- https://medium.com/@a_baez/a-textadept-module-db906f195195
 -- https://foicica.com/wiki/distraction-free-mode
--- https://foicica.com/wiki/line-number-margin
 
 
 require("theme")

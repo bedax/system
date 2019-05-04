@@ -17,7 +17,6 @@ ctrl("o", require("open").quick_open)
 alt("o", require("open").quick_open_home)
 ctrl("i", io.open_file)
 ctrl("p", io.open_recent_file)
-ctrl("f4", io.reload_file)
 ctrl("s", io.save_file)
 alt("s", io.save_file_as)
 ctrl("w", io.close_buffer)
@@ -72,6 +71,7 @@ ctrl("=", buffer.zoom_in)
 -- Other
 ctrl("t", function() ui.tabs = not ui.tabs end)
 ctrl(" ", require("open").terminal)
+alt(" ", require("open").file_manager)
 
 
 events.connect(events.SUSPEND, function()
@@ -80,16 +80,9 @@ events.connect(events.SUSPEND, function()
 end, 1)
 
 
-ctrl("1", function()
-   ui.find.find_incremental()
-   ui.command_entry:set_text("text")
-end)
+--ctrl("1", require("find").find_dialog)
 
-
-ctrl("2", function()
-   search_menu[_L["_Find"]][2]()
-   ui.find.find_entry_text = "text"
-end)
+--ctrl("2", require("find").replace_dialog)
 
 
 

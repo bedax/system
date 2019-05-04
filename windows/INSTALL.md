@@ -9,7 +9,6 @@ _These are some notes on how to install the author's system. These aren't expect
 - fastpictureviewer codec pack
 - filezilla
 - firefox dev
-- geany
 - gimp
 - git
 - inkscape
@@ -19,16 +18,18 @@ _These are some notes on how to install the author's system. These aren't expect
 - malwarebytes
 - meld
 - nodejs
-- python3
 - quod libet
 - steam
 - svg explorer extension
+- textadept
 - vlc
+- wincdemu
+- xampp
 
 
 ## mingw and unxutils
 
-Copy unxutils to `%AppData%\Local\bin`.
+Copy unxutils to `C:\Program Files (x86)\unxutils`.
 
 Add the above paths to the user's PATH, with unxutils at the bottom of the list so it has the least priority. Move git's paths to the top of the system's PATH, so its `find` command overrides Windows'.
 
@@ -36,7 +37,7 @@ Add the above paths to the user's PATH, with unxutils at the bottom of the list 
 ## Pins
 
 - explorer
-- geany
+- textadept
 - firefox-dev
 - git's terminal
 - quod libet
