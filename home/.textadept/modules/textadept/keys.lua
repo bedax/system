@@ -72,6 +72,7 @@ ctrl("=", buffer.zoom_in)
 ctrl("t", function() ui.tabs = not ui.tabs end)
 ctrl(" ", require("open").terminal)
 alt(" ", require("open").file_manager)
+ctrl("esc", require("min_width_view").set_main_view)
 
 
 events.connect(events.SUSPEND, function()
@@ -80,9 +81,9 @@ events.connect(events.SUSPEND, function()
 end, 1)
 
 
---ctrl("1", require("find").find_dialog)
+ctrl("1", require("find").find_dialog)
 
---ctrl("2", require("find").replace_dialog)
+ctrl("2", require("find").replace_dialog)
 
 
 

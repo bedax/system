@@ -1,3 +1,6 @@
+local M = {}
+
+
 function relative_path()
    local root = require("open").project_path()
    local path = ""
@@ -59,7 +62,8 @@ function unsaved_buffers()
    return unsaved_backgrounds_buffers() .. " " .. unsaved_foregrounds_buffers()
 end
 
-events.connect(events.UPDATE_UI, function(updated)
+
+M.handler = function(updated)
    -- ignore scrolling; see _HOME/core/ui.lua
    if updated and updated & 3 == 0 then
       return
@@ -100,4 +104,11 @@ events.connect(events.UPDATE_UI, function(updated)
    )
 
    ui.bufstatusbar_text = text
-end)
+end
+
+M.connect_event = function()
+   events.connect(events.UPDATE_UI, M.handler)
+end
+
+
+return M

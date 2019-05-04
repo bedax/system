@@ -1,4 +1,7 @@
-function minimum_width()
+local M = {}
+
+
+M.minimum_width = function()
    local ui_width = ui.size[1]
    local ui_width_half = ui_width / 2
    local width = ui_width_half
@@ -19,19 +22,49 @@ function minimum_width()
    return width
 end
 
-function set_main_view_size()
-   if _VIEWS[1].size == nil then
-      timeout(1/60, set_main_view_size)
-   else
-      local minimum_width = minimum_width()
-      if _VIEWS[1].size < minimum_width then
-         _VIEWS[1].size = minimum_width
+--local setting_main_view_size = false
+M.set_main_view = function()
+   if #_VIEWS > 1 then
+      if _VIEWS[1].size == nil then
+         --setting_main_view_size = true
+         timeout(1/60, M.set_main_view)
+      else
+         local minimum_width = M.minimum_width()
+         if _VIEWS[1].size < minimum_width then
+            _VIEWS[1].size = minimum_width
+            --setting_main_view_size = false
+         end
       end
    end
 end
 
-events.connect(events.VIEW_NEW, function()
+M.new_handler = function()
    if #_VIEWS == 2 then
-      set_main_view_size()
+      M.set_main_view()
    end
-end)
+end
+
+M.connect_new_event = function()
+   events.connect(events.VIEW_NEW, M.new_handler)
+end
+
+--[[ events.UPDATE_UI doesn't trigger when the ui is resized
+     remove `setting_main_view_size` when removed this
+     rename connect_new_event to connect_event in init.lua and here
+
+local previous_width = ui.size[1]
+M.resize_handler = function()
+   local current_width = ui.size[1]
+   if current_width ~= previous_width and not setting_main_view_size then
+      previous_width = current_width
+      M.set_main_view()
+   end
+end
+
+M.connect_resize_event = function()
+   events.connect(events.UPDATE_UI, M.resize_handler)
+end
+]]
+
+
+return M

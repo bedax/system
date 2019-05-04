@@ -1,8 +1,23 @@
+local M = {}
+
+
 -- buffer.search_flags = buffer.FIND_WHOLEWORD + buffer.FIND_MATCHCASE
 
 
+-- search dialogs (find incremental, etc) should start with the current selection in its input box, or the word under the cursor, or the previous search
+   -- highlight the input box content when launching the search dialog (replacing ctrl+h)
+      -- when enter is pressed (or ctrl+h), clear highlights and rehighlight the entered text
+         -- https://foicica.com/wiki/goto-nearest-occurrence
+   -- if getting initial text from selection, deselect after getting it
+
+-- ctrl+h case sensitive
+-- ctrl+alt+h case insensitive
+-- ctrl+f case insensitive
+-- ctrl+alt+f case sensitive
+
+
 -- see: https://foicica.com/wiki/goto-nearest-occurrence
-function selected_text()
+M.selected_text = function()
    local s = buffer.selection_start
    local e = buffer.selection_end
 
@@ -13,24 +28,27 @@ function selected_text()
 
    local word = buffer:text_range(s, e)
 
-   if word == ''
+   if word == "" then
       return nil
    else
       return word
    end
 end
 
-function input_text()
+M.input_text = function()
 
 end
 
-function find_dialog()
+M.find_dialog = function()
    ui.print(selected_text())
    --ui.find.find_incremental()
    --ui.command_entry:set_text("text")
 end
 
-function replace_dialog()
+M.replace_dialog = function()
    search_menu[_L["_Find"]][2]()
    ui.find.find_entry_text = "text"
 end
+
+
+return M
