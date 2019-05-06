@@ -8,6 +8,10 @@
 -- when tabs are not enabled, work in single buffer mode
    -- use ctrl+o to switch buffers, if the current file is only open in this view, close it
 
+-- when focusing on a view, set its min width
+   -- check if this replaces the new view event hook
+      -- and if it replaces the size nil check
+
 -- remove ctrl+t; switching modes half way through would confuse things
 
 -- when tabs are enabled disable mru on close
@@ -34,7 +38,7 @@
 -- https://foicica.com/wiki/distraction-free-mode
 
 -- searching a single long-line file (e.g. [firefox profile]/extensions.json) does not jump to the next result, presumeably because it's on the same line, but still off screen
--- events.RESIZE_UI for require("min_width_view").connect_resize_event()
+-- events.RESIZE_UI for require("minimum_width").connect_resize_event()
 -- in the filteredlists e.g. "bin/script.py" should be found by "script bin" as well as "bin script"
 -- the list of a filteredlist should always be active for the up and down arrow keys, the page keys, and enter, and the text box should always be active for all other keys
 
@@ -43,7 +47,7 @@ require("filters").set_filters()
 
 require("status_bar").connect_event()
 require("zoom_line_numbers").connect_event()
-require("min_width_view").connect_event()
+require("minimum_width").connect_event()
 require("tab_width_arg").register_arg()
 require("tabs_arg").register_arg()
 

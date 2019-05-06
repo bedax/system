@@ -23,23 +23,36 @@ M.minimum_width = function()
    return minimum_width
 end
 
-M.set_main_view = function()
+M.set_view = function(first)
    -- curses doesn't support timeout
    if #_VIEWS > 1 and not CURSES then
       if _VIEWS[1].size == nil then
-         timeout(1/60, M.set_main_view)
+         timeout(1/60, function() M.set_view(first) end)
       else
-         local minimum_width = M.minimum_width()
-         if _VIEWS[1].size < minimum_width then
-            _VIEWS[1].size = minimum_width
+         local first_size = _VIEWS[1].size
+         local primary_minimum_width = M.minimum_width()
+         local secondary_maximum_width = ui.size[1] - primary_minimum_width
+
+         if first and first_size < primary_minimum_width then
+            _VIEWS[1].size = primary_minimum_width
+         elseif not first and first_size > secondary_maximum_width then
+            _VIEWS[1].size = secondary_maximum_width
          end
       end
    end
 end
 
+M.set_first_view = function()
+   M.set_view(true)
+end
+
+M.set_second_view = function()
+   M.set_view(false)
+end
+
 M.handler = function()
    if #_VIEWS == 2 then
-      M.set_main_view()
+      M.set_first_view()
    end
 end
 

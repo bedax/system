@@ -69,10 +69,11 @@ ctrl("-", buffer.zoom_out)
 ctrl("=", buffer.zoom_in)
 
 -- Other
-ctrl("t", function() ui.tabs = not ui.tabs end)
 ctrl(" ", require("open").terminal)
 alt(" ", require("open").file_manager)
-ctrl("esc", require("min_width_view").set_main_view)
+ctrl("t", function() ui.tabs = not ui.tabs end)
+ctrl("esc", require("minimum_width").set_first_view)
+ctrl("f1", require("minimum_width").set_second_view)
 
 
 events.connect(events.SUSPEND, function()
