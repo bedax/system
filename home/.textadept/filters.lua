@@ -67,7 +67,6 @@ M.home_filter = function()
 
    if WIN32 then
       table.insert(filter, "!^" .. home .. "/AppData")
-      table.insert(filter, "!^" .. home .. "/Documents")
       table.insert(filter, "!^" .. home .. "/Favorites")
       table.insert(filter, "!^" .. home .. "/IntelGraphicsProfile")
       table.insert(filter, "!^" .. home .. "/Links")

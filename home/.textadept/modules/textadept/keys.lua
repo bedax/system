@@ -76,7 +76,7 @@ ctrl("esc", require("min_width_view").set_main_view)
 
 
 events.connect(events.SUSPEND, function()
-   keys.cz()
+   keys["cz"]()
    return true
 end, 1)
 

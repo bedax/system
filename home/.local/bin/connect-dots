@@ -74,12 +74,7 @@ def link_dots(system_path, destination, sudo=False):
    command(command_args)
 
 
-def copy_fonts():
-   source = os.path.join(os.environ["SYSTEM"], "fonts")
-   destination = os.path.expanduser("~/.fonts")
-
-   command(["rm", "-rf", destination])
-   command(["cp", "-r", source, destination])
+def cache_fonts():
    command(["fc-cache", "-f"])
 
 
@@ -93,24 +88,24 @@ def compile_suckless():
 
 def main():
    argv = sys.argv[1:]
-   without_suckless = "--without-suckless" in argv
-   without_fonts = "--without-fonts" in argv
-   without_root = "--without-root" in argv
+   with_suckless = "--with-suckless" in argv
+   with_fonts = "--with-fonts" in argv
+   with_root = "--with-root" in argv
 
-   if not without_root:
+   if with_root:
       acquire_sudo_session()
 
    render_dots()
 
-   if not without_root:
+   if with_root:
       link_dots("/etc/", "/etc/", sudo=True)
 
    link_dots("/home/", os.path.expanduser("~"))
 
-   if not without_fonts:
-      copy_fonts()
+   if with_fonts:
+      cache_fonts()
 
-   if not without_suckless:
+   if with_suckless:
       compile_suckless()
 
 
