@@ -310,6 +310,21 @@ sudo apt install virtualbox
 ```
 
 
+## gimp
+
+```
+cd ~/.local/opt
+wget "https://github.com/aferrero2707/gimp-appimage/releases/download/continuous/GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage"
+
+chmod +x GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage
+ln -s ~/.local/opt/GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage ~/.local/bin/gimp
+ln -s ~/.config/GIMP ~/.config/GIMP-AppImage
+cd ~/temp
+
+# sudo apt install gimp-help-en
+```
+
+
 ## apache
 
 ```
@@ -337,21 +352,6 @@ request() {
 
 # for each hosted domain:
 request [set dns ip link]
-```
-
-
-## gimp
-
-```
-cd ~/.local/opt
-wget "https://github.com/aferrero2707/gimp-appimage/releases/download/continuous/GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage"
-
-chmod +x GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage
-ln -s ~/.local/opt/GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage ~/.local/bin/gimp
-ln -s ~/.config/GIMP ~/.config/GIMP-AppImage
-cd ~/temp
-
-# sudo apt install gimp-help-en
 ```
 
 

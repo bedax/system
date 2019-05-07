@@ -1,12 +1,16 @@
 -- find.lua
 
 -- events.FILE_CHANGED reload automatically if no modifications
+   -- notify in status bar
 
 -- when opening a file, if it's already open, switch to it instead of opening a new second buffer
    -- this should be default behaviour; seems like an irregular bug
 
 -- when tabs are not enabled, work in single buffer mode
    -- use ctrl+o to switch buffers, if the current file is only open in this view, close it
+   -- ctrl+w wouldn't switch to previously used buffer
+
+-- connect the status bar's update to the after save event
 
 -- when focusing on a view, set its min width
    -- check if this replaces the new view event hook
@@ -20,6 +24,8 @@
 -- dialog for renaming/mving current file externally and internally
    -- remove any empty directories in old path's ancestry after the move
    -- ctrl+r
+
+-- cf2 should reset the third split's height, etc
 
 -- some shortcuts don't work in the terminal (e.g. split/unsplit)
 

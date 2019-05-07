@@ -33,9 +33,9 @@ M.set_view = function(first)
          local primary_minimum_width = M.minimum_width()
          local secondary_maximum_width = ui.size[1] - primary_minimum_width
 
-         if first and first_size < primary_minimum_width then
+         if first then
             _VIEWS[1].size = primary_minimum_width
-         elseif not first and first_size > secondary_maximum_width then
+         else
             _VIEWS[1].size = secondary_maximum_width
          end
       end
