@@ -26,7 +26,7 @@ fdisk /dev/sdX
 ## NTFS
 
 ```
-mkfs.ntfs /dev/sdX1
+mkfs.ntfs --quick /dev/sdX1
 ```
 
 ## FAT32
