@@ -333,6 +333,8 @@ sudo ln -s /home/[user]/www/[apache.conf] /etc/apache2/sites-enabled/[apache.con
 sudo service apache2 reload
 ```
 
+### dns
+
 Create/update the `home/.local/bin/set-dyn-dns` script:
 
 ```
@@ -353,6 +355,16 @@ request() {
 # for each hosted domain:
 request [set dns ip link]
 ```
+
+### for wordpress
+
+combine:
+
+- https://linux4one.com/how-to-install-wordpress-with-lamp-stack-on-debian-9/
+- https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-debian-9
+- https://linuxconfig.org/how-to-install-wordpress-on-debian-9-stretch-linux
+- https://www.howtoforge.com/tutorial/install-wordpress-5-with-apache-on-debian-9/
+- https://alvistor.com/2017/best-character-set-collation-wordpress-database/
 
 
 ## wine
