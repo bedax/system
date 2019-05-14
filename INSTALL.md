@@ -629,3 +629,5 @@ Install the following addons for firefox-dev and chromium (where relevant):
 ### project64
 
 Use the N-Rage input plugin. If the gamepad has two versions (`event` and `js`) use `event`. Disable `raw data`.
+
+### meld
