@@ -1,7 +1,5 @@
 # Partition
 
-Use NTFS for Windows ISOs.
-
 ```
 fdisk /dev/sdX
     p

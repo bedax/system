@@ -3,5 +3,5 @@ Xft.hinting: 1
 Xft.hintstyle: hintslight
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
-!Xft.dpi: 125
+Xft.dpi: 176.23
 Xft.rgba: rgb

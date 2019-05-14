@@ -6,8 +6,39 @@ _These are some notes on how to install the author's system. These aren't expect
 - Select nothing at the software selection menu
 - Partition:
     - A swap partition; 1.5 * RAM
-    - A ~10gb ext4 partition for /
-    - An ext3 partition for ~, using the remaining space
+    - A ~12gb ext4 partition for /
+    - An ext4 partition for ~, using the remaining space
+
+
+## network
+
+To get the network working add whatever's relevant from the following to `/etc/network/interfaces`:
+
+```
+# enable internal wifi
+auto wlp4s0
+   iface wlp4s0 inet dhcp
+      wpa-ssid {{ WIFI_NAME }}
+      wpa-psk {{ WIFI_PASSWORD }}
+
+# enable external wifi
+auto wlx74da38d41aaa
+   allow-hotplug wlx74da38d41aaa
+   iface wlx74da38d41aaa inet dhcp
+      wpa-ssid {{ WIFI_NAME }}
+      wpa-psk {{ WIFI_PASSWORD }}
+
+# enable usb tethering
+auto enp0s20u1
+   allow-hotplug enp0s20u1
+   iface enp0s20u1 inet dhcp
+```
+
+To find the network device name use `ip link`.
+
+Then use `service networking restart`, run `apt install network-manager`, remove what was added above, restart networking again, then use `nmtui` to re-enable the network.
+
+If `nmtui` doesn't work, edit `/etc/NetworkManager/NetworkManager.conf` and make sure `[ifupdown] managed=true`, then restart network-manager.
 
 
 ## update
@@ -113,6 +144,7 @@ audacity
 chromium
 filezilla
 geogebra
+gksu
 gparted
 gucharmap
 hexchat
@@ -162,7 +194,6 @@ rdiff-backup
 
 ### for the local scripts
 alsa-utils
-gksu
 jshon
 maim
 pm-utils
@@ -173,7 +204,6 @@ xdotool
 ### for the startup script
 compton
 hsetroot
-pulseaudio
 redshift
 x11-xserver-utils
 xbacklight
@@ -184,9 +214,16 @@ libxinerama-dev
 libxft-dev
 
 ### other
-network-manager
+pulseaudio
 fontconfig
 cron
+
+
+## cargo
+
+```
+cargo install --force ripgrep fd-find
+```
 
 
 ## pip
@@ -234,6 +271,7 @@ curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y
 rustup install nightly
 
 rustup component add clippy rustfmt
+rustup component add rustfmt --toolchain nightly-x86_64-unknown-linux-gnu
 
 sudo apt install musl-tools
 rustup target add x86_64-unknown-linux-musl
@@ -241,7 +279,6 @@ rustup target add x86_64-unknown-linux-musl
 sudo apt install rust-lldb valgrind
 
 cargo install --force cargo-bloat
-cargo install --force cargo-deadlinks
 cargo install --force cargo-fuzz
 cargo install --force cargo-profiler
 cargo install --force cargo-watch
@@ -251,6 +288,9 @@ cargo +nightly install --force cargo-modules
 
 sudo apt install libssl-dev
 cargo install --force cargo-audit
+
+sudo apt install libssl-dev
+cargo install --force cargo-deadlinks
 
 sudo apt install libssl-dev
 cargo install --force cargo-tree
@@ -461,7 +501,7 @@ ln -s ~/.local/opt/[opt name]/textadept-curses ~/.local/bin/textadept-curses
 link: https://download-installer.cdn.mozilla.net/pub/devedition/releases/66.0b2/linux-x86_64/en-GB/firefox-66.0b2.tar.bz2
 opt name: firefox-dev
 opt bin name: firefox
-bin name: firefox-dev
+bin name: firefox
 ```
 
 ### blender
@@ -497,9 +537,7 @@ rm -f [downloaded.deb]
 
 ### links
 
-- `https://datapacket.dl.sourceforge.net/project/djv/djv-stable/1.2.5/DJV_1.2.5_amd64.deb`
-- `https://github.com/BurntSushi/ripgrep/releases/download/0.10.0/ripgrep_0.10.0_amd64.deb`
-- `https://github.com/sharkdp/fd/releases/download/v7.2.0/fd_7.2.0_amd64.deb`
+- `https://datapacket.dl.sourceforge.net/project/djv/djv-stable/1.2.6/DJV_1.2.6_amd64.deb`
 
 
 ## sudoers
