@@ -2,7 +2,7 @@
 
 /* #tabbrowser-tabs, #navigator-toolbox, menuitem, menu, ... */
 * {
-    font-size: {{ SMALL_FONT_SIZE }}px !important;
+    font-size: {{ NORMAL_FONT_SIZE }}px !important;
 }
 
 /* exception for badge on adblocker */

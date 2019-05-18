@@ -365,17 +365,11 @@ cd ~/temp
 ```
 
 
-## apache
-
-```
-sudo apt install apache2
-sudo ln -s /home/[user]/www/[apache.conf] /etc/apache2/sites-enabled/[apache.conf]
-sudo service apache2 reload
-```
+## server
 
 ### dns
 
-Create/update the `home/.local/bin/set-dyn-dns` script:
+Create/update the `home/.local/bin/set-dyn-dns` script (which should be in `autostart` (and maybe cron)):
 
 ```
 #!/bin/sh
@@ -396,15 +390,92 @@ request() {
 request [set dns ip link]
 ```
 
-### for wordpress
+### apache
 
-combine:
+```
+sudo apt install apache2
 
-- https://linux4one.com/how-to-install-wordpress-with-lamp-stack-on-debian-9/
-- https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lamp-on-debian-9
-- https://linuxconfig.org/how-to-install-wordpress-on-debian-9-stretch-linux
-- https://www.howtoforge.com/tutorial/install-wordpress-5-with-apache-on-debian-9/
-- https://alvistor.com/2017/best-character-set-collation-wordpress-database/
+sudo a2dissite 000-default
+sudo a2ensite user
+sudo systemctl reload apache2
+```
+
+### mariadb
+
+```
+sudo apt install mariadb-client mariadb-server
+
+# default password is blank
+sudo mysql_secure_installation
+```
+
+### wordpress
+
+```
+# this is to install php properly
+sudo apt install wordpress
+
+# for wordpress' proper permalinks
+sudo a2enmod rewrite
+# sudo a2enmod ssl
+sudo systemctl reload apache2
+```
+
+```
+mysql -u root -p
+CREATE DATABASE db_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER db_user@localhost IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON db_name.* TO db_user@localhost IDENTIFIED BY 'password';
+EXIT
+```
+
+```
+wget https://wordpress.org/latest.tar.gz
+tar xf latest.tar.gz
+
+# wp wants these for later
+# do it now for the permissions
+touch wordpress/.htaccess
+mkdir wordpress/wp-content/upgrade
+
+cp wordpress/wp-config-sample.php wordpress/wp-config.php
+
+chown -R www-data:www-data wordpress
+sudo find wordpress/ -type d -exec chmod 750 {} \;
+sudo find wordpress/ -type f -exec chmod 640 {} \;
+```
+
+Set `DB_CHARSET` and `DB_COLLATE` as above in `wp-config.php`, and use `https://api.wordpress.org/secret-key/1.1/salt/`.
+
+If you set the permissions properly, add `define('FS_METHOD', 'direct');` to `wp-config.php`.
+
+#### import/export
+
+```
+mysqldump db_name -u username -p > file.sql
+mysql db_name -u username -p < file.sql
+```
+
+#### remove
+
+```
+mysql -u root -p
+SELECT User FROM mysql.user;
+SHOW GRANTS FOR db_user@localhost;
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM db_user@localhost;
+DROP USER db_user@localhost;
+DROP DATABASE db_name;
+EXIT
+```
+
+#### move
+
+```
+define("WP_HOME", "http://localhost/dev/new_location/");
+define("WP_SITEURL", "http://localhost/dev/new_location/");
+```
+
+You might need to set permalinks to plain in the settings.
 
 
 ## wine

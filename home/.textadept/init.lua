@@ -12,6 +12,8 @@
 -- when opening a file, if it's already open, switch to it instead of opening a new second buffer
    -- this should be default behaviour; seems like an irregular bug
 
+-- ctrl+b excludes the current buffer but doesn't seem to work with views (?)
+
 -- when tabs are not enabled, work in single buffer mode
    -- use ctrl+o to switch buffers, if the current file is only open in this view, close it
    -- ctrl+w wouldn't switch to previously used buffer
@@ -35,7 +37,10 @@
 
 -- some shortcuts don't work in the terminal (e.g. split/unsplit)
 
+-- make a find&replace command using ripgrep and python
+
 -- detect eol type from file
+   -- if inconsitent notify
 -- ensure consistent line endings
 -- detect tab type and width from file
 

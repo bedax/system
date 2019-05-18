@@ -1,5 +1,5 @@
 [global]
-    font = {{ MONO_FONT_NAME }} {{ SMALL_FONT_SIZE }}
+    font = {{ MONO_FONT_NAME }} {{ NORMAL_FONT_SIZE }}
 
     # Allow a small subset of html markup:
     #   <b>bold</b>

@@ -76,8 +76,6 @@ M.home_filter = function()
       table.insert(filter, "!^" .. home .. "/Searches")
    else
       table.insert(filter, "!^" .. home .. "/music")
-      table.insert(filter, "!^" .. home .. "/previous")
-      table.insert(filter, "!^" .. home .. "/www/[^/]+/")
    end
 
    for i=1, #M.default_filter do
