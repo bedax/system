@@ -1,3 +1,7 @@
+super + Escape
+   notify-information
+
+
 super + space
    dmenu_run
 
@@ -6,17 +10,6 @@ super + alt + space
 
 super + ctrl + space
    st
-
-
-super + Escape
-   shallow-sleep
-
-super + alt + Escape
-   deep-sleep
-
-
-super + F1
-   notify-information
 
 
 Print
@@ -112,12 +105,12 @@ super + alt + {1-9,0}
 
 
 # exit bspwm and sxhkd
-super + alt + F4
+super + F4
    bspc quit; \
    killall sxhkd
 
 # reload bspwm and sxhkd
-super + alt + F5
+super + F5
    bspc wm -r; \
    pkill -USR1 --exact sxhkd; \
    notify-confirmation "reloaded"
