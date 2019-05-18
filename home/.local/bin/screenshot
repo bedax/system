@@ -26,11 +26,11 @@ copy_screenshot() {
 }
 
 notify_success() {
-   notify-confirmation "screenshot copied"
+   notify-confirmation --urgency low "screenshot copied"
 }
 
 notify_failure() {
-   notify-confirmation-critical "failed to copy the screenshot"
+   notify-confirmation --urgency critical "failed to copy the screenshot"
 }
 
 

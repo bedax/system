@@ -2,4 +2,4 @@
 
 volume-set -5%
 
-notify-confirmation "volume decreased" "$(volume-get)"
+notify-confirmation --urgency low "volume decreased" "$(volume-get)"

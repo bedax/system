@@ -16,16 +16,7 @@ super + alt + Escape
 
 
 super + F1
-   notify-time
-
-super + F2
-   notify-battery
-
-super + F3
-   notify-volume
-
-super + F4
-   notify-desktop
+   notify-information
 
 
 Print

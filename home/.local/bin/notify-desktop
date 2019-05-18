@@ -1,4 +1,0 @@
-#!/bin/sh
-
-name=$(bspc query -T -d focused | jshon -e name -u)
-notify-confirmation "desktop" "$name"

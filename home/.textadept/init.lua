@@ -3,6 +3,12 @@
 -- make a taf script for filezilla and make a tap script for work
    -- setting the tab-width and session
 
+-- detect eol type from file
+   -- if inconsitent notify
+-- ensure consistent line endings
+-- detect tab type and width from file
+   -- if tabs and spaces, notify
+
 -- add a --theme parameter and set tap and taf to use different themes
    -- can pass "light" or "dark" to choose the default
 
@@ -13,6 +19,8 @@
    -- this should be default behaviour; seems like an irregular bug
 
 -- ctrl+b excludes the current buffer but doesn't seem to work with views (?)
+
+-- key command to toggle whitespace display
 
 -- when tabs are not enabled, work in single buffer mode
    -- use ctrl+o to switch buffers, if the current file is only open in this view, close it
@@ -38,11 +46,6 @@
 -- some shortcuts don't work in the terminal (e.g. split/unsplit)
 
 -- make a find&replace command using ripgrep and python
-
--- detect eol type from file
-   -- if inconsitent notify
--- ensure consistent line endings
--- detect tab type and width from file
 
 -- https://foicica.com/wiki/stats
 -- https://foicica.com/wiki/export

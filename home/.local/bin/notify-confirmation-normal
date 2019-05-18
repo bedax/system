@@ -1,6 +1,0 @@
-#!/bin/sh
-
-notify-send.py \
-   --urgency normal \
-   --replaces-process confirmation \
-   "$@" &

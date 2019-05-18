@@ -2,4 +2,4 @@
 
 xbacklight -inc 5
 
-notify-confirmation "brightness increased" "$(brightness-get)%"
+notify-confirmation --urgency low "brightness increased" "$(brightness-get)%"
