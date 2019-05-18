@@ -61,6 +61,7 @@ require("status_bar").connect_event()
 require("zoom_line_numbers").connect_event()
 require("minimum_width").connect_event()
 require("tab_width_arg").register_arg()
+require("theme_arg").register_arg()
 require("tabs_arg").register_arg()
 
 

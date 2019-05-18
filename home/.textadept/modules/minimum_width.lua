@@ -13,10 +13,12 @@ M.minimum_width = function()
       local columns_width = columns_count * column_width
 
       local margin_width = buffer.margin_width_n[0]
-      local ideal_minimum_width = margin_width + columns_width
+      local minimum_text_width = margin_width + columns_width
 
-      if ui_width >= (ideal_minimum_width * 1.5) then
-         minimum_width = ideal_minimum_width
+      if minimum_text_width > ui_width_half then
+         if ui_width >= (minimum_text_width * 1.5) then
+            minimum_width = ideal_minimum_width
+         end
       end
    end
 

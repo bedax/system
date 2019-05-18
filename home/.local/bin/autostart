@@ -17,6 +17,9 @@ hsetroot -solid "$BACKGROUND_COLOUR" &
 # sets the mouse cursor to the arrow
 xsetroot -cursor_name left_ptr &
 
+# disables the trackpad
+xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
+
 # open port 80
 upnpc -r 80 TCP &
 
@@ -40,5 +43,5 @@ if_not_running /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
 # gui applications
 if_not_running textadept
-if_not_running firefox
+if_not_running firefox-esr
 if_not_running keepassx

@@ -1,9 +1,11 @@
-user_pref("full-screen-api.warning.timeout", 0);
+user_pref("layout.css.devPixelsPerPx", "1.2");
+
 user_pref("browser.backspace_action", 0);
-user_pref("browser.sessionstore.max_tabs_undo", 16);
+user_pref("full-screen-api.warning.timeout", 0);
 user_pref("devtools.serviceWorkers.testing.enabled", true);
 
 // from: https://www.privacytools.io/
+// also see: https://github.com/ghacksuserjs/ghacks-user.js/
 user_pref("privacy.firstparty.isolate", true);
 user_pref("privacy.resistFingerprinting", true);
 user_pref("privacy.trackingprotection.enabled", false);

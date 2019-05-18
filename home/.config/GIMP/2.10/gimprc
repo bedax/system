@@ -2,13 +2,13 @@
 # 
 # This is your personal gimprc file.  Any variable defined in this file takes
 # precedence over the value defined in the system-wide gimprc:
-# /tmp/.mount_gimpZk13Kr/usr/etc/gimp/2.0/gimprc
+# /tmp/.mount_gimp1RZP5H/usr/etc/gimp/2.0/gimprc
 # Most values can be set within GIMP by changing some options in the
 # Preferences dialog.
 
 (import-raw-plug-in "${gimp_plug_in_dir}/plug-ins/file-raw-placeholder/file-raw-placeholder")
-(monitor-xresolution 124.000000)
-(monitor-yresolution 122.000000)
+(monitor-xresolution 174.000000)
+(monitor-yresolution 171.000000)
 (default-view
     (show-menubar yes)
     (show-statusbar yes)

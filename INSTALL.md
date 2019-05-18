@@ -45,8 +45,8 @@ If `nmtui` doesn't work, edit `/etc/NetworkManager/NetworkManager.conf` and make
 
 ```
 su
-apt-get update
-apt-get upgrade
+apt update
+apt upgrade
 ```
 
 
@@ -190,7 +190,6 @@ qt4-qtconfig
 
 ### backup
 rsync
-rdiff-backup
 
 ### for the local scripts
 alsa-utils
@@ -207,6 +206,7 @@ hsetroot
 redshift
 x11-xserver-utils
 xbacklight
+xinput
 
 ### for st and dmenu
 libx11-dev
@@ -238,10 +238,10 @@ webpage2html
 
 ### pip3
 
-youtube-dl
 flake8
 flake8-bugbear
 flake8-docstrings
+youtube-dl
 
 
 ## fish
@@ -481,7 +481,7 @@ mv [extracted] ~/.local/opt/[opt name]
 ln -s ~/.local/opt/[opt name]/[opt bin name] ~/.local/bin/[bin name]
 ```
 
-### Textadept
+### textadept
 
 ```
 link: https://foicica.com/textadept/download/textadept_10.3.x86_64.tgz
@@ -501,7 +501,7 @@ ln -s ~/.local/opt/[opt name]/textadept-curses ~/.local/bin/textadept-curses
 link: https://download-installer.cdn.mozilla.net/pub/devedition/releases/66.0b2/linux-x86_64/en-GB/firefox-66.0b2.tar.bz2
 opt name: firefox-dev
 opt bin name: firefox
-bin name: firefox
+bin name: firefox-dev
 ```
 
 ### blender
@@ -586,22 +586,36 @@ sudo shutdown -r now
 
 ### browsers
 
-Install the following addons for firefox-dev and chromium (where relevant):
-
-- EPUBReader
-- uBlock Origin
-    - the default lists
-    - Adguard's Annoyance List (it blocks more cookie warnings, like those on serverfault.com)
-- NoScript (allow scripts globally, just use it for the other stuff)
-- Smart HTTPS
-- Privacy Badger
-- Open Image in New Tab (bedstash)
-- Maximizer for YouTube
-- Axe Developer Tools
+- Open Image in New Tab (robines)
 - Vue.js devtools
+
+
+### firefox-dev
+
+Install the Arc Darker theme and set up the developer tools.
+
 - Wappalyzer
 
+`ln -s ~/.mozilla/firefox/dev-user.js ~/.mozilla/firefox/[dev-profile]/user.js`
+
+
+### firefox-esr
+
+- NoScript (allow scripts globally, just use it for the other stuff)
+- EPUBReader
+- Smart HTTPS
+- Privacy Badger
+- Maximizer for YouTube
+- uBlock Origin
+    - the default lists
+    - Adguard Annoyances
+    - Fanboy's Annoyance List
+    - Anti-Facebook List
+
 `ln -s ~/.mozilla/firefox/user.js ~/.mozilla/firefox/[profile]/user.js`
+
+
+### meld
 
 
 ### blender animation nodes
@@ -629,5 +643,3 @@ Install the following addons for firefox-dev and chromium (where relevant):
 ### project64
 
 Use the N-Rage input plugin. If the gamepad has two versions (`event` and `js`) use `event`. Disable `raw data`.
-
-### meld

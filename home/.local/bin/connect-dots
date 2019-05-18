@@ -53,6 +53,7 @@ def render_dots():
    render_template("/home/.config/dunst/dunstrc.template")
    render_template("/home/.local/src/st-0.8.1/config.h.template")
    render_template("/home/.local/src/dmenu-4.8/config.h.template")
+   render_template("/home/.mozilla/firefox/chrome/userChrome.css.template")
 
 
 def link_dots(system_path, destination, sudo=False):
