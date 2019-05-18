@@ -2,6 +2,7 @@
 
 -- make a taf script for filezilla and make a tap script for work
    -- setting the tab-width and session
+   -- fix all the ta*s
 
 -- detect eol type from file
    -- if inconsitent notify

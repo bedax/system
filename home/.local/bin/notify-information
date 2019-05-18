@@ -5,14 +5,14 @@ import subprocess
 
 
 
-def command(command, shell=False):
-   return subprocess.check_output(command, shell=shell).decode("utf-8").strip()
+def command(command):
+   return subprocess.check_output(command).decode("utf-8").strip()
 
 
 def main():
-   desktop = command("bspc query -T -d focused | jshon -e name -u", shell=True)
    time = command(["date", "+%A %d/%m/%y %H:%M:%S"])
    volume = command("volume-get")
+   desktop = command("desktop")
 
    battery_output = command(["cat", "/sys/class/power_supply/BAT0/capacity"])
    battery = "{}%".format(battery_output)
