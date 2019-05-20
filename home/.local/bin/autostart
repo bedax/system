@@ -8,6 +8,12 @@ if_not_running() {
 }
 
 
+# open port 80
+# upnpc -r 80 TCP &
+
+# set the domains to point to this machine
+# set-dyn-dns &
+
 # set the brightness
 xbacklight -set 75 &
 
@@ -19,12 +25,6 @@ xsetroot -cursor_name left_ptr &
 
 # disables the trackpad
 xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
-
-# open port 80
-upnpc -r 80 TCP &
-
-# set the domains to point to this machine
-set-dyn-dns &
 
 # start the hotkey daemon
 if_not_running sxhkd

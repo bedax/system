@@ -28,15 +28,17 @@ export SUCKLESS_FONT_STYLE="Regular"
 export MONO_FONT_NAME="Fira Mono"
 export NORMAL_FONT_NAME="Lato"
 
-export BORDER_WIDTH="3"
-export LINE_HEIGHT="1.236"
 export PADDING="8"
 export PADDING_DOUBLED="16"
+export LINE_HEIGHT="1.236"
+export BORDER_WIDTH="3"
 
 export SYSTEM="$HOME/system"
-
-export GDK_DPI_SCALE=1.4
 
 HOME_PATH="$HOME/.local/bin"
 CARGO_PATH="$HOME/.cargo/bin"
 export PATH="$CARGO_PATH:$HOME_PATH:$PATH"
+
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_SCALE_FACTOR=1.4
+export GDK_DPI_SCALE=1.4

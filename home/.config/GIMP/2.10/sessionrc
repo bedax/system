@@ -57,6 +57,14 @@
 (session-info "toplevel"
     (factory-entry "gimp-image-new-dialog")
     (position 696 373))
+(session-info "toplevel"
+    (factory-entry "gimp-file-export-dialog")
+    (position 417 132)
+    (size 1080 810))
+(session-info "toplevel"
+    (factory-entry "gimp-file-open-dialog")
+    (position 417 132)
+    (size 1080 810))
 
 (hide-docks no)
 (single-window-mode yes)

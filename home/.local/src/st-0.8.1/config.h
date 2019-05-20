@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "Fira Mono:style=Regular:pixelsize=18:antialias=true:autohint=false";
-static int borderpx = 3;
+static int borderpx = 16;
 
 /*
  * What program is execed by st depends of these precedence rules:

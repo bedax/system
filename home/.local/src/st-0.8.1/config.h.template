@@ -6,7 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "{{ MONO_FONT_NAME }}:style={{ SUCKLESS_FONT_STYLE }}:pixelsize={{ SUCKLESS_FONT_SIZE }}:antialias=true:autohint=false";
-static int borderpx = {{ BORDER_WIDTH }};
+static int borderpx = {{ PADDING_DOUBLED }};
 
 /*
  * What program is execed by st depends of these precedence rules:
