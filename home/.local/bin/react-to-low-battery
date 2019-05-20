@@ -6,13 +6,11 @@ import sys
 
 
 def charging():
-   with open("/sys/class/power_supply/AC/online", "r") as f:
-      return f.read().strip() == "1"
+   return bool(int(subprocess.check_output("battery-charging")))
 
 
 def percent_remaining():
-   with open("/sys/class/power_supply/BAT0/capacity", "r") as f:
-      return int(f.read().strip())
+   return int(subprocess.check_output("battery-capacity"))
 
 
 def lowest_percentage():

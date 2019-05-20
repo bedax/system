@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-from collections import OrderedDict
 import subprocess
 
 
@@ -11,24 +10,22 @@ def command(command):
 
 def main():
    time = command(["date", "+%A %d/%m/%y %H:%M:%S"])
-   battery = command(["cat", "/sys/class/power_supply/BAT0/capacity"])
-   brightness = command("brightness-get")
-   desktop = command("desktop")
+   charging = "yes" if bool(int(command("battery-charging"))) else "no"
+   battery = command("battery-capacity")
+   light = command("brightness-get")
    volume = command("volume-get")
+   desktop = command("desktop")
 
-   charging_output = command(["cat", "/sys/class/power_supply/AC/online"])
-   charging = "yes" if bool(int(charging_output)) else "no"
-
-   lines = OrderedDict()
-   lines["charging"] = charging
-   lines["battery"] = battery + "%"
-   lines["volume"] = volume
-   lines["light"] = brightness + "%"
-   lines["desktop"] = desktop
+   lines = []
+   lines.append(("charging", charging))
+   lines.append(("battery", battery + "%"))
+   lines.append(("volume", volume))
+   lines.append(("light", light + "%"))
+   lines.append(("desktop", desktop))
 
    body = ""
 
-   for i, (name, value) in enumerate(lines.items()):
+   for i, (name, value) in enumerate(lines):
       name_with_colon = "{}:".format(name)
       padded_value = '{: >4}'.format(value)
 
