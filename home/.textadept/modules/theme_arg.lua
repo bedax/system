@@ -2,13 +2,16 @@ local M = {}
 
 
 M.handler = function(name)
-   events.connect(events.BUFFER_NEW, function()
+   local set_theme = function()
       if name == "light" or name == "dark" then
          require("theme").set_theme_shade(name)
       else
          require("theme").set_theme_name(name)
       end
-   end)
+   end
+
+   events.connect(events.BUFFER_NEW, set_theme)
+   set_theme()
 end
 
 M.register_arg = function()
