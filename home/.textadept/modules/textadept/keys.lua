@@ -72,8 +72,8 @@ ctrl("=", buffer.zoom_in)
 ctrl(" ", require("open").terminal)
 alt(" ", require("open").file_manager)
 ctrl("t", function() ui.tabs = not ui.tabs end)
-ctrl("esc", require("minimum_width").set_first_view)
-ctrl("f1", require("minimum_width").set_second_view)
+ctrl("`", require("minimum_width").set_first_view)
+ctrl("1", require("minimum_width").set_second_view)
 
 
 events.connect(events.SUSPEND, function()

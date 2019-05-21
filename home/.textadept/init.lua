@@ -4,13 +4,13 @@
    -- setting the tab-width and session
    -- fix all the ta*s
 
+-- set font size from env
+
 -- detect eol type from file
    -- if inconsitent notify
 -- ensure consistent line endings
 -- detect tab type and width from file
    -- if tabs and spaces, notify
-
--- ctrl+esc,f1 should be moved to ctrl+`,1
 
 -- add a --theme parameter and set tap and taf to use different themes
    -- can pass "light" or "dark" to choose the default
