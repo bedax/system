@@ -58,16 +58,7 @@ def render_dots():
 
 def link_dots(system_path, destination, sudo=False):
    source = os.path.join(os.environ["SYSTEM"], system_path.lstrip("/"))
-
-   command_args = [
-      "cp",
-      "--symbolic-link",
-      "--recursive",
-      "--no-dereference",
-      "--force",
-      os.path.join(source, "."),
-      os.path.join(destination, "")
-   ]
+   command_args = ["link-directory", source, destination]
 
    if sudo:
       command_args.insert(0, "sudo")

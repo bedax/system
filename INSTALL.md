@@ -422,27 +422,29 @@ sudo systemctl reload apache2
 ```
 
 ```
+wget https://wordpress.org/latest.tar.gz
+tar xf latest.tar.gz
+mv wordpress [site]
+cd [site]
+
+# wp wants these for later
+# do it now for the permissions
+mkdir wp-content/upgrade
+mkdir wp-content/uploads
+touch .htaccess
+
+# during development; before the move
+chmod 0777 wp-content/uploads
+
+cp wp-config-sample.php wp-config.php
+```
+
+```
 mysql -u root -p
 CREATE DATABASE db_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER db_user@localhost IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON db_name.* TO db_user@localhost IDENTIFIED BY 'password';
 EXIT
-```
-
-```
-wget https://wordpress.org/latest.tar.gz
-tar xf latest.tar.gz
-
-# wp wants these for later
-# do it now for the permissions
-touch wordpress/.htaccess
-mkdir wordpress/wp-content/upgrade
-
-cp wordpress/wp-config-sample.php wordpress/wp-config.php
-
-chown -R www-data:www-data wordpress
-sudo find wordpress/ -type d -exec chmod 750 {} \;
-sudo find wordpress/ -type f -exec chmod 640 {} \;
 ```
 
 Set `DB_CHARSET` and `DB_COLLATE` as above in `wp-config.php`, and use `https://api.wordpress.org/secret-key/1.1/salt/`.
@@ -456,6 +458,21 @@ mysqldump db_name -u username -p > file.sql
 mysql db_name -u username -p < file.sql
 ```
 
+#### move
+
+```
+define("WP_HOME", "http://localhost/dev/new_location/");
+define("WP_SITEURL", "http://localhost/dev/new_location/");
+```
+
+You might need to set permalinks to plain in the settings, and make sure `WP_DEBUG` is `false`.
+
+```
+chown -R www-data:www-data .
+find . -type d -exec chmod 750 {} \;
+find . -type f -exec chmod 640 {} \;
+```
+
 #### remove
 
 ```
@@ -467,15 +484,6 @@ DROP USER db_user@localhost;
 DROP DATABASE db_name;
 EXIT
 ```
-
-#### move
-
-```
-define("WP_HOME", "http://localhost/dev/new_location/");
-define("WP_SITEURL", "http://localhost/dev/new_location/");
-```
-
-You might need to set permalinks to plain in the settings.
 
 
 ## wine

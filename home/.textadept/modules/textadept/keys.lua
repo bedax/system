@@ -82,9 +82,9 @@ events.connect(events.SUSPEND, function()
 end, 1)
 
 
-ctrl("1", require("find").find_dialog)
+ctrl("9", require("find").find_dialog)
 
-ctrl("2", require("find").replace_dialog)
+ctrl("0", require("find").replace_dialog)
 
 
 

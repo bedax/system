@@ -69,11 +69,12 @@ require("theme").set_theme()
 require("filters").set_filters()
 
 require("status_bar").connect_event()
-require("zoom_line_numbers").connect_event()
 require("minimum_width").connect_event()
-require("tab_width_arg").register_arg()
-require("theme_arg").register_arg()
-require("tabs_arg").register_arg()
+require("zoom_line_numbers").connect_event()
+
+require("arguments.tab_width").register_arg()
+require("arguments.theme").register_arg()
+require("arguments.tabs").register_arg()
 
 
 ui.tabs = false

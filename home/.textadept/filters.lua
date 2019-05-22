@@ -15,14 +15,19 @@ M.default_filter = {
    "!/%.svn$",
    "!/%.hg$",
 
-   -- other directories
-   "!/%.cache$",
+   -- wordpress stuff
+   "!/wp-admin$",
+   "!/wp-content/plugins$",
+   "!/wp-includes$",
 
    -- windows stuff
    "!/desktop.ini$",
    "!/ntuser.ini$",
    "!/NTUSER.DAT",
    "!/ntuser.dat",
+
+   -- other directories
+   "!/%.cache$",
 
    -- file types
    "!.7z",
@@ -77,7 +82,6 @@ M.home_filter = function()
    else
       table.insert(filter, "!^" .. home .. "/games")
       table.insert(filter, "!^" .. home .. "/music")
-      table.insert(filter, "!^" .. home .. "/www/pop/sites")
    end
 
    for i=1, #M.default_filter do

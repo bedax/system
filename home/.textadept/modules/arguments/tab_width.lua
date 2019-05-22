@@ -2,7 +2,9 @@ local M = {}
 
 
 M.handler = function(width)
-   buffer.tab_width = width
+   require("arguments").override_defaults(function()
+      buffer.tab_width = width
+   end)
 end
 
 M.register_arg = function()

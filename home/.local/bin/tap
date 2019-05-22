@@ -1,3 +1,6 @@
 #!/bin/sh
 
-exec textadept --session ~/.textadept/session-work --tab-width 4 "$@"
+session_path="~/.textadept/session-work"
+touch "$session_path"
+
+exec textadept --session "$session_path" --theme base16-ocean-dark --tab-width 4 "$@"
