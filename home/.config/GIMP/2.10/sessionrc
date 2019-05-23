@@ -65,6 +65,9 @@
     (factory-entry "gimp-file-open-dialog")
     (position 417 132)
     (size 1080 810))
+(session-info "toplevel"
+    (factory-entry "gimp-toolbox-color-dialog")
+    (position 703 302))
 
 (hide-docks no)
 (single-window-mode yes)

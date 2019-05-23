@@ -451,6 +451,8 @@ Set `DB_CHARSET` and `DB_COLLATE` as above in `wp-config.php`, and use `https://
 
 If you set the permissions properly, add `define('FS_METHOD', 'direct');` to `wp-config.php`.
 
+Set `WP_DEBUG` to `true`.
+
 #### import/export
 
 ```

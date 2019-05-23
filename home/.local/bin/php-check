@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# from: https://gist.github.com/Fake51/865603
+find . -iname '*.php' -exec php -l '{}' \; | grep '^No syntax errors' -v
