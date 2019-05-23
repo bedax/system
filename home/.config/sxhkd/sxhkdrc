@@ -8,6 +8,12 @@ super + space
 super + alt + space
    dmenu-find
 
+alt + space
+   dmenu-find
+
+ctrl + space
+   st
+
 super + ctrl + space
    st
 
