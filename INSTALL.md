@@ -413,7 +413,7 @@ sudo mysql_secure_installation
 
 ```
 # this is to install php properly
-sudo apt install wordpress
+sudo apt install wordpress php-mbstring
 
 # for wordpress' proper permalinks
 sudo a2enmod rewrite
@@ -686,6 +686,7 @@ Install the Arc Darker theme and set up the developer tools.
 - EPUBReader
 - Smart HTTPS
 - Privacy Badger
+- Decentraleyes
 - Maximizer for YouTube
 - uBlock Origin
     - the default lists

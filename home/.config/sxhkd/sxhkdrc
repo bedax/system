@@ -2,20 +2,14 @@ super + Escape
    notify-information
 
 
-super + space
-   dmenu_run
-
-super + alt + space
-   dmenu-find
-
-alt + space
-   dmenu-find
-
 ctrl + space
    st
 
-super + ctrl + space
-   st
+super + space
+   dmenu_run
+
+alt + space
+   dmenu-find
 
 
 Print
@@ -25,11 +19,8 @@ alt + Print
    screenshot window
 
 
-XF86MonBrightnessUp
-   brightness-increase
-
-XF86MonBrightnessDown
-   brightness-decrease
+XF86AudioMute
+   volume-mute
 
 XF86AudioRaiseVolume
    volume-increase
@@ -37,8 +28,11 @@ XF86AudioRaiseVolume
 XF86AudioLowerVolume
    volume-decrease
 
-XF86AudioMute
-   volume-mute
+XF86MonBrightnessUp
+   brightness-increase
+
+XF86MonBrightnessDown
+   brightness-decrease
 
 
 # close the focused window
