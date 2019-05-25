@@ -1,4 +1,28 @@
-/home/tom/.*
-*/previous/*
+# cargo
+target/debug/
+target/release/
 
-*node_modules*
+# npm
+node_modules/
+
+# vcs
+.git/objects/
+.hg/
+
+# wordpress stuff
+wp-admin/
+wp-content/plugins/
+wp-content/themes/twenty*/
+wp-includes/
+
+# windows stuff
+desktop.ini
+ntuser.ini
+NTUSER.DAT
+ntuser.dat
+
+# other stuff
+.cache/
+
+!/home/tom/.*
+/home/tom/.*/

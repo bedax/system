@@ -11,13 +11,12 @@ M.default_filter = {
 
    -- vcs
    "!/%.git/objects$",
-   "!/%.bzr$",
-   "!/%.svn$",
    "!/%.hg$",
 
    -- wordpress stuff
    "!/wp-admin$",
    "!/wp-content/plugins$",
+   "!/wp-content/themes/twenty.+$",
    "!/wp-includes$",
 
    -- windows stuff
@@ -68,7 +67,7 @@ M.default_filter = {
 
 M.home_filter = function()
    local home = require("open").home_path()
-   local filter = { "!^" .. home .. "/%." }
+   local filter = { "!^" .. home .. "/%..*/" }
 
    if WIN32 then
       table.insert(filter, "!^" .. home .. "/AppData")
