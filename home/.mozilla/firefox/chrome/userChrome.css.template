@@ -2,10 +2,11 @@
 
 /* #tabbrowser-tabs, #navigator-toolbox, menuitem, menu, ... */
 * {
-    font-size: {{ NORMAL_FONT_SIZE }}px !important;
+   font-size: {{ NORMAL_FONT_SIZE }}px !important;
+   font-family: {{ NORMAL_FONT_NAME }} !important;
 }
 
 /* exception for badge on adblocker */
 .toolbarbutton-badge {
-    font-size: 8px !important;
+   font-size: 8px !important;
 }
