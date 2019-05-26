@@ -1,4 +1,4 @@
-user_pref("layout.css.devPixelsPerPx", "1.35");
+user_pref("layout.css.devPixelsPerPx", "1.25");
 
 user_pref("browser.backspace_action", 0);
 user_pref("full-screen-api.warning.timeout", 0);
