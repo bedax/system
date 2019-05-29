@@ -1,4 +1,5 @@
-XDG_DESKTOP_DIR="$HOME"
+# firefox needs the slash; https://bugzilla.mozilla.org/show_bug.cgi?id=1082717
+XDG_DESKTOP_DIR="$HOME/"
 XDG_DOWNLOAD_DIR="$HOME/downloads"
 XDG_TEMPLATES_DIR="$HOME"
 XDG_PUBLICSHARE_DIR="$HOME"

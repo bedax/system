@@ -2,11 +2,11 @@ super + Escape
    notify-information
 
 
-ctrl + space
-   st
-
 super + space
    dmenu_run
+
+super + alt + space
+   st
 
 alt + space
    dmenu-find
