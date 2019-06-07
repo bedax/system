@@ -150,6 +150,7 @@ gucharmap
 hexchat
 inkscape
 keepassx
+leafpad
 meld
 pavucontrol
 picard
@@ -453,11 +454,23 @@ If you set the permissions properly, add `define('FS_METHOD', 'direct');` to `wp
 
 Set `WP_DEBUG` to `true`.
 
+#### cli
+
+```
+cd ~/.local/bin
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+php wp-cli.phar --info
+chmod +x wp-cli.phar
+mv wp-cli.phar wp
+wp --info
+```
+
 #### import/export
 
 ```
-mysqldump db_name -u username -p > file.sql
-mysql db_name -u username -p < file.sql
+wp db export
+sudo -u www-data -- wp db import db.sql
+sudo -u www-data -- wp search-replace "http://localhost/x/y.co.uk" "http://x.co.uk/y"
 ```
 
 #### move

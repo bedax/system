@@ -75,7 +75,7 @@
 		<Setting name="Show Tree Remote">0</Setting>
 		<Setting name="File Pane Layout">0</Setting>
 		<Setting name="File Pane Swap">0</Setting>
-		<Setting name="Last local directory">/home/tom/downloads/</Setting>
+		<Setting name="Last local directory" />
 		<Setting name="Filelist directory sort">0</Setting>
 		<Setting name="Filelist name sort">1</Setting>
 		<Setting name="Queue successful autoclear">0</Setting>

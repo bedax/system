@@ -3,8 +3,9 @@ local M = {}
 
 M.default_filter = {
    -- cargo
-   "!/target/release$",
    "!/target/debug$",
+   "!/target/release$",
+   "!/target/x86_64-unknown-linux-musl$",
 
    -- npm
    "!/node_modules$",

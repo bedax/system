@@ -44,7 +44,7 @@
                 (aux-info
                     (show-button-bar "true"))))
         (book
-            (position 538)
+            (position 558)
             (current-page 0)
             (dockable "gimp-tool-options"
                 (tab-style automatic)

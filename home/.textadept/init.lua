@@ -12,6 +12,8 @@
 -- detect tab type and width from file
    -- if tabs and spaces, notify
 
+-- --tabs and --tab-width can probably use LEXER_LOADER/... instead of UPDATE_UI
+
 -- add a --theme parameter and set tap and taf to use different themes
    -- can pass "light" or "dark" to choose the default
 
