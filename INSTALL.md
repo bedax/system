@@ -183,11 +183,12 @@ sxhkd
 dunst
 
 ### appearance
+adwaita-icon-theme
 adwaita-qt
 adwaita-qt4
-adwaita-icon-theme
 gnome-themes-standard
 qt4-qtconfig
+ttf-mscorefonts-installer
 
 ### backup
 rsync
@@ -413,7 +414,7 @@ sudo mysql_secure_installation
 ### wordpress
 
 ```
-# this is to install php properly
+# this is just to install php properly
 sudo apt install wordpress php-mbstring
 
 # for wordpress' proper permalinks
@@ -423,10 +424,17 @@ sudo systemctl reload apache2
 ```
 
 ```
-wget https://wordpress.org/latest.tar.gz
-tar xf latest.tar.gz
-mv wordpress [site]
+cd ~/.local/bin
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar
+mv wp-cli.phar wp
+wp --info
+```
+
+```
+mkdir [site]
 cd [site]
+wp core download
 
 # wp wants these for later
 # do it now for the permissions
@@ -435,7 +443,7 @@ mkdir wp-content/uploads
 touch .htaccess
 
 # during development; before the move
-chmod 0777 wp-content/uploads
+chmod -R 0777 wp-content/uploads
 
 cp wp-config-sample.php wp-config.php
 ```
@@ -454,33 +462,29 @@ If you set the permissions properly, add `define('FS_METHOD', 'direct');` to `wp
 
 Set `WP_DEBUG` to `true`.
 
-#### cli
-
-```
-cd ~/.local/bin
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-php wp-cli.phar --info
-chmod +x wp-cli.phar
-mv wp-cli.phar wp
-wp --info
-```
-
 #### import/export
 
 ```
+cd .../wp/
 wp db export
+
+# download db.sql to [new wp root]
+# download wp-content/themes,plugins,uploads to [new wp root]/wp-content
+# or git clone the theme into wp-content/themes if it's in git
+
+# need to run the install if importing the database?
+# do it next time and see if it enables the permalinks
+
+cd [new wp root]
 sudo -u www-data -- wp db import db.sql
-sudo -u www-data -- wp search-replace "http://localhost/x/y.co.uk" "http://x.co.uk/y"
+sudo -u www-data -- wp search-replace "http://localhost/x/y.co.uk" "http://x.co.uk"
 ```
 
-#### move
+If you get a whitescreen, check the theme is enabled properly.
 
-```
-define("WP_HOME", "http://localhost/dev/new_location/");
-define("WP_SITEURL", "http://localhost/dev/new_location/");
-```
+You might need to set permalinks to plain in the settings.
 
-You might need to set permalinks to plain in the settings, and make sure `WP_DEBUG` is `false`.
+When moving to the main site, make sure `WP_DEBUG` is `false`, and:
 
 ```
 chown -R www-data:www-data .
@@ -708,6 +712,30 @@ Install the Arc Darker theme and set up the developer tools.
     - Anti-Facebook List
 
 `ln -s ~/.mozilla/firefox/user.js ~/.mozilla/firefox/[profile]/user.js`
+
+
+### firefox remote debugging
+
+on old versions of firefox for the desktop
+- sudo apt install adb
+- sudo adduser [user] plugdev
+- open webide in firefox
+- project > manage extra components
+- install adb helper
+
+on new versions of firefox for the desktop
+- open about:debugging
+- enable usb debugging
+
+on android
+- open settings > about phone
+- tap build number 7 times
+- open settings > developer options
+- enable usb debugging
+
+on firefox for android
+- open settings > advanced
+- enable remote debugging via usb
 
 
 ### meld
