@@ -12,7 +12,13 @@ def fail(message):
    sys.exit(1)
 
 
-def command(line, check=True, capture_stdout=True, directory=None):
+def command(line, check=True, capture_stdout=True, directory=None, sudo=False):
+   if sudo:
+      line.insert(0, "sudo")
+      line.insert(1, "-S")
+      line.insert(2, "env")
+      line.insert(3, "PATH='{}'".format(os.environ["PATH"]))
+
    stdout = subprocess.PIPE if capture_stdout else None
    process = subprocess.run(line, stdout=stdout, stderr=stdout, cwd=directory)
 
@@ -24,7 +30,7 @@ def command(line, check=True, capture_stdout=True, directory=None):
 
 
 def acquire_sudo_session():
-   command(["sudo", "-S", "echo"], capture_stdout=False)
+   command(["echo"], sudo=True, capture_stdout=False)
 
 
 def render_template_string(template, **kwargs):
@@ -62,10 +68,7 @@ def link_dots(system_path, destination, sudo=False):
    source = os.path.join(os.environ["SYSTEM"], system_path.lstrip("/"))
    command_args = ["link-directory", source, destination]
 
-   if sudo:
-      command_args.insert(0, "sudo")
-
-   command(command_args)
+   command(command_args, sudo=sudo)
 
 
 def cache_fonts():
