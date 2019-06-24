@@ -26,7 +26,7 @@ export NORMAL_FONT_SIZE="14"
 export SUCKLESS_FONT_SIZE="18"
 export SUCKLESS_FONT_STYLE="Regular"
 export MONO_FONT_NAME="Fira Mono"
-export NORMAL_FONT_NAME="Lato"
+export NORMAL_FONT_NAME="Inter"
 
 export PADDING="8"
 export PADDING_DOUBLED="16"

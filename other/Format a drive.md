@@ -9,7 +9,7 @@ fdisk /dev/sdX
     n
         accept defaults (p, etc)
     t
-        7 for ntfs, or c for fat32
+        83 for ext#, 7 for ntfs, or c for fat32
     a
         make it bootable
     p
@@ -20,6 +20,12 @@ fdisk /dev/sdX
 
 
 # Format
+
+## ext4
+
+```
+mkfs.ext4 /dev/sdX1
+```
 
 ## NTFS
 
@@ -38,7 +44,7 @@ mkfs.vfat /dev/sdX1
 
 ```
 mkdir /mnt/somewhere
-mount /dev/sdX1 /mnt/somewhere
+mount -t ext4 /dev/sdX1 /mnt/
 ```
 
 

@@ -2,7 +2,7 @@
 # 
 # This is your personal gimprc file.  Any variable defined in this file takes
 # precedence over the value defined in the system-wide gimprc:
-# /tmp/.mount_gimpjOBroy/usr/etc/gimp/2.0/gimprc
+# /tmp/.mount_gimpgnWJqQ/usr/etc/gimp/2.0/gimprc
 # Most values can be set within GIMP by changing some options in the
 # Preferences dialog.
 
@@ -43,6 +43,7 @@
     (padding-color (color-rgb 1.000000 1.000000 1.000000)))
 (icon-size medium)
 (user-manual-online yes)
+(layer-new-fill-type white)
 (layer-merge-active-group-only no)
 (layer-merge-discard-invisible yes)
 (selection-grow-radius 2.000000)

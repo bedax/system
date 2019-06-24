@@ -1,9 +1,8 @@
 #!/bin/sh
 
-cp \
-    --symbolic-link \
-    --recursive \
-    --no-dereference \
-    --force \
-    --verbose \
-    $1/. $2
+cp --verbose \
+   --recursive \
+   --symbolic-link \
+   --no-dereference \
+   --force \
+   $1/. $2

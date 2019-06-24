@@ -122,6 +122,7 @@ ffmpeg
 git
 htop
 less
+links2
 lua-check
 miniupnpc
 nano
@@ -134,7 +135,6 @@ shellcheck
 sqlite3
 tree
 unzip
-w3m
 wget
 xz-utils
 zip
@@ -145,6 +145,7 @@ chromium
 filezilla
 geogebra
 gksu
+gnome-orca
 gparted
 gucharmap
 hexchat
@@ -503,6 +504,20 @@ DROP USER db_user@localhost;
 DROP DATABASE db_name;
 EXIT
 ```
+
+#### composer
+
+```
+curl -sS https://getcomposer.org/installer -o composer-setup.php
+php composer-setup.php --install-dir="$HOME/.local/bin" --filename=composer
+rm composer-setup.php
+```
+
+```
+composer require [vendor/package]
+```
+
+Then include `require_once "vendor/autoload.php";` in `functions.php` or somewhere equivalent.
 
 
 ## wine
