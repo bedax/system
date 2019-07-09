@@ -39,5 +39,6 @@
     "json.format.enable": false,
     "markdown.preview.fontFamily": "Lato, sans-serif",
     "markdown.preview.lineHeight": 1.4,
-    "diffEditor.ignoreTrimWhitespace": true
+    "diffEditor.ignoreTrimWhitespace": true,
+    "editor.minimap.enabled": false
 }

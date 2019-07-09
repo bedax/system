@@ -1,0 +1,25 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+enter",
+        "command": "workbench.action.toggleZenMode",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+k z",
+        "command": "-workbench.action.toggleZenMode"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "workbench.action.toggleMaximizedPanel",
+        "when": "terminalFocus"
+    }
+]
