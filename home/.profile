@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# base16-ashes-dark
+# base16-ashes
 export COLOUR_0="#1c2023"
 export COLOUR_1="#c7ae95"
 export COLOUR_2="#95c7ae"

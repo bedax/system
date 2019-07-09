@@ -420,7 +420,7 @@ sudo apt install wordpress php-mbstring
 
 # for wordpress' proper permalinks
 sudo a2enmod rewrite
-# sudo a2enmod ssl
+sudo a2enmod ssl
 sudo systemctl reload apache2
 ```
 
@@ -548,6 +548,24 @@ Start with:
 
 ```
 wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Project64\ 1.6/Project64.exe "$@"
+```
+
+
+## vscodium
+
+```
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
+echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' | sudo tee --append /etc/apt/sources.list.d/vscodium.list
+sudo apt update && sudo apt install codium
+```
+
+Launch `codium`, ctrl+p, then enter:
+
+```
+ext install rust-lang.rust
+ext install be5invis.toml
+ext install vadimcn.vscode-lldb
+# ext install webfreak.debug
 ```
 
 

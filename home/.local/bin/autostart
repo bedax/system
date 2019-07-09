@@ -19,6 +19,7 @@ xbacklight -set 75 &
 
 # set the background colour
 hsetroot -solid "$BACKGROUND_COLOUR" &
+#hsetroot -tile .background.png -tint "$BACKGROUND_COLOUR"
 
 # sets the mouse cursor to the arrow
 xsetroot -cursor_name left_ptr &
