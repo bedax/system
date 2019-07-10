@@ -562,6 +562,7 @@ sudo apt update && sudo apt install codium
 Launch `codium`, ctrl+p, then enter:
 
 ```
+ext install AndrsDC.base16-themes
 ext install rust-lang.rust
 ext install be5invis.toml
 ext install vadimcn.vscode-lldb

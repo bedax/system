@@ -1,10 +1,11 @@
 {
-    "editor.fontFamily": "'Fira Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "window.zoomLevel": 2,
-    "workbench.colorTheme": "Monokai Dimmed",
+    "editor.fontFamily": "'Fira Mono', monospace",
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Base16 Dark Ashes",
     "editor.autoClosingBrackets": "never",
     "editor.autoClosingQuotes": "never",
     "editor.autoSurround": "never",
+    "editor.colorDecorators": false,
     "editor.folding": false,
     "editor.renderIndentGuides": false,
     "editor.renderLineHighlight": "none",
@@ -37,8 +38,20 @@
     "html.autoClosingTags": false,
     "html.format.endWithNewline": true,
     "json.format.enable": false,
-    "markdown.preview.fontFamily": "Lato, sans-serif",
+    "markdown.preview.fontFamily": "'Inter', sans-serif",
     "markdown.preview.lineHeight": 1.4,
     "diffEditor.ignoreTrimWhitespace": true,
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "diffEditor.renderSideBySide": true,
+    "git.confirmSync": false,
+    "workbench.colorCustomizations": {
+        "[Base16 Dark Ashes]": {
+            "statusBar.background": "#1d1f21",
+            "statusBar.noFolderBackground": "#1d1f21",
+            "statusBar.foreground": "#707880",
+            "statusBar.noFolderForeground": "#707880",
+            "statusBar.border": "#373b41",
+            "statusBar.noFolderBorder": "#373b41"
+        },
+    }
 }

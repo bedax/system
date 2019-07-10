@@ -10,6 +10,11 @@
         "command": "-workbench.action.toggleZenMode"
     },
     {
+        "key": "escape",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminalFocus"
+    },
+    {
         "key": "ctrl+space",
         "command": "workbench.action.terminal.toggleTerminal"
     },
