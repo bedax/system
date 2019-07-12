@@ -18,7 +18,7 @@
     "editor.suggest.showIcons": false,
     "files.enableTrash": false,
     "files.eol": "\n",
-    "files.hotExit": "off",
+    "files.hotExit": "onExitAndWindowClose",
     "files.insertFinalNewline": true,
     "files.simpleDialog.enable": true,
     "files.trimFinalNewlines": true,
@@ -53,5 +53,15 @@
             "statusBar.border": "#373b41",
             "statusBar.noFolderBorder": "#373b41"
         },
-    }
+        "[Base16 Light Tomorrow]": {
+            "statusBar.background": "#ffffff",
+            "statusBar.noFolderBackground": "#ffffff",
+            "statusBar.foreground": "#4d4d4c",
+            "statusBar.noFolderForeground": "#4d4d4c",
+            "statusBar.border": "#dcdcdc",
+            "statusBar.noFolderBorder": "#dcdcdc"
+        },
+    },
+    "workbench.commandPalette.history": 500,
+    "rust.clippy_preference": "on"
 }

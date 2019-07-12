@@ -10,6 +10,17 @@ _These are some notes on how to install the author's system. These aren't expect
     - An ext4 partition for ~, using the remaining space
 
 
+## logging
+
+[enable persistent logging](https://unix.stackexchange.com/a/159390):
+
+```
+mkdir /var/log/journal
+systemd-tmpfiles --create --prefix /var/log/journal
+systemctl restart systemd-journald
+```
+
+
 ## network
 
 To get the network working add whatever's relevant from the following to `/etc/network/interfaces`:
@@ -566,6 +577,8 @@ ext install AndrsDC.base16-themes
 ext install rust-lang.rust
 ext install be5invis.toml
 ext install vadimcn.vscode-lldb
+ext install Tyriar.sort-lines
+# ext install christian-kohler.path-intellisense
 # ext install webfreak.debug
 ```
 
@@ -691,11 +704,17 @@ Run `visudo` and add:
 
 ## crontab
 
-Run `crontab -e` and add:
+Run `env EDITOR=leafpad crontab -e` and add:
 
 ```
 */3 * * * *  . "$HOME/.profile"; DISPLAY=:0  react-to-low-battery 12 6
 # 0 */2 * * *  . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" backup
+```
+
+Run `sudo env EDITOR=leafpad crontab -e` and add:
+
+```
+0 */6 * * *  journalctl --vacuum-time=14d
 ```
 
 

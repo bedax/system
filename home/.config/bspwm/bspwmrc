@@ -35,8 +35,8 @@ bspc config ignore_ewmh_focus true
 bspc config initial_polarity first_child
 
 # find the class name with: `xprop | grep WM_CLASS`
-bspc rule --add "Textadept" --one-shot desktop="^2"
-bspc rule --add "Firefox-esr" --one-shot desktop="^3"
+# bspc rule --add "Textadept" --one-shot desktop="^2"
+# bspc rule --add "Firefox-esr" --one-shot desktop="^3"
 bspc rule --add "Keepassx" --one-shot desktop="^10"
 
 bspc wm --adopt-orphans
