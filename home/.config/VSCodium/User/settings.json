@@ -63,5 +63,6 @@
         },
     },
     "workbench.commandPalette.history": 500,
-    "rust.clippy_preference": "on"
+    "rust.clippy_preference": "on",
+    "editor.smoothScrolling": true
 }

@@ -1,3 +1,20 @@
+## buster upgrade notes
+
+- make new usb
+- backup
+- upgrade (without x running)
+- remove (in links and in dots):
+   - old gimp,
+   - old fish,
+   - old node,
+   - virtualbox,
+   - textadept,
+   - rsyncrypto
+- add virt-manager or gnome boxes
+- install ripgrep and fd with apt instead of cargo
+- install youtube-dl and flake8 with apt install of pip
+
+
 # install
 
 _These are some notes on how to install the author's system. These aren't expected to be useful to anyone else._
@@ -134,7 +151,6 @@ git
 htop
 less
 links2
-lua-check
 miniupnpc
 nano
 ncdu
@@ -155,6 +171,8 @@ audacity
 chromium
 filezilla
 geogebra
+gimp
+gimp-help-en
 gksu
 gnome-orca
 gparted
@@ -256,6 +274,15 @@ flake8
 flake8-bugbear
 flake8-docstrings
 youtube-dl
+
+
+## graphics
+
+```
+wget https://ftp.uk.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-misc-nonfree_20190114-1_all.deb
+sudo gdebi firmware-misc-nonfree_20190114-1_all.deb
+rm -f firmware-misc-nonfree_20190114-1_all.deb
+```
 
 
 ## fish
@@ -374,8 +401,6 @@ chmod +x GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage
 ln -s ~/.local/opt/GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage ~/.local/bin/gimp
 ln -s ~/.config/GIMP ~/.config/GIMP-AppImage
 cd ~/temp
-
-# sudo apt install gimp-help-en
 ```
 
 
@@ -735,17 +760,12 @@ sudo shutdown -r now
 
 ## setup
 
-### browsers
-
-- Open Image in New Tab (robines)
-- Vue.js devtools
-
-
 ### firefox-dev
 
 Install the Arc Darker theme and set up the developer tools.
 
 - Wappalyzer
+- Open Image in New Tab (robines)
 
 `ln -s ~/.mozilla/firefox/dev-user.js ~/.mozilla/firefox/[dev-profile]/user.js`
 
@@ -758,6 +778,7 @@ Install the Arc Darker theme and set up the developer tools.
 - Privacy Badger
 - Decentraleyes
 - Maximizer for YouTube
+- Open Image in New Tab (robines)
 - uBlock Origin
     - the default lists
     - Adguard Annoyances
@@ -801,11 +822,6 @@ on firefox for android
 - Go to `User Preferences > Add ons`
 - Click `Install from File` and choose the downloaded file
 - Activate the add-on
-
-
-### djv
-
-`djv_view` will likely complain about not being able to find `libpng12.so`, in which case manually [get it from jessie](http://ftp.uk.debian.org/debian/pool/main/libp/libpng/libpng12-0_1.2.50-2+deb8u3_amd64.deb) and install it with gdebi.
 
 
 ### openmw
