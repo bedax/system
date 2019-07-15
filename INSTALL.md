@@ -4,15 +4,17 @@
 - backup
 - upgrade (without x running)
 - remove (in links and in dots):
-   - old gimp,
-   - old fish,
-   - old node,
-   - virtualbox,
-   - textadept,
+   - old gimp
+   - old fish
+   - old node
+   - virtualbox
+   - textadept
    - rsyncrypto
 - add virt-manager or gnome boxes
 - install ripgrep and fd with apt instead of cargo
 - install youtube-dl and flake8 with apt install of pip
+- remove xserver-xorg-video-intel
+   - make sure firmware-misc-nonfree and xorg.conf are still needed/relevant
 
 
 # install
@@ -276,15 +278,6 @@ flake8-docstrings
 youtube-dl
 
 
-## graphics
-
-```
-wget https://ftp.uk.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-misc-nonfree_20190114-1_all.deb
-sudo gdebi firmware-misc-nonfree_20190114-1_all.deb
-rm -f firmware-misc-nonfree_20190114-1_all.deb
-```
-
-
 ## fish
 
 ```
@@ -401,6 +394,27 @@ chmod +x GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage
 ln -s ~/.local/opt/GIMP_AppImage-release-2.10.8-withplugins-x86_64.AppImage ~/.local/bin/gimp
 ln -s ~/.config/GIMP ~/.config/GIMP-AppImage
 cd ~/temp
+```
+
+
+## vscodium
+
+```
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
+echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' | sudo tee --append /etc/apt/sources.list.d/vscodium.list
+sudo apt update && sudo apt install codium
+```
+
+Launch `codium`, ctrl+p, then enter:
+
+```
+ext install AndrsDC.base16-themes
+ext install rust-lang.rust
+ext install be5invis.toml
+ext install vadimcn.vscode-lldb
+ext install Tyriar.sort-lines
+# ext install christian-kohler.path-intellisense
+# ext install webfreak.debug
 ```
 
 
@@ -587,27 +601,6 @@ wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Project64\ 1.6/Project64.exe "$@"
 ```
 
 
-## vscodium
-
-```
-wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
-echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' | sudo tee --append /etc/apt/sources.list.d/vscodium.list
-sudo apt update && sudo apt install codium
-```
-
-Launch `codium`, ctrl+p, then enter:
-
-```
-ext install AndrsDC.base16-themes
-ext install rust-lang.rust
-ext install be5invis.toml
-ext install vadimcn.vscode-lldb
-ext install Tyriar.sort-lines
-# ext install christian-kohler.path-intellisense
-# ext install webfreak.debug
-```
-
-
 ## sources
 
 ```
@@ -707,6 +700,9 @@ rm -f [downloaded.deb]
 
 ### links
 
+`firmware-misc-nonfree` for the graphics drivers.
+
+- `https://ftp.uk.debian.org/debian/pool/non-free/f/firmware-nonfree/firmware-misc-nonfree_20190114-1_all.deb`
 - `https://datapacket.dl.sourceforge.net/project/djv/djv-stable/1.2.6/DJV_1.2.6_amd64.deb`
 
 
