@@ -30,6 +30,10 @@ xsetroot -cursor_name left_ptr &
 # disable capslock
 xmodmap -e "keycode 66 = Shift_L NoSymbol Shift_L" &
 
+# disable fnlock on thinkpad keyboards
+# see: https://github.com/lentinj/tp-compact-keyboard#linux-317-and-above
+echo 0 | sudo tee /sys/bus/hid/devices/*17EF\:604*/fn_lock
+
 # start the hotkey daemon
 if_not_running sxhkd
 

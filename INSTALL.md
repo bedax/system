@@ -604,6 +604,15 @@ Run `visudo` and add:
 ```
 
 
+## fnlock
+
+To disable fnlock on an external ThinkPad keyboard, run `visudo` and add (along with the command in `uutostart`):
+
+```
+%demi ALL=NOPASSWD:/usr/bin/tee /sys/bus/hid/devices/*17EF\:604*/fn_lock
+```
+
+
 ## crontab
 
 Run `env EDITOR=mousepad crontab -e` and add:
@@ -657,6 +666,7 @@ sudo shutdown -r now
 - Maximizer for YouTube
 - Open Image in New Tab (robines)
 - uBlock Origin
+- Video Resumer
 
 `ln -s ~/.mozilla/firefox/user.js ~/.mozilla/firefox/[profile]/user.js`
 
