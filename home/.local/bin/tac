@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec textadept-curses --force --nosession "$@"

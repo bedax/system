@@ -64,5 +64,10 @@
     },
     "workbench.commandPalette.history": 500,
     "rust.clippy_preference": "on",
-    "editor.smoothScrolling": true
+    "editor.smoothScrolling": true,
+    "editor.codeLens": false,
+    "scm.diffDecorations": "none",
+    "editor.parameterHints.enabled": false,
+    "editor.tabSize": 3,
+    "editor.fontSize": 12
 }

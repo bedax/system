@@ -1,3 +1,3 @@
 . ~/.profile
 
-exec fish
+fish

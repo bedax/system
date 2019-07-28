@@ -60,13 +60,14 @@ def render_dots():
    render_template("/home/.config/dunst/dunstrc.template")
    render_template("/home/.config/hexchat/hexchat.conf.template")
    render_template("/home/.config/gtk-3.0/settings.ini.template")
-   render_template("/home/.local/src/st-0.8.1/config.h.template")
-   render_template("/home/.local/src/dmenu-4.8/config.h.template")
+   render_template("/home/.local/src/st-0.8.2/config.h.template")
+   render_template("/home/.local/src/dmenu-4.9/config.h.template")
 
 
 def link_dots(system_path, destination, sudo=False):
    source = os.path.join(os.environ["SYSTEM"], system_path.lstrip("/"))
-   command_args = ["link-directory", source, destination]
+   link_path = os.path.join(os.path.dirname(sys.argv[0]), "link-directory")
+   command_args = [link_path, source, destination]
 
    command(command_args, sudo=sudo)
 
@@ -79,8 +80,8 @@ def compile_suckless():
    make_command = ["make", "clean", "install"]
    source_path = os.path.expanduser("~/.local/src")
 
-   command(make_command, directory=os.path.join(source_path, "st-0.8.1"))
-   command(make_command, directory=os.path.join(source_path, "dmenu-4.8"))
+   command(make_command, directory=os.path.join(source_path, "st-0.8.2"))
+   command(make_command, directory=os.path.join(source_path, "dmenu-4.9"))
 
 
 def main():

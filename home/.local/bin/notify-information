@@ -5,34 +5,51 @@ import subprocess
 
 
 def command(command):
-   return subprocess.check_output(command).decode("utf-8").strip()
+   output = subprocess.run(command, check=False, stdout=subprocess.PIPE)
+   return output.stdout.decode("utf-8").strip()
 
 
-def main():
-   time = command(["date", "+%A %d/%m/%y %H:%M:%S"])
-   charging = "yes" if bool(int(command("battery-charging"))) else "no"
-   battery = command("battery-capacity")
-   light = command("brightness-get")
-   volume = command("volume-get")
-   desktop = command("desktop")
+def append_line(lines, name, line, map=None):
+   if line: lines.append((name, map(line) if map else line))
 
-   lines = []
-   lines.append(("charging", charging))
-   lines.append(("battery", battery + "%"))
-   lines.append(("volume", volume))
-   lines.append(("light", light + "%"))
-   lines.append(("desktop", desktop))
 
+def lines_to_string(head, lines):
    body = ""
 
    for i, (name, value) in enumerate(lines):
       name_with_colon = "{}:".format(name)
       padded_value = '{: >4}'.format(value)
 
-      spaces = " " * (len(time) - len(name_with_colon) - len(padded_value))
+      spaces = " " * (len(head) - len(name_with_colon) - len(padded_value))
 
       body += "\n" if i > 0 else ""
       body += "{}{}{}".format(name_with_colon, spaces, padded_value)
+
+   return body
+
+
+def main():
+   lines = []
+   percentage_map = lambda x: x + "%"
+
+   charging_output = command("battery-charging")
+   charging_map = lambda x: "yes" if bool(int(x)) else "no"
+   append_line(lines, "charging", charging_output, map=charging_map)
+
+   battery_output = command("battery-capacity")
+   append_line(lines, "battery", battery_output, map=percentage_map)
+
+   volume_output = command("volume-get")
+   append_line(lines, "volume", volume_output)
+
+   light_output = command("brightness-get")
+   append_line(lines, "light", light_output, map=percentage_map)
+
+   desktop_output = command("desktop")
+   append_line(lines, "desktop", desktop_output)
+
+   time = command(["date", "+%A %d/%m/%y %H:%M:%S"])
+   body = lines_to_string(time, lines)
 
    command(["notify-confirmation", "--urgency", "normal", time, body])
 

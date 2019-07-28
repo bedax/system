@@ -1,2 +1,0 @@
-! disable capslock; remap it to alt
-keycode 66 = Shift_L NoSymbol Shift_L
