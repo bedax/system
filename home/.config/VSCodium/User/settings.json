@@ -1,6 +1,6 @@
 {
     "editor.fontFamily": "'Fira Mono', monospace",
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "workbench.colorTheme": "Base16 Dark Ashes",
     "editor.autoClosingBrackets": "never",
     "editor.autoClosingQuotes": "never",
@@ -69,5 +69,7 @@
     "scm.diffDecorations": "none",
     "editor.parameterHints.enabled": false,
     "editor.tabSize": 3,
-    "editor.fontSize": 12
+    "editor.fontSize": 13,
+    "zenMode.restore": true,
+    "editor.trimAutoWhitespace": false
 }

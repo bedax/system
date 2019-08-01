@@ -1,0 +1,23 @@
+#!/bin/sh
+# required sshfs
+# see: https://github.com/dstuecken/sshfs-gui
+# and: https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh
+
+
+mount_name="$(echo "$1" | cut -d: -f1)"
+
+mkdir -p "$2"
+
+sshfs "$1" "$2" \
+   -o port=22 \
+   -o reconnect \
+   -o idmap=user \
+   -o auto_cache \
+   -o compression=yes \
+   -o negative_vncache \
+   -o defer_permissions \
+   -o transform_symlinks \
+   -o workaround=nonodelay \
+   -o volname="$mount_name" \
+   -o StrictHostKeyChecking=no \
+   -o NumberOfPasswordPrompts=1
