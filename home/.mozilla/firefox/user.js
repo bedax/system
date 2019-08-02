@@ -5,7 +5,7 @@ user_pref("full-screen-api.warning.timeout", 0);
 user_pref("devtools.serviceWorkers.testing.enabled", true);
 user_pref("accessibility.typeaheadfind.enablesound", false);
 
-// from: https://www.privacytools.io/
+// from: https://www.privacytools.io/browsers/#about_config
 user_pref("browser.safebrowsing.malware.enabled", false);
 user_pref("browser.safebrowsing.phishing.enabled", false);
 user_pref("browser.send_pings", false);

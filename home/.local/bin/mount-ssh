@@ -1,5 +1,5 @@
 #!/bin/sh
-# required sshfs
+# requires sshfs
 # see: https://github.com/dstuecken/sshfs-gui
 # and: https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh
 

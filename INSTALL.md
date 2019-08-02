@@ -370,7 +370,10 @@ ext install AndrsDC.base16-themes
 ext install rust-lang.rust
 ext install be5invis.toml
 ext install vadimcn.vscode-lldb
+ext install EditorConfig.EditorConfig
 ext install Tyriar.sort-lines
+ext install formulahendry.auto-rename-tag
+ext install wmaurer.change-case
 # ext install christian-kohler.path-intellisense
 # ext install webfreak.debug
 ```
