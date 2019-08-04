@@ -268,6 +268,9 @@ cargo install evcxr_repl
 cargo +nightly install cargo-expand
 
 sudo apt install libssl-dev
+cargo install cargo-web
+
+sudo apt install libssl-dev
 cargo install cargo-audit
 
 sudo apt install libssl-dev
