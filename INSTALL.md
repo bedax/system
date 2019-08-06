@@ -396,7 +396,7 @@ wget https://download.blender.org/release/Blender2.80/blender-2.80-linux-glibc21
 tar xf blender-2.80-linux-glibc217-x86_64.tar.bz2
 rm -f blender-2.80-linux-glibc217-x86_64.tar.bz2
 mv blender-2.80-linux-glibc217-x86_64/ ~/.local/opt/blender-2.80
-ln -s ~/.local/opt/blender-2.79b/blender ~/.local/bin/blender
+ln -s ~/.local/opt/blender-2.80/blender ~/.local/bin/blender
 ```
 
 
