@@ -392,11 +392,10 @@ python -m pip install --user webpage2html requests termcolor
 ## blender
 
 ```
-sudo apt install libglu1-mesa
-wget https://mirrors.dotsrc.org/blender/blender-release/Blender2.79/blender-2.79b-linux-glibc219-x86_64.tar.bz2
-tar xf blender-2.79b-linux-glibc219-x86_64.tar.bz2
-rm -f blender-2.79b-linux-glibc219-x86_64.tar.bz2
-mv blender-2.79b-linux-glibc219-x86_64 ~/.local/opt/blender-2.79b
+wget https://download.blender.org/release/Blender2.80/blender-2.80-linux-glibc217-x86_64.tar.bz2
+tar xf blender-2.80-linux-glibc217-x86_64.tar.bz2
+rm -f blender-2.80-linux-glibc217-x86_64.tar.bz2
+mv blender-2.80-linux-glibc217-x86_64/ ~/.local/opt/blender-2.80
 ln -s ~/.local/opt/blender-2.79b/blender ~/.local/bin/blender
 ```
 
