@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd ~/.local/opt/tor-browser
+./start-tor-browser.desktop

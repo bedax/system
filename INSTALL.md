@@ -389,6 +389,13 @@ python -m pip install --user webpage2html requests termcolor
 ```
 
 
+## mdbook
+
+```
+cargo install mdbook mdbook-epub
+```
+
+
 ## blender
 
 ```
@@ -509,6 +516,10 @@ mkdir [site]
 cd [site]
 wp core download
 
+# if using valet instead of apache:
+valet link
+valet secure
+
 # wp wants these for later
 # do it now for the permissions
 mkdir wp-content/upgrade
@@ -544,9 +555,6 @@ wp db export
 # download db.sql to [new wp root]
 # download wp-content/themes,plugins,uploads to [new wp root]/wp-content
 # or git clone the theme into wp-content/themes if it's in git
-
-# need to run the install if importing the database?
-# do it next time and see if it enables the permalinks
 
 cd [new wp root]
 sudo -u www-data -- wp db import db.sql

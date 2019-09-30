@@ -32,7 +32,7 @@ xmodmap -e "keycode 66 = Shift_L NoSymbol Shift_L" &
 
 # disable fnlock on thinkpad keyboards
 # see: https://github.com/lentinj/tp-compact-keyboard#linux-317-and-above
-echo 0 | sudo tee /sys/bus/hid/devices/*17EF\:604*/fn_lock
+# echo 0 | sudo tee /sys/bus/hid/devices/*17EF\:604*/fn_lock
 
 # start the hotkey daemon
 if_not_running sxhkd
@@ -50,4 +50,5 @@ if_not_running start-pulseaudio-x11
 if_not_running /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
 # gui applications
+if_not_running transmission-gtk
 if_not_running keepassx
