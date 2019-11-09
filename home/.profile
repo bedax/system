@@ -34,6 +34,7 @@ export LINE_HEIGHT="1.236"
 export BORDER_WIDTH="2"
 
 export SYSTEM="$HOME/system"
+export EDITOR="mousepad"
 
 HOME_PATH="$HOME/.local/bin"
 CARGO_PATH="$HOME/.cargo/bin"

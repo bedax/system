@@ -632,13 +632,29 @@ Run `env EDITOR=mousepad crontab -e` and add:
 
 ```
 */3 * * * *  . "$HOME/.profile"; DISPLAY=:0  react-to-low-battery 12 6
-# 0 */2 * * *  . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" backup
+0 */2 * * *  . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup.sh" || notify-confirmation --urgency critical "backup failed"
 ```
 
 Run `sudo EDITOR=mousepad crontab -e` and add:
 
 ```
 0 */6 * * *  journalctl --vacuum-time=14d
+```
+
+### ~/.backup.sh
+
+If the crontab is running `~/.backup.sh`, then that can contain:
+
+```
+#!/bin/sh
+
+fdfind . ~ -E downloads/ -E videos/ -E music/ -E books/ -E games/ -E images/ | backup --keep 14 /mnt/usb/backups/ /mnt/sdcard/backups/ || exit 1
+```
+
+To automount the usb/sdcard on start, add the following to `/etc/fstab`:
+
+```
+UUID=[UUID from `lsblk -f`]  /mnt/usb     ext4  noauto,nofail,x-systemd.automount,x-systemd.idle-timeout=2,x-systemd.device-timeout=2
 ```
 
 

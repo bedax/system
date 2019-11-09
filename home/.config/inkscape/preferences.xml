@@ -324,7 +324,7 @@
        id="lpetool"
        mode="drag"
        style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none;"
-       unit="mm"
+       unit="px"
        show_bbox="1" />
     <eventcontext
        id="text"
@@ -335,8 +335,8 @@
        style="fill:black;fill-opacity:1;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:0px;word-spacing:0px"
        selcue="1">
       <group
-         id="lineheight"
-         display_unit="0" />
+         display_unit="0"
+         id="lineheight" />
     </eventcontext>
     <eventcontext
        id="nodes"
@@ -422,12 +422,12 @@
        offset="0"
        offsetunits="cm" />
     <group
-       id="measure"
-       fontsize="10"
-       precision="2"
-       scale="100"
+       unit="px"
        offset="5"
-       unit="mm" />
+       scale="100"
+       precision="2"
+       fontsize="10"
+       id="measure" />
   </group>
   <group
      id="palette">
@@ -565,7 +565,20 @@
     <group
        id="toolbox" />
     <group
-       id="fillstroke" />
+       id="fillstroke"
+       panel_size="1"
+       panel_ratio="100"
+       panel_mode="1"
+       panel_wrap="0"
+       panel_border="0"
+       page="0"
+       x="0"
+       y="0"
+       w="388"
+       h="431"
+       visible="1"
+       state="2"
+       placement="1" />
     <group
        id="filtereffects" />
     <group
@@ -618,20 +631,20 @@
        panel_border="0"
        x="0"
        y="0"
-       w="460"
-       h="587"
-       visible="0"
+       w="388"
+       h="494"
+       visible="1"
        state="2"
-       placement="1">
+       placement="2">
       <group
          id="exportarea"
-         value="page" />
+         value="drawing" />
       <group
          id="defaultxdpi"
          value="96" />
       <group
-         id="hideexceptselected"
-         value="0" />
+         value="0"
+         id="hideexceptselected" />
     </group>
     <group
        id="save_as"
@@ -996,7 +1009,7 @@
      org.inkscape.output.scour.enable-comment-stripping="1" />
   <group
      id="desktop"
-     style="line-height:1.25;font-size:40px;-inkscape-font-specification:Vollkorn;font-family:Vollkorn;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">
+     style="line-height:1.25;font-size:40px;-inkscape-font-specification:Vollkorn;font-family:Vollkorn;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#ffffff">
     <group
        width="1920"
        height="1080"
@@ -1004,7 +1017,7 @@
        y="0"
        fullscreen="0"
        id="geometry"
-       maximized="1" />
+       maximized="0" />
     <group
        id="XYfront" />
     <group
