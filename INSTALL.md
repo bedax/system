@@ -355,6 +355,20 @@ python3 setup.py install --user
 cd ~/temp
 ```
 
+## geany
+
+```
+sudo apt install geany
+sudo apt install geany-plugin-pairtaghighlighter
+sudo apt install geany-plugin-addons
+git clone https://github.com/geany/geany-themes/
+mkdir -p ~/.config/geany/colorschemes
+mv geany-themes/colorschemes/*.conf ~/.config/geany/colorschemes/
+rm -rf geany-themes
+```
+
+---
+
 
 ## vscodium
 
@@ -410,9 +424,9 @@ ln -s ~/.local/opt/blender-2.80/blender ~/.local/bin/blender
 ## djv
 
 ```
-wget https://datapacket.dl.sourceforge.net/project/djv/djv-beta/2.0.2/DJV2_2.0.2_amd64.deb
-sudo gdebi DJV2_2.0.2_amd64.deb
-rm -f DJV2_2.0.2_amd64.deb
+wget https://netcologne.dl.sourceforge.net/project/djv/djv-stable/1.3.0/DJV_1.3.0_amd64.deb
+sudo gdebi DJV_1.3.0_amd64.deb
+rm -f DJV_1.3.0_amd64.deb
 ```
 
 
@@ -736,6 +750,16 @@ on firefox for android
 ### chromium
 
 - Backspace to go Back
+
+
+### geany
+
+Download/enable the following plugins
+
+- Split Window
+- Scope or Debugger
+- Pair Tag Highlighter
+- Addons
 
 
 ### blender animation nodes

@@ -38,7 +38,7 @@ export EDITOR="mousepad"
 
 HOME_PATH="$HOME/.local/bin"
 CARGO_PATH="$HOME/.cargo/bin"
-DJV_PATH="/usr/local/DJV2/bin/"
+DJV_PATH="/usr/local/DJV/bin/"
 export PATH="$DJV_PATH:$CARGO_PATH:$HOME_PATH:$PATH"
 
 # see: https://www.sven.de/dpi/

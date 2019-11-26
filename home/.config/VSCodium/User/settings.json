@@ -92,5 +92,8 @@
     "[markdown]": {
         "editor.wordWrap": "wordWrapColumn",
         "editor.wrappingIndent": "none",
-    }
+    },
+    "editor.hover.enabled": false,
+    "javascript.validate.enable": false,
+    "editor.lightbulb.enabled": false
 }
