@@ -34,7 +34,7 @@ def remove_excess(destination, keep):
    backups.reverse()
 
    for i in range(0, len(backups)):
-      if (keep > -1) and (i > (keep - 1)):
+      if (keep > -1) and (i > (keep - 2)):
          backup_path = os.path.join(destination, backups[i])
          print("REMOVING: {}".format(backup_path))
          shutil.rmtree(backup_path)

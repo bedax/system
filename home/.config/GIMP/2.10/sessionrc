@@ -11,12 +11,12 @@
     (size 640 480))
 (session-info "toplevel"
     (factory-entry "gimp-single-image-window")
-    (position 0 0)
-    (size 1920 1080)
+    (position 1192 16)
+    (size 708 1044)
     (open-on-exit)
     (aux-info
-        (left-docks-width "78")
-        (right-docks-width "209")
+        (left-docks-width "76")
+        (right-docks-width "263")
         (maximized "no"))
     (gimp-toolbox
         (side left))
@@ -44,7 +44,7 @@
                 (aux-info
                     (show-button-bar "true"))))
         (book
-            (position 774)
+            (position 501)
             (current-page 0)
             (dockable "gimp-tool-options"
                 (tab-style automatic)
@@ -72,6 +72,12 @@
     (factory-entry "gimp-file-save-dialog")
     (position 417 132)
     (size 1008 690))
+(session-info "toplevel"
+    (factory-entry "gimp-operation-tool-dialog")
+    (position 1504 346))
+(session-info "toplevel"
+    (factory-entry "gimp-brightness-contrast-tool-dialog")
+    (position 1225 374))
 
 (hide-docks no)
 (single-window-mode yes)

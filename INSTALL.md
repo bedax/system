@@ -10,7 +10,8 @@ _These are some notes on how to install the author's system. These aren't expect
 - Install Debian's minimal version ([the one that includes non-free firmware](https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current/amd64/iso-cd/), if necessary)
 - Select nothing at the software selection menu
 - Partition:
-    - A ~12gb ext4 partition for /
+    - A 512 MiB (536870912 bytes) EFI paritition
+    - A 12 GiB (12884901888 bytes) ext4 partition for /
     - A swap partition; 1.5 * RAM (for hibernation)
     - An ext4 partition for ~, using the remaining space
 

@@ -43,6 +43,7 @@
     (padding-color (color-rgb 1.000000 1.000000 1.000000)))
 (icon-size medium)
 (user-manual-online yes)
+(layer-new-fill-type white)
 (layer-merge-active-group-only no)
 (layer-merge-discard-invisible yes)
 (selection-grow-radius 2.000000)
