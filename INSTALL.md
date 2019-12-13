@@ -150,7 +150,6 @@ zip
 audacity
 chromium
 filezilla
-firefox-esr
 gimp
 gimp-help-en
 gnome-boxes
@@ -348,6 +347,18 @@ python3 setup.py install --user
 cd ~/temp
 ```
 
+
+## firefox-dev
+
+```
+wget "https://download-installer.cdn.mozilla.net/pub/devedition/releases/72.0b6/linux-x86_64/en-GB/firefox-72.0b6.tar.bz2"
+tar xf firefox-72.0b6.tar.bz2
+rm -f firefox-72.0b6.tar.bz2
+mv firefox ~/.local/opt/
+ln -s ~/.local/opt/firefox/firefox ~/.local/bin/firefox
+```
+
+
 ## geany
 
 ```
@@ -359,8 +370,6 @@ mkdir -p ~/.config/geany/colorschemes
 mv geany-themes/colorschemes/*.conf ~/.config/geany/colorschemes/
 rm -rf geany-themes
 ```
-
----
 
 
 ## webpage2html
@@ -671,28 +680,28 @@ sudo shutdown -r now
 - quodlibet
 
 
-### firefox-esr
+### geany
 
-- NoScript (allow scripts globally, just use it for the other stuff)
-- EPUBReader
-- Smart HTTPS
-- Privacy Badger
-- Decentraleyes
-- Maximizer for YouTube
-- Open Image in New Tab (robines)
-- uBlock Origin
-- Video Resumer
+Download/enable the following plugins
 
-`ln -s ~/.mozilla/firefox/user.js ~/.mozilla/firefox/[profile]/user.js`
+- Split Window
+- Scope or Debugger
+- Pair Tag Highlighter
+- Addons
 
 
 ### firefox-dev
 
-Install the Arc Darker theme and set up the developer tools.
-
+- NoScript (allow scripts globally, just use it for the other stuff)
+- EPUBReader
+- Privacy Badger
+- Decentraleyes
 - Open Image in New Tab (robines)
+- uBlock Origin
 
-`ln -s ~/.mozilla/firefox/dev-user.js ~/.mozilla/firefox/[dev-profile]/user.js`
+`ln -s ~/.mozilla/firefox/user.js ~/.mozilla/firefox/[profile]/user.js`
+
+Set up the developer tools.
 
 
 ### firefox remote debugging
@@ -722,16 +731,6 @@ on firefox for android
 ### chromium
 
 - Backspace to go Back
-
-
-### geany
-
-Download/enable the following plugins
-
-- Split Window
-- Scope or Debugger
-- Pair Tag Highlighter
-- Addons
 
 
 ### blender animation nodes
