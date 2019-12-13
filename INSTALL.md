@@ -1,8 +1,3 @@
-# todo
-
-- merge vscodium and textadept
-
-
 # install
 
 _These are some notes on how to install the author's system. These aren't expected to be useful to anyone else._
@@ -52,7 +47,6 @@ If `nmtui` doesn't work, edit `/etc/NetworkManager/NetworkManager.conf` and make
 ## update
 
 ```
-su
 apt update
 apt upgrade
 ```
@@ -78,7 +72,7 @@ su - [user]
 ```
 cd ~
 sudo apt install git
-git clone git@github.com:bedax/system.git
+git clone https://github.com/bedax/system
 ```
 
 
@@ -314,8 +308,6 @@ Add non-free to the first source in `/etc/apt/sources.list`.
 
 For ThinkPad x2?0, install `firmware-misc-nonfree`.
 
-For iMacs (mid 2011), install `firmware-amd-graphics`.
-
 
 ## st
 
@@ -369,32 +361,6 @@ rm -rf geany-themes
 ```
 
 ---
-
-
-## vscodium
-
-```
-wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
-echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' | sudo tee --append /etc/apt/sources.list.d/vscodium.list
-
-sudo apt update
-sudo apt install codium
-```
-
-Launch `codium`, ctrl+p, then enter:
-
-```
-ext install AndrsDC.base16-themes
-ext install rust-lang.rust
-ext install be5invis.toml
-ext install vadimcn.vscode-lldb
-ext install EditorConfig.EditorConfig
-ext install Tyriar.sort-lines
-ext install formulahendry.auto-rename-tag
-ext install wmaurer.change-case
-# ext install christian-kohler.path-intellisense
-# ext install webfreak.debug
-```
 
 
 ## webpage2html
@@ -523,17 +489,13 @@ cd ~/.local/bin
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar
 mv wp-cli.phar wp
-wp --info
+./wp --info
 ```
 
 ```
 mkdir [site]
 cd [site]
 wp core download
-
-# if using valet instead of apache:
-valet link
-valet secure
 
 # wp wants these for later
 # do it now for the permissions
@@ -648,6 +610,7 @@ Run `env EDITOR=mousepad crontab -e` and add:
 ```
 */3 * * * *  . "$HOME/.profile"; DISPLAY=:0  react-to-low-battery 12 6
 0 */2 * * *  . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup.sh" || notify-confirmation --urgency critical "backup failed"
+0 13 * * *   . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup-full.sh" || notify-confirmation --urgency critical "full backup failed"
 ```
 
 Run `sudo EDITOR=mousepad crontab -e` and add:
@@ -663,7 +626,15 @@ If the crontab is running `~/.backup.sh`, then that can contain:
 ```
 #!/bin/sh
 
-fdfind . ~ -E downloads/ -E videos/ -E music/ -E books/ -E games/ -E images/ | backup --keep 14 /mnt/usb/backups/ /mnt/sdcard/backups/ || exit 1
+fdfind . ~ -E downloads -E videos -E music -E books -E games -E images | backup --keep 14 /mnt/usb/backups/ /mnt/sdcard/backups/ || exit 1
+```
+
+If the crontab is running `~/.backup-full.sh`, then that can contain:
+
+```
+#!/bin/sh
+
+fdfind . ~ -E downloads | backup --keep 2 /mnt/sdcard/backups-full/ || exit 1
 ```
 
 To automount the usb/sdcard on start, add the following to `/etc/fstab`:
