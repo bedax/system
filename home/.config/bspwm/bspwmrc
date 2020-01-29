@@ -3,6 +3,7 @@
 . ~/.profile
 
 bspc monitor --reset-desktops I II III IV V VI VII VIII IX X
+bspc monitor VGA-1 --reset-desktops I II III IV V VI VII VIII IX X
 
 bspc config top_padding 0
 bspc config right_padding 0

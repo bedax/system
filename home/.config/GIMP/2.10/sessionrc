@@ -11,15 +11,34 @@
     (size 640 480))
 (session-info "toplevel"
     (factory-entry "gimp-single-image-window")
-    (position 1192 16)
-    (size 708 1044)
+    (position 0 0)
+    (size 1366 768)
     (open-on-exit)
     (aux-info
-        (left-docks-width "76")
-        (right-docks-width "263")
+        (left-docks-width "218")
+        (right-docks-width "248")
         (maximized "no"))
-    (gimp-toolbox
-        (side left))
+    (gimp-dock
+        (side left)
+        (book
+            (current-page 1)
+            (dockable "gimp-tool-preset-list"
+                (tab-style automatic)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-histogram-editor"
+                (tab-style automatic)))
+        (book
+            (position 319)
+            (current-page 1)
+            (dockable "gimp-tool-options"
+                (tab-style automatic)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-color-editor"
+                (tab-style automatic)
+                (aux-info
+                    (current-page "ColorselWheel")))))
     (gimp-dock
         (side right)
         (book
@@ -42,42 +61,43 @@
             (dockable "gimp-undo-history"
                 (tab-style automatic)
                 (aux-info
-                    (show-button-bar "true"))))
-        (book
-            (position 501)
-            (current-page 0)
-            (dockable "gimp-tool-options"
-                (tab-style automatic)
-                (aux-info
                     (show-button-bar "true"))))))
 (session-info "toplevel"
     (factory-entry "gimp-preferences-dialog")
-    (position 374 187)
-    (size 1166 700))
+    (position 164 60)
+    (size 979 626))
 (session-info "toplevel"
     (factory-entry "gimp-image-new-dialog")
     (position 639 157))
 (session-info "toplevel"
     (factory-entry "gimp-file-export-dialog")
-    (position 417 132)
-    (size 1008 690))
+    (position 358 78)
+    (size 948 643))
 (session-info "toplevel"
     (factory-entry "gimp-file-open-dialog")
-    (position 417 132)
-    (size 1008 690))
+    (position 358 78)
+    (size 948 643))
 (session-info "toplevel"
     (factory-entry "gimp-toolbox-color-dialog")
     (position 703 302))
 (session-info "toplevel"
     (factory-entry "gimp-file-save-dialog")
-    (position 417 132)
-    (size 1008 690))
+    (position 358 78)
+    (size 948 643))
 (session-info "toplevel"
     (factory-entry "gimp-operation-tool-dialog")
-    (position 1504 346))
+    (position 962 60))
 (session-info "toplevel"
     (factory-entry "gimp-brightness-contrast-tool-dialog")
-    (position 1225 374))
+    (position 1083 374))
+(session-info "toplevel"
+    (factory-entry "gimp-levels-tool-dialog")
+    (position 861 131)
+    (size 462 531))
+(session-info "toplevel"
+    (factory-entry "gimp-curves-tool-dialog")
+    (position 940 91)
+    (size 417 507))
 
 (hide-docks no)
 (single-window-mode yes)

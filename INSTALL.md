@@ -245,9 +245,13 @@ fish -c "fisher add oh-my-fish/plugin-pbcopy"
 
 ```
 curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y
-rustup install nightly
 
+rustup install nightly
 rustup component add clippy rustfmt
+
+rustup target add wasm32-unknown-unknown
+curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+cargo install twiggy
 
 sudo apt install musl-tools
 rustup target add x86_64-unknown-linux-musl
@@ -260,9 +264,6 @@ cargo install cargo-profiler
 cargo install cargo-watch
 cargo install evcxr_repl
 cargo +nightly install cargo-expand
-
-sudo apt install libssl-dev
-cargo install cargo-web
 
 sudo apt install libssl-dev
 cargo install cargo-audit
@@ -298,6 +299,7 @@ cargo install --git https://github.com/kbknapp/cargo-outdated
 sudo apt install npm
 npm config set prefix "$HOME/.local"
 npm install -g npm-check
+npm install -g serve
 ```
 
 
@@ -619,7 +621,7 @@ Run `env EDITOR=mousepad crontab -e` and add:
 ```
 */3 * * * *  . "$HOME/.profile"; DISPLAY=:0  react-to-low-battery 12 6
 0 */2 * * *  . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup.sh" || notify-confirmation --urgency critical "backup failed"
-0 13 * * *   . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup-full.sh" || notify-confirmation --urgency critical "full backup failed"
+0 14 * * *   . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup-full.sh" || notify-confirmation --urgency critical "full backup failed"
 ```
 
 Run `sudo EDITOR=mousepad crontab -e` and add:
@@ -635,7 +637,7 @@ If the crontab is running `~/.backup.sh`, then that can contain:
 ```
 #!/bin/sh
 
-fdfind . ~ -E downloads -E videos -E music -E books -E games -E images | backup --keep 14 /mnt/usb/backups/ /mnt/sdcard/backups/ || exit 1
+fdfind . ~ -E downloads -E videos -E music -E books -E games -E images | backup --keep 8 /mnt/usb/backups/ /mnt/sdcard/backups/ || exit 1
 ```
 
 If the crontab is running `~/.backup-full.sh`, then that can contain:

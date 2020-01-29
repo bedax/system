@@ -16,10 +16,12 @@ sshfs "$1" "$mount_path" \
    -o idmap=user \
    -o auto_cache \
    -o compression=yes \
-   -o negative_vncache \
-   -o defer_permissions \
    -o transform_symlinks \
-   -o workaround=nonodelay \
-   -o volname="$mount_name" \
    -o StrictHostKeyChecking=no \
    -o NumberOfPasswordPrompts=1
+
+
+#   -o volname="$mount_name" \
+#   -o defer_permissions \
+#   -o negative_vncache \
+#   -o workaround=nonodelay \

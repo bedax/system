@@ -575,7 +575,7 @@
        x="0"
        y="0"
        w="388"
-       h="431"
+       h="421"
        visible="1"
        state="2"
        placement="1" />
@@ -606,10 +606,10 @@
        panel_mode="1"
        panel_wrap="0"
        panel_border="0"
-       x="72"
-       y="0"
-       w="770"
-       h="1100"
+       x="821"
+       y="36"
+       w="810"
+       h="700"
        visible="0"
        placement="1" />
     <group
@@ -632,7 +632,7 @@
        x="0"
        y="0"
        w="388"
-       h="494"
+       h="474"
        visible="1"
        state="2"
        placement="2">
@@ -651,7 +651,7 @@
        default="org.inkscape.output.scour"
        append_extension="1"
        enable_preview="1"
-       path="/home/tom/downloads"
+       path="/home/tom/work/realdigital.es/src/images"
        use_current_dir="1" />
     <group
        id="save_copy"
@@ -1009,12 +1009,12 @@
      org.inkscape.output.scour.enable-comment-stripping="1" />
   <group
      id="desktop"
-     style="line-height:1.25;font-size:40px;-inkscape-font-specification:Vollkorn;font-family:Vollkorn;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#ffffff">
+     style="line-height:1.25;font-size:40px;-inkscape-font-specification:Vollkorn;font-family:Vollkorn;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;fill:#000000">
     <group
-       width="1920"
-       height="1080"
-       x="0"
-       y="0"
+       width="814"
+       height="732"
+       x="16"
+       y="16"
        fullscreen="0"
        id="geometry"
        maximized="0" />

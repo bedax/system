@@ -7,13 +7,13 @@
 # Preferences dialog.
 
 (import-raw-plug-in "${gimp_plug_in_dir}/plug-ins/file-raw-placeholder/file-raw-placeholder")
-(monitor-xresolution 103.000000)
-(monitor-yresolution 103.000000)
+(monitor-xresolution 125.000000)
+(monitor-yresolution 125.000000)
 (default-view
     (show-menubar yes)
-    (show-statusbar yes)
+    (show-statusbar no)
     (show-rulers no)
-    (show-scrollbars yes)
+    (show-scrollbars no)
     (show-selection yes)
     (show-layer-boundary yes)
     (show-guides yes)
@@ -27,9 +27,9 @@
     (padding-color (color-rgb 1.000000 1.000000 1.000000)))
 (default-fullscreen-view
     (show-menubar yes)
-    (show-statusbar yes)
+    (show-statusbar no)
     (show-rulers no)
-    (show-scrollbars yes)
+    (show-scrollbars no)
     (show-selection yes)
     (show-layer-boundary yes)
     (show-guides yes)
