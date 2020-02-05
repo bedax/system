@@ -21,16 +21,7 @@
     (gimp-dock
         (side left)
         (book
-            (current-page 1)
-            (dockable "gimp-tool-preset-list"
-                (tab-style automatic)
-                (aux-info
-                    (show-button-bar "true")))
-            (dockable "gimp-histogram-editor"
-                (tab-style automatic)))
-        (book
-            (position 319)
-            (current-page 1)
+            (current-page 0)
             (dockable "gimp-tool-options"
                 (tab-style automatic)
                 (aux-info
@@ -38,7 +29,16 @@
             (dockable "gimp-color-editor"
                 (tab-style automatic)
                 (aux-info
-                    (current-page "ColorselWheel")))))
+                    (current-page "ColorselWheel"))))
+        (book
+            (position 465)
+            (current-page 0)
+            (dockable "gimp-tool-preset-list"
+                (tab-style automatic)
+                (aux-info
+                    (show-button-bar "true")))
+            (dockable "gimp-histogram-editor"
+                (tab-style automatic))))
     (gimp-dock
         (side right)
         (book
@@ -61,7 +61,13 @@
             (dockable "gimp-undo-history"
                 (tab-style automatic)
                 (aux-info
-                    (show-button-bar "true"))))))
+                    (show-button-bar "true")))
+            (dockable "gimp-tool-preset-editor"
+                (tab-style automatic)
+                (aux-info
+                    (show-button-bar "true")
+                    (edit-active "true")
+                    (current-data "Crop"))))))
 (session-info "toplevel"
     (factory-entry "gimp-preferences-dialog")
     (position 164 60)

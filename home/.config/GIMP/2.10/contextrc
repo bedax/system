@@ -1,6 +1,6 @@
 # GIMP user context
 
-(tool "gimp-rect-select-tool")
+(tool "gimp-crop-tool")
 (paint-info "gimp-paintbrush")
 (foreground (color-rgb 0.670588 0.745098 0.752941))
 (brush "2. Hardness 050")
@@ -10,6 +10,5 @@
 (gradient "FG to BG (RGB)")
 (palette "Color History")
 (font "Sans-serif")
-(tool-preset "16×9")
 
 # end of user context

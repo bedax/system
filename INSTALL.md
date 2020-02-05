@@ -696,7 +696,6 @@ Download/enable the following plugins
 
 - NoScript (allow scripts globally, just use it for the other stuff)
 - EPUBReader
-- Privacy Badger
 - Decentraleyes
 - Open Image in New Tab (robines)
 - uBlock Origin
