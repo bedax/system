@@ -3,5 +3,5 @@
 OUTPUT_PATH="/tmp/cargo-test-output"
 
 cargo test > "$OUTPUT_PATH" 2>&1
-bat "$OUTPUT_PATH" 
+cat "$OUTPUT_PATH"
 rm -f "$OUTPUT_PATH"
