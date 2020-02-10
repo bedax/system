@@ -1,0 +1,3 @@
+#!/bin/sh
+
+~/.cargo/bin/bat --pager "/usr/bin/less" "$@"

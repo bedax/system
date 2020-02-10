@@ -257,6 +257,13 @@ sudo apt install musl-tools
 rustup target add x86_64-unknown-linux-musl
 
 sudo apt install rust-lldb valgrind
+```
+
+cargo packages:
+
+```
+cargo install bat
+cargo install ruplacer
 
 cargo install cargo-bloat
 cargo install cargo-fuzz
@@ -298,6 +305,11 @@ cargo install --git https://github.com/kbknapp/cargo-outdated
 ```
 sudo apt install npm
 npm config set prefix "$HOME/.local"
+```
+
+npm packages:
+
+```
 npm install -g npm-check
 npm install -g serve
 ```
