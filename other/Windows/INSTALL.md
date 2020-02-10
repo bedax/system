@@ -12,7 +12,7 @@ _These are some notes on how to install the author's system. These aren't expect
 - link shell extension
 - malwarebytes
 - meld
-- textadept
+- geany
 - wincdemu
 
 
@@ -26,7 +26,7 @@ Add the above paths to the PATH, with unxutils at the bottom of the list so it h
 ## Pins
 
 - chromium
-- textadept
+- geany
 - explorer
 - keepassx
 - git's terminal

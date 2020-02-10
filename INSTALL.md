@@ -358,6 +358,7 @@ tar xf firefox-72.0b6.tar.bz2
 rm -f firefox-72.0b6.tar.bz2
 mv firefox ~/.local/opt/
 ln -s ~/.local/opt/firefox/firefox ~/.local/bin/firefox
+sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser (which firefox) 250
 ```
 
 
@@ -699,6 +700,8 @@ Download/enable the following plugins
 - Decentraleyes
 - Open Image in New Tab (robines)
 - uBlock Origin
+- Save Page WE
+- Activate Reader View (disabled by default)
 
 `ln -s ~/.mozilla/firefox/user.js ~/.mozilla/firefox/[profile]/user.js`
 

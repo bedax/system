@@ -8,7 +8,7 @@ x-scheme-handler/http=firefox-esr.desktop;userapp-Firefox Developer Edition-SYSN
 x-scheme-handler/https=firefox-esr.desktop;userapp-Firefox Developer Edition-SYSNC0.desktop;
 x-scheme-handler/ftp=firefox-esr.desktop;userapp-Firefox Developer Edition-SYSNC0.desktop;
 x-scheme-handler/chrome=firefox-esr.desktop;userapp-Firefox Developer Edition-SYSNC0.desktop;
-text/html=geany.desktop;userapp-Firefox Developer Edition-SYSNC0.desktop;mousepad.desktop;firefox-esr.desktop;
+text/html=userapp-Firefox Developer Edition-SYSNC0.desktop;geany.desktop;mousepad.desktop;firefox-esr.desktop;
 application/x-extension-htm=firefox-esr.desktop;userapp-Firefox Developer Edition-SYSNC0.desktop;
 application/x-extension-html=firefox-esr.desktop;userapp-Firefox Developer Edition-SYSNC0.desktop;
 application/x-extension-shtml=firefox-esr.desktop;userapp-Firefox Developer Edition-SYSNC0.desktop;
@@ -25,6 +25,16 @@ application/pdf=userapp-Firefox Developer Edition-SYSNC0.desktop;inkscape.deskto
 image/gif=viewnior.desktop;display-im6.q16.desktop;
 application/epub+zip=sigil.desktop;xarchiver.desktop;
 application/xml=mousepad.desktop;geany.desktop;
+text/x-python=geany.desktop;
+text/markdown=mousepad.desktop;
+image/x-xcf=gimp.desktop;
+text/css=geany.desktop;
+application/zip=xarchiver.desktop;
+text/csv=mousepad.desktop;
+application/vnd.sqlite3=sqlitebrowser.desktop;
+application/x-xz-compressed-tar=xarchiver.desktop;
+image/svg+xml=inkscape.desktop;
+application/x-php=geany.desktop;
 
 [Default Applications]
 x-scheme-handler/http=userapp-Firefox Developer Edition-SYSNC0.desktop

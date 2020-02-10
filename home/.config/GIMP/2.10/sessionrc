@@ -11,12 +11,12 @@
     (size 640 480))
 (session-info "toplevel"
     (factory-entry "gimp-single-image-window")
-    (position 0 0)
-    (size 1366 768)
+    (position 16 16)
+    (size 814 732)
     (open-on-exit)
     (aux-info
-        (left-docks-width "218")
-        (right-docks-width "248")
+        (left-docks-width "200")
+        (right-docks-width "209")
         (maximized "no"))
     (gimp-dock
         (side left)
@@ -29,16 +29,7 @@
             (dockable "gimp-color-editor"
                 (tab-style automatic)
                 (aux-info
-                    (current-page "ColorselWheel"))))
-        (book
-            (position 465)
-            (current-page 0)
-            (dockable "gimp-tool-preset-list"
-                (tab-style automatic)
-                (aux-info
-                    (show-button-bar "true")))
-            (dockable "gimp-histogram-editor"
-                (tab-style automatic))))
+                    (current-page "GimpColorSelect")))))
     (gimp-dock
         (side right)
         (book
@@ -61,13 +52,7 @@
             (dockable "gimp-undo-history"
                 (tab-style automatic)
                 (aux-info
-                    (show-button-bar "true")))
-            (dockable "gimp-tool-preset-editor"
-                (tab-style automatic)
-                (aux-info
-                    (show-button-bar "true")
-                    (edit-active "true")
-                    (current-data "Crop"))))))
+                    (show-button-bar "true"))))))
 (session-info "toplevel"
     (factory-entry "gimp-preferences-dialog")
     (position 164 60)
@@ -109,6 +94,6 @@
 (single-window-mode yes)
 (show-tabs yes)
 (tabs-position 0)
-(last-tip-shown 0)
+(last-tip-shown 11)
 
 # end of sessionrc
