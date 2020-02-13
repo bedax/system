@@ -39,7 +39,7 @@ export EDITOR="mousepad"
 HOME_PATH="$HOME/.local/bin"
 CARGO_PATH="$HOME/.cargo/bin"
 DJV_PATH="/usr/local/DJV/bin/"
-export PATH="$DJV_PATH:$CARGO_PATH:$HOME_PATH:$PATH"
+export PATH="$HOME_PATH:$CARGO_PATH:$DJV_PATH:$PATH"
 
 # see: https://www.sven.de/dpi/
 # and also update firefox's user.js and dev-user.js

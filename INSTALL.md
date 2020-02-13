@@ -125,7 +125,7 @@ ffmpeg
 flake8
 git
 htop
-inxi
+neofetch
 less
 links2
 miniupnpc

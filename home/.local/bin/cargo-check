@@ -1,9 +1,0 @@
-#!/bin/sh
-
-OUTPUT_PATH="/tmp/cargo-check-output"
-
-cargo check > "$OUTPUT_PATH" 2>&1
-cat "$OUTPUT_PATH"
-rm -f "$OUTPUT_PATH"
-
-#cargo check --color=always "$@" 2>&1 | less -r
