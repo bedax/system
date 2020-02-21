@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Fira Mono:style=Regular:pixelsize=14:antialias=true:autohint=true";
+static char *font = "Fira Mono:style=Regular:pixelsize=18:antialias=true:autohint=true";
 static int borderpx = 16;
 
 /*
@@ -54,7 +54,7 @@ static unsigned int blinktimeout = 800;
 /*
  * thickness of underline and bar cursors
  */
-static unsigned int cursorthickness = 2;
+static unsigned int cursorthickness = 3;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling

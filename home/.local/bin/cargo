@@ -3,5 +3,5 @@
 OUTPUT_PATH="/tmp/cargo-output"
 
 ~/.cargo/bin/cargo "$@" > "$OUTPUT_PATH" 2>&1
-cat "$OUTPUT_PATH"
+less "$OUTPUT_PATH"
 rm -f "$OUTPUT_PATH"

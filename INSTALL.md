@@ -128,7 +128,6 @@ htop
 neofetch
 less
 links2
-miniupnpc
 nano
 ncdu
 netcat-openbsd
@@ -136,9 +135,7 @@ net-tools
 openssh-client
 pandoc
 ripgrep
-rsync
 shellcheck
-sqlite3
 tree
 unzip
 wget
@@ -153,19 +150,14 @@ filezilla
 gimp
 gimp-help-en
 gnome-boxes
-gnome-orca
 gparted
-gucharmap
-hexchat
 inkscape
 keepassx
 meld
-mousepad
 openmw
 pavucontrol
 picard
 sigil
-sqlitebrowser
 transmission
 viewnior
 vlc
@@ -259,12 +251,9 @@ rustup target add x86_64-unknown-linux-musl
 sudo apt install rust-lldb valgrind
 ```
 
-cargo packages:
+### cargo extensions
 
 ```
-cargo install bat
-cargo install ruplacer
-
 cargo install cargo-bloat
 cargo install cargo-fuzz
 cargo install cargo-profiler
@@ -297,6 +286,16 @@ cargo install --git https://github.com/kbknapp/cargo-outdated
 
 # sudo apt install libssl-dev
 # cargo install cargo-cook
+```
+
+### cargo packages
+
+```
+cargo install bat
+cargo install ruplacer
+cargo install mdbook
+cargo install mdbook-epub
+cargo install b3sum
 ```
 
 
@@ -346,23 +345,7 @@ mv dmenu-4.9 ~/.local/src/
 ```
 
 
-## notify-send.py
-
-```
-# dbus-x11 is required when running notify-send.py with cron
-# see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=918149
-sudo apt install python3-notify2 dbus-x11
-
-cd ~/.local/src
-git clone https://github.com/phuhl/notify-send.py
-cd notify-send.py
-
-python3 setup.py install --user
-cd ~/temp
-```
-
-
-## firefox-dev
+## firefox
 
 ```
 wget "https://download-installer.cdn.mozilla.net/pub/devedition/releases/72.0b6/linux-x86_64/en-GB/firefox-72.0b6.tar.bz2"
@@ -387,37 +370,30 @@ rm -rf geany-themes
 ```
 
 
-## webpage2html
-
-```
-python -m pip install --user webpage2html requests termcolor
-```
-
-
-## mdbook
-
-```
-cargo install mdbook mdbook-epub
-```
-
-
 ## blender
 
 ```
-wget https://download.blender.org/release/Blender2.80/blender-2.80-linux-glibc217-x86_64.tar.bz2
-tar xf blender-2.80-linux-glibc217-x86_64.tar.bz2
-rm -f blender-2.80-linux-glibc217-x86_64.tar.bz2
-mv blender-2.80-linux-glibc217-x86_64/ ~/.local/opt/blender-2.80
-ln -s ~/.local/opt/blender-2.80/blender ~/.local/bin/blender
+wget https://ftp.nluug.nl/pub/graphics/blender/release/Blender2.82/blender-2.82-linux64.tar.xz
+tar xf blender-2.82-linux64.tar.xz
+rm -f blender-2.82-linux64.tar.xz
+mv blender-2.82-linux64/ ~/.local/opt/blender-2.82
+ln -s ~/.local/opt/blender-2.81/blender ~/.local/bin/blender
 ```
 
 
-## djv
+## notify-send.py
 
 ```
-wget https://netcologne.dl.sourceforge.net/project/djv/djv-stable/1.3.0/DJV_1.3.0_amd64.deb
-sudo gdebi DJV_1.3.0_amd64.deb
-rm -f DJV_1.3.0_amd64.deb
+# dbus-x11 is required when running notify-send.py with cron
+# see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=918149
+sudo apt install python3-notify2 dbus-x11
+
+cd ~/.local/src
+git clone https://github.com/phuhl/notify-send.py
+cd notify-send.py
+
+python3 setup.py install --user
+cd ~/temp
 ```
 
 
@@ -488,118 +464,6 @@ sudo a2dissite 000-default
 sudo systemctl reload apache2
 ```
 
-### mariadb
-
-```
-sudo apt install mariadb-client mariadb-server
-
-# default password is blank
-sudo mysql_secure_installation
-```
-
-### wordpress
-
-```
-# this is just to install php properly
-sudo apt install wordpress php-mbstring
-
-# for wordpress' proper permalinks
-sudo a2enmod rewrite
-sudo systemctl reload apache2
-```
-
-```
-cd ~/.local/bin
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-chmod +x wp-cli.phar
-mv wp-cli.phar wp
-./wp --info
-```
-
-```
-mkdir [site]
-cd [site]
-wp core download
-
-# wp wants these for later
-# do it now for the permissions
-mkdir wp-content/upgrade
-mkdir wp-content/uploads
-touch .htaccess
-
-# during development; before the move
-chmod -R 0777 wp-content/uploads
-
-cp wp-config-sample.php wp-config.php
-```
-
-```
-mysql -u root -p
-CREATE DATABASE db_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER db_user@localhost IDENTIFIED BY 'password';
-GRANT ALL PRIVILEGES ON db_name.* TO db_user@localhost IDENTIFIED BY 'password';
-EXIT
-```
-
-Set `DB_CHARSET` and `DB_COLLATE` as above in `wp-config.php`, and use `https://api.wordpress.org/secret-key/1.1/salt/`.
-
-If you set the permissions properly, add `define('FS_METHOD', 'direct');` to `wp-config.php`.
-
-Set `WP_DEBUG` to `true`.
-
-#### import/export
-
-```
-cd .../wp/
-wp db export
-
-# download db.sql to [new wp root]
-# download wp-content/themes,plugins,uploads to [new wp root]/wp-content
-# or git clone the theme into wp-content/themes if it's in git
-
-cd [new wp root]
-sudo -u www-data -- wp db import db.sql
-sudo -u www-data -- wp search-replace "http://localhost/x.co.uk" "http://x.co.uk"
-```
-
-If you get a whitescreen, check the theme is enabled properly.
-
-You might need to set permalinks to plain in the settings.
-
-When moving to the main site, make sure `WP_DEBUG` is `false`, and:
-
-```
-chown -R www-data:www-data .
-find . -type d -exec chmod 750 {} \;
-find . -type f -exec chmod 640 {} \;
-```
-
-#### remove
-
-```
-mysql -u root -p
-SELECT User FROM mysql.user;
-SHOW GRANTS FOR db_user@localhost;
-REVOKE ALL PRIVILEGES, GRANT OPTION FROM db_user@localhost;
-DROP USER db_user@localhost;
-DROP DATABASE db_name;
-EXIT
-```
-
-#### composer
-
-```
-curl -sS https://getcomposer.org/installer -o composer-setup.php
-php composer-setup.php --install-dir="$HOME/.local/bin" --filename=composer
-rm composer-setup.php
-```
-
-```
-composer require [vendor/package]
-```
-
-Then include `require_once "vendor/autoload.php";` in `functions.php` or somewhere equivalent.
-
 
 ## sudoers
 
@@ -618,18 +482,9 @@ Run `visudo` and add:
 ```
 
 
-## fnlock
-
-To disable fnlock on an external ThinkPad keyboard, run `visudo` and add (along with the command in `uutostart`):
-
-```
-%demi ALL=NOPASSWD:/usr/bin/tee /sys/bus/hid/devices/*17EF\:604*/fn_lock
-```
-
-
 ## crontab
 
-Run `env EDITOR=mousepad crontab -e` and add:
+Run `env EDITOR=geani crontab -e` and add:
 
 ```
 */3 * * * *  . "$HOME/.profile"; DISPLAY=:0  react-to-low-battery 12 6
@@ -637,7 +492,7 @@ Run `env EDITOR=mousepad crontab -e` and add:
 0 14 * * *   . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup-full.sh" || notify-confirmation --urgency critical "full backup failed"
 ```
 
-Run `sudo EDITOR=mousepad crontab -e` and add:
+Run `sudo EDITOR=nano crontab -e` and add:
 
 ```
 0 */6 * * *  journalctl --vacuum-time=14d
@@ -650,7 +505,7 @@ If the crontab is running `~/.backup.sh`, then that can contain:
 ```
 #!/bin/sh
 
-fdfind . ~ -E downloads -E videos -E music -E books -E games -E images | backup --keep 8 /mnt/usb/backups/ /mnt/sdcard/backups/ || exit 1
+fdfind . ~ -E downloads -E videos -E music -E books -E games -E images | backup --keep 7 /mnt/usb/backups/ /mnt/sdcard/backups/ || exit 1
 ```
 
 If the crontab is running `~/.backup-full.sh`, then that can contain:
@@ -691,7 +546,6 @@ sudo shutdown -r now
 ## setup
 
 - meld
-- mousepad
 - quodlibet
 
 
@@ -705,14 +559,13 @@ Download/enable the following plugins
 - Addons
 
 
-### firefox-dev
+### firefox
 
-- NoScript (allow scripts globally, just use it for the other stuff)
-- EPUBReader
-- Decentraleyes
-- Open Image in New Tab (robines)
+- uMatrix
 - uBlock Origin
+- EPUBReader
 - Save Page WE
+- Open Image in New Tab (robines)
 - Activate Reader View (disabled by default)
 
 `ln -s ~/.mozilla/firefox/user.js ~/.mozilla/firefox/[profile]/user.js`
@@ -722,14 +575,6 @@ Set up the developer tools.
 
 ### firefox remote debugging
 
-on old versions of firefox for the desktop
-- sudo apt install adb
-- sudo adduser [user] plugdev
-- open webide in firefox
-- project > manage extra components
-- install adb helper
-
-on new versions of firefox for the desktop
 - open about:debugging
 - enable usb debugging
 
@@ -747,15 +592,6 @@ on firefox for android
 ### chromium
 
 - Backspace to go Back
-
-
-### blender animation nodes
-
-- Download from: `https://github.com/JacquesLucke/animation_nodes/releases`
-- Open Blender
-- Go to `User Preferences > Add ons`
-- Click `Install from File` and choose the downloaded file
-- Activate the add-on
 
 
 ### openmw

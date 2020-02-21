@@ -8,8 +8,8 @@
 
 (tool-preset-path "${gimp_dir}/tool-presets")
 (import-raw-plug-in "${gimp_plug_in_dir}/plug-ins/file-raw-placeholder/file-raw-placeholder")
-(monitor-xresolution 125.000000)
-(monitor-yresolution 125.000000)
+(monitor-xresolution 174.000000)
+(monitor-yresolution 171.000000)
 (default-view
     (show-menubar yes)
     (show-statusbar no)
@@ -42,7 +42,7 @@
     (snap-to-path no)
     (padding-mode default)
     (padding-color (color-rgb 1.000000 1.000000 1.000000)))
-(icon-size medium)
+(icon-size large)
 (user-manual-online yes)
 (layer-merge-active-group-only no)
 (layer-merge-discard-invisible yes)

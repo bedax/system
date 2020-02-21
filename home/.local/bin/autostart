@@ -8,12 +8,6 @@ if_not_running() {
 }
 
 
-# open port 80
-# upnpc -r 80 TCP &
-
-# set the domains to point to this machine
-# set-dyn-dns &
-
 # set the brightness
 xbacklight -set 75 &
 
@@ -25,14 +19,10 @@ hsetroot -solid "$BACKGROUND_COLOUR" &
 xsetroot -cursor_name left_ptr &
 
 # disables the trackpad
-# xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
+xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
 
 # disable capslock
 xmodmap -e "keycode 66 = Shift_L NoSymbol Shift_L" &
-
-# disable fnlock on thinkpad keyboards
-# see: https://github.com/lentinj/tp-compact-keyboard#linux-317-and-above
-# echo 0 | sudo tee /sys/bus/hid/devices/*17EF\:604*/fn_lock
 
 # start the hotkey daemon
 if_not_running sxhkd

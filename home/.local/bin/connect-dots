@@ -59,7 +59,6 @@ def render_dots():
    render_template("/home/.config/Trolltech.conf.template")
    render_template("/home/.config/dunst/dunstrc.template")
    render_template("/home/.config/geany/geany.conf.template")
-   render_template("/home/.config/hexchat/hexchat.conf.template")
    render_template("/home/.config/gtk-3.0/settings.ini.template")
    render_template("/home/.local/src/st-0.8.2/config.h.template")
    render_template("/home/.local/src/dmenu-4.9/config.h.template")
