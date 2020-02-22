@@ -522,6 +522,13 @@ To automount the usb/sdcard on start, add the following to `/etc/fstab`:
 UUID=[UUID from `lsblk -f`]  /mnt/usb     ext4  noauto,nofail,x-systemd.automount,x-systemd.idle-timeout=2,x-systemd.device-timeout=2
 ```
 
+And run the following:
+
+```
+sudo mkdir /mnt/usb
+sudo chown -R [user]:[user] /mnt/usb
+```
+
 
 ## connect
 
@@ -561,10 +568,10 @@ Download/enable the following plugins
 
 ### firefox
 
-- uMatrix
 - uBlock Origin
 - EPUBReader
 - Save Page WE
+- Tab Session Manager
 - Open Image in New Tab (robines)
 - Activate Reader View (disabled by default)
 
