@@ -8,6 +8,9 @@ super + space
 super + alt + space
    st
 
+alt + space
+   dmenu-find
+
 
 Print
    screenshot
@@ -94,7 +97,7 @@ super + alt + Next
 # select the given desktop
 super + {1-9,0}
    bspc desktop --focus "^{1-9,10}"; \
-   notify-confirmation --urgency low "desktop" "$(desktop)"
+   notify-confirmation --urgency low "desktop" "$(desktop-get)"
 
 # move the focused window to the given desktop
 super + alt + {1-9,0}

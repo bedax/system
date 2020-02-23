@@ -8,7 +8,7 @@ import sys
 
 def receive_path():
    fd_command = [
-      "fd",
+      "fdfind",
       ".",
       os.environ["HOME"],
       "--follow",

@@ -45,7 +45,7 @@ def main():
    light_output = command("brightness-get")
    append_line(lines, "light", light_output, map=percentage_map)
 
-   desktop_output = command("desktop")
+   desktop_output = command("desktop-get")
    append_line(lines, "desktop", desktop_output)
 
    time = command(["date", "+%A %d/%m/%y %H:%M:%S"])
