@@ -26,7 +26,7 @@ auto [device name from `ip link`]
       wpa-psk {{ WIFI_PASSWORD }}
 ```
 
-Then use `service networking restart`, run `apt install network-manager`, remove what was added above, restart networking again, then use `nmtui` to re-enable the network.
+Then run `service networking restart`, `apt install network-manager`, remove what was added above, restart networking again, then use `nmtui` to re-enable the network.
 
 If `nmtui` doesn't work, edit `/etc/NetworkManager/NetworkManager.conf` and make sure `[ifupdown] managed=true`, then restart network-manager.
 
@@ -157,7 +157,6 @@ gstreamer1.0-plugins-bad
 ### thunar
 thunar
 thunar-volman
-thunar-gtkhash
 thunar-media-tags-plugin
 thunar-archive-plugin
 gvfs-backends
@@ -470,7 +469,7 @@ Run `visudo` and add:
 ```
 
 
-## bsckup
+## backup
 
 Run `env EDITOR=geani crontab -e` and add:
 
@@ -490,6 +489,8 @@ If the crontab is running `~/.backup.sh`, then that can contain:
 fdfind . ~ -E downloads -E videos -E music -E books -E games -E images | backup --keep 7 /mnt/usb/backups/ /mnt/sdcard/backups/ || exit 1
 ```
 
+### ~/.backup-full.sh
+
 If the crontab is running `~/.backup-full.sh`, then that can contain:
 
 ```
@@ -498,7 +499,9 @@ If the crontab is running `~/.backup-full.sh`, then that can contain:
 fdfind . ~ -E downloads | backup --keep 2 /mnt/sdcard/backups-full/ || exit 1
 ```
 
-To automount the usb/sdcard on start, add the following to `/etc/fstab`:
+### automount backup drives
+
+To automount the usb/sdcard on boot, add the following to `/etc/fstab`:
 
 ```
 UUID=[UUID from `lsblk -f`]  /mnt/[usb]     ext4  noauto,nofail,x-systemd.automount,x-systemd.idle-timeout=2,x-systemd.device-timeout=2
