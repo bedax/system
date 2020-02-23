@@ -11,30 +11,17 @@ _These are some notes on how to install the author's system. These aren't expect
     - An ext4 partition for ~, using the remaining space
 
 
-## logging
-
-[enable persistent logging](https://unix.stackexchange.com/a/159390):
-
-```
-mkdir /var/log/journal
-systemd-tmpfiles --create --prefix /var/log/journal
-systemctl restart systemd-journald
-```
-
-
 ## network
 
-To get the network working add whatever's relevant from the following to `/etc/network/interfaces`:
+To get the network working, add the following to `/etc/network/interfaces`:
 
 ```
-# enable internal wifi
+# enable wifi
 auto [device name from `ip link`]
    # enable this if it's external:
    # allow-hotplug [device name]
 
    iface [device name] inet dhcp
-
-      # don't include these two if it's usb tethering:
       wpa-ssid {{ WIFI_NAME }}
       wpa-psk {{ WIFI_PASSWORD }}
 ```
@@ -49,6 +36,7 @@ If `nmtui` doesn't work, edit `/etc/NetworkManager/NetworkManager.conf` and make
 ```
 apt update
 apt upgrade
+apt full-upgrade
 ```
 
 
@@ -306,7 +294,7 @@ sudo apt install npm
 npm config set prefix "$HOME/.local"
 ```
 
-npm packages:
+### npm packages
 
 ```
 npm install -g npm-check
@@ -450,7 +438,7 @@ request() {
 }
 
 # for each hosted domain:
-request [set dns ip link]
+request "[set dns ip link]"
 ```
 
 ### apache
@@ -482,7 +470,7 @@ Run `visudo` and add:
 ```
 
 
-## crontab
+## bsckup
 
 Run `env EDITOR=geani crontab -e` and add:
 
@@ -490,12 +478,6 @@ Run `env EDITOR=geani crontab -e` and add:
 */3 * * * *  . "$HOME/.profile"; DISPLAY=:0  react-to-low-battery 12 6
 0 */2 * * *  . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup.sh" || notify-confirmation --urgency critical "backup failed"
 0 14 * * *   . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup-full.sh" || notify-confirmation --urgency critical "full backup failed"
-```
-
-Run `sudo EDITOR=nano crontab -e` and add:
-
-```
-0 */6 * * *  journalctl --vacuum-time=14d
 ```
 
 ### ~/.backup.sh
@@ -519,14 +501,32 @@ fdfind . ~ -E downloads | backup --keep 2 /mnt/sdcard/backups-full/ || exit 1
 To automount the usb/sdcard on start, add the following to `/etc/fstab`:
 
 ```
-UUID=[UUID from `lsblk -f`]  /mnt/usb     ext4  noauto,nofail,x-systemd.automount,x-systemd.idle-timeout=2,x-systemd.device-timeout=2
+UUID=[UUID from `lsblk -f`]  /mnt/[usb]     ext4  noauto,nofail,x-systemd.automount,x-systemd.idle-timeout=2,x-systemd.device-timeout=2
 ```
 
 And run the following:
 
 ```
-sudo mkdir /mnt/usb
-sudo chown -R [user]:[user] /mnt/usb
+sudo mkdir /mnt/[usb]
+sudo mount /mnt/[usb]
+sudo chown -R [user]:[user] /mnt/[usb]
+```
+
+
+## logging
+
+[enable persistent logging](https://unix.stackexchange.com/a/159390) by running:
+
+```
+mkdir /var/log/journal
+systemd-tmpfiles --create --prefix /var/log/journal
+systemctl restart systemd-journald
+```
+
+To automatically clean old logs, run `sudo EDITOR=nano crontab -e` and add:
+
+```
+0 */6 * * *  journalctl --vacuum-time=14d
 ```
 
 
@@ -539,14 +539,14 @@ connect-dots --with-root --with-suckless --with-fonts
 
 ## ssh key
 
-Save `id_rsa` and `id_rsa.pub` to `~/.ssh` and `chmod 0600 ~/.ssh/id_rsa`
+Save `id_rsa` and `id_rsa.pub` to `~/.ssh` and `chmod 0600 ~/.ssh/id_rsa`.
 
 
 ## restart
 
 ```
 rmdir ~/temp
-sudo shutdown -r now
+restart
 ```
 
 
