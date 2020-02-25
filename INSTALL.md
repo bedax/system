@@ -384,37 +384,6 @@ cd ~/temp
 ```
 
 
-## wine
-
-```
-sudo dpkg --add-architecture i386
-
-wget "https://dl.winehq.org/wine-builds/winehq.key"
-sudo apt-key add winehq.key
-rm -f winehq.key
-
-echo "deb https://dl.winehq.org/wine-builds/debian/ stable main" | sudo tee -a "/etc/apt/sources.list"
-
-sudo apt-get update
-sudo apt-get install --install-recommends winehq-stable
-```
-
-
-## project64
-
-```
-wget http://www.emulator-zone.com/download.php/emulators/n64/project64/project64_1.6.exe
-wine project64_1.6.exe
-rm -f project64_1.6.exe
-```
-
-Start with:
-
-```
-wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Project64\ 1.6/Project64.exe "$@"
-```
-
-
 ## server
 
 ### dns
@@ -610,8 +579,3 @@ on firefox for android
 - [Westly's Pluginless Head and Hair Replacer](http://download.fliggerty.com/download-127-874)
 - [Graphic Herbalism](https://www.nexusmods.com/morrowind/mods/43140)
 - [Others](https://en.uesp.net/wiki/Morrowind:Plugins)
-
-
-### project64
-
-Use the N-Rage input plugin. If the gamepad has two versions (`event` and `js`) use `event`. Disable `raw data`.
