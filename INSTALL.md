@@ -609,7 +609,7 @@ on firefox for android
 - [Better Dialogue Font](https://www.nexusmods.com/morrowind/mods/36873)
 - [Westly's Pluginless Head and Hair Replacer](http://download.fliggerty.com/download-127-874)
 - [Graphic Herbalism](https://www.nexusmods.com/morrowind/mods/43140)
-- [Others](http://en.uesp.net/wiki/Morrowind:Official_Add-Ons)
+- [Others](https://en.uesp.net/wiki/Morrowind:Plugins)
 
 
 ### project64
