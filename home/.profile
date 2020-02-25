@@ -24,7 +24,7 @@ export HIGHLIGHT_COLOUR="$COLOUR_14"
 
 export NORMAL_FONT_SIZE="14"
 export SUCKLESS_FONT_SIZE="18"
-export SUCKLESS_FONT_STYLE="Regular"
+export SUCKLESS_FONT_STYLE="Medium"
 export MONO_FONT_NAME="Fira Mono"
 export NORMAL_FONT_NAME="Inter"
 
@@ -36,9 +36,9 @@ export BORDER_WIDTH="3"
 export SYSTEM="$HOME/system"
 export EDITOR="geani"
 
-HOME_PATH="$HOME/.local/bin"
+LOCAL_PATH="$HOME/.local/bin"
 CARGO_PATH="$HOME/.cargo/bin"
-export PATH="$HOME_PATH:$CARGO_PATH:$PATH"
+export PATH="$LOCAL_PATH:$CARGO_PATH:$PATH"
 
 # see: https://www.sven.de/dpi/
 # and also update firefox's user.js
