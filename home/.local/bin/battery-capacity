@@ -8,7 +8,6 @@ for c in $(cat /sys/class/power_supply/BAT*/capacity); do
    capacity=$((capacity + c))
 done
 
-
 if [ $batteries -ne 0 ]; then
    echo $((capacity * 100 / batteries / 100))
 fi

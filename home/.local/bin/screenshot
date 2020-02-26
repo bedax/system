@@ -25,13 +25,4 @@ copy_screenshot() {
    rm -f "$screenshot_path"
 }
 
-notify_success() {
-   notify-confirmation --urgency low "screenshot copied"
-}
-
-notify_failure() {
-   notify-confirmation --urgency critical "failed to copy the screenshot"
-}
-
-
-(screenshot "$1" && copy_screenshot && notify_success) || notify_failure
+screenshot "$1" && copy_screenshot

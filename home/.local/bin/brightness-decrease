@@ -1,5 +1,0 @@
-#!/bin/sh
-
-xbacklight -dec 5
-
-notify-confirmation --urgency low "brightness decreased" "$(brightness-get)%"

@@ -1,5 +1,0 @@
-#!/bin/sh
-
-volume-set -5%
-
-notify-confirmation --urgency low "volume decreased" "$(volume-get)"

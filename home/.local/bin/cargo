@@ -1,7 +1,3 @@
 #!/bin/sh
 
-OUTPUT_PATH="/tmp/cargo-output"
-
-~/.cargo/bin/cargo "$@" > "$OUTPUT_PATH" 2>&1
-less "$OUTPUT_PATH"
-rm -f "$OUTPUT_PATH"
+~/.cargo/bin/cargo "$@" 2>&1 | less
