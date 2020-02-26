@@ -3,26 +3,14 @@
 import subprocess
 
 
-
-def notify(muted):
-   subprocess.run([
-      "notify-confirmation",
-      "--urgency", "low",
-      "volume muted" if muted else "volume unmuted"
-   ])
-
-
 def toggle():
    output = subprocess.check_output(["amixer", "set", "Master", "toggle"])
    status = output.splitlines()[-1].rsplit(b" ", 1)[-1]
    muted = status == b"[off]"
-
-   return muted
-
+   return not muted
 
 def main():
-   notify(toggle())
-
+   print("1" if toggle() else "0")
 
 
 if __name__ == "__main__":

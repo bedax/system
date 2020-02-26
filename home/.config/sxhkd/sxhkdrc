@@ -13,26 +13,36 @@ alt + space
 
 
 Print
-   screenshot
+   screenshot; \
+   notify-confirmation --urgency low "screenshot copied"
 
 alt + Print
-   screenshot window
+   screenshot window; \
+   notify-confirmation --urgency low "window screenshot copied"
 
 
 XF86AudioMute
-   volume-mute
+   if [ "$(volume-mute)" -eq 0 ]; then \
+      notify-confirmation --urgency low "volume muted"; \
+   else \
+      notify-confirmation --urgency low "volume unmuted"; \
+   fi
 
 XF86AudioRaiseVolume
-   volume-increase
+   volume-set +5%; \
+   notify-confirmation --urgency low "volume increased" "$(volume-get)"
 
 XF86AudioLowerVolume
-   volume-decrease
+   volume-set -5%; \
+   notify-confirmation --urgency low "volume decreased" "$(volume-get)"
 
 XF86MonBrightnessUp
-   brightness-increase
+   xbacklight -inc 5; \
+   notify-confirmation --urgency low "brightness increased" "$(brightness-get)%"
 
 XF86MonBrightnessDown
-   brightness-decrease
+   xbacklight -dec 5; \
+   notify-confirmation --urgency low "brightness decreased" "$(brightness-get)%"
 
 
 # close the focused window
