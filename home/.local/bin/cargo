@@ -1,3 +1,0 @@
-#!/bin/sh
-
-~/.cargo/bin/cargo "$@" 2>&1 | less

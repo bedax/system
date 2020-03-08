@@ -455,7 +455,7 @@ If the crontab is running `~/.backup.sh`, then that can contain:
 ```
 #!/bin/sh
 
-fdfind . ~ -E downloads -E videos -E music -E books -E games -E images | backup --keep 7 /mnt/usb/backups/ /mnt/sdcard/backups/ || exit 1
+fdfind . ~ -E audiobooks -E downloads -E videos -E music -E books -E games -E images | backup --keep 7 /mnt/usb/backups/ /mnt/sdcard/backups/ || exit 1
 ```
 
 ### ~/.backup-full.sh

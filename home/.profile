@@ -40,7 +40,8 @@ LOCAL_PATH="$HOME/.local/bin"
 CARGO_PATH="$HOME/.cargo/bin"
 export PATH="$LOCAL_PATH:$CARGO_PATH:$PATH"
 
-export BAT_PAGER="/usr/bin/less --RAW-CONTROL-CHARS --quit-if-one-screen +G"
+# add `+G` to start at the end
+export BAT_PAGER="/usr/bin/less --RAW-CONTROL-CHARS --quit-if-one-screen"
 
 # see: https://www.sven.de/dpi/
 # and also update firefox's user.js
