@@ -9,7 +9,7 @@ if_not_running() {
 
 
 # set the brightness
-xbacklight -set 75 &
+xbacklight -set 35 &
 
 # set the background colour
 hsetroot -solid "$BACKGROUND_COLOUR" &

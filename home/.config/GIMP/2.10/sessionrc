@@ -74,7 +74,7 @@
     (size 1248 942))
 (session-info "toplevel"
     (factory-entry "gimp-operation-tool-dialog")
-    (position 962 60))
+    (position 1526 13))
 (session-info "toplevel"
     (factory-entry "gimp-brightness-contrast-tool-dialog")
     (position 1083 374))

@@ -98,6 +98,10 @@ pkg-config
 automake
 cmake
 
+### scheme
+chicken-bin
+rlwrap
+
 ### python and its package manager
 python
 python-pip
