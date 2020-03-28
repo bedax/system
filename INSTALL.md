@@ -580,6 +580,7 @@ on firefox for android
 ### openmw
 
 - [Better Dialogue Font](https://www.nexusmods.com/morrowind/mods/36873)
-- [Westly's Pluginless Head and Hair Replacer](http://download.fliggerty.com/download-127-874)
 - [Graphic Herbalism](https://www.nexusmods.com/morrowind/mods/43140)
+- [Weapon Sheathing](https://www.nexusmods.com/morrowind/mods/46069)
+- [Westly's Pluginless Head and Hair Replacer](http://download.fliggerty.com/download-127-874)
 - [Others](https://en.uesp.net/wiki/Morrowind:Plugins)
