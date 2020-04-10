@@ -388,6 +388,16 @@ cd ~/temp
 ```
 
 
+## openrct2
+
+```
+cd ~/.local/opt/
+wget "https://github.com/OpenRCT2/OpenRCT2/releases/download/v0.2.5/OpenRCT2-0.2.5-linux-x86_64.AppImage"
+chmod +x OpenRCT2-0.2.5-linux-x86_64.AppImage
+ln -s ~/.local/opt/OpenRCT2-0.2.5-linux-x86_64.AppImage ~/.local/bin/openrct2
+```
+
+
 ## server
 
 ### dns
