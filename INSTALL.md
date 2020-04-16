@@ -398,6 +398,15 @@ ln -s ~/.local/opt/OpenRCT2-0.2.5-linux-x86_64.AppImage ~/.local/bin/openrct2
 ```
 
 
+## ludo
+
+```
+cd ~/.local/opt/
+wget https://github.com/libretro/ludo/releases/download/v0.11.0/Ludo-Linux-x86_64-0.11.0.tar.gz
+tar xf Ludo-Linux-x86_64-0.11.0.tar.gz
+```
+
+
 ## server
 
 ### dns

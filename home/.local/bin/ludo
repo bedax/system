@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd ~/.local/opt/Ludo-Linux-x86_64-0.11.0
+./ludo
