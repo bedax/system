@@ -98,10 +98,6 @@ pkg-config
 automake
 cmake
 
-### scheme
-chicken-bin
-rlwrap
-
 ### python and its package manager
 python
 python-pip
@@ -222,6 +218,20 @@ curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fishe
 fish -c "fisher add fischerling/plugin-wd"
 fish -c "fisher add oh-my-fish/plugin-pbcopy"
 # fish -c "fisher add externl/fish-symnav"
+```
+
+
+## chicken
+
+```
+cd ~/.local/src
+wget "https://code.call-cc.org/releases/5.2.0/chicken-5.2.0.tar.gz"
+tar xf chicken-5.2.0.tar.gz
+rm -f chicken-5.2.0.tar.gz
+cd chicken-5.2.0
+make PLATFORM=linux PREFIX="$HOME/.local"
+make PLATFORM=linux PREFIX="$HOME/.local" install
+sudo apt install rlwrap
 ```
 
 
