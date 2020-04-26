@@ -143,6 +143,7 @@ gimp
 gimp-help-en
 gnome-boxes
 gparted
+hexchat
 inkscape
 keepassx
 meld
