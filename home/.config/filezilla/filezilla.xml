@@ -133,20 +133,19 @@
 		<Setting name="Cache directory" />
 		<Setting name="Tab data">
 			<Tabs>
-				<Tab selected="1">
-					<Host>tom.westslope.org</Host>
-					<Port>22</Port>
-					<Protocol>1</Protocol>
+				<Tab connected="1" selected="1">
+					<Host>openbsd.ipacct.com</Host>
+					<Port>21</Port>
+					<Protocol>0</Protocol>
 					<Type>0</Type>
-					<User>root</User>
-					<Logontype>2</Logontype>
+					<Logontype>0</Logontype>
 					<TimezoneOffset>0</TimezoneOffset>
 					<PasvMode>MODE_DEFAULT</PasvMode>
 					<MaximumMultipleConnections>0</MaximumMultipleConnections>
 					<EncodingType>Auto</EncodingType>
 					<BypassProxy>0</BypassProxy>
 					<Site></Site>
-					<RemotePath>1 0 3 var 3 www 8 html-tom</RemotePath>
+					<RemotePath>1 0 3 pub 7 OpenBSD</RemotePath>
 					<LocalPath>/home/tom/</LocalPath>
 				</Tab>
 			</Tabs>

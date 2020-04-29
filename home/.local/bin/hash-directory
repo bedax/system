@@ -1,4 +1,4 @@
 #!/bin/sh
 # from: https://stackoverflow.com/a/545413
 
-find "$@" -type f -print0 | sort -z | xargs -0 b3sum | b3sum
+find "$@" -type f -print0 | sort -z | xargs -0 b2sum | b2sum | cut -d " " -f 1

@@ -2,13 +2,18 @@
 
 _These are some notes on how to install the author's system. These aren't expected to be useful to anyone else._
 
-- Install Debian's minimal version ([the one that includes non-free firmware](https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current/amd64/iso-cd/), if necessary)
+- Install debian's minimal version ([the one that includes non-free firmware](https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current/amd64/iso-cd/), if necessary)
 - Select nothing at the software selection menu
 - Partition:
-    - A 512 MiB (536870912 bytes) EFI paritition
-    - A 12 GiB (12884901888 bytes) ext4 partition for /
-    - A swap partition; 1.5 * RAM (for hibernation)
-    - An ext4 partition for ~, using the remaining space
+    - A 512 MiB EFI partition (536870912 bytes)
+    - A 8 GiB ext4 partition for / (8589934592 bytes)
+    - A swap partition; 1.5 * RAM (for hibernation) (12 GiB = 12884901888 bytes)
+    - An ext4 partition for /home, using the remaining space
+
+
+## terminal font
+
+`sudo dpkg-reconfigure -plow console-setup`
 
 
 ## network
@@ -26,9 +31,16 @@ auto [device name from `ip link`]
       wpa-psk {{ WIFI_PASSWORD }}
 ```
 
-Then run `service networking restart`, `apt install network-manager`, remove what was added above, restart networking again, then use `nmtui` to re-enable the network.
+Then run:
 
-If `nmtui` doesn't work, edit `/etc/NetworkManager/NetworkManager.conf` and make sure `[ifupdown] managed=true`, then restart network-manager.
+```
+service networking restart
+apt install network-manager
+nano /etc/network/interfaces # remove what was added above
+service networking restart
+service network-manager restart
+nmtui
+```
 
 
 ## update
@@ -45,12 +57,6 @@ apt full-upgrade
 ```
 apt install sudo
 adduser [user] sudo
-```
-
-
-## login
-
-```
 su - [user]
 ```
 
@@ -64,21 +70,12 @@ git clone https://github.com/bedax/system
 ```
 
 
-## .profile
-
-```
-. ~/system/home/.profile
-```
-
-
 ## mkdirs
 
 ```
 mkdir -p ~/.local/src
 mkdir -p ~/.local/bin
 mkdir -p ~/.local/opt
-mkdir ~/temp
-cd ~/temp
 ```
 
 
@@ -88,124 +85,87 @@ cd ~/temp
 sudo apt install [name]
 ```
 
-### package manager stuff
-gdebi
-apt-file
-
-### build tools
-build-essential
-pkg-config
-automake
-cmake
-
-### python and its package manager
-python
-python-pip
-python3
-python3-pip
-
-### command line utilities
-cloc
-coreutils
-curl
-fd-find
-ffmpeg
-flake8
-git
-htop
-neofetch
-less
-links2
-nano
-ncdu
-netcat-openbsd
-net-tools
-openssh-client
-pandoc
-ripgrep
-shellcheck
-tree
-unzip
-wget
-xz-utils
-youtube-dl
-zip
-
-### graphical applications
-audacity
-chromium
-filezilla
-gimp
-gimp-help-en
-gnome-boxes
-gparted
-hexchat
-inkscape
-keepassx
-meld
-openmw
-pavucontrol
-picard
-sigil
-transmission
-viewnior
-vlc
-
-### quodlibet
-quodlibet
-gstreamer1.0-plugins-bad
-
-### thunar
-thunar
-thunar-volman
-thunar-media-tags-plugin
-thunar-archive-plugin
-gvfs-backends
-policykit-1-gnome
-xarchiver
-p7zip-full
-
-### window manager stuff
-xinit
-x11-utils
-bspwm
-sxhkd
-dunst
-
-### appearance
-adwaita-icon-theme
-adwaita-qt
-adwaita-qt4 - as it's not in buster, install it and adwaita-qt-data from stretch with gdebi
-qt4-qtconfig
-gnome-themes-standard
-ttf-mscorefonts-installer
-
-### for the local scripts
-alsa-utils
-jshon
-maim
-pm-utils
-pulseaudio-utils
-xclip
-xdotool
-
-### for the startup script
-compton
-hsetroot
-redshift
-x11-xserver-utils
-xbacklight
-xinput
-
-### for st and dmenu
-libx11-dev
-libxinerama-dev
-libxft-dev
-
-### other
-pulseaudio
-fontconfig
-cron
+- `adwaita-icon-theme`
+- `adwaita-qt`
+- `adwaita-qt4` (as it's not in buster, install it and adwaita-qt-data from stretch with gdebi)
+- `alsa-utils` (used by `volume-mute`)
+- `apt-file`
+- `audacity`
+- `blender`
+- `bspwm`
+- `build-essential`
+- `cloc`
+- `compton`
+- `coreutils`
+- `cron`
+- `dunst`
+- `ffmpeg`
+- `filezilla`
+- `firefox-esr`
+- `fontconfig`
+- `gdebi`
+- `gimp`
+- `gimp-help-en`
+- `git`
+- `gnome-themes-standard`
+- `gparted`
+- `gstreamer1.0-plugins-bad`
+- `hexchat`
+- `hsetroot` (used to set the background in `autostart`)
+- `htop`
+- `inkscape`
+- `jshon` (used by `desktop-get`)
+- `keepassx`
+- `less`
+- `libnotify-bin`
+- `libx11-dev` (used by st and dmenu)
+- `libxft-dev` (used by st and dmenu)
+- `libxinerama-dev` (used by st and dmenu)
+- `links2`
+- `maim` (used by `screenshot`)
+- `man`
+- `meld`
+- `mpv`
+- `nano`
+- `ncdu`
+- `neofetch`
+- `netcat-openbsd`
+- `openmw`
+- `openssh-client`
+- `pandoc`
+- `picard`
+- `pm-utils` (used by the sleep and hibernate scripts)
+- `pulseaudio`
+- `pulseaudio-utils` (used by `volume-get` and `volume-set`)
+- `python3`
+- `python3-pip`
+- `qt4-qtconfig`
+- `quodlibet`
+- `redshift`
+- `shellcheck`
+- `sigil`
+- `sxhkd`
+- `thunar`
+- `thunar-archive-plugin`
+- `thunar-volman`
+- `tmux`
+- `transmission`
+- `tree`
+- `ttf-mscorefonts-installer`
+- `unzip`
+- `viewnior`
+- `virt-manager`
+- `wget`
+- `x11-utils` (contains xev)
+- `x11-xserver-utils`
+- `xarchiver`
+- `xbacklight`
+- `xclip` (used by `screenshot`)
+- `xdotool` (used by `screenshot`)
+- `xinit`
+- `xinput` (for disabling the touchpad in `autostart`)
+- `youtube-dl`
+- `zip`
 
 
 ## fish
@@ -213,7 +173,9 @@ cron
 ```
 sudo apt install fish
 
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+wget https://git.io/fisher
+mkdir -p ~/.config/fish/functions
+mv fisher ~/.config/fish/functions/fisher.fish
 
 fish -c "fisher add fischerling/plugin-wd"
 fish -c "fisher add oh-my-fish/plugin-pbcopy"
@@ -225,79 +187,15 @@ fish -c "fisher add oh-my-fish/plugin-pbcopy"
 
 ```
 cd ~/.local/src
-wget "https://code.call-cc.org/releases/5.2.0/chicken-5.2.0.tar.gz"
-tar xf chicken-5.2.0.tar.gz
+wget https://code.call-cc.org/releases/5.2.0/chicken-5.2.0.tar.gz
+tar zxf chicken-5.2.0.tar.gz
 rm -f chicken-5.2.0.tar.gz
 cd chicken-5.2.0
 make PLATFORM=linux PREFIX="$HOME/.local"
 make PLATFORM=linux PREFIX="$HOME/.local" install
+cd ~/.local/bin
+mv csi chicken-csi # so as not to conflict with the wrapper script
 sudo apt install rlwrap
-```
-
-
-## rust
-
-```
-curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y
-
-rustup install nightly
-rustup component add clippy rustfmt
-
-rustup target add wasm32-unknown-unknown
-curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-cargo install twiggy
-
-sudo apt install musl-tools
-rustup target add x86_64-unknown-linux-musl
-
-sudo apt install rust-lldb valgrind
-```
-
-### cargo extensions
-
-```
-cargo install cargo-bloat
-cargo install cargo-fuzz
-cargo install cargo-profiler
-cargo install cargo-watch
-cargo install evcxr_repl
-cargo +nightly install cargo-expand
-
-sudo apt install libssl-dev
-cargo install cargo-audit
-
-sudo apt install libssl-dev
-cargo install cargo-deadlinks
-
-sudo apt install libssl-dev
-cargo install cargo-tree
-
-sudo apt install libssl-dev zlib1g-dev
-cargo install cargo-tarpaulin
-
-sudo apt install libssl-dev libssh2-1-dev libgit2-dev
-cargo install cargo-update
-
-sudo apt install libssl-dev
-cargo install --git https://github.com/kbknapp/cargo-outdated
-
-# cargo install cargo-deb
-# cargo install cargo-make
-# cargo install cargo-release
-# cargo install cargo-script
-
-# sudo apt install libssl-dev
-# cargo install cargo-cook
-```
-
-### cargo packages
-
-```
-cargo install bat
-cargo install ruplacer
-cargo install mdbook
-cargo install mdbook-epub
-cargo install b3sum
 ```
 
 
@@ -319,43 +217,36 @@ npm install -g serve
 ## graphics
 
 Add non-free to the first source in `/etc/apt/sources.list`.
-
 For ThinkPad x2?0, install `firmware-misc-nonfree`.
 
 
 ## st
 
 ```
+cd ~/.local/src
+rm -rf st-0.8.2
 wget https://dl.suckless.org/st/st-0.8.2.tar.gz
-tar xf st-0.8.2.tar.gz
+tar zxf st-0.8.2.tar.gz
 rm -f st-0.8.2.tar.gz
-
-rm -rf ~/.local/src/st-0.8.2
-mv st-0.8.2 ~/.local/src/
 ```
 
 
 ## dmenu
 
 ```
+cd ~/.local/src
+rm -rf dmenu-4.9
 wget https://dl.suckless.org/tools/dmenu-4.9.tar.gz
-tar xf dmenu-4.9.tar.gz
+tar zxf dmenu-4.9.tar.gz
 rm -f dmenu-4.9.tar.gz
-
-rm -rf ~/.local/src/dmenu-4.9
-mv dmenu-4.9 ~/.local/src/
 ```
 
 
-## firefox
+## notify-send.py
 
 ```
-wget "https://download-installer.cdn.mozilla.net/pub/devedition/releases/72.0b6/linux-x86_64/en-GB/firefox-72.0b6.tar.bz2"
-tar xf firefox-72.0b6.tar.bz2
-rm -f firefox-72.0b6.tar.bz2
-mv firefox ~/.local/opt/
-ln -s ~/.local/opt/firefox/firefox ~/.local/bin/firefox
-sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser (which firefox) 250
+sudo apt install libdbus-1-dev libglib2.0-dev
+python3 -m pip install --user notify-send.py
 ```
 
 
@@ -363,8 +254,9 @@ sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser (which f
 
 ```
 sudo apt install geany
-sudo apt install geany-plugin-pairtaghighlighter
 sudo apt install geany-plugin-addons
+sudo apt install geany-plugin-pairtaghighlighter
+
 git clone https://github.com/geany/geany-themes/
 mkdir -p ~/.config/geany/colorschemes
 mv geany-themes/colorschemes/*.conf ~/.config/geany/colorschemes/
@@ -372,38 +264,11 @@ rm -rf geany-themes
 ```
 
 
-## blender
-
-```
-wget https://ftp.nluug.nl/pub/graphics/blender/release/Blender2.82/blender-2.82-linux64.tar.xz
-tar xf blender-2.82-linux64.tar.xz
-rm -f blender-2.82-linux64.tar.xz
-mv blender-2.82-linux64/ ~/.local/opt/blender-2.82
-ln -s ~/.local/opt/blender-2.81/blender ~/.local/bin/blender
-```
-
-
-## notify-send.py
-
-```
-# dbus-x11 is required when running notify-send.py with cron
-# see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=918149
-sudo apt install python3-notify2 dbus-x11
-
-cd ~/.local/src
-git clone https://github.com/phuhl/notify-send.py
-cd notify-send.py
-
-python3 setup.py install --user
-cd ~/temp
-```
-
-
 ## openrct2
 
 ```
 cd ~/.local/opt/
-wget "https://github.com/OpenRCT2/OpenRCT2/releases/download/v0.2.5/OpenRCT2-0.2.5-linux-x86_64.AppImage"
+wget https://github.com/OpenRCT2/OpenRCT2/releases/download/v0.2.5/OpenRCT2-0.2.5-linux-x86_64.AppImage
 chmod +x OpenRCT2-0.2.5-linux-x86_64.AppImage
 ln -s ~/.local/opt/OpenRCT2-0.2.5-linux-x86_64.AppImage ~/.local/bin/openrct2
 ```
@@ -414,44 +279,8 @@ ln -s ~/.local/opt/OpenRCT2-0.2.5-linux-x86_64.AppImage ~/.local/bin/openrct2
 ```
 cd ~/.local/opt/
 wget https://github.com/libretro/ludo/releases/download/v0.11.0/Ludo-Linux-x86_64-0.11.0.tar.gz
-tar xf Ludo-Linux-x86_64-0.11.0.tar.gz
-```
-
-
-## server
-
-### dns
-
-Create/update the `home/.local/bin/set-dyn-dns` script (which should be in `autostart` (and maybe cron)):
-
-```
-#!/bin/sh
-
-request() {
-   wget \
-      --quiet \
-      --read-timeout=0.0 \
-      --waitretry=5 \
-      --tries=400 \
-      --background \
-      --output-file=/dev/null \
-      --output-document=/dev/null \
-      "$1"
-}
-
-# for each hosted domain:
-request "[set dns ip link]"
-```
-
-### apache
-
-```
-sudo apt install apache2
-
-sudo a2enmod ssl
-sudo a2ensite user
-sudo a2dissite 000-default
-sudo systemctl reload apache2
+tar zxf Ludo-Linux-x86_64-0.11.0.tar.gz
+# no need to create a symlink, as a script lauches it
 ```
 
 
@@ -472,34 +301,31 @@ Run `visudo` and add:
 ```
 
 
-## backup
+## cron
 
 Run `env EDITOR=geani crontab -e` and add:
 
 ```
 */3 * * * *  . "$HOME/.profile"; DISPLAY=:0  react-to-low-battery 12 6
-0 */2 * * *  . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup.sh" || notify-confirmation --urgency critical "backup failed"
-0 14 * * *   . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup-full.sh" || notify-confirmation --urgency critical "full backup failed"
+0 */2 * * *  . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup.sh" || notify-send --urgency critical "backup failed"
+0 14 * * *   . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup-full.sh" || notify-send --urgency critical "full backup failed"
 ```
 
-### ~/.backup.sh
+### ~/.backup.sh and ~/.backup-full.sh
 
-If the crontab is running `~/.backup.sh`, then that can contain:
-
-```
-#!/bin/sh
-
-fdfind . ~ -E audiobooks -E downloads -E videos -E music -E books -E games -E images | backup --keep 7 /mnt/usb/backups/ /mnt/sdcard/backups/ || exit 1
-```
-
-### ~/.backup-full.sh
-
-If the crontab is running `~/.backup-full.sh`, then that can contain:
+If the crontab is running a backup script, then it can contain:
 
 ```
 #!/bin/sh
 
-fdfind . ~ -E downloads | backup --keep 2 /mnt/sdcard/backups-full/ || exit 1
+files=$(find ~ \
+   -type d \( \
+          -path "$HOME/.*" \
+      -or -path ~/downloads \
+      -or -path ~/videos \
+   \) -prune -or -print)
+
+echo "$files" | backup --keep 7 /media/usb/backups/ /media/sdcard/backups/ || exit 1
 ```
 
 ### automount backup drives
@@ -507,15 +333,15 @@ fdfind . ~ -E downloads | backup --keep 2 /mnt/sdcard/backups-full/ || exit 1
 To automount the usb/sdcard on boot, add the following to `/etc/fstab`:
 
 ```
-UUID=[UUID from `lsblk -f`]  /mnt/[usb]     ext4  noauto,nofail,x-systemd.automount,x-systemd.idle-timeout=2,x-systemd.device-timeout=2
+UUID=[UUID from `lsblk -f`]  /media/[usb]     ext4  noauto,nofail,x-systemd.automount,x-systemd.idle-timeout=2,x-systemd.device-timeout=2
 ```
 
 And run the following:
 
 ```
-sudo mkdir /mnt/[usb]
-sudo mount /mnt/[usb]
-sudo chown -R [user]:[user] /mnt/[usb]
+sudo mkdir /media/[usb]
+sudo mount /media/[usb]
+sudo chown -R [user]:[user] /media/[usb]
 ```
 
 
@@ -529,7 +355,7 @@ systemd-tmpfiles --create --prefix /var/log/journal
 systemctl restart systemd-journald
 ```
 
-To automatically clean old logs, run `sudo EDITOR=nano crontab -e` and add:
+To automatically clean old logs, run `sudo crontab -e` and add:
 
 ```
 0 */6 * * *  journalctl --vacuum-time=14d
@@ -539,19 +365,14 @@ To automatically clean old logs, run `sudo EDITOR=nano crontab -e` and add:
 ## connect
 
 ```
+. ~/system/home/.profile
 connect-dots --with-root --with-suckless --with-fonts
 ```
-
-
-## ssh key
-
-Save `id_rsa` and `id_rsa.pub` to `~/.ssh` and `chmod 0600 ~/.ssh/id_rsa`.
 
 
 ## restart
 
 ```
-rmdir ~/temp
 restart
 ```
 
@@ -585,8 +406,7 @@ Download/enable the following plugins
 
 Set up the developer tools.
 
-
-### firefox remote debugging
+#### firefox remote debugging
 
 - open about:debugging
 - enable usb debugging
@@ -600,11 +420,6 @@ on android
 on firefox for android
 - open settings > advanced
 - enable remote debugging via usb
-
-
-### chromium
-
-- Backspace to go Back
 
 
 ### openmw

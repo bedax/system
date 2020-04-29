@@ -1,0 +1,10 @@
+#set linenumbers
+set constantshow
+set softwrap
+set tabsize 3
+set tabstospaces
+set autoindent
+set morespace
+set mouse
+set smarthome
+set trimblanks

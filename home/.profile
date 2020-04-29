@@ -34,19 +34,10 @@ export LINE_HEIGHT="1.236"
 export BORDER_WIDTH="3"
 
 export SYSTEM="$HOME/system"
-export EDITOR="geani"
 
 LOCAL_PATH="$HOME/.local/bin"
-CARGO_PATH="$HOME/.cargo/bin"
-export PATH="$LOCAL_PATH:$CARGO_PATH:$PATH"
-
-# add `+G` to start at the end
-export BAT_PAGER="/usr/bin/less --RAW-CONTROL-CHARS --quit-if-one-screen"
+export PATH="$LOCAL_PATH:$PATH"
 
 # see: https://www.sven.de/dpi/
 # and also update firefox's user.js
 export DPI=176.23
-
-# scale vlc
-export QT_SCALE_FACTOR=1.4
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
