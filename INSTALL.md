@@ -15,7 +15,6 @@ _These are some notes on how to install the author's system. These aren't expect
 
 `sudo dpkg-reconfigure -plow console-setup`
 
-
 ## network
 
 To get the network working, add the following to `/etc/network/interfaces`:
@@ -88,7 +87,7 @@ sudo apt install [name]
 - `adwaita-icon-theme`
 - `adwaita-qt`
 - `adwaita-qt4` (as it's not in buster, install it and adwaita-qt-data from stretch with gdebi)
-- `alsa-utils` (used by `volume-mute`)
+- `alsa-utils` (`amixer` used by `volume-mute`)
 - `apt-file`
 - `audacity`
 - `blender`
@@ -109,18 +108,19 @@ sudo apt install [name]
 - `git`
 - `gnome-themes-standard`
 - `gparted`
-- `gstreamer1.0-plugins-bad`
+- `gstreamer1.0-plugins-bad` (used by quodlibet for aac support)
 - `hexchat`
 - `hsetroot` (used to set the background in `autostart`)
 - `htop`
 - `inkscape`
+- `inxi`
 - `jshon` (used by `desktop-get`)
 - `keepassx`
 - `less`
 - `libnotify-bin`
-- `libx11-dev` (used by st and dmenu)
-- `libxft-dev` (used by st and dmenu)
-- `libxinerama-dev` (used by st and dmenu)
+- `libx11-dev` (used to compile st and dmenu)
+- `libxft-dev` (used to compile st and dmenu)
+- `libxinerama-dev` (used to compile st and dmenu)
 - `links2`
 - `maim` (used by `screenshot`)
 - `man`
@@ -148,8 +148,7 @@ sudo apt install [name]
 - `thunar`
 - `thunar-archive-plugin`
 - `thunar-volman`
-- `tmux`
-- `transmission`
+- `transmission-gtk`
 - `tree`
 - `ttf-mscorefonts-installer`
 - `unzip`
@@ -157,12 +156,12 @@ sudo apt install [name]
 - `virt-manager`
 - `wget`
 - `x11-utils` (contains xev)
-- `x11-xserver-utils`
+- `x11-xserver-utils` (`xsetroot` used in `autostart` to set the cursor; `xmodmap` used in `autostart` to disable the capslock)
 - `xarchiver`
-- `xbacklight`
+- `xbacklight` (used in `sxhkdrc`, `autostart`, and `brightness-get`)
 - `xclip` (used by `screenshot`)
 - `xdotool` (used by `screenshot`)
-- `xinit`
+- `xinit` (contains `startx`)
 - `xinput` (for disabling the touchpad in `autostart`)
 - `youtube-dl`
 - `zip`
@@ -195,7 +194,7 @@ make PLATFORM=linux PREFIX="$HOME/.local"
 make PLATFORM=linux PREFIX="$HOME/.local" install
 cd ~/.local/bin
 mv csi chicken-csi # so as not to conflict with the wrapper script
-sudo apt install rlwrap
+sudo apt install rlwrap # used by the `csi` wrapper script
 ```
 
 
@@ -307,13 +306,13 @@ Run `env EDITOR=geani crontab -e` and add:
 
 ```
 */3 * * * *  . "$HOME/.profile"; DISPLAY=:0  react-to-low-battery 12 6
-0 */2 * * *  . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup.sh" || notify-send --urgency critical "backup failed"
-0 14 * * *   . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup-full.sh" || notify-send --urgency critical "full backup failed"
+0 */2 * * *  . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup.sh" || notify-confirmation --urgency critical "backup failed"
+0 14 * * *   . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup-full.sh" || notify-confirmation --urgency critical "full backup failed"
 ```
 
 ### ~/.backup.sh and ~/.backup-full.sh
 
-If the crontab is running a backup script, then it can contain:
+If the crontab is running a backup script, then it can contain something like:
 
 ```
 #!/bin/sh
@@ -340,8 +339,8 @@ And run the following:
 
 ```
 sudo mkdir /media/[usb]
+sudo chown [user]:[user] /media/[usb]
 sudo mount /media/[usb]
-sudo chown -R [user]:[user] /media/[usb]
 ```
 
 

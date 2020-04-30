@@ -36,5 +36,4 @@ if_not_running redshift
 if_not_running start-pulseaudio-x11
 
 # gui applications
-if_not_running transmission-gtk
 if_not_running keepassx
