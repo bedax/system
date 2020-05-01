@@ -2,7 +2,6 @@ user_pref("layout.css.devPixelsPerPx", "1.25");
 
 user_pref("browser.backspace_action", 0);
 user_pref("full-screen-api.warning.timeout", 0);
-user_pref("devtools.serviceWorkers.testing.enabled", true);
 user_pref("accessibility.typeaheadfind.enablesound", false);
 
 // from: https://www.privacytools.io/browsers/#about_config
@@ -11,7 +10,6 @@ user_pref("browser.safebrowsing.phishing.enabled", false);
 user_pref("browser.send_pings", false);
 user_pref("browser.urlbar.speculativeConnect.enabled", false);
 user_pref("dom.battery.enabled", false);
-user_pref("extensions.blocklist.url", "https://blocklists.settings.services.mozilla.com/v1/blocklist/3/%20/%20/");
 user_pref("extensions.pocket.enabled", false);
 user_pref("geo.enabled", false);
 user_pref("media.eme.enabled", false);

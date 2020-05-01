@@ -1,12 +1,2 @@
 /.p
 /..p.lock
-/home/.local/bin/set-dyn-dns
-
-# md5: 490f666e1afb15b7362b406ed1cea246
-/home/.config/retroarch/system/scph5501.bin
-# md5: 32736f17079d0b2b7024407c39bd3050
-/home/.config/retroarch/system/scph5502.bin
-# md5: dc69f0643a3030aaa4797501b483d6c4
-/home/.config/PCSX2/bios/ps2-0230e-20080220.bin
-
-/other/Windows/FastPictureViewer Codec Pack.md

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if tty -s; then
-   exec /usr/bin/htop "$@"
-else
-   exec st -e /usr/bin/htop "$@"
-fi

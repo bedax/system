@@ -15,6 +15,7 @@ _These are some notes on how to install the author's system. These aren't expect
 
 `sudo dpkg-reconfigure -plow console-setup`
 
+
 ## network
 
 To get the network working, add the following to `/etc/network/interfaces`:
@@ -99,7 +100,6 @@ sudo apt install [name]
 - `cron`
 - `dunst`
 - `ffmpeg`
-- `filezilla`
 - `firefox-esr`
 - `fontconfig`
 - `gdebi`
@@ -186,7 +186,7 @@ fish -c "fisher add oh-my-fish/plugin-pbcopy"
 
 ```
 cd ~/.local/src
-wget https://code.call-cc.org/releases/5.2.0/chicken-5.2.0.tar.gz
+wget https://code.call-cc.org/releases/current/chicken-5.2.0.tar.gz
 tar zxf chicken-5.2.0.tar.gz
 rm -f chicken-5.2.0.tar.gz
 cd chicken-5.2.0
@@ -195,21 +195,6 @@ make PLATFORM=linux PREFIX="$HOME/.local" install
 cd ~/.local/bin
 mv csi chicken-csi # so as not to conflict with the wrapper script
 sudo apt install rlwrap # used by the `csi` wrapper script
-```
-
-
-## npm
-
-```
-sudo apt install npm
-npm config set prefix "$HOME/.local"
-```
-
-### npm packages
-
-```
-npm install -g npm-check
-npm install -g serve
 ```
 
 
@@ -254,7 +239,6 @@ python3 -m pip install --user notify-send.py
 ```
 sudo apt install geany
 sudo apt install geany-plugin-addons
-sudo apt install geany-plugin-pairtaghighlighter
 
 git clone https://github.com/geany/geany-themes/
 mkdir -p ~/.config/geany/colorschemes
@@ -384,11 +368,8 @@ restart
 
 ### geany
 
-Download/enable the following plugins
+Download/enable the following plugins:
 
-- Split Window
-- Scope or Debugger
-- Pair Tag Highlighter
 - Addons
 
 
@@ -397,9 +378,7 @@ Download/enable the following plugins
 - uBlock Origin
 - EPUBReader
 - Save Page WE
-- Tab Session Manager
 - Open Image in New Tab (robines)
-- Activate Reader View (disabled by default)
 
 `ln -s ~/.mozilla/firefox/user.js ~/.mozilla/firefox/[profile]/user.js`
 

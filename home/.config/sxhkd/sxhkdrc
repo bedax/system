@@ -8,9 +8,6 @@ super + space
 super + alt + space
    st
 
-alt + space
-   dmenu-find
-
 
 Print
    screenshot; \

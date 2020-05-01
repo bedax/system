@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 if [ -n "$1" ]; then
    directory="$1"
 else
