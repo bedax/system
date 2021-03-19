@@ -4,38 +4,36 @@ import subprocess
 import sys
 
 
-
 def charging():
-   return bool(int(subprocess.check_output("battery-charging")))
+	return bool(int(subprocess.check_output("battery-charging")))
 
 
 def percent_remaining():
-   return int(subprocess.check_output("battery-capacity"))
+	return int(subprocess.check_output("battery-capacity"))
 
 
 def lowest_percentage():
-   return int(sys.argv[2]) if len(sys.argv) > 2 else 4
+	return int(sys.argv[2]) if len(sys.argv) > 2 else 4
 
 
 def low_percentage():
-   return int(sys.argv[1]) if len(sys.argv) > 1 else 8
+	return int(sys.argv[1]) if len(sys.argv) > 1 else 8
 
 
 def main():
-   if not charging():
-      percentage = percent_remaining()
+	if not charging():
+		percentage = percent_remaining()
 
-      if percentage < lowest_percentage():
-         subprocess.run("hibernate")
-      elif percentage < low_percentage():
-         subprocess.run([
-            "notify-send.py",
-            "--urgency", "critical",
-            "--replaces-process", "battery",
-            "battery low", "{}%".format(percentage)
-         ])
-
+		if percentage < lowest_percentage():
+			subprocess.run("hibernate")
+		elif percentage < low_percentage():
+			subprocess.run([
+				"notify-send.py",
+				"--urgency", "critical",
+				"--replaces-process", "battery",
+				"battery low", "{}%".format(percentage)
+			])
 
 
 if __name__ == "__main__":
-   main()
+	main()

@@ -59,9 +59,9 @@ beep_on_errors=false
 auto_focus=false
 sidebar_symbol_visible=true
 sidebar_openfiles_visible=true
-editor_font={{ MONO_FONT_NAME }} Medium {{ NORMAL_FONT_SIZE }}
-tagbar_font={{ NORMAL_FONT_NAME }} Medium {{ NORMAL_FONT_SIZE }}
-msgwin_font={{ MONO_FONT_NAME }} Medium {{ NORMAL_FONT_SIZE }}
+editor_font={{ MONO_FONT_NAME }} {{ MONO_FONT_STYLE }} {{ FONT_SIZE }}
+tagbar_font={{ NORMAL_FONT_NAME }} {{ MONO_FONT_STYLE }} {{ FONT_SIZE }}
+msgwin_font={{ MONO_FONT_NAME }} {{ MONO_FONT_STYLE }} {{ FONT_SIZE }}
 show_notebook_tabs=true
 show_tab_cross=true
 tab_order_ltr=true
@@ -182,7 +182,7 @@ active_plugins=/usr/lib/x86_64-linux-gnu/geany/addons.so;/usr/lib/x86_64-linux-g
 send_cmd_prefix=
 send_selection_unsafe=false
 load_vte=true
-font={{ MONO_FONT_NAME }} Medium {{ NORMAL_FONT_SIZE }}
+font={{ MONO_FONT_NAME }} {{ MONO_FONT_STYLE }} {{ FONT_SIZE }}
 scroll_on_key=true
 scroll_on_out=false
 enable_bash_keys=false
@@ -212,8 +212,8 @@ page_header_basename=false
 page_header_datefmt=%c
 
 [project]
-session_file=/home/tom/work/current.geany
-project_file_path=/home/tom/work
+session_file=/home/tom/.geany
+project_file_path=/home/tom
 
 [files]
 recent_files=

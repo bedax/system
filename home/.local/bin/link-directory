@@ -1,8 +1,8 @@
 #!/bin/sh
 
 cp --verbose \
-   --recursive \
-   --symbolic-link \
-   --no-dereference \
-   --force \
-   $1/. $2
+	--recursive \
+	--symbolic-link \
+	--no-dereference \
+	--force \
+	"$1"/. "$2"

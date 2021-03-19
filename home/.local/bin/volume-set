@@ -1,14 +1,12 @@
 #!/bin/sh
 # from: https://unix.stackexchange.com/a/251920
 
-
 get_default_sink_name() {
-   pacmd stat | awk -F": " '/^Default sink name: /{print $2}'
+	pacmd stat | awk -F": " '/^Default sink name: /{print $2}'
 }
 
 set_volume() {
-   pactl set-sink-volume "$(get_default_sink_name)" "$1"
+	pactl set-sink-volume "$(get_default_sink_name)" "$1"
 }
-
 
 set_volume "$1"

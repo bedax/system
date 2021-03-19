@@ -4,14 +4,15 @@ import subprocess
 
 
 def toggle():
-   output = subprocess.check_output(["amixer", "set", "Master", "toggle"])
-   status = output.splitlines()[-1].rsplit(b" ", 1)[-1]
-   unmuted = status == b"[on]"
-   return unmuted
+	output = subprocess.check_output(["amixer", "set", "Master", "toggle"])
+	status = output.splitlines()[-1].rsplit(b" ", 1)[-1]
+	unmuted = status == b"[on]"
+	return unmuted
+
 
 def main():
-   print("1" if toggle() else "0")
+	print("1" if toggle() else "0")
 
 
 if __name__ == "__main__":
-   main()
+	main()

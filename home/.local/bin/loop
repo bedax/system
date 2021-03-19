@@ -1,0 +1,11 @@
+#!/bin/sh
+
+while true; do
+	path="$(fzf)"
+
+	if $path; then
+		"$1" "$path"
+	else
+		break
+	fi
+done

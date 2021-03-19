@@ -1,13 +1,13 @@
 #!/bin/sh
 
 wget \
-   --mirror \
-   --wait=2 \
-   --page-requisites \
-   --execute robots=off \
-   --no-parent \
-   --convert-links \
-   --adjust-extension \
-   --restrict-file-names=windows \
-   --user-agent="Mozilla/5.0 (X11; Linux i686; rv:64.0) Gecko/20100101 Firefox/64.0" \
-   "$1"
+	--mirror \
+	--wait=1 \
+	--page-requisites \
+	--execute robots=off \
+	--no-parent \
+	--convert-links \
+	--adjust-extension \
+	--restrict-file-names=windows \
+	--user-agent="Mozilla/5.0 (X11; Linux i686; rv:64.0) Gecko/20100101 Firefox/64.0" \
+	"$1"

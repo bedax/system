@@ -1,0 +1,10 @@
+#!/bin/sh
+
+find "$@" \
+	-type d \( \
+		-path "$@/.*" \
+		-or -path "$@/old" \
+		-or -name "node_modules" \
+		-or -name ".cache" \
+		-or -name ".git" \
+	\) -prune -or -print

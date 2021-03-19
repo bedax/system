@@ -13,7 +13,7 @@ _These are some notes on how to install the author's system. These aren't expect
 
 ## terminal font
 
-`sudo dpkg-reconfigure -plow console-setup`
+`/sbin/dpkg-reconfigure -plow console-setup`
 
 
 ## network
@@ -34,11 +34,11 @@ auto [device name from `ip link`]
 Then run:
 
 ```
-service networking restart
+/sbin/service networking restart
 apt install network-manager
 nano /etc/network/interfaces # remove what was added above
-service networking restart
-service network-manager restart
+/sbin/service networking restart
+/sbin/service network-manager restart
 nmtui
 ```
 
@@ -56,7 +56,7 @@ apt full-upgrade
 
 ```
 apt install sudo
-adduser [user] sudo
+/sbin/adduser [user] sudo
 su - [user]
 ```
 
@@ -98,6 +98,7 @@ sudo apt install [name]
 - `compton`
 - `coreutils`
 - `cron`
+- `dbus-x11` (used by `notify-send.py` in cron)
 - `dunst`
 - `ffmpeg`
 - `firefox-esr`
@@ -109,11 +110,9 @@ sudo apt install [name]
 - `gnome-themes-standard`
 - `gparted`
 - `gstreamer1.0-plugins-bad` (used by quodlibet for aac support)
-- `hexchat`
 - `hsetroot` (used to set the background in `autostart`)
 - `htop`
 - `inkscape`
-- `inxi`
 - `jshon` (used by `desktop-get`)
 - `keepassx`
 - `less`
@@ -122,29 +121,29 @@ sudo apt install [name]
 - `libxft-dev` (used to compile st and dmenu)
 - `libxinerama-dev` (used to compile st and dmenu)
 - `links2`
+- `lua5.3`
+- `luarocks`
 - `maim` (used by `screenshot`)
 - `man`
+- `manpages-posix`
+- `manpages-posix-dev`
 - `meld`
 - `mpv`
 - `nano`
 - `ncdu`
-- `neofetch`
-- `netcat-openbsd`
-- `openmw`
 - `openssh-client`
 - `pandoc`
-- `picard`
 - `pm-utils` (used by the sleep and hibernate scripts)
 - `pulseaudio`
 - `pulseaudio-utils` (used by `volume-get` and `volume-set`)
 - `python3`
 - `python3-pip`
 - `qt4-qtconfig`
-- `quodlibet`
 - `redshift`
 - `shellcheck`
 - `sigil`
 - `sxhkd`
+- `tcc`
 - `thunar`
 - `thunar-archive-plugin`
 - `thunar-volman`
@@ -153,7 +152,6 @@ sudo apt install [name]
 - `ttf-mscorefonts-installer`
 - `unzip`
 - `viewnior`
-- `virt-manager`
 - `wget`
 - `x11-utils` (contains xev)
 - `x11-xserver-utils` (`xsetroot` used in `autostart` to set the cursor; `xmodmap` used in `autostart` to disable the capslock)
@@ -163,7 +161,7 @@ sudo apt install [name]
 - `xdotool` (used by `screenshot`)
 - `xinit` (contains `startx`)
 - `xinput` (for disabling the touchpad in `autostart`)
-- `youtube-dl`
+- `youtube-dl` (or `python3 -m pip install youtube-dl`)
 - `zip`
 
 
@@ -176,25 +174,8 @@ wget https://git.io/fisher
 mkdir -p ~/.config/fish/functions
 mv fisher ~/.config/fish/functions/fisher.fish
 
-fish -c "fisher add fischerling/plugin-wd"
-fish -c "fisher add oh-my-fish/plugin-pbcopy"
-# fish -c "fisher add externl/fish-symnav"
-```
-
-
-## chicken
-
-```
-cd ~/.local/src
-wget https://code.call-cc.org/releases/current/chicken-5.2.0.tar.gz
-tar zxf chicken-5.2.0.tar.gz
-rm -f chicken-5.2.0.tar.gz
-cd chicken-5.2.0
-make PLATFORM=linux PREFIX="$HOME/.local"
-make PLATFORM=linux PREFIX="$HOME/.local" install
-cd ~/.local/bin
-mv csi chicken-csi # so as not to conflict with the wrapper script
-sudo apt install rlwrap # used by the `csi` wrapper script
+fish -c "fisher install fischerling/plugin-wd"
+fish -c "fisher install oh-my-fish/plugin-pbcopy"
 ```
 
 
@@ -244,6 +225,29 @@ git clone https://github.com/geany/geany-themes/
 mkdir -p ~/.config/geany/colorschemes
 mv geany-themes/colorschemes/*.conf ~/.config/geany/colorschemes/
 rm -rf geany-themes
+
+git clone https://github.com/robloach/base16-geany
+mv base16-geany/*.conf ~/.config/geany/colorschemes/
+rm -rf base16-geany
+```
+
+
+## virtualbox
+
+Add the following to `/etc/apt/sources.list`:
+
+```
+deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian buster contrib
+```
+
+And run the following:
+
+```
+wget https://www.virtualbox.org/download/oracle_vbox_2016.asc
+sudo apt-key add oracle_vbox_2016.asc
+rm -f oracle_vbox_2016.asc
+sudo apt update
+sudo apt install virtualbox-5.2
 ```
 
 
@@ -286,15 +290,14 @@ Run `visudo` and add:
 
 ## cron
 
-Run `env EDITOR=geani crontab -e` and add:
+Run `crontab -e` and add:
 
 ```
-*/3 * * * *  . "$HOME/.profile"; DISPLAY=:0  react-to-low-battery 12 6
-0 */2 * * *  . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup.sh" || notify-confirmation --urgency critical "backup failed"
-0 14 * * *   . "$HOME/.profile"; DISPLAY=:0  flock --nonblock "$HOME/.backup.lock" "$HOME/.backup-full.sh" || notify-confirmation --urgency critical "full backup failed"
+*/3 * * * *  . "$HOME/.profile"; DISPLAY=:0 react-to-low-battery 12 6
+0 */3 * * *  . "$HOME/.profile"; flock --nonblock "$HOME/.backup.lock" "$HOME/.backup.sh" || DISPLAY=:0 notify-confirmation --urgency critical "backup failed"
 ```
 
-### ~/.backup.sh and ~/.backup-full.sh
+### ~/.backup.sh
 
 If the crontab is running a backup script, then it can contain something like:
 
@@ -306,9 +309,10 @@ files=$(find ~ \
           -path "$HOME/.*" \
       -or -path ~/downloads \
       -or -path ~/videos \
+      -or -name ".git" \
    \) -prune -or -print)
 
-echo "$files" | backup --keep 7 /media/usb/backups/ /media/sdcard/backups/ || exit 1
+echo "$files" | backup --keep 14 /media/usb/backups/ /media/sdcard/backups/ || exit 1
 ```
 
 ### automount backup drives
@@ -333,15 +337,22 @@ sudo mount /media/[usb]
 [enable persistent logging](https://unix.stackexchange.com/a/159390) by running:
 
 ```
-mkdir /var/log/journal
-systemd-tmpfiles --create --prefix /var/log/journal
-systemctl restart systemd-journald
+sudo mkdir /var/log/journal
+sudo systemd-tmpfiles --create --prefix /var/log/journal
+sudo systemctl restart systemd-journald
 ```
 
 To automatically clean old logs, run `sudo crontab -e` and add:
 
 ```
 0 */6 * * *  journalctl --vacuum-time=14d
+```
+
+
+## disable beeps
+
+```
+sudo rmmod pcspkr
 ```
 
 
@@ -363,26 +374,21 @@ restart
 ## setup
 
 - meld
-- quodlibet
-
-
-### geany
-
-Download/enable the following plugins:
-
-- Addons
 
 
 ### firefox
 
-- uBlock Origin
 - EPUBReader
-- Save Page WE
 - Open Image in New Tab (robines)
+- Save Page WE
+- Tab Session Manager
+- uBlock Origin
 
 `ln -s ~/.mozilla/firefox/user.js ~/.mozilla/firefox/[profile]/user.js`
 
-Set up the developer tools.
+See `about:profiles` to find the current profile.
+
+Then set up the developer tools.
 
 #### firefox remote debugging
 

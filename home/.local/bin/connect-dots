@@ -6,108 +6,106 @@ import subprocess
 import sys
 
 
-
 def fail(message):
-   print("error: {}".format(message), file=sys.stderr)
-   sys.exit(1)
+	print("error: {}".format(message), file=sys.stderr)
+	sys.exit(1)
 
 
 def command(line, check=True, capture_stdout=True, directory=None, sudo=False):
-   if sudo:
-      line.insert(0, "sudo")
-      line.insert(1, "-S")
-      line.insert(2, "env")
-      line.insert(3, "PATH='{}'".format(os.environ["PATH"]))
+	if sudo:
+		line.insert(0, "sudo")
+		line.insert(1, "-S")
+		line.insert(2, "env")
+		line.insert(3, "PATH='{}'".format(os.environ["PATH"]))
 
-   stdout = subprocess.PIPE if capture_stdout else None
-   process = subprocess.run(line, stdout=stdout, stderr=stdout, cwd=directory)
+	stdout = subprocess.PIPE if capture_stdout else None
+	process = subprocess.run(line, stdout=stdout, stderr=stdout, cwd=directory)
 
-   if check and process.returncode != 0:
-      fail("the following command failed: {line} [{code}]".format(
-         code=process.returncode,
-         line=line
-      ))
+	if check and process.returncode != 0:
+		fail("the following command failed: {line} [{code}]".format(
+			code=process.returncode,
+			line=line
+		))
 
 
 def acquire_sudo_session():
-   command(["echo"], sudo=True, capture_stdout=False)
+	command(["echo"], sudo=True, capture_stdout=False)
 
 
 def render_template_string(template, **kwargs):
-   env = {**os.environ, **kwargs}
-   regex = r"{{\s*(\w+)\s*}}"
+	env = {**os.environ, **kwargs}
+	regex = r"{{\s*(\w+)\s*}}"
 
-   return re.sub(regex, lambda match: env[match.group(1)], template)
+	return re.sub(regex, lambda match: env[match.group(1)], template)
 
 
 def render_template(path, **kwargs):
-   source_path = os.path.join(os.environ["SYSTEM"], path.lstrip("/"))
-   destination_path = os.path.splitext(source_path)[0]
+	source_path = os.path.join(os.environ["SYSTEM"], path.lstrip("/"))
+	destination_path = os.path.splitext(source_path)[0]
 
-   with open(source_path, "r") as f:
-      source_content = f.read()
+	with open(source_path, "r") as f:
+		source_content = f.read()
 
-   destination_content = render_template_string(source_content, **kwargs)
+	destination_content = render_template_string(source_content, **kwargs)
 
-   with open(destination_path, "w") as f:
-      f.write(destination_content)
+	with open(destination_path, "w") as f:
+		f.write(destination_content)
 
 
 def render_dots():
-   render_template("/home/.gtkrc-2.0.template")
-   render_template("/home/.Xresources.template")
-   render_template("/home/.config/Trolltech.conf.template")
-   render_template("/home/.config/dunst/dunstrc.template")
-   render_template("/home/.config/geany/geany.conf.template")
-   render_template("/home/.config/gtk-3.0/settings.ini.template")
-   render_template("/home/.config/hexchat/hexchat.conf.template")
-   render_template("/home/.local/src/st-0.8.2/config.h.template")
-   render_template("/home/.local/src/dmenu-4.9/config.h.template")
+	render_template("/home/.gtkrc-2.0.template")
+	render_template("/home/.Xresources.template")
+	render_template("/home/.config/Trolltech.conf.template")
+	render_template("/home/.config/dunst/dunstrc.template")
+	render_template("/home/.config/geany/geany.conf.template")
+	render_template("/home/.config/gtk-3.0/settings.ini.template")
+	render_template("/home/.config/hexchat/hexchat.conf.template")
+	render_template("/home/.local/src/st-0.8.2/config.h.template")
+	render_template("/home/.local/src/dmenu-4.9/config.h.template")
 
 
 def link_dots(system_path, destination, sudo=False):
-   source = os.path.join(os.environ["SYSTEM"], system_path.lstrip("/"))
-   link_path = os.path.join(os.path.dirname(sys.argv[0]), "link-directory")
-   command_args = [link_path, source, destination]
+	source = os.path.join(os.environ["SYSTEM"], system_path.lstrip("/"))
+	link_path = os.path.join(os.path.dirname(sys.argv[0]), "link-directory")
+	command_args = [link_path, source, destination]
 
-   command(command_args, sudo=sudo)
+	command(command_args, sudo=sudo, check=False)
 
 
 def cache_fonts():
-   command(["fc-cache", "-f"])
+	command(["fc-cache", "-f"])
 
 
 def compile_suckless():
-   make_command = ["make", "clean", "install"]
-   source_path = os.path.expanduser("~/.local/src")
+	make_command = ["make", "clean", "install"]
+	source_path = os.path.expanduser("~/.local/src")
 
-   command(make_command, directory=os.path.join(source_path, "st-0.8.2"))
-   command(make_command, directory=os.path.join(source_path, "dmenu-4.9"))
+	command(make_command, directory=os.path.join(source_path, "st-0.8.2"))
+	command(make_command, directory=os.path.join(source_path, "dmenu-4.9"))
 
 
 def main():
-   argv = sys.argv[1:]
-   with_suckless = "--with-suckless" in argv
-   with_fonts = "--with-fonts" in argv
-   with_root = "--with-root" in argv
+	argv = sys.argv[1:]
+	with_suckless = "--with-suckless" in argv
+	with_fonts = "--with-fonts" in argv
+	with_root = "--with-root" in argv
 
-   if with_root:
-      acquire_sudo_session()
+	if with_root:
+		acquire_sudo_session()
 
-   render_dots()
+	render_dots()
 
-   if with_root:
-      link_dots("/etc/", "/etc/", sudo=True)
+	if with_root:
+		link_dots("/etc/", "/etc/", sudo=True)
 
-   link_dots("/home/", os.path.expanduser("~"))
+	link_dots("/home/", os.path.expanduser("~"))
 
-   if with_fonts:
-      cache_fonts()
+	if with_fonts:
+		cache_fonts()
 
-   if with_suckless:
-      compile_suckless()
-
+	if with_suckless:
+		compile_suckless()
 
 
 if __name__ == "__main__":
-   main()
+	main()

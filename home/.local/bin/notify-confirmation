@@ -1,5 +1,3 @@
 #!/bin/sh
 
-notify-send.py \
-   --replaces-process confirmation \
-   "$@" &
+notify-send.py --replaces-process confirmation "$@" &
