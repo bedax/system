@@ -259,7 +259,7 @@
     #icon = /path/to/icon
 
 [urgency_critical]
-    background = "{{ HIGHLIGHT_COLOUR }}"
+    background = "{{ WARNING_COLOUR }}"
     foreground = "{{ BACKGROUND_COLOUR }}"
     frame_color = "{{ BACKGROUND_COLOUR }}"
     timeout = 0
