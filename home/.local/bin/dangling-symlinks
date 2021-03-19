@@ -1,9 +1,9 @@
 #!/bin/sh
 
 if [ -n "$1" ]; then
-   directory="$1"
+	directory="$1"
 else
-   directory="."
+	directory="."
 fi
 
 find "$directory" -xtype l

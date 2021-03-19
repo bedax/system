@@ -7,7 +7,7 @@ columns = ~#disc,~#track,title
 default_rating = 0.6
 jump = false
 ratings = 5
-scan = ~/Music
+scan = ~/music
 
 [__config__]
 version = 0

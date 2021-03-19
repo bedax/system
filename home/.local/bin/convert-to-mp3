@@ -1,16 +1,16 @@
 #!/bin/sh
 
 convert() {
-   ffmpeg -y \
-          -i "$1" \
-          -codec:a libmp3lame \
-          -q:a 0 \
-          -map_metadata 0 \
-          -id3v2_version 3 \
-          "$2"
+	ffmpeg -y \
+	       -i "$1" \
+	       -codec:a libmp3lame \
+	       -q:a 0 \
+	       -map_metadata 0 \
+	       -id3v2_version 3 \
+	       "$2"
 }
 
 for name in "$@"; do
-   new_name="${name%.${name##*.}}.mp3"
-   convert "$name" "$new_name"
+	new_name="${name%.${name##*.}}.mp3"
+	convert "$name" "$new_name"
 done

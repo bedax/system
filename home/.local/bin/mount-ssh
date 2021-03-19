@@ -3,7 +3,6 @@
 # see: https://github.com/dstuecken/sshfs-gui
 # and: https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh
 
-
 mount_name="$(echo "$1" | cut -d: -f1)"
 host_name="$(echo "$mount_name" | rev | cut -d@ -f1 | rev)"
 mount_path="$2"/"$host_name"
@@ -11,17 +10,16 @@ mount_path="$2"/"$host_name"
 mkdir -p "$mount_path"
 
 sshfs "$1" "$mount_path" \
-   -o port=22 \
-   -o reconnect \
-   -o idmap=user \
-   -o auto_cache \
-   -o compression=yes \
-   -o transform_symlinks \
-   -o StrictHostKeyChecking=no \
-   -o NumberOfPasswordPrompts=1
+	-o port=22 \
+	-o reconnect \
+	-o idmap=user \
+	-o auto_cache \
+	-o compression=yes \
+	-o transform_symlinks \
+	-o StrictHostKeyChecking=no \
+	-o NumberOfPasswordPrompts=1
 
-
-#   -o volname="$mount_name" \
-#   -o defer_permissions \
-#   -o negative_vncache \
-#   -o workaround=nonodelay \
+#	-o volname="$mount_name" \
+#	-o defer_permissions \
+#	-o negative_vncache \
+#	-o workaround=nonodelay \

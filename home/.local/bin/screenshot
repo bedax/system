@@ -1,28 +1,27 @@
 #!/bin/sh
 
-
 screenshot_path="$HOME/screenshot-$(date +%y-%m-%d--%H-%M-%S).png"
 
 screenshot_full() {
-   maim --hidecursor "$screenshot_path"
+	maim --hidecursor "$screenshot_path"
 }
 
 screenshot_window() {
-   maim --hidecursor "$screenshot_path" \
-        --windowid="$(xdotool getactivewindow)"
+	maim --hidecursor "$screenshot_path" \
+	     --windowid="$(xdotool getactivewindow)"
 }
 
 screenshot() {
-   if [ "$1" = "window" ]; then
-      screenshot_window
-   else
-      screenshot_full
-   fi;
+	if [ "$1" = "window" ]; then
+		screenshot_window
+	else
+		screenshot_full
+	fi;
 }
 
 copy_screenshot() {
-   xclip -selection clipboard -target image/png -in "$screenshot_path"
-   rm -f "$screenshot_path"
+	xclip -selection clipboard -target image/png -in "$screenshot_path"
+	rm -f "$screenshot_path"
 }
 
 screenshot "$1" && copy_screenshot

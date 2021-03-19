@@ -22,11 +22,11 @@ export BACKGROUND_COLOUR="$COLOUR_0"
 export FOREGROUND_COLOUR="$COLOUR_15"
 export HIGHLIGHT_COLOUR="$COLOUR_14"
 
-export NORMAL_FONT_SIZE="14"
-export SUCKLESS_FONT_SIZE="18"
-export SUCKLESS_FONT_STYLE="Medium"
+export FONT_SIZE="14"
 export MONO_FONT_NAME="Fira Mono"
+export MONO_FONT_STYLE="Medium"
 export NORMAL_FONT_NAME="Inter"
+export SUCKLESS_FONT_SIZE="18"
 
 export PADDING="8"
 export PADDING_DOUBLED="16"
@@ -38,6 +38,12 @@ export SYSTEM="$HOME/system"
 LOCAL_PATH="$HOME/.local/bin"
 export PATH="$LOCAL_PATH:$PATH"
 
+eval "$(luarocks path)"
+
 # see: https://www.sven.de/dpi/
 # and also update firefox's user.js
-export DPI=176.23
+export DPI=176
+
+# scale sigil
+export QT_SCALE_FACTOR=1.4
+export QT_AUTO_SCREEN_SCALE_FACTOR=0

@@ -1,15 +1,13 @@
 #!/bin/sh
 
-
 if_not_running() {
-   if [ -z "$(pgrep --full "$*")" ]; then
-      "$@" &
-   fi
+	if [ -z "$(pgrep --full "$*")" ]; then
+		"$@" &
+	fi
 }
 
-
 # set the brightness
-xbacklight -set 45 &
+xbacklight -set 26 &
 
 # set the background colour
 hsetroot -solid "$BACKGROUND_COLOUR" &

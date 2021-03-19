@@ -5,8 +5,8 @@ super + Escape
 super + space
    dmenu_run
 
-super + alt + space
-   st
+alt + space
+   dmenu-find
 
 
 Print

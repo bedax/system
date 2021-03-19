@@ -1,10 +1,10 @@
 #!/bin/sh
 
 convert() {
-   ffmpeg -y -i "$1" -vn "$2"
+	ffmpeg -y -i "$1" -vn "$2"
 }
 
 for name in "$@"; do
-   new_name="${name%.${name##*.}}.ogg"
-   convert "$name" "$new_name"
+	new_name="${name%.${name##*.}}.ogg"
+	convert "$name" "$new_name"
 done

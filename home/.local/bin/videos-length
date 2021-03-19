@@ -1,0 +1,7 @@
+#!/bin/sh
+
+find . -maxdepth 1 -iname "$1" -exec ffprobe -v quiet -of csv=p=0 -show_entries format=duration {} \; \
+	| paste -sd+ - \
+	| echo "($(cat)) / 60 / 60" \
+	| bc -l \
+	| echo "$(cat) hour(s)"

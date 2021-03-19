@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "{{ MONO_FONT_NAME }}:style={{ SUCKLESS_FONT_STYLE }}:pixelsize={{ SUCKLESS_FONT_SIZE }}:antialias=true:autohint=true";
+static char *font = "{{ MONO_FONT_NAME }}:style={{ MONO_FONT_STYLE }}:pixelsize={{ SUCKLESS_FONT_SIZE }}:antialias=true:autohint=true";
 static int borderpx = {{ PADDING_DOUBLED }};
 
 /*
