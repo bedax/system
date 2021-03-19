@@ -259,7 +259,7 @@
     #icon = /path/to/icon
 
 [urgency_critical]
-    background = "#95aec7"
+    background = "#ae95c7"
     foreground = "#1c2023"
     frame_color = "#1c2023"
     timeout = 0
