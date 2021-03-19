@@ -125,6 +125,7 @@ sudo apt install [name]
 - `maim` (used by `screenshot`)
 - `man`
 - `manpages`
+- `manpages-dev`
 - `manpages-posix`
 - `manpages-posix-dev`
 - `meld`
