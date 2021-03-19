@@ -116,7 +116,6 @@ sudo apt install [name]
 - `jshon` (used by `desktop-get`)
 - `keepassx`
 - `less`
-- `libnotify-bin`
 - `libx11-dev` (used to compile st and dmenu)
 - `libxft-dev` (used to compile st and dmenu)
 - `libxinerama-dev` (used to compile st and dmenu)
@@ -125,6 +124,7 @@ sudo apt install [name]
 - `luarocks`
 - `maim` (used by `screenshot`)
 - `man`
+- `manpages`
 - `manpages-posix`
 - `manpages-posix-dev`
 - `meld`
@@ -153,7 +153,7 @@ sudo apt install [name]
 - `unzip`
 - `viewnior`
 - `wget`
-- `x11-utils` (contains xev)
+- `x11-utils` (contains `xev`)
 - `x11-xserver-utils` (`xsetroot` used in `autostart` to set the cursor; `xmodmap` used in `autostart` to disable the capslock)
 - `xarchiver`
 - `xbacklight` (used in `sxhkdrc`, `autostart`, and `brightness-get`)
@@ -210,6 +210,8 @@ rm -f dmenu-4.9.tar.gz
 ## notify-send.py
 
 ```
+# may need to do this first:
+# python3 -m pip install --upgrade pip
 sudo apt install libdbus-1-dev libglib2.0-dev
 python3 -m pip install --user notify-send.py
 ```
