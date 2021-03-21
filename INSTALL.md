@@ -180,6 +180,20 @@ fish -c "fisher install oh-my-fish/plugin-pbcopy"
 ```
 
 
+## npm
+
+```
+sudo apt install npm
+npm config set prefix "$HOME/.local"
+```
+
+### npm packages
+
+```
+npm install -g parcel
+```
+
+
 ## graphics
 
 Add non-free to the first source in `/etc/apt/sources.list`.

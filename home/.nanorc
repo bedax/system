@@ -7,5 +7,5 @@ set morespace
 #set mouse
 set smarthome
 set trimblanks
-set nohelp
+#set nohelp
 set quickblank
