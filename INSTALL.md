@@ -183,7 +183,8 @@ fish -c "fisher install oh-my-fish/plugin-pbcopy"
 ## npm
 
 ```
-sudo apt install npm
+curl -sL https://deb.nodesource.com/setup_14.x | sudo TERM=xterm bash -
+sudo apt install nodejs npm
 npm config set prefix "$HOME/.local"
 ```
 
