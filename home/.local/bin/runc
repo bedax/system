@@ -4,10 +4,12 @@ if [ -z "$CC" ]; then
 	CC="cc -std=c89"
 fi
 
-OUT="$(mktemp)"
-CFLAGS="-Werror -Wall -Wextra -pedantic $CFLAGS"
-EXTRA_CFLAGS="-fdiagnostics-color=always"
+if [ -z "$CFLAGS" ]; then
+	CFLAGS="-Werror -Wall -Wextra -pedantic"
+fi
 
+OUT="$(mktemp)"
+EXTRA_CFLAGS="-fdiagnostics-color=always $EXTRA_CFLAGS"
 OUTPUT=$($CC $CFLAGS $EXTRA_CFLAGS -o "$OUT" "$1" 2>&1)
 
 clear
@@ -16,6 +18,7 @@ echo "$OUTPUT" | less --RAW-CONTROL-CHARS --quit-if-one-screen --no-init
 if [ $? -eq 0 ]; then
 	clear
 	shift
+	chmod +x "$OUT"
 	"$OUT" "$@"
 fi
 

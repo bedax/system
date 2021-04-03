@@ -1,8 +1,9 @@
 # GIMP user context
 
-(tool "gimp-zoom-tool")
+(tool "gimp-color-picker-tool")
 (paint-info "gimp-paintbrush")
-(foreground (color-rgb 1.000000 0.000000 0.000000))
+(foreground (color-rgb 0.752941 0.752941 0.752941))
+(background (color-rgb 0.909804 0.945098 0.972549))
 (brush "2. Hardness 050")
 (dynamics "Dynamics Off")
 (mybrush "Standard")
