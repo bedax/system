@@ -383,6 +383,13 @@ restart
 ```
 
 
+## list
+
+```
+apt-list > ~/.fresh-apt-list
+```
+
+
 ## setup
 
 - meld
@@ -401,21 +408,6 @@ restart
 See `about:profiles` to find the current profile.
 
 Then set up the developer tools.
-
-#### firefox remote debugging
-
-- open about:debugging
-- enable usb debugging
-
-on android
-- open settings > about phone
-- tap build number 7 times
-- open settings > developer options
-- enable usb debugging
-
-on firefox for android
-- open settings > advanced
-- enable remote debugging via usb
 
 
 ### openmw

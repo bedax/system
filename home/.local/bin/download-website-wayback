@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# https://superuser.com/a/1462412
+
 wget \
 	--continue \
 	--recursive \
