@@ -60,7 +60,7 @@
 (session-info "toplevel"
     (factory-entry "gimp-file-export-dialog")
     (position 358 78)
-    (size 1080 810))
+    (size 1248 880))
 (session-info "toplevel"
     (factory-entry "gimp-file-open-dialog")
     (position 358 78)

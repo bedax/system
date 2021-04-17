@@ -3,6 +3,7 @@ user_pref("layout.css.devPixelsPerPx", "1.25");
 user_pref("browser.backspace_action", 0);
 user_pref("full-screen-api.warning.timeout", 0);
 user_pref("accessibility.typeaheadfind.enablesound", false);
+user_pref("dom.event.clipboardevents.enabled", false);
 
 // from: https://www.privacytools.io/browsers/#about_config
 user_pref("browser.safebrowsing.malware.enabled", false);
