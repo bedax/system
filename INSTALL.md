@@ -87,42 +87,46 @@ sudo apt install [name]
 
 - `adwaita-icon-theme`
 - `adwaita-qt`
-- `adwaita-qt4` (as it's not in buster, install it and adwaita-qt-data from stretch with gdebi)
+- `adwaita-qt4` (as it's not in buster, install it and `adwaita-qt-data` from stretch with `gdebi`)
 - `alsa-utils` (`amixer` used by `volume-mute`)
 - `apt-file`
 - `audacity`
+- `binutils`
 - `blender`
 - `bspwm`
-- `build-essential`
+- `bzip2`
 - `cloc`
 - `compton`
 - `coreutils`
 - `cron`
-- `dbus-x11` (used by `notify-send.py` in cron)
+- `dbus-x11` (used by `notify-send.py` in `crontab`)
 - `dunst`
 - `ffmpeg`
 - `firefox-esr`
 - `fontconfig`
+- `gcc`
+- `gcc-doc` (enable `buster-backports` with `contrib` and `non-free`)
 - `gdebi`
 - `gimp`
 - `gimp-help-en`
 - `git`
 - `gnome-themes-standard`
 - `gparted`
-- `gstreamer1.0-plugins-bad` (used by quodlibet for aac support)
+- `gzip`
 - `hsetroot` (used to set the background in `autostart`)
 - `htop`
 - `inkscape`
 - `jshon` (used by `desktop-get`)
 - `keepassx`
 - `less`
-- `libx11-dev` (used to compile st and dmenu)
-- `libxft-dev` (used to compile st and dmenu)
-- `libxinerama-dev` (used to compile st and dmenu)
+- `libx11-dev` (used to compile `st` and `dmenu`)
+- `libxft-dev` (used to compile `st` and `dmenu`)
+- `libxinerama-dev` (used to compile `st` and `dmenu`)
 - `links2`
 - `lua5.3`
 - `luarocks`
 - `maim` (used by `screenshot`)
+- `make`
 - `man`
 - `manpages`
 - `manpages-dev`
@@ -134,7 +138,7 @@ sudo apt install [name]
 - `ncdu`
 - `openssh-client`
 - `pandoc`
-- `pm-utils` (used by the sleep and hibernate scripts)
+- `pm-utils` (used by the `sleep` and `hibernate` scripts)
 - `pulseaudio`
 - `pulseaudio-utils` (used by `volume-get` and `volume-set`)
 - `python3`
@@ -144,6 +148,7 @@ sudo apt install [name]
 - `shellcheck`
 - `sigil`
 - `sxhkd`
+- `tar`
 - `tcc`
 - `thunar`
 - `thunar-archive-plugin`
@@ -162,6 +167,7 @@ sudo apt install [name]
 - `xdotool` (used by `screenshot`)
 - `xinit` (contains `startx`)
 - `xinput` (for disabling the touchpad in `autostart`)
+- `xz-utils`
 - `youtube-dl` (or `python3 -m pip install youtube-dl`)
 - `zip`
 
