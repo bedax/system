@@ -5,5 +5,5 @@ if [ -z "$CC" ]; then
 fi
 
 clear && \
-	make CC="$CC" EXTRA_CFLAGS="-fdiagnostics-color=always" "$@" 2>&1 \
+	make CC="$CC" EXTRA_CFLAGS="-Werror -fdiagnostics-color=always" "$@" 2>&1 \
 		| less --RAW-CONTROL-CHARS --quit-if-one-screen --no-init
