@@ -181,6 +181,7 @@ cd ~
 sudo apt install gdb nemiver
 python3 -m pip install pygments
 wget -P ~ https://git.io/.gdbinit
+mv .gdbinit .gdb-dashboard
 ```
 
 
