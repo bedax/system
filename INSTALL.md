@@ -178,7 +178,7 @@ sudo apt install [name]
 
 ```
 cd ~
-sudo apt install gdb
+sudo apt install gdb nemiver
 python3 -m pip install pygments
 wget -P ~ https://git.io/.gdbinit
 ```
