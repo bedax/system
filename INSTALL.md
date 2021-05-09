@@ -95,6 +95,8 @@ sudo apt install [name]
 - `blender`
 - `bspwm`
 - `bzip2`
+- `clang`
+- `clang-tools`
 - `cloc`
 - `compton`
 - `coreutils`
@@ -170,6 +172,16 @@ sudo apt install [name]
 - `xz-utils`
 - `youtube-dl` (or `python3 -m pip install youtube-dl`)
 - `zip`
+
+
+## gdb
+
+```
+cd ~
+sudo apt install gdb
+python3 -m pip install pygments
+wget -P ~ https://git.io/.gdbinit
+```
 
 
 ## fish

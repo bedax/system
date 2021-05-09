@@ -207,7 +207,7 @@ print_cmd=
 use_gtk_printing=true
 print_line_numbers=true
 print_page_numbers=true
-print_page_header=true
+print_page_header=false
 page_header_basename=false
 page_header_datefmt=%c
 

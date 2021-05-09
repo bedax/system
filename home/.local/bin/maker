@@ -4,6 +4,7 @@ if [ -z "$CC" ]; then
 	CC="cc -std=c89"
 fi
 
-clear && \
-	make CC="$CC" EXTRA_CFLAGS="-Werror -fdiagnostics-color=always" "$@" 2>&1 \
-		| less --RAW-CONTROL-CHARS --quit-if-one-screen --no-init
+clear
+
+make CC="$CC" EXTRA_CFLAGS="-Werror -fdiagnostics-color=always $EXTRA_CFLAGS" "$@" 2>&1 \
+	| less --RAW-CONTROL-CHARS --quit-if-one-screen --no-init

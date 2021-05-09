@@ -4,16 +4,13 @@ if [ -z "$CC" ]; then
 	CC="cc -std=c89"
 fi
 
-if [ -z "$CFLAGS" ]; then
-	CFLAGS="-Wall -Wextra -Wconversion -pedantic"
-fi
-
+WARNINGS="-Wall -Wextra -Wconversion -pedantic"
+CFLAGS="$WARNINGS $CFLAGS -fdiagnostics-color=always"
 OUT="$(mktemp)"
-EXTRA_CFLAGS="-fdiagnostics-color=always $EXTRA_CFLAGS"
 
 clear
-echo "Compiling with: $CC $CFLAGS $EXTRA_CFLAGS -o $OUT $1"
-OUTPUT=$($CC $CFLAGS $EXTRA_CFLAGS -o "$OUT" "$1" 2>&1)
+echo "Compiling with: $CC -o $OUT $1 $CFLAGS"
+OUTPUT=$($CC -o "$OUT" "$1" $CFLAGS 2>&1)
 ret=$?
 
 if [ -n "$OUTPUT" ]; then
