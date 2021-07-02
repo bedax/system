@@ -41,10 +41,13 @@ export PATH="$LOCAL_PATH:$PATH"
 
 eval "$(luarocks path)"
 
-# see: https://www.sven.de/dpi/
-# and also update firefox's user.js
+# should be a whole number
+# calculate with: https://www.sven.de/dpi/
+# referenced in: .Xresources, .config/gtk-3.0/settings.ini, and .gtkrc-2.0
+# also update: .mozilla/firefox/user.js; layout.css.devPixelsPerPx
+# also update: the QT_SCALE_FACTOR below
 export DPI=176
 
-# scale sigil
+# scales sigil
 export QT_SCALE_FACTOR=1.4
 export QT_AUTO_SCREEN_SCALE_FACTOR=0

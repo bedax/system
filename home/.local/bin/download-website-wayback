@@ -1,15 +1,23 @@
 #!/bin/sh
 
 # https://superuser.com/a/1462412
+# https://superuser.com/a/1337714
+
+link="$1"
+link_stripped=$(echo "$link" | sed 's/https\?:\/\///' | sed 's/www\.//')
+wayback_id="$2"
 
 wget \
+	--mirror \
 	--continue \
 	--recursive \
-	--span-hosts \
+	--no-verbose \
+	--timestamping \
 	--convert-links \
 	--page-requisites \
 	--adjust-extension \
 	--execute robots=off \
 	--restrict-file-names=windows \
 	--user-agent="Mozilla/5.0 (X11; Linux i686; rv:64.0) Gecko/20100101 Firefox/64.0" \
-	--accept-regex ".*$1.*" "https://web.archive.org/web/$2/$1"
+	--accept-regex ".*$link_stripped.*" \
+	"https://web.archive.org/web/"$wayback_id"id_/"$link

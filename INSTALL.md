@@ -11,6 +11,15 @@ _These are some notes on how to install the author's system. These aren't expect
     - An ext4 partition for /home, using the remaining space
 
 
+## guixsd
+
+In the install script, set `use-substitutes?` to `#f`. Note:
+
+https://guix.gnu.org/manual/en/html_node/Using-the-Configuration-System.html
+https://guix.gnu.org/manual/en/html_node/Getting-Substitutes-from-Other-Servers.html
+https://guix.gnu.org/manual/en/html_node/Base-Services.html#index-guix_002dconfiguration
+
+
 ## terminal font
 
 `/sbin/dpkg-reconfigure -plow console-setup`
@@ -102,6 +111,7 @@ sudo apt install [name]
 - `coreutils`
 - `cron`
 - `dbus-x11` (used by `notify-send.py` in `crontab`)
+- `djview`
 - `dunst`
 - `ffmpeg`
 - `firefox-esr`
@@ -138,6 +148,7 @@ sudo apt install [name]
 - `mpv`
 - `nano`
 - `ncdu`
+- `netcat-traditional`
 - `openssh-client`
 - `pandoc`
 - `pm-utils` (used by the `sleep` and `hibernate` scripts)
@@ -170,6 +181,7 @@ sudo apt install [name]
 - `xinit` (contains `startx`)
 - `xinput` (for disabling the touchpad in `autostart`)
 - `xz-utils`
+- `yash`
 - `youtube-dl` (or `python3 -m pip install youtube-dl`)
 - `zip`
 
@@ -178,7 +190,7 @@ sudo apt install [name]
 
 ```
 cd ~
-sudo apt install gdb nemiver
+sudo apt install gdb nemiver strace
 python3 -m pip install pygments
 wget -P ~ https://git.io/.gdbinit
 mv .gdbinit .gdb-dashboard
@@ -351,7 +363,8 @@ echo "$files" | backup --keep 14 /media/usb/backups/ /media/sdcard/backups/ || e
 To automount the usb/sdcard on boot, add the following to `/etc/fstab`:
 
 ```
-UUID=[UUID from `lsblk -f`]  /media/[usb]     ext4  noauto,nofail,x-systemd.automount,x-systemd.idle-timeout=2,x-systemd.device-timeout=2
+UUID=[UUID from `lsblk -f`]   /media/[usb]      [ext4]        noauto,nofail,x-systemd.automount,x-systemd.idle-timeout=2,x-systemd.device-timeout=2,user
+UUID=[UUID from `lsblk -f`]   /media/[shared]   [vfat/ntfs]   noauto,nofail,x-systemd.automount,x-systemd.idle-timeout=2,x-systemd.device-timeout=2,user,uid=[username],gid=[username]
 ```
 
 And run the following:
@@ -359,7 +372,7 @@ And run the following:
 ```
 sudo mkdir /media/[usb]
 sudo chown [user]:[user] /media/[usb]
-sudo mount /media/[usb]
+mount /media/[usb]
 ```
 
 

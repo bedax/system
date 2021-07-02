@@ -5,7 +5,8 @@ wget \
 	--continue \
 	--recursive \
 	--no-parent \
-	--span-hosts \
+	--no-verbose \
+	--timestamping \
 	--convert-links \
 	--page-requisites \
 	--adjust-extension \
