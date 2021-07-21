@@ -1,3 +1,10 @@
 #!/bin/sh
 
-youtube-dl -f "webm[height>=720][height<=1080]+bestaudio/best" -o "%(title)s (%(id)s).%(ext)s" "$@"
+video_format="webm[height>=720][height<=1080]+bestaudio/best"
+
+case "$@" in
+	*playlist*) name_format="%(playlist_index)s - %(title)s (%(id)s).%(ext)s" ;;
+	*         ) name_format="%(title)s (%(id)s).%(ext)s" ;;
+esac
+
+youtube-dl -f "$video_format" -o "$name_format" "$@"

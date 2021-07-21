@@ -125,6 +125,7 @@ sudo apt install [name]
 - `gnome-themes-standard`
 - `gparted`
 - `gzip`
+- `hexchat`
 - `hsetroot` (used to set the background in `autostart`)
 - `htop`
 - `inkscape`
